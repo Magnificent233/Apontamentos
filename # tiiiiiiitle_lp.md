@@ -62,9 +62,7 @@ _Resposta:_ Sim, tudo bem!
 
 _Resposta:_ Já está impecável.
 
-
 <br/><br/>
-
 
 ## Aula Prática 2
 
@@ -177,3 +175,58 @@ _Resposta:_ Não! Agora já lá está com o nome `tabela1` e indica em que pági
 
 ---
 
+**Questão 19: O que tem a dizer relativamente ao extrato de instrução `[scale=0.5]`?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 20: É possível gerar um índice de figuras?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 21: O índice encontra-se vazio?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 22: O índice continua vazio?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 23: Qual é a diferença entre os dois excertos de código criados na tarefa anterior?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 24: O excerto de código foi compilado com sucesso?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 25: Com a introdução deste novo ficheiro, o excerto de código foi compilado com sucesso?**
+
+_Resposta:_ howdy
+
+---
+
+**Questão 26: Com mais esta mudança, o excerto de código foi (finalmente) compilado com sucesso?**
+
+_Resposta:_ howdy
+
+<br/><br/>
+
+## Aula Prática 3
+
+**Questão 1:**
+
+_Resposta:_
+
+---
