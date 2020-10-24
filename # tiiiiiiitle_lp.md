@@ -6,11 +6,11 @@
 
 `Tex Live, LaTeX e MikTex`
 
-_Resposta:_ Estas palavras requerem uma estilização muito própria, com letras acima e abaixo da linha de texto, que só se consegue com muito jeitinho (e com comandos _LaTeX_).
+_Resposta:_ Estas palavras requerem uma estilização muito própria, com letras acima e abaixo da linha de texto, que só se consegue com muito jeitinho (e com comandos $LaTeX$).
 
 ---
 
-**Questão 2: Quais as duas partes que constituem a estrutura geral de um documento LaTeX (escolha duas respostas)?**
+**Questão 2: Quais as duas partes que constituem a estrutura geral de um documento $LaTeX$ (escolha duas respostas)?**
 
 _Resposta:_ Preâmbulo. Conteúdo.
 
@@ -109,7 +109,7 @@ _Resposta:_ Sim, claro. Senão até dá erro de compilação.
 
 ---
 
-**Questão 8: Só para que fique bem sólido na memória: como é que se pode começar um parágrafo novo em _LaTeX_?**
+**Questão 8: Só para que fique bem sólido na memória: como é que se pode começar um parágrafo novo em $LaTeX$?**
 
 _Resposta:_ Deixando uma linha em branco antes desse novo parágrafo.
 
@@ -133,7 +133,7 @@ _Resposta:_ Usando o comando `\textbackslash`.
 
 ---
 
-**Questão 12: Visto que já está no nível de _padawan_ de _LaTeX_, e só de vista, quantas colunas é que acha que a tabela representada no código anterior tem?**
+**Questão 12: Visto que já está no nível de _padawan_ de $LaTeX$, e só de vista, quantas colunas é que acha que a tabela representada no código anterior tem?**
 
 _Resposta:_ Três.
 
