@@ -6,11 +6,11 @@
 
 `Tex Live, LaTeX e MikTex`
 
-_Resposta:_ Estas palavras requerem uma estilização muito própria, com letras acima e abaixo da linha de texto, que só se consegue com muito jeitinho (e com comandos $LaTeX$).
+_Resposta:_ Estas palavras requerem uma estilização muito própria, com letras acima e abaixo da linha de texto, que só se consegue com muito jeitinho (e com comandos $\LaTeX$).
 
 ---
 
-**Questão 2: Quais as duas partes que constituem a estrutura geral de um documento $LaTeX$ (escolha duas respostas)?**
+**Questão 2: Quais as duas partes que constituem a estrutura geral de um documento $\LaTeX$ (escolha duas respostas)?**
 
 _Resposta:_ Preâmbulo. Conteúdo.
 
@@ -109,7 +109,7 @@ _Resposta:_ Sim, claro. Senão até dá erro de compilação.
 
 ---
 
-**Questão 8: Só para que fique bem sólido na memória: como é que se pode começar um parágrafo novo em $LaTeX$?**
+**Questão 8: Só para que fique bem sólido na memória: como é que se pode começar um parágrafo novo em $\LaTeX$?**
 
 _Resposta:_ Deixando uma linha em branco antes desse novo parágrafo.
 
@@ -133,7 +133,7 @@ _Resposta:_ Usando o comando `\textbackslash`.
 
 ---
 
-**Questão 12: Visto que já está no nível de _padawan_ de $LaTeX$, e só de vista, quantas colunas é que acha que a tabela representada no código anterior tem?**
+**Questão 12: Visto que já está no nível de _padawan_ de $\LaTeX$, e só de vista, quantas colunas é que acha que a tabela representada no código anterior tem?**
 
 _Resposta:_ Três.
 
@@ -177,49 +177,49 @@ _Resposta:_ Não! Agora já lá está com o nome `tabela1` e indica em que pági
 
 **Questão 19: O que tem a dizer relativamente ao extrato de instrução `[scale=0.5]`?**
 
-_Resposta:_ howdy
+_Resposta:_ Permite reduzir o tamanho da figura para 50% do seu tamanho original.
 
 ---
 
 **Questão 20: É possível gerar um índice de figuras?**
 
-_Resposta:_ howdy
+_Resposta:_ Após uma pesquisa rápida, cheguei à conclusão que é o comando `\listoffigures`.
 
 ---
 
 **Questão 21: O índice encontra-se vazio?**
 
-_Resposta:_ howdy
+_Resposta:_ Está vazio, sim, e deduzo (porque tenho um tio que ainda é arraçado do _Sherlock Holmes_) que é preciso fazer algo semelhante ao que foi feito para as tabelas...
 
 ---
 
 **Questão 22: O índice continua vazio?**
 
-_Resposta:_ howdy
+_Resposta:_ Já não está vazio. Consigo ver a legenda no índice e a indicação da página onde a figura
 
 ---
 
 **Questão 23: Qual é a diferença entre os dois excertos de código criados na tarefa anterior?**
 
-_Resposta:_ howdy
+_Resposta:_ Ambos exibem a fórmula, em destaque, mas o ambiente `equation` exibe, adicionalmente, um número junto da equação.
 
 ---
 
 **Questão 24: O excerto de código foi compilado com sucesso?**
 
-_Resposta:_ howdy
+_Resposta:_ Compilou, mas deu-me uns avisos e apareceu-me um ponto de interrogação ali no meio do texto... Será que o $\LaTeX$ quer falar comigo?
 
 ---
 
 **Questão 25: Com a introdução deste novo ficheiro, o excerto de código foi compilado com sucesso?**
 
-_Resposta:_ howdy
+_Resposta:_ Não parece ter mudado nada. Continuo com o ponto de interrogação ali no meio do texto...
 
 ---
 
 **Questão 26: Com mais esta mudança, o excerto de código foi (finalmente) compilado com sucesso?**
 
-_Resposta:_ howdy
+_Resposta:_ Sim! O ponto de interrogação foi substituído por `1` e já aparece uma secção de referências.
 
 <br/><br/>
 
