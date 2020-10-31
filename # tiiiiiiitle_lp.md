@@ -177,7 +177,7 @@ _Resposta:_ Não! Agora já lá está com o nome `tabela1` e indica em que pági
 
 **Questão 19: O que tem a dizer relativamente ao extrato de instrução `[scale=0.5]`?**
 
-_Resposta:_ Permite reduzir o tamanho da figura para 50% do seu tamanho original.
+_Resposta:_ Permite reduzir o tamanho da figura para 50% do seu tamanho original. Não é obrigatório (porque está entre parênteses retos).
 
 ---
 
@@ -195,7 +195,7 @@ _Resposta:_ Está vazio, sim, e deduzo (porque tenho um tio que ainda é arraça
 
 **Questão 22: O índice continua vazio?**
 
-_Resposta:_ Já não está vazio. Consigo ver a legenda no índice e a indicação da página onde a figura
+_Resposta:_ Já não está vazio. Consigo ver a legenda no índice e a indicação da página onde a figura está.
 
 ---
 
@@ -231,7 +231,7 @@ _Resposta:_ Antes da Implementação e depois do Estado da Arte.
 
 ---
 
-**Questão 02: Relativamente à secção de `Estado da Arte`, podemos citar os seguintes recursos para realizar a pesquisa bibliográfica (selecione todas as que se apliquem):**
+**Questão 02: Relativamente à secção de `Estado da Arte`, devemos citar os seguintes recursos para realizar a pesquisa bibliográfica (selecione todas as que se apliquem):**
 
 _Resposta:_
 - Artigos científicos em revista.
@@ -268,7 +268,7 @@ _Resposta:_ Sim, devem estar ordenados por ordem alfabética.
 
 **Questão 07: Relativamente à tarefa anterior, assinale todos os erros que encontrou:**
 
-_Resposta:_ Acrónimo não foi definido por extenso na primeira utilização. Uso em demasia de acrónimo.
+_Resposta:_ Acrónimo não foi definido por extenso na primeira utilização. (Uso em demasia de acrónimo.) Utilização de acrónimo por extenso quando já havia sido definido.
 
 ---
 
@@ -299,7 +299,7 @@ _Resposta:_ Não, tive de fazer alterações a todos os capítulos.
 
 **Questão 12: O que pode comentar relativamente à ordenação dos capítulos na tarefa anterior?**
 
-_Resposta:_ A ordenação está correta.
+_Resposta:_ A ordenação está correta. [?]
 
 ---
 
@@ -323,11 +323,18 @@ _Resposta:_ A legenda é auto-contida, descreve fielmente o conteúdo do trecho 
 
 **Questão 16: Relativamente à tarefa anterior, todas as figuras e tabelas são referidas, pelo menos uma vez no texto?**
 
-_Resposta:_ NÃO SEI, AINDA NÃO EXPERIMENTEI.
+_Resposta:_ Não, falta referir a tabela no texto.
 
 ---
 
 **Questão 17: Quantos erros se enconram na frase anterior?**
 
 _Resposta:_ Dois.
+
 Correção: Um `upgrade` à aplicação ocorrerá em três dias.
+
+</br></br>
+
+## Aula Prática 4
+
+**Questão 01:**
