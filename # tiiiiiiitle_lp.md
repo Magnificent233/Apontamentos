@@ -296,7 +296,6 @@ _Resposta:_ Não, tive de fazer alterações a todos os capítulos.
 
 ---
 
-
 **Questão 12: O que pode comentar relativamente à ordenação dos capítulos na tarefa anterior?**
 
 _Resposta:_ Para ficar corretamente ordenado, Detalhes de Implementação teria de trocar com Estado da Arte.
@@ -339,103 +338,103 @@ Correção: Um `upgrade` à aplicação ocorrerá em três dias.
 
 **Questão 01: Qual é o nome deste programa em Windows?**
 
-_Resposta:_ 
+_Resposta:_ Consola.
 
 ---
 
 **Questão 02: Analise a sua _prompt_ e identifique o seu _user_ e _hostname_:**
 
-_Resposta:_
+_Resposta:_ sara & Prometheus.
 
 ---
 
 **Questão 03: Qual o caratere que se encontra entre o _user_ e _hostname_, na sua _prompt_?**
 
-_Resposta:_
+_Resposta:_ @.
 
 ---
 
-**Questão 04: Qual o caratere que, numa _prompt_ de um sistema _Unix_ ou _Unix-like_ pode denotar _utilizador com privilégios de administração_?**
+**Questão 04: Qual o caratere que, numa _prompt_ de um sistema _Unix_ ou _Unix-like_, pode denotar _utilizador com privilégios de administração_?**
 
-_Resposta:_
+_Resposta:_ #.
 
 ---
 
 **Questão 05: O que é considerado um ficheiro (selecione todas as que se apliquem)?**
 
-_Resposta:_
+_Resposta:_ Diretoria. Disco inteiro. Teclado. Rato. Ficheiro. Memória. Impressora. Monitor.
 
 ---
 
 **Questão 06: No ambiente de linha de comandos, quantos e quais são os fluxos de dados que interessa conhecer?**
 
-_Resposta:_
+_Resposta:_ São 3: `stdin` (_standard input_), `stdout` (_standard output_) e `stderr` (_standard error_).
 
 ---
 
 **Questão 07: Qual o comando que permite obter um manual de um determinado comando?**
 
-_Resposta:_ 
+_Resposta:_ `man`.
 
 ---
 
 **Questão 08: O que observou ao executar o comando da tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ O terminal ficou preenchido com informação, aparentemente dividida por secções de _name_, _synopsis_ e _description_...
 
 ---
 
 **Questão 09: O que faz o comando `echo`?**
 
-_Resposta:_
+_Resposta:_ Segundo o manual, exibe uma linha de texto, no terminal.
 
 ---
 
 **Questão 10: Há alguma opção do comando `echo` que permita imprimir no terminal, mas evitar que se mude de linha no final de imprimir?**
 
-_Resposta:_
+_Resposta:_ Sim, há. É a opção `-n`.
 
 ---
 
 **Questão 11: Qual o último número da versão do comando `man` no seu sistema?**
 
-_Resposta:_
+_Resposta:_ 1.
 
 ---
 
 **Questão 12: O que observou ao executar o comando da tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ Ficou lá o comentário e apareceu um novo _prompt_, pronto a receber _input_. Mas não aconteceu mais nada...
 
 ---
 
 **Questão 13: No contexto do comando em que foi utilizada, o que constitui a expressão `Olá Mundo`?**
 
-_Resposta:_
+_Resposta:_ Constitui um parâmetro não obrigatório do comando.
 
 ---
 
 **Questão 14: Qual foi o comando que utilizou para imprimir o caminho completo da diretoria atual?**
 
-_Resposta:_
+_Resposta:_ Utilizei o comando `pwd`.
 
 ---
 
 **Questão 15: Qual foi o comando que utilizou na tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ Utilizei o comando `ls`. Utilizei o comando `dir`.
 
 ---
 
-**Questão 16: O que significa a letra `w` do comando anterior?**
+**Questão 16: O que significa a letra `w` do comando `pwd`?**
 
-_Resposta:_
+_Resposta:_ _working_.
 
 ---
 
 **Questão 17: O que pode comentar relativamente à opção `-h` do comando `ls`?**
 
-_Resposta:_
+_Resposta:_ Lista as informações dos ficheiros num formato que facilita a leitura humana como, por exemplo, 1K, 234M, 2G, etc. Tem de ser usada em conjunto com outras opções, nomeadamente, `-l` ou `-s`.
 
 ---
 
