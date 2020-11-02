@@ -1,6 +1,6 @@
 # Laboratórios de Programação
 
-## Aula Prática 1
+## Aula Prática 01
 
 **Questão 01: O que é que está errado nas seguintes expressões/palavras?**
 
@@ -64,7 +64,7 @@ _Resposta:_ Já está impecável.
 
 <br/><br/>
 
-## Aula Prática 2
+## Aula Prática 02
 
 **Questão 01: Tendo   em   conta   os   comandos   enunciados   no   início   desta   secção,    acha   que é    possível    escrever    a    palavra `teste` em itálico e, simultaneamente, a negrito?**
 
@@ -223,7 +223,7 @@ _Resposta:_ Sim! O ponto de interrogação foi substituído por `1` e já aparec
 
 <br/><br/>
 
-## Aula Prática 3
+## Aula Prática 03
 
 **Questão 01: Onde é que deve aparecer o capítulo da _Engenharia de Software_?**
 
@@ -299,7 +299,7 @@ _Resposta:_ Não, tive de fazer alterações a todos os capítulos.
 
 **Questão 12: O que pode comentar relativamente à ordenação dos capítulos na tarefa anterior?**
 
-_Resposta:_ A ordenação está correta. [?]
+_Resposta:_ Para ficar corretamente ordenado, Detalhes de Implementação teria de trocar com Estado da Arte.
 
 ---
 
@@ -335,6 +335,182 @@ Correção: Um `upgrade` à aplicação ocorrerá em três dias.
 
 </br></br>
 
-## Aula Prática 4
+## Aula Prática 04
 
-**Questão 01:**
+**Questão 01: Qual é o nome deste programa em Windows?**
+
+_Resposta:_ 
+
+---
+
+**Questão 02: Analise a sua _prompt_ e identifique o seu _user_ e _hostname_:**
+
+_Resposta:_
+
+---
+
+**Questão 03: Qual o caratere que se encontra entre o _user_ e _hostname_, na sua _prompt_?**
+
+_Resposta:_
+
+---
+
+**Questão 04: Qual o caratere que, numa _prompt_ de um sistema _Unix_ ou _Unix-like_ pode denotar _utilizador com privilégios de administração_?**
+
+_Resposta:_
+
+---
+
+**Questão 05: O que é considerado um ficheiro (selecione todas as que se apliquem)?**
+
+_Resposta:_
+
+---
+
+**Questão 06: No ambiente de linha de comandos, quantos e quais são os fluxos de dados que interessa conhecer?**
+
+_Resposta:_
+
+---
+
+**Questão 07: Qual o comando que permite obter um manual de um determinado comando?**
+
+_Resposta:_ 
+
+---
+
+**Questão 08: O que observou ao executar o comando da tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 09: O que faz o comando `echo`?**
+
+_Resposta:_
+
+---
+
+**Questão 10: Há alguma opção do comando `echo` que permita imprimir no terminal, mas evitar que se mude de linha no final de imprimir?**
+
+_Resposta:_
+
+---
+
+**Questão 11: Qual o último número da versão do comando `man` no seu sistema?**
+
+_Resposta:_
+
+---
+
+**Questão 12: O que observou ao executar o comando da tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 13: No contexto do comando em que foi utilizada, o que constitui a expressão `Olá Mundo`?**
+
+_Resposta:_
+
+---
+
+**Questão 14: Qual foi o comando que utilizou para imprimir o caminho completo da diretoria atual?**
+
+_Resposta:_
+
+---
+
+**Questão 15: Qual foi o comando que utilizou na tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 16: O que significa a letra `w` do comando anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 17: O que pode comentar relativamente à opção `-h` do comando `ls`?**
+
+_Resposta:_
+
+---
+
+**Questão 18: Qual é o comando que pode utilizar para navegar da sua diretoria atual para a nova diretoria `teste`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 19: Qual é o comando que sugere utilizar?**
+
+_Resposta:_
+
+---
+
+**Questão 20: Conseguiu remover a diretoria `teste`?**
+
+_Resposta:_
+
+---
+
+**Questão 21: Qual foi o comando que utilizou para criar o ficheiro na tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 22: Tem a certeza de que o ficheiro está mesmo vazio?**
+
+_Resposta:_
+
+---
+
+**Questão 23: De que maneira poderia imprimir o conteúdo do ficheiro, criado na tabela anterior, no terminal?**
+
+_Resposta:_
+
+---
+
+**Questão 24: Relativamente a movimentação do ficheiro, que comando utilizou para realizar a tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 25: Para relembrar, qual é a finalidade do caratere `|`?**
+
+_Resposta:_
+
+---
+
+**Questão 26: O que faz o comando `cat`?**
+
+_Resposta:_
+
+---
+
+**Questão 27: O que faz um comando `grep`?**
+
+_Resposta:_
+
+---
+
+**Questão 28: Tendo em conta as respostas das questões anteriores, qual é a função do `pipe` na tarefa anterior?**
+
+_Resposta:_
+
+---
+
+**Questão 29: Dados os exemplos, qual é a diferença entre os comandos `>` e `>>`?**
+
+_Resposta:_
+
+---
+
+<br/><br/>
+
+## Aula Prática 05
