@@ -89,9 +89,52 @@ __Arrays__ são entidades referenciadas, mas não são objetos. São criados din
 
 ## Aula 03 - Classes e Instanciação de Objetos
 
+Um _argumento_ é um valor passado para uma função quando esta é chamada; um _parâmetro_ é um valor passado para uma função quando esta é definida. Uma _classe_ define a estrutura, propriedades e comportamento de um objeto; uma _instância_ é a referência a um determinado objeto.
+
+`class Contador { <instruções> }`
+
+Por omissão, toda a classe possui um construtor, que atribui o valor `null` a todas as variáveis do objeto que sejam do tipo referenciado e arrays (inicializados de acordo com o seu tipo). Um construtor permite inicializar o estado (valores) das instâncias da classe.
+
+Deve garantir-se que nenhum objeto faz acesso direto às variáveis de instância de outro objeto, de modo a garantir que se estão a definir objetos independentes e reutilizáveis). Um objeto genérico não deve ter instruções de _input_/_output_ no seu código.
+
+_Assinatura de um método:_ constituída pelo identificador do método e pelo número, tipo e ordem dos seus parâmetros. `<tipo do resultado> <identificador> (pares tipo e nome do parâmetro)`.
+
+Um valor do tipo _String_ é uma sequência de zero ou mais carateres entre aspas, com um valor imutável. O operador `+` permite a concatenação de _strings_ e cria implicitamente uma nova instância da classe String.
+
+Métodos que façam __acesso de leitura__ ao valor de uma variável X designam-se por _getters_ e devolvem um resultado do tipo da variável X (`getX`). Métodos que __alterem__ o valor de uma variável X designam-se por _setters_, têm parâmetros de entrada e não devolvem qualquer resultado (`setX`).
+
+A abordagem da comunicação por mensagens pode ser usada uniformemente para interação com outros objetos e invocação de métodos locais. Para que um objeto possa enviar uma mensagem a si próprio, tem de se autorreferenciar: `this` é um identificador especial que contém o endereço do próprio objeto em cujo contexto é utilizado.
+
+Mecanismos de controlo de acesso especificam 'quem' tem acesso a cada entidade (classe, dados e métodos): `public`, `protected`, `private`.
+
+Regras de acesso a classes:
+* Uma classe é sempre acessível a todas as outras classes do mesmo _package_ independentemente do modificador de acesso.
+* Se nenhum modificador de acesso é usado, a classe apenas pode ser acedida dentro do seu _package_.
+* Quando uma classe é declarada como `public`, pode ser acedida por qualquer classe que tenha acesso ao seu _package_.
+* Quando uma classe não é pública, é apenas acessível dentro do seu _package_.
+
+Regras de acesso a variáveis e métodos:
+* Variáveis e métodos auxiliares são privados; métodos de interface são públicos.
+* Um método declarado como `public` é acessível de qualquer ponto de qualquer programa.
+* Um método sem modificador de acesso é acessível a qualquer classe do mesmo _package_.
+* Métodos ou variáveis declarados como `private` são apenas acessíveis dentro da própria classe.
+* Métodos ou variáveis declarados como `protected` são acessíveis na própria classe, de outra classe dentro do mesmo _package_ e nas subclasses da classe.
+
 <br/><br/>
 
 ## Aula 04 - Variáveis de Classe e Composição de Classes
+
+**Variáveis de classe** representam a estrutura interna de uma dada classe e armazenam valores que identifiquem todos os objetos da classe. Podem ser usadas mesmo que nunca tenha sido instanciado um objeto da classe. Exemplo: `private static String texto;`.
+
+**Variável de instância** Exemplo: `private int numero;`.
+
+**Métodos de classe** implementam o comportamento da classe. São acessíveis às instâncias da classe, ou seja, um método de instância pode invocar um método de classe, mas não o contrário. Exemplo: `public static int metodoA()`.
+ 
+Tanto as variáveis como os métodos de classe são invocados através de mensagens enviadas à classe e declaradas com o identificador `static`.
+
+**Classes Não Instanciáveis** só têm variáveis e métodos de classe; não especificam a estrutura nem o comportamento de qualquer instância.
+
+Em Java os parâmetros são passados por valor: é criada uma variável local com valor igual a uma cópia do argumento. Se o parâmetro é um tipo referenciado, equivale à passagem por referência - argumento.
 
 <br/><br/>
 
