@@ -118,3 +118,14 @@ A _luminância_ é a soma das três componentes básicas (R, G, B) moduladas seg
 
 O _coeficiente de ponderação_ de cada cor é calculada por:
 COEFF (cor X) = sensibilidade (cor X) / (sensibilidade (cor R) + sensibilidade (cor G) + sensibilidade (cor B)).
+
+*Paletes de Cor* - subconjuntos das gamas disponíveis por um sistema particular. As cores da imagem original que não estão na palete de cores do sistema têm de ser aproximadas - _construção de tramas_, que consiste em criar pixels contíguos com a ajuda das diferentes cores disponíveis na palete para dar, por confusão, a impressão visual da cor de origem.
+* _Palete exata:_ regista as cores originais exatas.
+* _Palete sistema:_ palete por defeito de um sistema.
+* _Palete uniforme:_ obtida por tomadas uniformes de amostras de cores no cubo RGB; o número total de cores é igual ao cubo do número de tomas
+* _Palete web:_ seis tomas, ou seja, 6³ = 216 cores.
+* _Palete percetiva:_ favorece as cores às quais o olho humano é mais sensível.
+* _Palete seletiva:_ valoriza as zonas de cores mais importantes e preserva as cores web.
+* _Palete adaptativa:_ favorece os tons dominantes da imagem.
+
+*Imagens de Cor Indexada* - definem-se 256 cores, cada uma delas codificada sobre 8 bits por cor primária.
