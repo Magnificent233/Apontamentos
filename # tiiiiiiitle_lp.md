@@ -350,13 +350,13 @@ _Resposta:_ sara & Prometheus.
 
 **Questão 03: Qual o caratere que se encontra entre o _user_ e _hostname_, na sua _prompt_?**
 
-_Resposta:_ @.
+_Resposta:_ `@`.
 
 ---
 
 **Questão 04: Qual o caratere que, numa _prompt_ de um sistema _Unix_ ou _Unix-like_, pode denotar _utilizador com privilégios de administração_?**
 
-_Resposta:_ #.
+_Resposta:_ `#`.
 
 ---
 

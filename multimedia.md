@@ -22,9 +22,9 @@ _No som:_
 	* 8 Khz (telefone numérico, frequência por defeito); 44.1 Khz (CD de música);
 	* um CD tem uma codificação sobre 16 bits => 2¹⁶ níveis distintos de amplitude.
 
-<br/>
+## Operações Sobre Imagem e Áudio
 
-## Operações de Imagem
+**Operações de Imagem**
 
 _Edição de Imagem_ - alteração de pixels numa imagem.
 * retoque, airbrushing, texturing, corte, cópia e colagem.
@@ -39,13 +39,13 @@ _Operações de Filtragem:_ aplicação de uma função a cada pixel utilizando 
 
 _Operações de Composição:_ composição de grupos de pixels de duas ou mais imagens.
 
-<br/>
-
-## Operações de Áudio
+**Operações de Áudio**
 
 _Edição de Áudio:_ cortar, copiar e colar segmentos de áudio diferentes.
 
 _Filtragem_ - redução de ruído; atrasos (adição de ecos ou reverberações); equalização (enfatizar, reduzir, alterar várias bandas de frequências); normalização (mantendo um pico máximo); compressão / expansão temporal; alteração de tom...
+
+<br/>
 
 ## Representação de Áudio
 
@@ -75,6 +75,8 @@ _Teorema de Nyquist:_ para uma amostragem correta, deve usar-se uma frequência 
 **Formatos de Ficheiros de Áudio Digital**
 
 _MPEG - layer 3 (MP3):_ Alemanha, 1996. Usa primeiro usa codificação RLC (evita a codificação de dados sucessivos idênticos) e termina na aplicação aos dados finais do algoritmo de Huffman. A compressão ótima é obtida a uma taxa de 7 : 1, a 192 Kbits/s.
+
+<br/>
 
 ## Cor e Codificação da Cor
 
@@ -129,3 +131,51 @@ COEFF (cor X) = sensibilidade (cor X) / (sensibilidade (cor R) + sensibilidade (
 * _Palete adaptativa:_ favorece os tons dominantes da imagem.
 
 *Imagens de Cor Indexada* - definem-se 256 cores, cada uma delas codificada sobre 8 bits por cor primária.
+
+<br/>
+
+## Imagem Bitmap VS Imagem Vetorial
+
+**Imagem Bitmap** - todas as imagens reproduzidas num ecrã, obtidas através de um _scanner_ ou de um aparelho fotográfico numérico.
+* Constituído pelos dados da cor de cada ponto, alinhados horizontal e verticalmente como linhas e colunas de uma matriz. O elemento mais pequeno da imagem é o _pixel_.
+* Sabendo a altura e a largura (em pixels) e a profundidade de quantificação, pode calcular-se o tamanho de uma imagem bitmap não comprimida como $T(KB) = \frac{largura (pixel) * altura (pixel) * profundidade (bits/pixel)}{8 (bits/byte) * 1024 (bits/Kbyte)}$.
+* A _resolução_, ppp, é o número de pontos digitalizados, afixados ou imprimidos por unidade de largura.
+* Permitem uma visualização progressiva através da técnica de entrelaçamento - reordenar as linhas das imagens, organizando-as em vários grupos -, permitindo ao utilizador formar uma ideia da imagem após algumas das linhas serem transmitidas.
+* Vantagens:
+  * Capazes de produzir graduações de nuances e cores muito finas.
+  * Constituídas por _pixels_, o que permite o tratamento ponto a ponto.
+  * Guardadas diretamente na memória, logo são representadas com maior rapidez no ecrã.
+* Desvantagens:
+  * A qualidade está diretamente dependente do material de aquisição e reprodução.
+  * O facto de serem imagens de pontos cujas características de cor são definidas individualmente exige uma grande quantidade de espaço em memória.
+
+_GIF_ - utiliza compressão sem perdas LZW, com profundidade de pixel não superior a 8 bits. Otimizado para compressão de imagens com poucas cores diferentes e apresentando grandes quantidades de pixeis da mesma cor. Permite entrelaçamento em quatro passagens.
+
+_PNG_ - utiliza compressão sem perdas, com codificações até 48 bpp e alto nível de compressão sem perdas. Permite transparência. De formato livre (sem algoritmos de domínio privado). Permite entrelaçamento em 7 passagens.
+
+**Imagem Vetorial**
+* Constituída por um conjunto de figuras elementares descrita por dados matemáticos, descreve as diferentes figuras como objetos gráficos independentes que podem ser manipulados e transformados de forma independente.
+* Vantagens:
+  * As informações são descritas textualmente, logo eficazmente comprimidas.
+  * O tamanho da memória é independente do tamanho da imagem.
+  * É possível aplicar facilmente e sem perda de precisão transformações geométricas (deslocamentos, translações, rotações, ...) a diferentes objetos independentes.
+  * São independentes dos periféricos e da resolução, sendo colocadas automaticamente na escala de forma precisa.
+* Desvantagens:
+  * O tamanho do ficheiro varia de acordo com a complexidade da imagem.
+  * Imagens complexas não podem ser descritas em formato vetorial.
+  * O tempo de representação de uma imagem vetorial é superior em relação a uma imagem bitmap - aumenta com a complexidade da imagem.
+  * Qualquer perda / corrupção no ficheiro leva à perda da totalidade da imagem.
+
+<br/>
+
+## Teoria da Codificação
+
+**Codificação Fonte**
+
+<br/>
+
+## Representação de Imagem
+
+<br/>
+
+## Representação de Vídeo
