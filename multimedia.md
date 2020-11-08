@@ -170,7 +170,67 @@ _PNG_ - utiliza compressão sem perdas, com codificações até 48 bpp e alto n�
 
 ## Teoria da Codificação
 
+Um **sistema de comunicações digitais** envolve a eficiência da representação da informação gerada pela fonte e a taxa de transmissão à qual é possível enviar a informação com fiabilidade através de um canal ruidoso. A teoria da informação estabelece o número mínimo de unidades de informação binária (bit) por símbolo necessário para representar completamente a fonte e o valor máximo da taxa de transmissão.
+
 **Codificação Fonte**
+
+_Compressão - Redundância_
+
+O ganho de informação resultante da ocorrência do acontecimento certo é nulo, mas a ocorrência de qualquer outro acontecimento conduz a um ganho de informação. Quanto menor for a probabilidade de ocorrência de um acontecimento, maior é o ganho de informação que lhe está associado. A expressão que permite calcular a quantidade média de informação de uma experiência tendo em conta o nível de incerteza próprio a essa experiência é:
+
+$I(m_i) = log_2 (\frac{1}{p_i}) = - log_2 (p_i), i = 1, 2, ..., M$
+
+_Compressão - Entropia_
+
+A entropia _H_ exprime o número médio de bits por símbolo necessários para a codificação ideal de um determinado alfabeto.
+
+$H(p_1, p_2, ..., p_n) = \sum_{i = 1}^{N} p_i * log_2 (\frac{1}{p_i}) = - \sum_{i = 1}^{N} pi * log_2(p_i)$
+
+Se os estados possíveis para X_i são equiprováveis, então
+
+$H(p_1, p_2, ..., p_n) = \sum_{i = 1}^{N} \frac{1}{N} * log_2(N) = log_2(N)$
+
+_Compressão - Parâmetros -_ taxa de compressão; (as)simetria; com ou sem perdas.
+
+_Run Length Coding (RLC)_ - método usado na existência de muitas repetições.
+
+Exemplos: AAABQEEEFFFF -> #4ABQ#4E#6F ; 0000000001111000000 -> 0946.
+
+_Codificação Relativa_ - método simples usado na codificação de longas séries de valores próximos.
+
+Exemplo: 00000001 00000000 00000001 00000001 00000001 00000000 00000000 00000000 00000001 00000001 -> #7 0000000 10 1 0 1 1 1 0 0 0 1 1
+
+**Codificação Estatística**
+
+_Método de Shannon-Fano_
+* Leitura do ficheiro e cálculo das frequências de cada símbolo.
+* Classificação dos símbolos em função das suas frequências.
+* Divisão das frequências em dois grupos de tal forma que a relação da soma das frquências de cada subgrupo seja o mais próxima possível de 1: $\frac{\sum_1 fi}{\sum_2 fj} ~= 1.$ Esta operação é repetida até que todas as frequências de origem sejam encontradas. (Separar os subgrupos com probabilidade mais próxima).
+* Atribuição de um código a cada símbolo.
+* Codificação final.
+
+EXEMPLO: AMORE MORE ORE RE (ver miro)
+
+_Método de Huffman_
+* Codificar com o menor número de bits os símbolos em que a frequência de ocorrência é a maior. (Juntar as ocorrências duas a duas, começando nas de menor probabilidade.)
+* Os primeiros elementos de uma palavra-código (prefixo) não podem constituir uma outra palavra de código (código-prefixo), permitindo uma codificação instantânea.
+* Obriga à criação de tabelas de frequências que terão de ser transmitidas visto que são necessárias para a descodificação.
+
+* Leitura do ficheiro e cálculo das frequências de cada símbolo.
+* Classificação dos símbolos em função das suas frequências.
+* Reagrupamento sequencial dos pares de símbolos com menor frequência, voltando a executar a classificação, se necessário.
+* Atribuição de um código a cada símbolo.
+* Codificação final.
+
+EXEMPLO: AMORE MORE ORE RE (ver miro)
+
+* Os códigos obtidos não são únicos.
+* O código obtido pelo algoritmo de Huffman é ótimo, visto que não existe nenhum outro código de prefixo cuja largura média seja inferior.
+* Os códigos são instantâneos.
+
+_Medidas:_ Largura média de um código: $\sum_{i = 1}^{N} \frac{nº.ocorrências.símbolo}{nº.total..ocorrências} * nº.bits.código$.
+
+SLIDE 36
 
 <br/>
 
