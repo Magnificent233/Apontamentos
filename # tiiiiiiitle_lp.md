@@ -440,76 +440,245 @@ _Resposta:_ Lista as informações dos ficheiros num formato que facilita a leit
 
 **Questão 18: Qual é o comando que pode utilizar para navegar da sua diretoria atual para a nova diretoria `teste`?**
 
-_Resposta:_ 
+_Resposta:_ Estudei arduamente em preparação para esta aula e, neste momento, transbordo de tal maneira de conhecimento que até as minhas vísceras me dizem que é o comando `cd Teste`.
 
 ---
 
 **Questão 19: Qual é o comando que sugere utilizar?**
 
-_Resposta:_
+_Resposta:_ Sugiro usar o comando `rm -r`, no entanto não sei para que serve a opção `-r`.
+
+Dada a minha _expertise_ na leitura avançada de manuais, sugeria usar o comando `rmdir`, visto a diretoria estar vazia, mas quem sou eu para ser levad@ em consideração?
 
 ---
 
 **Questão 20: Conseguiu remover a diretoria `teste`?**
 
-_Resposta:_
+_Resposta:_ Consegui porque me apercebi que tinha de sair da diretoria para a eliminar.
 
 ---
 
 **Questão 21: Qual foi o comando que utilizou para criar o ficheiro na tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ `touch`.
 
 ---
 
 **Questão 22: Tem a certeza de que o ficheiro está mesmo vazio?**
 
-_Resposta:_
+_Resposta:_ Tem toda a razão.  Devo verificar se, de facto, o ficheiro está vazio, eventualmente com a instrução `ls -l`.
 
 ---
 
 **Questão 23: De que maneira poderia imprimir o conteúdo do ficheiro, criado na tabela anterior, no terminal?**
 
-_Resposta:_
+_Resposta:_ Usando o comando `cat vazio.txt`.
 
 ---
 
 **Questão 24: Relativamente a movimentação do ficheiro, que comando utilizou para realizar a tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ `mv vazio.txt nova_dir/`.
+
+---
+
+**Tarefa 12:** `cp nova_dir/vazio.txt ./vazio.txt`.
 
 ---
 
 **Questão 25: Para relembrar, qual é a finalidade do caratere `|`?**
 
-_Resposta:_
+_Resposta:_ O caractere `|` representa um _pipe_, que permite ligar o fluxo `stdout` de um comando ao fluxo `stdin` de outro comando.
 
 ---
 
 **Questão 26: O que faz o comando `cat`?**
 
-_Resposta:_
+_Resposta:_ Imprime o conteúdo de um ou mais ficheiros no terminal.
 
 ---
 
-**Questão 27: O que faz um comando `grep`?**
+**Questão 27: O que faz o comando `grep`?**
 
-_Resposta:_
+_Resposta:_ Imprime linhas que contenham o padrão procurado.
 
 ---
 
 **Questão 28: Tendo em conta as respostas das questões anteriores, qual é a função do `pipe` na tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ Dado o conteúdo do ficheiro `vazio.txt`, exibe as linhas que contenham a palavra CLI.
+
+---
+
+**Tarefa 14:** `cat vazio.txt > vazio_copia.txt`.
 
 ---
 
 **Questão 29: Dados os exemplos, qual é a diferença entre os comandos `>` e `>>`?**
 
-_Resposta:_
+_Resposta:_ Usando `>`, o conteúdo do ficheiro `file2.txt` será substituído pelo conteúdo do ficheiro `file1.txt`, enquanto `>>` concatena o conteúdo do ficheiro `file1.txt` no final do ficheiro `file2.txt`.
 
 ---
 
 <br/><br/>
 
 ## Aula Prática 05
+
+**Questão 01: Qual é a utilidade da primeira linha do ficheiro criado na tarefa anterior?**
+
+_Resposta:_ Serve para indicar que o _script_ deve ser interpretado pelo _bash_ e não por outro interpretador.
+
+---
+
+**Questão 02: Qual foi o comando que usou para imprimir a mensagem no terminal?**
+
+_Resposta:_ `echo`.
+
+---
+
+**Questão 03: Qual foi o símbolo utilizado?**
+
+_Resposta:_ `$`.
+
+---
+
+**Questão 04: A execução do ficheiro culminou na impressão da mesnagem esperada?**
+
+_Resposta:_ Sim. O terminal deu-me os bons dias e o meu dia até ficou melhor!
+
+---
+
+**Questão 05: É possível?**
+
+_Resposta:_ Sim, é possível. Mas para tal é necessário usar o comando `chmod u+x script.sh` antes.
+
+---
+
+**Questão 06: O que teve de adicionar ao comando `echo` para que produzisse a mensagem requerida na tarefa anterior?**
+
+_Resposta:_ Para usar o primeiro argumento tive de incuir `$1` no comando `echo`.
+
+---
+
+**Questão 07: Qual é a finalidade de `-gt`, no trecho de código exibido?**
+
+_Resposta:_ É um operador de comparação. Neste caso, é usado para que a condição _if_ siva para verificar se o valor de VAR é superior (_greater than_) a 100.
+
+---
+
+**Questão 08: Houve alguma alteração relativamente à execução, deste mesmo ficheiro, comparativamente à tarefa 5?**
+
+_Resposta:_ Houve, sim senhor! Agora o _script.sh_ exige que lhe passe um argumento. Será que se der mais do que um também funciona?
+
+---
+
+**Questão 09: Qual é o comando que pode utilizar para usufruir desta funcionalidade?**
+
+_Resposta:_ `read`.
+
+---
+
+**Questão 10: Qual o comando que usou para ler o _input_ do utilizador e guardá-lo na variável `IDADE`?**
+
+_Resposta:_ `read IDADE`.
+
+---
+
+**Questão 11: Qual o comando que usou para imprimir a mensagem com a variável `IDADE`?**
+
+_Resposta:_ `echo "Tem $IDADE anos."`.
+
+---
+
+**Questão 12: Em qual das fases anteriormente apresentadas se enquadraria o comando apresentado?**
+
+_Resposta:_ Compilação e interligação do código.
+
+---
+
+**Questão 13: O que pode comentar relativamente ao uso da oção `-o` no comando apresentado?**
+
+_Resposta:_ É uma opção facultativa que permite definir o nome do executável.
+
+---
+
+**Questão 14: Qual é o significado de ficheiros com extensão `.h`?**
+
+_Resposta:_ Significa que é ficheiro de cabeçalho (_header_).
+
+---
+
+**Questão 15: Qual é a utilidade da inclusão do ficheiro `soma.h`?**
+
+_Resposta:_ Permite que seja usada uma função que está presente no ficheiro `soma.c`.
+
+---
+
+**Questão 16: Qual é a razão para que `soma.h` tenha sido incluído entre `""`, enquanto `stdio.h` foi incluído com `<>`?**
+
+_Resposta:_ Ambos são ficheiros de cabeçalho mas `soma.h` é ficheiro de cabeçalho local enquanto `stdio.h` é do compilador.
+
+---
+
+**Tarefa 9:** 
+
+---
+
+**Questão 17: Qual o comnado que utilizaria para compilar o programa descrito na tarefa anterior?**
+
+_Resposta:_ 
+
+---
+
+**Questão 18: Caso a sua intenção fosse compilar os ficheiros e obter os ficheiros objetos destes (com extenção `.o`) qual seria a opção a usar, aquando do processo de compilação?**
+
+_Resposta:_ 
+
+---
+
+**Questão 19: Qual, das seguintes opções, permitiria atingir esse objetivo?**
+
+_Resposta:_ 
+
+---
+
+**Questão 20: Dada a opção escolhida na questão anterior, de que forma executaria o ficheiro executável resultante?**
+
+_Resposta:_ 
+
+---
+
+**Tarefa 10:** 
+
+---
+
+**Questão 21: Qual é a designação de `main.o` e `main.c` na nomenclatura dos `makefiles`, respetivamente, no exemplo anterior?**
+
+_Resposta:_ 
+
+---
+
+**Questão 22: Qual é a designação de `cc -c main.c` no trecho de código apresentado?**
+
+_Resposta:_ 
+
+---
+
+**Questão 23: Qual é a finalidade da regra apresentada no trecho de código?**
+
+_Resposta:_ 
+
+---
+
+**Questão 24: Assumindo que tem os ficheiros `.c`, `.h` e `makefile` disponibilizados na diretoria `Lab_5_Compile_Make`, o que prevê que aconteça caso execute o comando `make`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 25: O que pode comentar relativamente a um _phony target_?**
+
+_Resposta:_ 
+
+---
+
