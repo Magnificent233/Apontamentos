@@ -172,4 +172,52 @@ A verificação de tipos pode ser feita durante a compilação, usando _tipos ge
 
 <br/><br/>
 
-## Aula 06 - 
+## Aula 06 - Herança
+
+Conceito em que uma classe pode herdar operações de uma superclasse (classe base) e as suas operações podem ser herdadas por subclasses (classes derivadas). O _mecanismo de herança_ permite definir uma nova classe em termos de uma classe existente, com modificações e/ou extensões de comportamento.
+
+Todos os métodos e atributos da superclasse são herdados pela subclasse, à qual podem ser adicionados novos métodos e atributos no processo de especialização sucessiva. Dada uma hierarquia de classes, a instância de uma subclasse contém: as variáveis de instância da superclasse e as variáveis de instância declaradas na classe derivada. O comportamento dessa instância está definido na sua classe e no conjunto das suas superclasses.
+
+Quando um método é invocado, ou seja, quando é enviada uma mensagem a um objeto, torna-se necessário ligar a mensagem à implementação correspondente. Por exemplo:
+* Uma _fila_ pode ser implementada a partir de uma _lista ligada_ desde que se imponham as restrições adequadas à manipulação dos seus elementos.
+* Redefinem-se os métodos da _lista ligada_ para refletir a semântica da _fila_.
+* Para execução, primeiro pesquisa-se a subclasse e só após a superclasse onde o método é encontrado.
+
+A hierarquia é pesquisada na direção subclasse > superclasse, com início na classe do objeto que recebe a mensagem. É executado o método mais próximo.
+
+**Tipos de ligação** - ligação do nome de um método a uma implementação:
+* Em tempo de compilação - _ligação estática_
+  * Abordagem mais simples, em que o compilador constrói uma tabela de classes e métodos associados, produzindo um código com as ligações entre os métodos e correspondentes implementações.
+  * _Vantagem:_ ligações erradas (chamadas a métodos não existentes) são detetadas em tempo de compilação.
+  * _Desvantagem:_ para introduzir alterações na ligação é necessário recompilar todo o código.
+* Em tempo de execução - _ligação dinâmica_
+  * A correspondência entre o método e a implementação é feita a cada invocação: a hierarquia é pesquisada e, se o método não existir, devolve `Método Desconhecido`.
+  * _Vantagem:_ alterações na hierarquia não implicam necessidade de recompilação de todas as classes.
+  * _Desvantagens:_ a pesquisa na hierarquia provoca alguma degradação no desempenho do sistema; necessidade de manipular mensagens `Método Desconhecido` em tempo de execução.
+
+Declaração de B como subclasse de A: `public class B extends A`. Um objeto do tipo B também é do tipo A.
+
+Cada classe possui uma só superclasse direta, e apenas esta é identificada na cláusula `extends`. A classe de topo da hierarquia é a classe **Object**; que é superclasse quando não é usada a cláusula `extends`.
+
+A classe **Object** define o comportamento comum a todas as classes através de métodos genéricos que normalmente necessitam de ser redefinidos. Qualquer instância de qualquer classe pode responder às mensagens correspondentes aos métodos da classe.
+* `public final Class getClass ()` - devolve a classe do objeto.
+* `public String toString ()` - representação textual do objeto.
+* `public boolean equals (Object obj)` - igualdade de referências.
+* `protected Object clone ()` - clona um objeto.
+
+Dadas uma classe A e uma subclasse B,
+* B tem acesso direto a todas as variáveis e métodos de A que não sejam declaradas como `private`.
+* B pode definir novas variáveis e métodos e redefinir variáveis e métodos herdados.
+* Uma instância de B pode responder a mensagens que correspondam a todos os métodos públicos de B e A.
+* Os atributos de uma instância de B são atributos definidos nas classes A e B.
+
+**Princípio da substitutividade:** declarada uma variável como sendo de uma dada classe, é permitido atribuir-lhe um valor de sua classe ou de qualquer sua subclasse.
+
+**Método `equals`** - compara a referência de um objeto que recebe como argumento com a referência do objeto recetor. Devolve `true` se as referências forem iguais, `false` caso contrário.
+
+**Método `clone`** - cria e devolve a cópia do objeto recetor, tal que o objeto criado e o que recebe a mensagem:
+* São diferentes: `y = x.clone (); // y != x;`.
+* São instâncias da mesma classe: `x.clone().getClass() == x.getClass();`.
+* Têm o mesmo valor nas variáveis de instância: `x.clone().equals(x) == true`.
+
+<br/><br/>
