@@ -682,3 +682,66 @@ _Resposta:_
 
 ---
 
+**Questão 26: Quantos _phony targets_ colocou na entrada `.PHONY`?**
+
+_Resposta:_
+
+---
+
+**Questão 27: Qual foi a aparência do comando `cc -c main.c` no `makefile`, após realizar as alterações pedidas?**
+
+_Resposta:_ 
+
+---
+
+**Questão 28: Qual foi a dependência que associou à regra criada ou, por outras palavras, do que é que precisa para executar o programa?**
+
+_Resposta:_ 
+
+---
+
+**Questão 29: Alterou algo no objetivo `all`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 30: E a entrada `.PHONY`, foi alterada?**
+
+_Resposta:_ 
+
+---
+
+**Questão 31: Como ficou o objetivo e a dependência da nova regra criada?**
+
+_Resposta:_ 
+
+---
+
+**Questão 32: Quantas regras forma eliminadas, com a inserção desta nova?**
+
+_Resposta:_ 
+
+---
+
+**Questão 33: O que ficou armazenado na variável `OBJECTS`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 34: O que colocou nas dependências da regra alterada?**
+
+_Resposta:_ 
+
+---
+
+**Questão 35: Acha que conseguiria fazer uso de `$@` no comando da regra apresentada?**
+
+_Resposta:_
+
+---
+
+<br/><br/>
+
+## Aula Prática 06
