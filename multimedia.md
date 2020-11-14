@@ -230,7 +230,16 @@ EXEMPLO: AMORE MORE ORE RE (ver miro)
 
 _Medidas:_ Largura média de um código: $\sum_{i = 1}^{N} \frac{nº.ocorrências.símbolo}{nº.total..ocorrências} * nº.bits.código$.
 
-SLIDE 36
+_Desvantagens:_
+* Leitura do ficheiro para cálculo das frequências.
+* Necessidade de guardar as tabelas de código - que pode ser minimizado ao juntar as probabilidades médias representativas.
+
+_Método de Huffman Canónico_
+* O código mais longo contém apenas zeros e cada código difere um bit do anterior; ou seja, os códigos diminuem de comprimento à medida que se acrescentam mais símbolos à sequência.
+* O cabeçalho pode ser simplificado: apenas se precisa de saber o número de bits a usar para codificar cada símbolo.
+* Esquema de codificação incremental - o código de uma extensão de uma sequência pode ser calculado a partir do código da sequência original.
+
+SLIDE 43
 
 <br/>
 
