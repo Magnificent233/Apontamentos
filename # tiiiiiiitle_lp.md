@@ -620,128 +620,141 @@ _Resposta:_ Ambos são ficheiros de cabeçalho mas `soma.h` é ficheiro de cabe�
 
 ---
 
-**Tarefa 9:** 
+**Tarefa 9:** A finalidade do programa é alcular a soma de 2 com 3 e escrever o resultado no ecrã. O ficheiro `soma.c` tem a implementação da função `sum`, o ficheiro `soma.h` tem a declaração da função `sum` (protótipo da função `sum`), o ficheiro `main.c` faz uso da função `sum` para calcular e imprimir a soma de 2 com 3.
 
 ---
 
 **Questão 17: Qual o comnado que utilizaria para compilar o programa descrito na tarefa anterior?**
 
-_Resposta:_ 
+_Resposta:_ `gcc`.
 
 ---
 
 **Questão 18: Caso a sua intenção fosse compilar os ficheiros e obter os ficheiros objetos destes (com extenção `.o`) qual seria a opção a usar, aquando do processo de compilação?**
 
-_Resposta:_ 
+_Resposta:_ `-c`.
 
 ---
 
 **Questão 19: Qual, das seguintes opções, permitiria atingir esse objetivo?**
 
-_Resposta:_ 
+_Resposta:_ `cc main.c soma.c`.
 
 ---
 
 **Questão 20: Dada a opção escolhida na questão anterior, de que forma executaria o ficheiro executável resultante?**
 
-_Resposta:_ 
+_Resposta:_ `./a.out`.
 
 ---
 
-**Tarefa 10:** 
+**Tarefa 10:**  `cc -o eu_e_que_mando.exe nome_do_ficheiro.c`.
 
 ---
 
 **Questão 21: Qual é a designação de `main.o` e `main.c` na nomenclatura dos `makefiles`, respetivamente, no exemplo anterior?**
 
-_Resposta:_ 
+_Resposta:_ Objetivo e Dependência.
 
 ---
 
 **Questão 22: Qual é a designação de `cc -c main.c` no trecho de código apresentado?**
 
-_Resposta:_ 
+_Resposta:_ Comando.
 
 ---
 
 **Questão 23: Qual é a finalidade da regra apresentada no trecho de código?**
 
-_Resposta:_ 
+_Resposta:_ É uma regra que necessita de um ficheiro `main.c` e que, caso este exista e esteja acedível, executa um comando que permite obter o ficheiro objeto de `main`,ou seja, `main.o`.
 
 ---
 
 **Questão 24: Assumindo que tem os ficheiros `.c`, `.h` e `makefile` disponibilizados na diretoria `Lab_5_Compile_Make`, o que prevê que aconteça caso execute o comando `make`?**
 
-_Resposta:_ 
+_Resposta:_ Serão executados um conjunto de comandos e no final será criado um executável, denominado `main.exe`.
 
 ---
 
 **Questão 25: O que pode comentar relativamente a um _phony target_?**
 
-_Resposta:_ 
+_Resposta:_ Não produz nenhum ficheiro.
 
 ---
 
 **Questão 26: Quantos _phony targets_ colocou na entrada `.PHONY`?**
 
-_Resposta:_
+_Resposta:_ Dois.
 
 ---
 
 **Questão 27: Qual foi a aparência do comando `cc -c main.c` no `makefile`, após realizar as alterações pedidas?**
 
-_Resposta:_ 
+_Resposta:_ `$(CC) -c main.c`.
 
 ---
 
 **Questão 28: Qual foi a dependência que associou à regra criada ou, por outras palavras, do que é que precisa para executar o programa?**
 
-_Resposta:_ 
+_Resposta:_ `main.exe`
 
 ---
 
 **Questão 29: Alterou algo no objetivo `all`?**
 
-_Resposta:_ 
+_Resposta:_ Sim, tive de substituir `main.exe` por `execute`.
 
 ---
 
 **Questão 30: E a entrada `.PHONY`, foi alterada?**
 
-_Resposta:_ 
+_Resposta:_ Tive dúvidas, mas coloquei lá o `execute`.
 
 ---
 
 **Questão 31: Como ficou o objetivo e a dependência da nova regra criada?**
 
-_Resposta:_ 
+_Resposta:_ `%.o : %.c`
 
 ---
 
 **Questão 32: Quantas regras forma eliminadas, com a inserção desta nova?**
 
-_Resposta:_ 
+_Resposta:_ Uma.
 
 ---
 
 **Questão 33: O que ficou armazenado na variável `OBJECTS`?**
 
-_Resposta:_ 
+_Resposta:_ Um conjunto de ficheiros com extensão `.o`, cujos nomes correspondem a ficheiros da diretoria que têm extensão `.c`.
 
 ---
 
 **Questão 34: O que colocou nas dependências da regra alterada?**
 
-_Resposta:_ 
+_Resposta:_ `$(OBJECTS)`.
 
 ---
 
 **Questão 35: Acha que conseguiria fazer uso de `$@` no comando da regra apresentada?**
 
-_Resposta:_
+_Resposta:_ Sim, substituiria `main.exe` por `$@` no comando da regra.
 
 ---
 
 <br/><br/>
 
 ## Aula Prática 06
+
+---
+
+<br/><br/>
+
+## Notas
+
+O `gcc` é um programa que é um compilador. (C é linguagem compilada.)
+O `python` é um programa que é um interpretador. (Python é linguagem interpretada.)
+
+_Makefiles_
+objetivo : dependências
+(tab) comando(s) para conseguir o objetivo a partir das dependências
