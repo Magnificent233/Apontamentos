@@ -46,6 +46,8 @@ _Ciclo do...while:_ `do {instruções;} while (condição_de_continuação);`
 
 Usado quando as `instruções` devem ser executadas pelo menos uma vez. No final, a `condição_de_continuação` é testada e a iteração termina se o seu valor for `false`. 
 
+---
+
 <br/><br/>
 
 ## Aula 01 - Conceito de Objeto
@@ -69,6 +71,8 @@ Cada objeto tem as suas próprias variáveis de estado enquanto o código que im
 
 Quando um objeto é instanciado, a inicialização do seu estado é feita por invocação automática de um método de inicialização - __construtor da classe__.
 
+---
+
 <br/><br/>
 
 ## Aula 02 - Tecnologia Java e Tipos Referenciados
@@ -84,6 +88,8 @@ Em Java os programas são constituídos por diversas __classes__, tipos de dados
 __Tipos referenciados__ são entidades às quais se acede através de uma variável que contém o seu endereço; ou seja, o que é atribuído e manipulado são _referências_ (endereços).
 
 __Arrays__ são entidades referenciadas, mas não são objetos. São criados dinamicamente em tempo de execução e o seu espaço é automaticamente reaproveitado quando deixam de estar referenciados.
+
+---
 
 <br/><br/>
 
@@ -120,6 +126,8 @@ Regras de acesso a variáveis e métodos:
 * Métodos ou variáveis declarados como `private` são apenas acessíveis dentro da própria classe.
 * Métodos ou variáveis declarados como `protected` são acessíveis na própria classe, de outra classe dentro do mesmo _package_ e nas subclasses da classe.
 
+---
+
 <br/><br/>
 
 ## Aula 04 - Variáveis de Classe e Composição de Classes
@@ -135,6 +143,8 @@ Tanto as variáveis como os métodos de classe são invocados através de mensag
 **Classes Não Instanciáveis** só têm variáveis e métodos de classe; não especificam a estrutura nem o comportamento de qualquer instância.
 
 Em Java os parâmetros são passados por valor: é criada uma variável local com valor igual a uma cópia do argumento. Se o parâmetro é um tipo referenciado, equivale à passagem por referência - argumento.
+
+---
 
 <br/><br/>
 
@@ -169,6 +179,8 @@ A classe `ArrayList` no pacote `java.util` distingue-se dos _arrays_ porque pode
 * `String toString()`.
 
 A verificação de tipos pode ser feita durante a compilação, usando _tipos genéricos_ (tipo referenciado que usa na sua definição um ou mais tipos de dados como parâmetros). Seja o tipo `ArrayList<E>` em que E pode ser qualquer classe ou interface, a instanciação de um tipo genérico para um valor concreto de E dá origem a um _tipo parametrizado_.
+
+---
 
 <br/><br/>
 
@@ -220,4 +232,30 @@ Dadas uma classe A e uma subclasse B,
 * São instâncias da mesma classe: `x.clone().getClass() == x.getClass();`.
 * Têm o mesmo valor nas variáveis de instância: `x.clone().equals(x) == true`.
 
+---
+
 <br/><br/>
+
+## Aula 07 - Polimorfismo
+
+Diz-se que o nome de um método foi sobrecarregado (_overloaded_) se dois métodos têm o mesmo nome mas assinaturas diferentes, que podem estar definidos na mesma classe e ser herdados por uma dada classe.
+
+Uma classe pode redefinir um método herdado, e _a definição local sobrepõe-se à definição herdada_. Dois métodos sobrepõem-se se têm a mesma assinatura e o mesmo tipo de resultado.
+
+Ao redefinir os métodos `clone`, `equals` ou `toString` da classe _Object_ estão-se a sobrepôr estes métodos. É possível aceder ao método da superclasse numa subclasse usando a referência `super` como prefixo: `super.m1()`.
+
+Se uma variável _x_ é redefinida numa subclasse, essa declaração oculta (_hides_) a variável definida na superclasse.
+
+Um construtor de uma dada classe pode invocar um construtor da mesma classe com a referência `this`. A invocação de um construtor através da referência `this`, se existir, tem de ser a primeira instrução do construtor com a exceção de quando exista a invocação do construtor da superclasse. Dada uma classe A e uma sua subclasse B, no construtor da subclasse, B, tem de se inicializar as variáveis definidas na subclasse B e na classe A. Todos os construtores de B devem invocar algum construtor de A através da referência `super`; se tal não for explícito, o compilador insere como primeira instrução o construtor da superclasse, `super()`, que garantirá a invocação do construtor por omissão de A.
+
+**Princípio da substitutividade:** declarada uma variável como sendo de uma dada classe, é permitido atribuir-lhe um valor de sua classe ou de qualquer sua subclasse.
+
+A declaração de uma variável é um processo _estático_ - determina o tipo estático da variável em tempo de compilação. O processo _dinâmico_ determina o tipo da variável em tempo de execução (verificado pelo interpretador). Uma variável diz-se _polimórfica_ se tiver mais do que um tipo. Um método ou um operador dizem-se _polimórficos_ se podem ser aplicados a vários tipos de valores.
+
+**Polimorfismo de coerção** - uma variável inteira é tratada como real.
+
+**Polimorfismo de sobrecarga** - o mesmo nome (de um método ou função) pode ser usado mais do que uma vez com diferentes tipos de parâmetros.
+
+**Polimorfismo universal** - capacidade de uma única função (código único) poder ser usado com mais do que um tipo.
+  * **Polimorfismo de inclusão** - uma função definida num determinado tipo pode também operar todos os seus subtipos; resultante do mecanismo de herança.
+  * **Polimorfismo paramétrico** - uma única função pode ser aplicada a um conjunto de tipos sem qualquer relação entre si, existindo, explicitamente ou não, um parâmetro de tipo que determina o tipo de argumento para cada aplicação da função.
