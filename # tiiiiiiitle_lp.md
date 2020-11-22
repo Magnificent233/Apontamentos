@@ -746,6 +746,188 @@ _Resposta:_ Sim, substituiria `main.exe` por `$@` no comando da regra.
 
 ## Aula Prática 06
 
+**Questão 01: Qual foi o comando que utilizou para `Compilar`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 02: Foi criado algum ficheiro novo, resultante da compilação?**
+
+_Resposta:_
+
+---
+
+**Questão 03: Qual o comando que sugere utilizar para `Executar` o programa que compilou na tarefa anterior?**
+
+_Resposta:_ 
+
+---
+
+**Questão 04: O que pode comentar relativamente ao processo de compilação de um ficheiro _Python_?**
+
+_Resposta:_ 
+
+---
+
+**Questão 05: Qual o comando que utilizou para `Executar` o programa da tarefa anterior?**
+
+_Resposta:_ 
+
+---
+
+**Tarefa 4:** 
+
+---
+
+**Questão 06: O programa foi _executado_ com sucesso?**
+
+_Resposta:_
+
+---
+
+**Questão 07: Quais os potenciais pontos onde podem surgir problemas?**
+
+_Resposta:_ 
+
+---
+
+**Questão 08: Quais foram os valores observados das variáveis `a`, `b` e `r`, respetivamente?**
+
+_Resposta:_ 
+
+---
+
+**Questão 09: O que pode concluir relativamente à localização do erro no programa?**
+
+_Resposta:_ 
+
+---
+
+**Questão 10: O que pode comentar relativamente ao resultado obtido da execução do programa?**
+
+_Resposta:_ 
+
+---
+
+**Questão 11: E se executar várias vezes o programa, obtém um resultado diferente?**
+
+_Resposta:_ 
+
+---
+
+**Questão 12: Consegue formular uma hipótese relativamente à origem da aleatoriedade exibida aquando da execução do programa?**
+
+_Resposta:_ 
+
+---
+
+**Questão 13: O que pode concluir em relação ao valor da variável `c` do programa?**
+
+_Resposta:_ 
+
+---
+
+**Questão 14: O que pode concluir relativamente à origem da aleatoriedade do resultado do programa?**
+
+_Resposta:_ 
+
+---
+
+**Tarefa 13:**
+
+---
+
+**Questão 15: Tendo em conta a subsecção `Call Stack`, que funções foram chamadas?**
+
+_Resposta:_ 
+
+---
+
+**Questão 16: Qual o valor de `a` e, dado este valor, qual a condição que será escolhida?**
+
+_Resposta:_ 
+
+---
+
+**Questão 17: Conseguiu concluir algo relativamente à origem da aleatoriedade do resultado do programa?**
+
+_Resposta:_
+
+---
+
+**Questão 18: Dado o valor de `a` e `i`, qual será o valor de retorno da função `f2`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 19: De acordo com a subsecção `Call Stack`, em que função está, neste momento, o processo de depuração?**
+
+_Resposta:_
+
+---
+
+**Questão 20: Qual é a variável que propõe analisar para avaliar a sua resposta à questão 18?**
+
+_Resposta:_ 
+
+---
+
+**Questão 21: Este ponto de paragem ajudou-o a concluir algo relativamente à origem da aleatoriedade do resultado do programa?**
+
+_Resposta:_ 
+
+---
+
+**Tarefa 19:** 
+
+---
+
+**Questão 22: Houve alguma alteração na diretoria onde o ficheiro foi compilado?**
+
+_Resposta:_ 
+
+---
+
+**Questão 23: E desta vez, verificou alguma alteração na diretoria onde o ficheiro foi executado?**
+
+_Resposta:_ 
+
+---
+
+**Questão 24: Assumindo que o executável do programa tem o nome `a.out`, qual o comando que permite obter um ficheiro, denominado `profile_output.txt`, com o conteúdo resultante do comando `gprof`?**
+
+_Resposta:_ 
+
+---
+
+**Questão 25: Qual foi a função que, em termos percentuais, demorou mais tempo?**
+
+_Resposta:_
+
+---
+
+**Questão 26: Qual é a razão que encontra para que a função da resposta à questão anterior tenha demorado mais tempo?**
+
+_Resposta:_ 
+
+---
+
+**Questão 27: Por que razão a função `fAlone` não aparece na tabela de _Flat profile_?**
+
+_Resposta:_ 
+
+---
+
+<br/><br/>
+
+## Aula Prática 07
+
+**Questão 01:**
+
+_Resposta:_
+
 ---
 
 <br/><br/>
