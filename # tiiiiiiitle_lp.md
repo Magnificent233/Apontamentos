@@ -748,19 +748,19 @@ _Resposta:_ Sim, substituiria `main.exe` por `$@` no comando da regra.
 
 **Questão 01: Qual foi o comando que utilizou para `Compilar`?**
 
-_Resposta:_ 
+_Resposta:_ `javac HelloWorld.java`
 
 ---
 
 **Questão 02: Foi criado algum ficheiro novo, resultante da compilação?**
 
-_Resposta:_
+_Resposta:_ Sim, foi criado um ficheiro denominado `HelloWorld.class`.
 
 ---
 
 **Questão 03: Qual o comando que sugere utilizar para `Executar` o programa que compilou na tarefa anterior?**
 
-_Resposta:_ 
+_Resposta:_ `java HelloWorld`.
 
 ---
 
