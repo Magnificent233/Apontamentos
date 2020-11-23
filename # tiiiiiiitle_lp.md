@@ -766,157 +766,153 @@ _Resposta:_ `java HelloWorld`.
 
 **Questão 04: O que pode comentar relativamente ao processo de compilação de um ficheiro _Python_?**
 
-_Resposta:_ 
+_Resposta:_ Difere de `C` e `Java`, pois o ficheiro com o código fonte não é tipicamente compilado, mas sim interpretado.
 
 ---
 
 **Questão 05: Qual o comando que utilizou para `Executar` o programa da tarefa anterior?**
 
-_Resposta:_ 
-
----
-
-**Tarefa 4:** 
+_Resposta:_ `python3 helloWorld.py`. OU `python helloWorld.py`.
 
 ---
 
 **Questão 06: O programa foi _executado_ com sucesso?**
 
-_Resposta:_
+_Resposta:_ Não, apareceu aqui um erro muito estranho. O _core_ foi _dumped_?
 
 ---
 
 **Questão 07: Quais os potenciais pontos onde podem surgir problemas?**
 
-_Resposta:_ 
+_Resposta:_ Diria que na divisão $r = a / b$. Sempre tive problemas com a matemática e o compilador pode também estar a ter algumas dificuldades. Deduzo que o compilador tirou má nota a matemática...
 
 ---
 
 **Questão 08: Quais foram os valores observados das variáveis `a`, `b` e `r`, respetivamente?**
 
-_Resposta:_ 
+_Resposta:_ `a = 1` e `b = 0`, mas não sei qual é o valor de `r` antes deste `printf`, que engraçado!
 
 ---
 
 **Questão 09: O que pode concluir relativamente à localização do erro no programa?**
 
-_Resposta:_ 
+_Resposta:_ Há um problema na linha da divisão, $r = a / b$.
 
 ---
 
 **Questão 10: O que pode comentar relativamente ao resultado obtido da execução do programa?**
 
-_Resposta:_ 
+_Resposta:_ O programa foi compilado e executado sem erros, mas o resultado é um pouco estranho.
 
 ---
 
 **Questão 11: E se executar várias vezes o programa, obtém um resultado diferente?**
 
-_Resposta:_ 
+_Resposta:_ Sim. Mas o programa é confuso e existem ali uns `rand()` no meio. Pode ser essa a razão.
 
 ---
 
 **Questão 12: Consegue formular uma hipótese relativamente à origem da aleatoriedade exibida aquando da execução do programa?**
 
-_Resposta:_ 
+_Resposta:_ Provavelmente o programa passa por `rand()`. Isso explicaria o resultado apresentado.
 
 ---
 
 **Questão 13: O que pode concluir em relação ao valor da variável `c` do programa?**
 
-_Resposta:_ 
+_Resposta:_ Segundo a subsecção de `Variables`, `c` tem o valor de 3.
 
 ---
 
 **Questão 14: O que pode concluir relativamente à origem da aleatoriedade do resultado do programa?**
 
-_Resposta:_ 
+_Resposta:_ Reparei, de forma muito perspicaz, que a variável `c` tem jáu u valor diferente e conclui, de forma ainda mais arisca, que a aleatoriedade deverá ter origem dentro da função `f `.
 
 ---
 
-**Tarefa 13:**
+**Tarefa 13:** Colocaria pontos de paragem nas linhas 9 e 13, para verificar o uso das funções rand().
 
 ---
 
 **Questão 15: Tendo em conta a subsecção `Call Stack`, que funções foram chamadas?**
 
-_Resposta:_ 
+_Resposta:_ Nenhuma das opções.
 
 ---
 
 **Questão 16: Qual o valor de `a` e, dado este valor, qual a condição que será escolhida?**
 
-_Resposta:_ 
+_Resposta:_ Valor 2 e condição `else`.
 
 ---
 
 **Questão 17: Conseguiu concluir algo relativamente à origem da aleatoriedade do resultado do programa?**
 
-_Resposta:_
+_Resposta:_ Ainda não consegui perceber de onde vem, mas sei que não provém do `rand()` da função `f2`.
 
 ---
 
 **Questão 18: Dado o valor de `a` e `i`, qual será o valor de retorno da função `f2`?**
 
-_Resposta:_ 
+_Resposta:_ `3`.
 
 ---
 
 **Questão 19: De acordo com a subsecção `Call Stack`, em que função está, neste momento, o processo de depuração?**
 
-_Resposta:_
+_Resposta:_ `f`.
 
 ---
 
 **Questão 20: Qual é a variável que propõe analisar para avaliar a sua resposta à questão 18?**
 
-_Resposta:_ 
+_Resposta:_ `tot`.
 
 ---
 
 **Questão 21: Este ponto de paragem ajudou-o a concluir algo relativamente à origem da aleatoriedade do resultado do programa?**
 
-_Resposta:_ 
+_Resposta:_ Creio que sim. O valor de `soma` tinha o somatório de todos os elementos do `array` mas quando saiu do ciclo ficou com um valor aleatório...
 
 ---
 
-**Tarefa 19:** 
+**Tarefa 19:** A última posição do array não está definida, então vai buscar um valor qualquer à memória do computador. Para corrigir o erro, basta passar de `i <= tot` na função f para `i < tot`.
 
 ---
 
 **Questão 22: Houve alguma alteração na diretoria onde o ficheiro foi compilado?**
 
-_Resposta:_ 
+_Resposta:_ Não creio. Parece-me que está tudo igual.
 
 ---
 
 **Questão 23: E desta vez, verificou alguma alteração na diretoria onde o ficheiro foi executado?**
 
-_Resposta:_ 
+_Resposta:_ Agora sim! Apareceu um ficheiro `.out`. É suposto executá-lo também?
 
 ---
 
 **Questão 24: Assumindo que o executável do programa tem o nome `a.out`, qual o comando que permite obter um ficheiro, denominado `profile_output.txt`, com o conteúdo resultante do comando `gprof`?**
 
-_Resposta:_ 
+_Resposta:_ `gprof a.out gmon.out > profile_output.txt`.
 
 ---
 
 **Questão 25: Qual foi a função que, em termos percentuais, demorou mais tempo?**
 
-_Resposta:_
+_Resposta:_ `f2`.
 
 ---
 
 **Questão 26: Qual é a razão que encontra para que a função da resposta à questão anterior tenha demorado mais tempo?**
 
-_Resposta:_ 
+_Resposta:_ É uma função que tem um `while` a iterar um elevado número de vezes.
 
 ---
 
 **Questão 27: Por que razão a função `fAlone` não aparece na tabela de _Flat profile_?**
 
-_Resposta:_ 
+_Resposta:_ Porque esta função não foi, em momento algum, invocada ao longo do código. É código morto e deveria ser retirado do ficheiro fonte!
 
 ---
 
