@@ -259,3 +259,40 @@ A declaração de uma variável é um processo _estático_ - determina o tipo es
 **Polimorfismo universal** - capacidade de uma única função (código único) poder ser usado com mais do que um tipo.
   * **Polimorfismo de inclusão** - uma função definida num determinado tipo pode também operar todos os seus subtipos; resultante do mecanismo de herança.
   * **Polimorfismo paramétrico** - uma única função pode ser aplicada a um conjunto de tipos sem qualquer relação entre si, existindo, explicitamente ou não, um parâmetro de tipo que determina o tipo de argumento para cada aplicação da função.
+
+---
+
+<br/><br/>
+
+## Aula 08 - Exceções
+
+Uma **exceção** ocorre quando um programa viola as restrições semânticas da linguagem e é um erro recuperável. Uma exceção diz-se lançada (_thrown_) no ponto onde ocorre e diz-se capturada (_caught_) no ponto para onde o controlo de execução é transferido. Cada exceção é representada por uma instância da classe - objeto que guarda a informação desde o ponto onde a exceção ocorre até ao ponto onde é capturada.
+
+```
+try {
+  // conjunto de instruções onde há possibilidade de detetar a ocorrência de erros recuperáveis
+} catch (<classe da exceção> <instância da exceção gerada>) {
+  // instruções a executar caso ocorra uma exceção
+  // podem haver vários catches para um único bloco try
+} [ finally {
+  // conjunto de instruções que serão executadas, ocorra ou não uma exceção no bloco try
+} ]
+```
+
+Uma exceção pode ser lançada porque é detetada uma violação da semântica da linguagem ou porque é executada uma instrução _throw_ - geração explícita de uma exceção definida ou não pelo utilizador: `throw new <construtor da (sub)classe Exception>`.
+
+Há dois tipos de exceções:
+* _Exceções verificáveis pelo compilador:_
+  * O compilador verifica se o programa trata as exceções que poderão ocorrer no código - `try (...) catch` ou `throws`.
+* _Exceções não verificáveis pelo compilador:_
+  * Objetos de classes e subclasses específicas:
+    * `RunTimeException` - exceções cuja ocorrência é difícil de ser verificável pelo programador;
+    * `Error` - erros não recuperáveis.
+
+Um método que sobrepõe (_override_) outro não pode declarar / lançar mais exceções do que o método que é sobreposto. Cada exceção declarada numa subclasse tem de ser do mesmo tipo da exceção declarada na superclasse.
+
+---
+
+<br/><br/>
+
+## Aula 09 - 
