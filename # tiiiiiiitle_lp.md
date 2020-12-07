@@ -920,6 +920,172 @@ _Resposta:_ Porque esta função não foi, em momento algum, invocada ao longo d
 
 ## Aula Prática 07
 
+**Questão 01: De que forma é que o Git é definido no seu manual?**
+
+_Resposta:_ Como um gestor de conteúdos estúpido.
+
+---
+
+**Questão 02: Para recordar, quais foram os comandos que utilizou para realizar a tarefa anterior?**
+
+_Resposta:_ `mkdir Proj1` e `cd Proj1`.
+
+---
+
+**Questão 03: Para recordar, de que forma é que sistemas Unix ou Linux simbolizam ficheiros ou diretorias escondidas?**
+
+_Resposta:_ Os nomes desses ficheiros ou diretorias começam com um ponto.
+
+---
+
+**Questão 04: Qual foi o _output_ do comando realizado na tarefa anterior?**
+
+_Resposta:_ É indicado que existem _untracked files_ e que ainda não existem _commits_. São dadas as indicações do que deve ser feito a seguir.
+
+---
+
+**Questão 05: Qual é agora o seu _output_?**
+
+_Resposta:_ É indicado que ainda não existem _commits_, mas já não se queixa de _untracked files_. São dadas as indicações do que deve ser feito a seguir.
+
+---
+
+**Questão 06: Qual foi o comando que utilizou para executar a tarefa anterior?**
+
+_Resposta:_ `git commit -m "My initial commit of program.c"`.
+
+---
+
+**Questão 07: Qual foi o _output_ do comando que executou na tarefa anterior?**
+
+_Resposta:_ Impecável, tudo a funcionar!
+
+---
+
+**Questão 08: Qual o efeito obtido?**
+
+_Resposta:_ Satisfação: o meu primeiro _commit_ foi feito com sucesso.
+
+---
+
+**Questão 09: Se emitir o comando `git status` irá verificar que o Git reporta dois tipos de ficheiros na diretoria. Que tipos são esses?**
+
+_Resposta:_ _not staged_ e _not tracked_.
+
+---
+
+**Questão 10: Quantos _commits_ já fez até aqui?**
+
+_Resposta:_ `2`.
+
+---
+
+**Questão 11: Copie a parte inicial (e.g., seis primeiros carateres) desse _commit_ para o espaço em baixo:**
+
+_Resposta:_ `633106`. 
+
+---
+
+**Questão 12: Confirma que a função `main ()` está de volta ao `program.c`?**
+
+_Resposta:_ _Woohoo!_ Confirmo! Usei os comandos `cat program.c` e `git log` para obter a confirmação que me está a pedir: confirmo!
+
+---
+
+**Questão 13: Em que situações é que se deverá utilizar o comando `git reset --hard`?**
+
+_Resposta:_ Só na história de um repositório local. Nunca na história de um repositório partilhado. Para apagar algo que temos a certeza que não queremos que apareça no histórico de versões.
+
+---
+
+**Questão 14: Quais foram os comandos que utilizou para efetuar a tarefa anterior?**
+
+_Resposta:_ `git log` e `git reverse`.
+
+---
+
+**Questão 15: Como evolui a história das consolidações quando se usa `revert`?**
+
+_Resposta:_ Neste caso, os _commits_ que estão entre o _commit_ mais atual e aquele para onde evoluímos são mantidos na história e é criado outro _commit_ novo na história.
+
+---
+
+**Questão 16: Quantos ramos estão definidos?**
+
+_Resposta:_ `1`.
+
+---
+
+**Questão 17: Como se chama o ramo onde se encontra atualmente (e que é definido por defeito ao inicializar o Git)?**
+
+_Resposta:_ `master`.
+
+---
+
+**Questão 18: Quais dos seguintes comandos permitem ver em que ramo se encontra atualmente?**
+
+_Resposta:_ `git branch` e `git status`.
+
+---
+
+**Questão 19: Qual é a finalidade do comando `git add .`?**
+
+_Resposta:_ Adicionar / encenar todos os ficheiros da diretoria atual.
+
+---
+
+**Questão 20: Quantos ficheiros tem na diretoria de trabalho atual?**
+
+_Resposta:_ `3`.
+
+---
+
+**Questão 21: O que significa a palavra _checkout_ em português?**
+
+_Resposta:_ Verificar. Dar uma vista de olhos.
+
+---
+
+**Questão 22: Já verificou quantos ficheiros tem na diretoria de trabalho atual?**
+
+_Resposta:_ Tenho menos ficheiros que na tarefa anterior. Que género de magia é esta?
+
+---
+
+**Questão 23: Qual foi o comando que executou na tarefa anterior?**
+
+_Resposta:_ `git merge teste-funcao`.
+
+---
+
+**Questão 24: Quantos ficheiros tem agora no ramo `master`?**
+
+_Resposta:_ Tenho o mesmo número de ficheiros que tinha no _branch_ `teste-funcao`, funcionou!
+
+---
+
+**Questão 25: Como pode verificar se o ramo foi devidamente eliminado?**
+
+_Resposta:_ `git branch`.
+
+---
+
+**Questão 26: Quais foram os comandos que utilizou para adicionar os ficheiros `program.c` e `funcao.c`?**
+
+_Resposta:_ `git git add .`. (?)
+
+---
+
+**Questão 27: Em que momentos considera ser indicado verificar se há alterações no repositório remoto?**
+
+_Resposta:_ Quando se prepara para começar a trabalhar no projeto. Mesmo antes de submeter alterações para o repositório.
+
+---
+
+<br/><br/>
+
+## Aula Prática 08
+
 **Questão 01:**
 
 _Resposta:_
