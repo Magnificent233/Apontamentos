@@ -344,7 +344,7 @@ _Resposta:_ Consola.
 
 **Questão 02: Analise a sua _prompt_ e identifique o seu _user_ e _hostname_:**
 
-_Resposta:_ sara & Prometheus.
+_Resposta:_ sara@daedalus.
 
 ---
 
@@ -620,7 +620,7 @@ _Resposta:_ Ambos são ficheiros de cabeçalho mas `soma.h` é ficheiro de cabe�
 
 ---
 
-**Tarefa 9:** A finalidade do programa é alcular a soma de 2 com 3 e escrever o resultado no ecrã. O ficheiro `soma.c` tem a implementação da função `sum`, o ficheiro `soma.h` tem a declaração da função `sum` (protótipo da função `sum`), o ficheiro `main.c` faz uso da função `sum` para calcular e imprimir a soma de 2 com 3.
+**Tarefa 9:** A finalidade do programa é calcular a soma de 2 com 3 e escrever o resultado no ecrã. O ficheiro `soma.c` tem a implementação da função `sum`, o ficheiro `soma.h` tem a declaração da função `sum` (protótipo da função `sum`), o ficheiro `main.c` faz uso da função `sum` para calcular e imprimir a soma de 2 com 3.
 
 ---
 
