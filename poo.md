@@ -295,4 +295,18 @@ Um método que sobrepõe (_override_) outro não pode declarar / lançar mais ex
 
 <br/><br/>
 
-## Aula 09 - 
+## Aula 09 - Classes Abstratas
+
+_Classes abstratas_ são classes em que pelo menos um dos métodos de instância não é implementado, definindo uma linguagem comum a um subconjunto de classes herdeiras. Não é possível criar instâncias, embora se mantenham os mecanismos de herança e o princípio da substitutividade. Se uma subclasse de uma classe abstrata implementar todos os métodos, passa a ser uma classe concreta. Variáveis, construtores, métodos de classe e métodos privados não são abstratos.
+
+Uma **interface** é uma especificação sintática de um conjunto de métodos e constantes, permitindo definir um comportamento comum a duas ou mais classes que não possuam qualquer relação hierárquica entre si. Interfaces são implícita e obrigatoriamente abstratas e os métodos nelas declarados são implícita e obrigatoriamente públicos e abstratos. As interfaces têm uma hierarquia própria (podendo uma interface ser subinterface de várias interfaces (_mecanismo de herança múltipla_)) e as constantes nelas declaradas são implícita e obrigatoriamente do tipo `public static final`.
+
+Uma classe que implemente uma dada interface tem obrigatoriamente que implementar todos os métodos nela declarados.
+
+Uma _classe abstrata_ pode ter métodos implementados; numa _interface_ todos os métodos são abstratos. A subclasse de uma _classe abstrata_ pode ser ou não uma classe abstrata; numa _subinterface_ todos os métodos são abstratos. Uma _classe abstrata_ pode ser usada para escrever software genérico, em que cada subclasse vai sendo implementada num processo de especialização sucessiva; uma _interface_ especifica um comportamento comum a todas as classes que a implementam.
+
+---
+
+<br/><br/>
+
+## Aula 10 - 
