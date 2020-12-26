@@ -309,4 +309,10 @@ Uma _classe abstrata_ pode ter métodos implementados; numa _interface_ todos os
 
 <br/><br/>
 
-## Aula 10 - 
+## Aula 10 - Ficheiros
+
+Uma _stream_ é uma abstração que representa uma _fonte_ genérica de entrada de dados ou um _destino_ genérico para escrita de dados, definida independentemente do dispositivo físico concreto. Todas as classes que implementam _streams_ em `Java` são subclasses das classes abstratas: `InputStream` e `Output Stream` para ler/escrever bytes, `Reader` e `Writer` para ler/escrever carateres.
+
+As classes `FileInputStream` e `FileOutputStream` definem objetos do tipo _stream_ que permitem ler e escrever sequências de bytes em ficheiros. A classe `DataOutputStream` permite fazer o output de tipos primitivos de dados, convertendo-os em sequências de bytes; fornece um acesso de alto nível, estando ligada a um objeto do tipo `FileOutputStream`, e não do tipo `File`.
+
+Também se pode ler/escrever objetos de/num ficheiro, usando as classes `ObjectInputStream` e `ObjectOutputStream`. Uma `ObjectOutputStream` permite armazenar objetos através do método `writeObject ()`, que implementa um algoritmo de serialização que garante que todas as referências cruzadas existentes entre instâncias de diferentes classes serão repostas aquando do processo de leitura dessas mesmas instâncias. Para que se possam gravar instâncias de uma determinada classe numa `ObjectOutputStream`, é necessário que a classe implemente a interface `Serializable` e que todas as variáveis dessa classe sejam também serializáveis.
