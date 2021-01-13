@@ -1086,10 +1086,167 @@ _Resposta:_ Quando se prepara para começar a trabalhar no projeto. Mesmo antes 
 
 ## Aula Prática 08
 
-**Questão 01:**
+**Questão 01: Quantos ficheiros foram criados após a execução do comando da tarefa anterior?**
 
-_Resposta:_
+_Resposta:_ 1.
 
+---
+
+**Questão 02: Qual foi o nome do ficheiro de configuração gerado pelo Doxygen?**
+
+_Resposta:_ _Doxyfile_.
+
+---
+
+**Questão 03: Qual seria o comando que utilizaria para gerar um ficheiro de configuração com um nome definido por si?**
+
+_Resposta:_ `doxygen -g <config_file_name>`.
+
+---
+
+**Questão 04: Como se podem fazer pesquisas no editor de texto `nano`?**
+
+_Resposta:_ Através da combinação de teclas _Ctrl_ + _W_.
+
+---
+
+**Questão 05: Quais foram as subdiretorias criadas na diretoria `docs`?**
+
+_Resposta:_ `html`. $\LaTeX$.
+
+---
+
+**Questão 06: Na página web, onde se encontra a documentação do `program1.c`?**
+
+_Resposta:_ No separador _Files > File List_. Procurei por `program1.c` na barra de pesquisa e encontrei a sua documentação.
+
+---
+
+**Questão 07: Que secções são visíveis na documentação do `program1.c`?**
+
+_Resposta:_ `Functions`. `Variables`.
+
+---
+
+**Questão 08: Verificou alguma alteração?**
+
+_Resposta:_ Surgiu um novo separador em _Files_, chamado _File Members_. Na página do `program1.c` existe agora uma secção chamada `Function Documentation`. Nesta secção existe o comentário que adicionei, associado à função principal (i.e., `main`). Procurei por `main` na barra de pesquisa e obtive um resultado, coisa que antes não aconteceu!
+
+---
+
+**Questão 09: Verificou alguma alteração?**
+
+_Resposta:_ Não, pois a tarefa não pediu para `Executar` o _doxygen_.
+
+---
+
+**Questão 10: E agora, já se deu alguma alteração na documentação gerada?**
+
+_Resposta:_ Agora sim! Na página de `program1.c`, na secção `Variables`, foi agora incluído o comentário que inseri associado à variável `a`. Que MA-RA-VI-(_wait for it_)-LHA!
+
+---
+
+**Questão 11: Registou alguma alteração?**
+
+_Resposta:_ No separador _Files > File List_, aparece a descrição breve. Na página do `program1.c`, existe uma descrição breve e uma detalhada do `program1.c`.
+
+---
+
+**Tarefa 09:** @author Sara Martins
+               @version 1.0
+
+---
+
+**Questão 12: Após realizar a tarefa anterior, quais foram as alterações que identificou na documentação do programa?**
+
+_Resposta:_ Na secção `Detailed Description` foram adicionados dois novos campos: `Author` e `Version`.
+
+---
+
+**Questão 13: Qual foi o comando especial que utilizou?**
+
+_Resposta:_ `@return`.
+
+---
+
+**Questão 14: Qual foi o comando especial do `doxygen` que utilizou?**
+
+_Resposta:_ `@param`.
+
+---
+
+**Questão 15: Em que secção da documentação foi apresentada a descrição dos parâmetros passados à função `makeSum`?**
+
+_Resposta:_ `Detailed Description`.
+
+---
+
+**Questão 16: Onde será exibido o conteúdo do ficheiro `markdown` da tarefa anterior?**
+
+_Resposta:_ Na página principal (_Main Page_) do projeto.
+
+---
+
+**Questão 17: Dada a sintaxe do comando `mainpage`, o que pode comentar relativamente ao título?**
+
+_Resposta:_ É opcional.
+
+---
+
+**Questão 18: Qual é a referência/etiqueta atribuída à página que acabou de criar?**
+
+_Resposta:_ `workflow`.
+
+---
+
+**Questão 19: Verificou alguma alteração na documentação após a criação do ficheiro `page.md`?**
+
+_Resposta:_ Surgiu um novo separador, intitulado `Related Pages`, com uma hiperligação com o título definido em `page.md`.
+
+---
+
+**Questão 20: Qual é a referência atribuída à subpágina que acabou de criar?**
+
+_Resposta:_ `sum`.
+
+**Questão 21: O que pode comentar relativamente à disposição dos ficheiros?**
+
+_Resposta:_ São visíveis duas hiperligações, ambas com a mesma indentação relativamente à margem esquerda.
+
+---
+
+**Questão 22: Para atingir o seu objetivo, qual era o comando completo a introduzir em `page.md`?**
+
+_Resposta:_ `@subpage sum`.
+
+---
+
+**Questão 23: A tarefa anterior promoveu alguma alteração?**
+
+_Resposta:_ `Subpage - Description of the Sum Function` é uma subpágina de `Page - Description of the Workflow`.
+
+---
+
+**Questão 24: Consegue visualizar o índice de conteúdos?**
+
+_Resposta:_ Sim, sem quaisquer problemas!
+
+---
+
+**Questão 25: Face a estas alterações, consegue visualizar o índice de conteúdos?**
+
+_Resposta:_ Agora sim, consegui.
+
+---
+
+**Tarefa 19:** 
+`a.out : src/program1.c Doxyfile`
+    `@cc src/program1.c`
+    `@doxygen &> /dev/null`
+
+`documentation : Doxyfile`
+    `@doxygen`
+    
 ---
 
 <br/><br/>
