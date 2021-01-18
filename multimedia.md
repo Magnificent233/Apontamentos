@@ -1,250 +1,134 @@
 # Multimédia
 
-## Digitalização
+* Texto e imagem fixa são independentes do tempo; imagem animada, vídeo e som são dependentes do tempo e obrigam a uma sincronização temporal.
 
-Representação digital de dados (texto, som, imagem, vídeo).
+---
 
-**Processo de Digitalização**
-* _Amostragem_ - transformação do contínuo ao discreto;
-* _Quantificação / Quantização_ - definição e atribuição de uma escala de medição;
-* _Codificação_ - correspondência entre um conjunto de pontos na escala de medição e o conjunto de valores de código (sequências binárias de tamanho uniforme).
+## Digitalização - Representação Digital de Dados
 
-A digitalização de texto limita-se a uma codificação.
-  
-_Na imagem:_
-* relação: número de amostras - qualidade - espaço ocupado e tempo de tratamento;
-* profundidade de quantificação - qualidade - espaço ocupado e tempo de tratamento;
-* a qualidade é influenciada pela frequência de amostragem e a profundidade da quantificação.
+* Digitalizar uma informação significa representar essa informação usando representação binária.
+* Som / Sinal acústico: variação da pressão do ar ao longo do tempo, definido por:
+  * Frequência: número de vibrações por unidade de tempo, ou seja, definição física da altura e timbre do som (baixa frequência: som grave; alta frequência: som agudo);
+  * Amplitude: valor máximo do desvio em relação ao ponto central do movimento vibratório, ou seja, definição da potência do som (baixa amplitude: som fraco; alta amplitude: som forte).
+* Imagem: conjunto de pontos coloridos ou em níveis de cinzento (bitmap) ou conjunto de objetos predefinidos ou definidos pelas suas numerosas características (vetorial).
+* Processo de digitalização:
+  * _Amostragem:_ passagem de uma variação contínua para elementos descontínuos ou discretos em valores numéricos;
+    * No som, a imagem elétrica da onda sonora é partida em amostras, definindo intervalos constantes cujo número condiciona a qualidade de restituição final;
+    * Na imagem, separam-se os pixeis por unidade de largura.
+  * _Quantificação:_ atribuição de um valor numérico a cada amostra e definir uma escala de medição;
+    * No som, mede-se a amplitude do sinal;
+    * Na imagem, mede-se a informação quantitativa associada a cada pixel;
+    * Quanto mais pequeno é o passo de quantificação, menor é a distância entre duas graduações e mais precisa é a medição;
+    * Erro de quantificação: quando o valor da amostragem se situa entre duas graduações e é aumentado ou diminuído de forma a corresponder ao valor de graduação mais próximo. Quanto maior é a profundidade da graduação, mais fino é o passo de quantificação e menor é o erro de quantificação.
+  * _Codificação:_ estabeler uma correspondência entre um conjunto de partida (conjunto de pontos na escala de medição) e um conjunto de chegada composto de valores código (sequências binárias de tamanho uniforme).
 
-_No som:_
-* a imagem elétrica da onda sonora é partida em amostras segundo o eixo do tempo.
-* o número de amostras / segundo define a frequência de amostragem:
-	* 8 Khz (telefone numérico, frequência por defeito); 44.1 Khz (CD de música);
-	* um CD tem uma codificação sobre 16 bits => 2¹⁶ níveis distintos de amplitude.
+---
 
-## Operações Sobre Imagem e Áudio
+## Representação de Áudio Digital
 
-**Operações de Imagem**
+* _Pulse Code Modulation (PCM):_ fases de amostragem e quantização de áudio. O teorema de Nyquist determina a frequência de amostragem mínima de modo a poder reconstruir o som original.
+* Algoritmos de Compressão de Som
+  * Modulações Diferenciais - reduzir o número de bits necessário à quantização de cada amostra codificando apenas a diferença entre duas amostras sucessivas.
+    * Modulação Delta: substituir o valor que define uma amplitude de uma amostra por um único sinal, positivo ou negativo, representando a variação do sinal em relação ao seu valor precedente;
+    * _Differential Pulse Code Modulation (DPCM):_ codificar o sinal de variação e alguns bits suplementares à expressão da diferença entre o valor de uma amostra com o valor da amostra precedente;
+    * _Adaptative Differential Pulse Code Modulation (ADPCM):_ codificar a diferença entre duas amostras sucessivas, tomando em consideração a evolução do sinal sobre as amostras precedentes.
+  * Algoritmos Generalistas Não Destrutivos - procurar ocorrências múltiplas de uma mesma série de bytes, guardando-as num dicionário com os códigos mais curtos possíveis de modo a substituir no ficheiro comprimido as longas séries de bytes do ficheiro original, fazendo que, após a descompressão, o ficheiro original permaneça íntegro (sem perda de informação).
+  * Algoritmos Destrutivos: Codificação PsicoAcústica - suprimir as modulações "inúteis" (não audíveis pelo ouvido humano), reduzindo o tamanho do ficheiro sem degradar a qualidade de reprodução;
+    * A banda das frequências audíveis máxima e ótima é de 20 Hz a 20 kHz; o ouvido humano é mais sensível a frequências próximas de 3000 Hz e é inútil codificar sons fora do intervalo 500 Hz - 10 kHz;
+    * Efeito de máscara: se, num grupo de frequências idênticas ou vizinhas, algumas têm amplitude muito superior às outras, apenas elas serão percebidas.
+* MP3 - utiliza todas as técnicas descritas, começando com uma codificação RLC e terminando com o algoritmo de Huffman.
 
-_Edição de Imagem_ - alteração de pixels numa imagem.
-* retoque, airbrushing, texturing, corte, cópia e colagem.
-
-_Operações Sobre Pontos_ - aplicação de uma função a cada pixel, produzindo um novo valor para este.
-* thresholding, correção de cor / brilho / contraste; atenuação de cor.
-
-_Transformações Geométricas:_ rotação; escala; inversão.
-
-_Operações de Filtragem:_ aplicação de uma função a cada pixel utilizando informação de pixels vizinhos.
-* blur, sharpen, distorção.
-
-_Operações de Composição:_ composição de grupos de pixels de duas ou mais imagens.
-
-**Operações de Áudio**
-
-_Edição de Áudio:_ cortar, copiar e colar segmentos de áudio diferentes.
-
-_Filtragem_ - redução de ruído; atrasos (adição de ecos ou reverberações); equalização (enfatizar, reduzir, alterar várias bandas de frequências); normalização (mantendo um pico máximo); compressão / expansão temporal; alteração de tom...
-
-<br/>
-
-## Representação de Áudio
-
-**Pulse Code Modulation** (PCM) - designação para as fases de amostragem e quantização.
-
-_Teorema de Nyquist:_ para uma amostragem correta, deve usar-se uma frequência de amostragem duas vezes igual à máxima frequência do sinal.
-
-**Algoritmos de Compressão de Som**
-
-**Modulações Diferenciais** - reduzir o número de bits necessário à quantização de cada amostra codificando apenas a diferença de duas amostras sucessivas, e não cada amostra individual.
-
-*Modulação delta:* substituir o valor que define a amplitude de uma amostra por um único sinal (positivo ou negativo), representaando a variação do sinal em relação ao seu valor precedente de mais ou menos 1 incremento de quantização. Um único bit por amostra (1: diferença positiva; 0: diferença negativa). Provoca saturação de declive.
-
-*Differencial Pulse Code Modulation (DPCM):* codificar o sinal da variação e consagrar alguns bits suplementares à expressão da diferença entre o valor de uma amostra com o valor da amostra precedente. Não provoca saturação de declive.
-
-*Adaptative Differencial Pulse Code Modulation:* codificar a diferença entre duas amostras sucessivas, tomando em consideração a evolução do sinal sobre as amostras precedentes para prever o valor ótimo do passo de quantização a utilizar de modo a aumentar as capacidades de codificação do modulador e evitar a saturação do declive. Torna-se necessário guardar as variações dos passos de quantização numa tabela. Este método permite uma boa reprodução sonora.
-
-**Algoritmos Destrutivos: Codificação PsicoAcústica:** como existe em todo o registo sonoro uma quantidade não negligenciável de sons que o auditor não pode perceber e ruídos que não se quer ouvir, pode-se suprimir as modulações 'inúteis' e reduzir o peso dos ficheiros sem afetar a qualidade de reprodução.
-
-*Propriedades do Ouvido Humano:*
-* suprime os sinais situados em frequências consideradas inúteis - não pertencentes ao intervalo 20Hz - 20KHz, as frequências do limite de perceção.
-  * permite remover os sons abaixo de 100 Hz e acima de 10/11 KHz.
-* efeito de máscara - incapacidade de distinguir um som 'coberto' por um som de frequência vizinha e amplitude superior.
-  * permite remover as frequências mascaradas.
-* o cérebro é capaz de interpretar minúsculas diferenças que distinguem os sinais percebidos pelo ouvido esquerdo e pelo ouvido direito, limitado a determinadas frequências: _joint stereo_.
-
-**Formatos de Ficheiros de Áudio Digital**
-
-_MPEG - layer 3 (MP3):_ Alemanha, 1996. Usa primeiro usa codificação RLC (evita a codificação de dados sucessivos idênticos) e termina na aplicação aos dados finais do algoritmo de Huffman. A compressão ótima é obtida a uma taxa de 7 : 1, a 192 Kbits/s.
-
-<br/>
+---
 
 ## Cor e Codificação da Cor
 
-_Luz:_ onda eletromagnética com espetro visível entre os 400nm e os 700nm. A cor corresponde ao comprimento de onda da luz.
+* Bastonetes são sensíveis à intensidade luminosa em toda a gama do comprimento de onda a que o olho humano é sensível, mas não detetam cor; cones são sensíveis a apenas alguns comprimentos de onda, permitindo a interpretação de cor. A cor que provoca maior sensação visual é o verde, a menos, o azul. O olho é mais sensível à luminância do que à crominância.
+* Modelos de Cor
+  * RGB - cada cor é obtida por síntese aditiva das três cores primárias (vermelho, verde, azul), dependente dos periféricos utilizados na aquisição e representação;
+  * CMY - ciano, magenta, amarelo; fundado sobre a capacidade de absorção da luz pela tinta de impressão depositada no papel, a síntese das cores é subtrativa;
+    * CMYK - a junção das três cores com saturações máximas não é suficiente para produzir a cor preta, pelo que se adiciona um quarto plano para a representar;
+  * HSV - _hue_ (tom, dependente das variações de comprimento de onda), _saturation_ (saturação, diferença entre uma cor com um cinzento com o mesmo nível de brilho), _value_ (valor, intensidade luminosa);
+    * Modelos CIE (_Comission Internationale de l'Eclairage_)
+      * CIE XYZ - espaço de cor onde se inscrevem todas as cores do espetro visível; não uniforme;
+      * CIE xyY - para caracterizar a luminância, uma cor é sempre definida pelas suas coordenadas x, y e Y;
+      * CIE LAB - escala uniforme de cor para a luminosidade; o CIELUV é utilizado para calibrar motores, o CIELAB quantifica as cores segundo classificações de Munsell.
+* Paletes de Cor - subconjunto das gamas disponíveis num sistema particular. A indexação de cor é a técnica que relaciona cada cor da imagem com uma cor da palete do sistema.
+  * Palete Exata - quando a imagem de origem não utiliza mais do que 256 cores;
+  * Palete Sistema - palete por defeito de um sistema operativo;
+  * Palete Uniforme - tomada uniforme de amostras de cor no cubo RGB (5 tomas == 5^3 = 125 cores);
+  * Palete Percetiva - palete que favorece as cores às quais o olho humano é mais sensível;
+  * Palete Seletiva - palete percetiva que preserva as cores web e garante maior fidelidade de reprodução;
+  * Palete Adaptativa - favorece os tons dominantes na imagem;
+  * Palete Web - constituída por 216 cores para representar imagens sobre um monitor limitado a 256 cores.
 
-_Olho:_ possui cones e bastonetes que codificam os três canais primários (vermelho, verde, azul).
+---
 
-**Modelos de Cor**
+## Imagem Digital
 
-*Modelo RGB (Red, Green, Blue)*
-* três cores primárias (três canais de cor): vermelho, verde, azul.
-* usado em ecrãs.
-* permite formar 2²⁴ cores (16 777 216) => imagem _true color_.
-* origem: ponto onde os três valores são 0 -> preto.
-* vértice oposto: ponto onde os três valores são máximos -> branco.
-* vértices do cubo equidistantes de duas cores primárias: encontram-se as cores secundárias (amarelo, magenta, ciano).
-* depende dos periféricos usados na aquisição e representação.
+* Imagem Bitmap - o ficheiro é constituído pelos dados da cor de cada ponto (pixel, elemento mais pequeno), alinhados horizontal e verticalmente como linhas e colunas de uma matriz.
+  * Resolução de uma imagem: número de pontos digitalizados, afixados ou imprimidos por unidade de largura.
+  * Entrelaçamento: visualização progressiva; consiste em reordenar as linhas das imagens, organizando-as em grupos que vão sendo apresentados e aumentando a qualidade e o número de detalhes.
+  * Vantagens:
+    * Produção de graduações de nuances e cores muito finas;
+    * Constituídas por pixeis, permitindo o tratamento ponto a ponto;
+    * Diretamente guardadas na memória, logo representadas rapidamente no ecrã.
+  * Desvantagens:
+    * Qualidade dependente do material de aquisição e reprodução;
+    * Grande espaço ocupado na memória.
+  * Formatos:
+    * Formato GIF (_Graphic Interchange Format_) - utiliza compressão sem perdas LZW, máximo 256 cores. A versão 87a aceita entrelaçamento e a versão 89a transparência e animação.
+    * Formato JPEG (_Joint Photographic Experts Group_) - utiliza compressão com perdas, permite adaptar qualidade de imagem e 'true color', permite representação sequencial (linha a linha) ou progressiva (passagens sucessivas); aceita entrelaçamento progressivo, mas não transparência ou animação.
+    * Formato PNG (_Portable Network Graphics_) - utiliza compressão sem perdas, permite entrelaçamento e transparência por canal _alpha_, formato livre.
+    * Formato TIFF (_Tagged Image File Format_) - utiliza compressão LZW, preserva a qualidade da imagem original.
+* Imagem Vetorial - o ficheiro contém a descrição matemática das figuras elementares que o constituem.
+  * Vantagens: 
+    * Imagens descritas textualmente, logo fáceis de alterar, manipular e transformar e eficazmente comprimidas;
+    * Tamanho de memória independente do tamanho de imagem;
+    * Independentes dos periféricos e resolução.
+  * Desvantagens:
+    * Tamanho e tempo de representação dependentes da complexidade da imagem;
+    * Difícil descrição de uma imagem complexa;
+    * Qualquer perda ou corrupção no ficheiro leva à perda da imagem na totalidade.
+  * Formatos:
+    * Formato SVG (_Scalable Vector Graphic_) - linguagem de descrição de gráficos vetoriais bidimensionais para a web.
 
-*Modelo CMY (Cyan, Magenta, Yellow)*
-* próprio dos objetos que refletem luz, obtido através da subtração de cores refletidas por uma superfície branca.
-* ciano (verde, azul): opõe-se à passagem do vermelho.
-* magenta (vermelho, azul): opõe-se à passagem do verde.
-* amarelo (verde, vermelho): opõe-se à passagem da cor azul.
-* origem: ponto onde os três valores são 0 -> branco.
-* vértice oposto: ponto onde os três valores são máximos -> preto.
+---
 
-*Modelo CMYK (Cyan, Magenta, Yellow, blacK)* - devido à dificuldade em criar preto, adiciona-se um quarto canal (preto) ao modelo CMY.
+## Codificação Fonte
 
-*Modelo HSV (Hue, Saturation, Value)*
-* _Hue:_ tom.
-* _Saturation:_ saturação da cor; mais baixa => mais cinzenta; 0 => cinzenta.
-* _Value:_ intensidade luminosa determinada pelo grau de refletividade da superfície física que recebe a luz; maior brilho => cor mais clara.
+* Compressão - reduzir ao máximo o volume de armazenamento e transferência, mantendo a capacidade de restituir a integridade dessa informação (compressão sem perdas).
+  * Taxa de Compressão: relação entre o tamanho do ficheiro original e o tamanho do ficheiro comprimido;
+  * (As)Simetria: velocidade e qualidade de restituição do documento original;
+  * Com ou Sem Perdas: no primeiro caso, o algoritmo de compressão é irreversível, pois não é possível recuperar na íntegra o ficheiro original a partir do ficheiro comprimido; no segundo caso, é reversível.
+* Incerteza vs Informação
+  * Uma experiência fornece informação se e só se o seu resultado elimina uma certa incerteza;
+  * A quantidade de informação e o nível de incerteza são diretamente proporcionais.
+    * Entropia: fórmula matemática que permite calcular a quantidade média de informação de uma experiência tendo em conta o seu nível de incerteza, exprimindo o número médio de bits por símbolo necessários para a codificação ideal de um determinado alfabeto. Se a repartição é uniforme, a entropia é máxima (codificação de comprimento fixo).
+* Técnicas de Base
+  * _Run Length Coding (RLC)_ - recuperar as sequências repetitivas de carateres e substitui-las por um caractere de controlo seguido do número de repetições.
+    * aaaaaa -> #Na, em que `#` indica o início de uma repetição, `N` indica o número de repetições e `a` indica a sequência repetida.
+  * Codificação Relativa - codificação de longas séries de valores próximos.
+    * Um caratere especial (`#`) indica o início da codificação; um número define em seguida o número de bits idênticos; depois escrevem-se esses bits; indica-se o número de bytes afetados por essa codificação; por fim, inserem-se os bits não repetidos desses bytes.
+  * Algoritmos de Codificação Estatística
+    * Método de Huffman - obriga à criação de tabelas de frequências que terão de ser transmitidas, para a descodificação.
+      * Codificar com o menor número de bits os símbolos em que a frequência de ocorrência é maior.
+      * Regra da prefixação: os primeiros elementos de uma palavra de código não podem constituir outra palavra de código, o que permite garantir uma descodificação instantânea.
+      * Os códigos obtidos não são únicos, mas são ótimos, pois não existe outro código de prefixo cuja largura média seja inferior.
+    * Método de Huffman Canónico - necessita de cabeçalho para a descodificação.
+      * Códigos mais pequenos têm numericamente valores superiores do que códigos mais longos; dentro do mesmo comprimento, os valores numéricos aumentam com o alfabeto.
+    * Método de Shannon-Fano - necessita da leitura do ficheiro para cálculo das frequências e de guardar as tabelas de código.
+        * O método de Huffman agrupa probabilidades; o método de Shannon-Fano separa probabilidades.
+    * Largura Média - número de bits necessário para codificar uma determinada fonte; somatório da multiplicação da largura do código de cada símbolo pela probabilidade desse símbolo.
+  * Codificação Aritmética - o código para uma sequência de símbolos é um intervalo cujo comprimento diminui à medida que se acrescentam mais símbolos à sequência. O _output_ final é um único número que não consiste em códigos para símbolos individuais.
+  * Algoritmos do Tipo Dicionário - não necessitam de conhecer a estatística dos dados a comprimir, não usam códigos de comprimento variável, utilizam sequências de símbolos de comprimento variável.
+    * Algoritmo de (Des)Codificação LZW - a criação do dicionário e a compressão do ficheiro são realizadas à medida que o ficheiro é lido, sem necessitar de leitura prévia e o dicionário não é adicionado ao ficheiro comprimido (menor tempo e maior taxa de compressão).
 
-*Modelos CIE (*Comission Internationale de l'Eclairage**)* - descrevem a cor em termos de tom (_hue_), brilho (_value_) e saturação (_saturation_).
-* CIE LUV - *standardização* da luminosidade; usado para calibrar monitores.
-* CIE LAB - quantifica as cores segundo as classificações de Munsell; usado por vários _software_ de tratamento de imagem para conversão de espaços de cor, uma vez que é independente dos dispositivos.
+---
 
-*Modelo YCBCR (Iuma, Croma de diferença em azul (B) e vermelho (R))*
+## Representação de Imagem Digital
 
-A _luminância_ é a soma das três componentes básicas (R, G, B) moduladas seguindo a sensibilidade da nossa perceção visual: Y = 0.2999R + 0.58G + 0.114B.
-
-O _coeficiente de ponderação_ de cada cor é calculada por:
-COEFF (cor X) = sensibilidade (cor X) / (sensibilidade (cor R) + sensibilidade (cor G) + sensibilidade (cor B)).
-
-*Paletes de Cor* - subconjuntos das gamas disponíveis por um sistema particular. As cores da imagem original que não estão na palete de cores do sistema têm de ser aproximadas - _construção de tramas_, que consiste em criar pixels contíguos com a ajuda das diferentes cores disponíveis na palete para dar, por confusão, a impressão visual da cor de origem.
-* _Palete exata:_ regista as cores originais exatas.
-* _Palete sistema:_ palete por defeito de um sistema.
-* _Palete uniforme:_ obtida por tomadas uniformes de amostras de cores no cubo RGB; o número total de cores é igual ao cubo do número de tomas
-* _Palete web:_ seis tomas, ou seja, 6³ = 216 cores.
-* _Palete percetiva:_ favorece as cores às quais o olho humano é mais sensível.
-* _Palete seletiva:_ valoriza as zonas de cores mais importantes e preserva as cores web.
-* _Palete adaptativa:_ favorece os tons dominantes da imagem.
-
-*Imagens de Cor Indexada* - definem-se 256 cores, cada uma delas codificada sobre 8 bits por cor primária.
-
-<br/>
-
-## Imagem Bitmap VS Imagem Vetorial
-
-**Imagem Bitmap** - todas as imagens reproduzidas num ecrã, obtidas através de um _scanner_ ou de um aparelho fotográfico numérico.
-* Constituído pelos dados da cor de cada ponto, alinhados horizontal e verticalmente como linhas e colunas de uma matriz. O elemento mais pequeno da imagem é o _pixel_.
-* Sabendo a altura e a largura (em pixels) e a profundidade de quantificação, pode calcular-se o tamanho de uma imagem bitmap não comprimida como $T(KB) = \frac{largura (pixel) * altura (pixel) * profundidade (bits/pixel)}{8 (bits/byte) * 1024 (bits/Kbyte)}$.
-* A _resolução_, ppp, é o número de pontos digitalizados, afixados ou imprimidos por unidade de largura.
-* Permitem uma visualização progressiva através da técnica de entrelaçamento - reordenar as linhas das imagens, organizando-as em vários grupos -, permitindo ao utilizador formar uma ideia da imagem após algumas das linhas serem transmitidas.
-* Vantagens:
-  * Capazes de produzir graduações de nuances e cores muito finas.
-  * Constituídas por _pixels_, o que permite o tratamento ponto a ponto.
-  * Guardadas diretamente na memória, logo são representadas com maior rapidez no ecrã.
-* Desvantagens:
-  * A qualidade está diretamente dependente do material de aquisição e reprodução.
-  * O facto de serem imagens de pontos cujas características de cor são definidas individualmente exige uma grande quantidade de espaço em memória.
-
-_GIF_ - utiliza compressão sem perdas LZW, com profundidade de pixel não superior a 8 bits. Otimizado para compressão de imagens com poucas cores diferentes e apresentando grandes quantidades de pixeis da mesma cor. Permite entrelaçamento em quatro passagens.
-
-_PNG_ - utiliza compressão sem perdas, com codificações até 48 bpp e alto nível de compressão sem perdas. Permite transparência. De formato livre (sem algoritmos de domínio privado). Permite entrelaçamento em 7 passagens.
-
-**Imagem Vetorial**
-* Constituída por um conjunto de figuras elementares descrita por dados matemáticos, descreve as diferentes figuras como objetos gráficos independentes que podem ser manipulados e transformados de forma independente.
-* Vantagens:
-  * As informações são descritas textualmente, logo eficazmente comprimidas.
-  * O tamanho da memória é independente do tamanho da imagem.
-  * É possível aplicar facilmente e sem perda de precisão transformações geométricas (deslocamentos, translações, rotações, ...) a diferentes objetos independentes.
-  * São independentes dos periféricos e da resolução, sendo colocadas automaticamente na escala de forma precisa.
-* Desvantagens:
-  * O tamanho do ficheiro varia de acordo com a complexidade da imagem.
-  * Imagens complexas não podem ser descritas em formato vetorial.
-  * O tempo de representação de uma imagem vetorial é superior em relação a uma imagem bitmap - aumenta com a complexidade da imagem.
-  * Qualquer perda / corrupção no ficheiro leva à perda da totalidade da imagem.
-
-<br/>
-
-## Teoria da Codificação
-
-Um **sistema de comunicações digitais** envolve a eficiência da representação da informação gerada pela fonte e a taxa de transmissão à qual é possível enviar a informação com fiabilidade através de um canal ruidoso. A teoria da informação estabelece o número mínimo de unidades de informação binária (bit) por símbolo necessário para representar completamente a fonte e o valor máximo da taxa de transmissão.
-
-**Codificação Fonte**
-
-_Compressão - Redundância_
-
-O ganho de informação resultante da ocorrência do acontecimento certo é nulo, mas a ocorrência de qualquer outro acontecimento conduz a um ganho de informação. Quanto menor for a probabilidade de ocorrência de um acontecimento, maior é o ganho de informação que lhe está associado. A expressão que permite calcular a quantidade média de informação de uma experiência tendo em conta o nível de incerteza próprio a essa experiência é:
-
-$I(m_i) = log_2 (\frac{1}{p_i}) = - log_2 (p_i), i = 1, 2, ..., M$
-
-_Compressão - Entropia_
-
-A entropia _H_ exprime o número médio de bits por símbolo necessários para a codificação ideal de um determinado alfabeto.
-
-$H(p_1, p_2, ..., p_n) = \sum_{i = 1}^{N} p_i * log_2 (\frac{1}{p_i}) = - \sum_{i = 1}^{N} pi * log_2(p_i)$
-
-Se os estados possíveis para X_i são equiprováveis, então
-
-$H(p_1, p_2, ..., p_n) = \sum_{i = 1}^{N} \frac{1}{N} * log_2(N) = log_2(N)$
-
-_Compressão - Parâmetros -_ taxa de compressão; (as)simetria; com ou sem perdas.
-
-_Run Length Coding (RLC)_ - método usado na existência de muitas repetições.
-
-Exemplos: AAABQEEEFFFF -> #4ABQ#4E#6F ; 0000000001111000000 -> 0946.
-
-_Codificação Relativa_ - método simples usado na codificação de longas séries de valores próximos.
-
-Exemplo: 00000001 00000000 00000001 00000001 00000001 00000000 00000000 00000000 00000001 00000001 -> #7 0000000 10 1 0 1 1 1 0 0 0 1 1
-
-**Codificação Estatística**
-
-_Método de Shannon-Fano_
-* Leitura do ficheiro e cálculo das frequências de cada símbolo.
-* Classificação dos símbolos em função das suas frequências.
-* Divisão das frequências em dois grupos de tal forma que a relação da soma das frquências de cada subgrupo seja o mais próxima possível de 1: $\frac{\sum_1 fi}{\sum_2 fj} ~= 1.$ Esta operação é repetida até que todas as frequências de origem sejam encontradas. (Separar os subgrupos com probabilidade mais próxima).
-* Atribuição de um código a cada símbolo.
-* Codificação final.
-
-EXEMPLO: AMORE MORE ORE RE (ver miro)
-
-_Método de Huffman_
-* Codificar com o menor número de bits os símbolos em que a frequência de ocorrência é a maior. (Juntar as ocorrências duas a duas, começando nas de menor probabilidade.)
-* Os primeiros elementos de uma palavra-código (prefixo) não podem constituir uma outra palavra de código (código-prefixo), permitindo uma codificação instantânea.
-* Obriga à criação de tabelas de frequências que terão de ser transmitidas visto que são necessárias para a descodificação.
-
-* Leitura do ficheiro e cálculo das frequências de cada símbolo.
-* Classificação dos símbolos em função das suas frequências.
-* Reagrupamento sequencial dos pares de símbolos com menor frequência, voltando a executar a classificação, se necessário.
-* Atribuição de um código a cada símbolo.
-* Codificação final.
-
-EXEMPLO: AMORE MORE ORE RE (ver miro)
-
-* Os códigos obtidos não são únicos.
-* O código obtido pelo algoritmo de Huffman é ótimo, visto que não existe nenhum outro código de prefixo cuja largura média seja inferior.
-* Os códigos são instantâneos.
-
-_Medidas:_ Largura média de um código: $\sum_{i = 1}^{N} \frac{nº.ocorrências.símbolo}{nº.total..ocorrências} * nº.bits.código$.
-
-_Desvantagens:_
-* Leitura do ficheiro para cálculo das frequências.
-* Necessidade de guardar as tabelas de código - que pode ser minimizado ao juntar as probabilidades médias representativas.
-
-_Método de Huffman Canónico_
-* O código mais longo contém apenas zeros e cada código difere um bit do anterior; ou seja, os códigos diminuem de comprimento à medida que se acrescentam mais símbolos à sequência.
-* O cabeçalho pode ser simplificado: apenas se precisa de saber o número de bits a usar para codificar cada símbolo.
-* Esquema de codificação incremental - o código de uma extensão de uma sequência pode ser calculado a partir do código da sequência original.
-
-SLIDE 43
-
-<br/>
-
-## Representação de Imagem
-
-<br/>
-
-## Representação de Vídeo
+* Medidas de Distorção - MSE (_Mean Square Error_, erro médio quadrado); SNR (_Signal to Noise Ratio_); PSNR (_Peak Signal to Noise Ratio_).
+* Sistema de Compressão
+  * Transformada - representar os dados da imagem de modo a eliminar redundâncias estatísticas, normalmente invertível;
+  * Quantização - reduzir o número de valores de amplitude possíveis para codificação, não invertível;
+  * Codificação - explorar a não uniformidade da distribuição de probabilidade dos índices de quantização.
