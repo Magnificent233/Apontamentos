@@ -164,7 +164,7 @@
 
 * Vídeo Analógico - amostragem por linhas em modo progressivo ou entrelaçado, primeiro as linhas pares e depois as linhas ímpares. O número de frames por segundo (fps) e a resolução da imagem é determinada pelo _standard_ de distinção de imagem, serviços de sincronização e de posicionamento dos feixes de eletrões.
 * Vídeo Digital - guardado quer em memória, quer em suportes digitais, possibilitando edição não linear, gravações sucessivas, fácil encriptação e tolerância a erros de transmissão.
-* Compressão de Vídeo - tira-se proveito das redundâncias espaciais, psicosensoriais, estatísticas w temporais.
+* Compressão de Vídeo - tira-se proveito das redundâncias espaciais, psicosensoriais, estatísticas e temporais.
   * Compressão Temporal - exploração de semelhanças entre imagens sucessivas, identificando redundância no tempo, mesmo com alterações no espaço.
     * Compressão Temporal Unidirecional - diferença entre a imagem corrente e a imagem precedente. As que são codificadas apenas espacialmente são chamadas imagens _intra_ ou _key frame_, as obtidas por diferença são imagens _delta_, que podem ser submetidas a uma compressão espacial; descompressão espacial antes de juntar as diferenças à imagem precedente para obter a imagem corrente.
     * Compressão Temporal Bidirecional - diferença entre a imagem corrente e as imagens precedente e sequente, com compensação de movimento (não se calculam as diferenças de um bloco com o mesmo bloco da imagem anterior, mas com os blocos mais próximos).
