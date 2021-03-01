@@ -1,9 +1,11 @@
 # Redes de Computadores
 
-## Apontamentos - Aula Teórica
+## Apontamentos
+
+### Aulas Teóricas
 
 Redes de computadores classificam-se quanto a:
-* **Área espacial / geográfica:**
+* **Área espacial / geográfica**
   *  BAN (_Body Area Network_) - intracorporal (por exemplo, dispositivo para diabéticos _Libre_);
   *  PAN (_Personal Area Network_) - metro quadrado;
   *  LAN (_Local Area Network_) - divisão, edifício, campo;
@@ -12,21 +14,66 @@ Redes de computadores classificam-se quanto a:
   *  Internet - planeta;
   *  Rede interplanetária - galáxia (por exemplo, ligações entre Terra e Marte);
 * **Topologia** - variam consoante as conexões físicas e lógicas:
-  * Barramento (_bus_) - vários equipamentos partilham o mesmo meio de acesso (por exemplo, _wifi_). Defeitos: _hidden node_ (quando um nodo pode comunicar com um ponto de acesso sem fios (AP), mas não consegue comunicar com outros nodos que comuniquem com esse mesmo AP);
+  * Barramento (_bus_) - vários equipamentos partilham o mesmo meio de acesso (por exemplo, _wifi_). Defeitos: _hidden node_ (quando um nodo pode comunicar com um ponto de acesso sem fios (AP), mas não consegue comunicar com outros nodos que comuniquem com esse mesmo AP);caso um elemento pare, toda a rede deixa de funcionar (*mas não devia dar para voltar atrás? perguntar*);
   * Ponto a ponto - dois equipamentos a partilhar o mesmo meio de acesso. Defeitos: tipologia bastante limitada;
-  * Anel (_ring_) - barramento fechado que permite redundância. Defeitos: caso um elemento pare, toda a rede deixa de funcionar (*mas não devia dar para voltar atrás? perguntar*);
+  * Anel (_ring_) - barramento fechado que permite redundância. 
   * Estrela (_star_) - uma máquina central concentra toda a comunicação da rede. Defeitos: Se a máquina central parar, toda a rede para;
   * Malha (_mesh_) - não existe organização definida; rede dinâmica que pode variar várias vezes por dia. Defeitos: não é prática numa rede pequena;
 * **Canal**
+  * Cablado - cabo ótico, cabo elétrico;
+  * Não cablado (sem fios) - laser, infravermelhos, microondas, eletromagnetismo (utilizados na _wifi_);
+* **Transmissão de dados**
+  * _Simplex_ - transmissão de um só sentido entre um ponto A e um ponto B;
+  * _Duplex_ - transmissão bidirecional entre um ponto A e um ponto B;
+  * _Half-Duplex_ - transmissão bidirecional não simultânea entre um ponto A e um ponto B (um só cabo que só transmite ou só recebe);
+  * _Full-Duplex_ - transmissão bidirecional simultânea entre um ponto A e um ponto B (dois cabos: um para transmitir, outro para receber);
+* **Tipos de comunicação**
+  * Circuito dedicado - o computador emissor estabelece um circuito com o computador recetor, o qual recebe os dados sem restrições (enquanto o circuito está estabelecido, apenas estas duas máquinas transmitem dados naquele segmento);
+  * Canal partilhado - o computador emissor envia dados para o canal, identificando o recetor da mensagem; todos os computadores recebem, mas só o destinatário interpreta a mensagem (não é preciso predefinir circuitos, havendo melhor aproveitamento dos recursos físicos (tempo, canal)). Problemas: menor privacidade, só pode haver uma transmissão de cada vez;
+* **Redes e Serviços Internet**
+  * Computadores: redes de acesso (tributárias) - geram tráfego;
+  * Rede interior: rede de transporte (_backbone_, rede nuclear) - transporta tráfego, resistente a problemas técnicos;
+  * Equipamentos interno: pontos de agregação de tráfego - junção de tráfegos para transporte.
+* **Multiplexagem de canal**
+  * No tempo - síncrono (STDM), assíncrono (ATDM);
+  * Em frequência - xDSL (_x Digital Subscriber Line_), WDM (_Wavelength Division Multiplexing_);
+* **ISP** (_Internet Service Provider_)
+  * ISP _Tier_ 1 - implementação física;
+  * ISP _Tier_ 2 - aluguer da implementação física no _Tier_ 1;
+  * ISP _Tier_ 3 - aluguer da implementação física no _Tier_ 2...;
+* **Elementos**
+  * Ativos (cabos);
+  * Passivos (armários);
+* **Redes de Pacotes de Dados**
+  * Pacote / Datagrama (_packet_)
+  * Trama / Quadro (_frame_)
+    * **Organização:** PRE (preâmbulo, 7 bytes, avisar que irá ser transmitido algo); SFD (_Start-of-Frame Delimiter_, 1 byte); DA (_Destination Address_, 6 bytes); SA (_Source Address_, 6 bytes); _Length / Type_ (4 bytes); Dados (_Data_, _Pad_, 46 a 1500 dados); FCS (_Frame Check Sequence_, 4 bytes);
+      * O FCS é gerado do SFD à Pad e o erro é detetado do SFD à FCS final;
 * **Relação de Funcionalidade**;
 * **Tipo de Protocolos**;...
 
-Tipos de transmissão de dados:
-* _Simplex_ - transmissão de um só sentido entre um ponto A e um ponto B;
-* _Duplex_ / _Full-Duplex_ - transmissão bidirecional entre um ponto A e um ponto B;
-* _Half-Duplex_ - transmissão bidirecional não simultânea entre um ponto A e um ponto B;
+O CODEC estipula o nível de redundância da mensagem para poder ser mais imune ao ruído do canal e para poder transmitir de forma eficiente um determinado conteúdo. A mensagem codificada tem de ser representada em sinais elétricos, óticos ou eletromagnéticos para poder ser transmitida com eficiência no canal. Há diferentes tipos de codificação (diapositivo 8 da aula 2B):
+* _Nonreturn-to-Zero-Level_ (NRZ-L) - 0 = nível alto, 1 = nível baixo;
+* _Nonreturn-to-Zero-Inverted_ (NRZI) - 0 = sem transição no princípio do intervalo, 1 = mudança de nível;
+* Bipolar-AMI - 0 = sem nível, 1 = nível alto ou baixo (alternados) (três estados diferentes);
+* Pseudoternárnio - 0 = nível alto ou baixo (alternados), 1 = sem nível (três estados diferentes);
+* Manchester - 0 = alto baixo, 1 = baixo alto;
+* _Differential Manchester_ - 0 = muda de nível ao princípio do bit, 1 = não muda de nível ao princípio do bit.
 
-## Apontamentos - Aula Prática
+O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e o SNR (_Signal to Noise Ratio_) é a relação (normalmente medida em decibeis) entre o sinal e o ruído. Existem códigos que:
+* Detetam erros:
+  * Códigos de verificação de paridade;
+  * _Cyclic Redundancy Check_ (CRC) / Códigos Polinomiais ou _Frame Check Sequence_ (FCS) - são códigos que transmitem além da mensagem inicial o resto da divisão dessa mensagem por polinómios conhecidos pelo emissor e recetor; detetam todos os erros em dois bits, todos os erros num número ímpar de bits, todos os erros num bloco menor que 16 bits, quase todos os erros (99.9%) num bloco maior ou igual que 16 bits;
+* Detetam e corrigem erros - aumentam o tamanho dos dados a transmitir (mais funcionalidades => necessidade de mais informação => mais bits para transmitir):
+  * Códigos de Hamming;
+  * Códigos de Reed-Solomon;
+  * Códigos convolucionais.
+
+Modelo OSI (_Open Systems Interconnection_) -> próxima aula
+
+---
+
+### Aula Prática 1
 
 DHCP -> endereço de rede não estático de uma rede sem fios com autenticação pelo MAC Address (não há dois MAC Address's iguais)
 
@@ -42,3 +89,10 @@ Para evitar / diminuir o efeito de ataques informáticos e impedir grandes danos
 As tabelas ARP ligam o IP de cada máquina ao seu MAC Address após o envio de pacotes por `ping`. Uma tabela ARP é normalmente constituída por: endereço de internet, endereço físico, tipo.
 
 _Top Level Domain_ são máquinas servidores de DNS que permitem associar nomes a IP's.
+
+2.5. Não, porque são endereços diferentes.
+2.6. A. IP e subnet mask.
+     B. Protocolo DHCP.
+     C. 255.255.255.0
+     D. Classe C
+     E.
