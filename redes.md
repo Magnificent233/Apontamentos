@@ -80,7 +80,7 @@ DHCP -> endereço de rede não estático de uma rede sem fios com autenticação
 O _subnet mask_ indica a gama de valores que é possível utilizar num código IPv4, ou seja, determina a quantidade de máquinas que é possível ligar à rede (por exemplo, 255.255.255.0 [base decimal] == 11111111.11111111.11111111.00000000 [base binária]). Em IPv4 tem-se quatro conjuntos de 256 símbolos:
 * 192.168.1.0                 -> código IPv4 de identificação da rede;
 * 192.168.1.1 - 192.168.1.254 -> código IPv4 de identificação da máquina;
-* 192.168.1.255               -> código IPv3 de identificação do endereço de broadcast.
+* 192.168.1.255               -> código IPv4 de identificação do endereço de broadcast.
 
 Num _hub_, toda a informação é partilhada com todos os dispositivos (o que provoca maior colisão e consequente maior degradação dos componentes). Num _switch_, pode haver várias redes independentes com segmentação de tráfego (certos componentes só se relacionam com outros determinados componentes).
 
@@ -90,9 +90,28 @@ As tabelas ARP ligam o IP de cada máquina ao seu MAC Address após o envio de p
 
 _Top Level Domain_ são máquinas servidores de DNS que permitem associar nomes a IP's.
 
+2.3. `arp -a`
+2.4. `ping <endereço-computador-recetor>`
 2.5. Não, porque são endereços diferentes.
 2.6. A. IP e subnet mask.
      B. Protocolo DHCP.
-     C. 255.255.255.0
-     D. Classe C
+     C. `255.255.255.0`
+     D. Classe C. (verificar tabela de classes de IP's)
      E.
+3.5. Não, porque são endereços diferentes.
+4. `ipconfig`
+5. Não sei
+
+### Aula Prática 2
+
+2.1.1. a) `enable`
+2.1.2. b) `show running-config`
+2.2.1. `enable` > `configure terminal` > `hostname nome`
+2.2.2. a) `line con 0` > `password passe` > `login` > `service password-encrypt`
+2.2.4. a) `enable` > `enable secret passe`
+4. `banner motd #texto#`
+5.2. `copy running-config startup-config` > Config > Startup Config > Export...
+8.2. `enable` > `configure terminal` > `hostname nome`
+9.1.1. `enable` > `interface fastEthernet 0/0` > `ip address 192.168.1.1 255.255.255.0` > `no shutdown` > `description descricao`
+(para a primeira porta fastEthernet)
+12.  _Default Gateways_ servem para especificar um endereço IP predefinido para onde são enviados todos os pacotes de uma rede.

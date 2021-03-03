@@ -18,3 +18,9 @@ Em IHC pretendem-se ferramentas / sistemas que:
 * Providenciem _feedback_ sobre o desempenho;
 * Exibam informação num formato e ritmo adaptados ao utilizador;
 * Estejam em conformidade com os princípios de ergonomia de _software_.
+
+---
+
+## Aula Teórica 2
+
+Utilizador humano = IPU (_Information Processing Unit_) com psicologia cognitiva (sistemas percetivo, motor e cognitivo - perceção de capacidades e limitações, facilidade e dificuldade, agradabilidade, _modus operandi_ [tato, áudio, voz]).
