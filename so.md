@@ -39,25 +39,61 @@ Sistemas de Tempo Real - sistema com necessiades temporais onde os resultados t�
 * istemas de Tempo Real Duro - garantem que as tarefas são executadas dentro das _deadlines_;
 * Sistemas de Tempo Real Suave - tarefas de tempo real têm prioridade sobre tarefas normais.
 
+---
+
+## Aula Teórica 2
+
+**BIOS** é a sigla para *Basic Input/Output System*, o primeiro programa executado pelo computador ao ser ligado, cuja função é preparar a máquina para que o sistema operativo possa ser carregado para memória e executado. O BIOS é _firmware_ (_software_ armazenado sob a forma de memória de leitura não volátil).
+
+Um programa ***bootstrap*** é carregado durante _power up_ ou _reboot_ do BIOS, inicializando o _hardware_ para um estado "conhecido". O BIOS transfere controlo para o programa _bootstrap_, que inicializa todas as partes necessárias do sistema para carregar o _kernel_ do sistema operativo e inicializar a sua execução.
+
+Os controladores de _input_/_output_ e a CPU podem executar de forma concorrente: cada controlador está encarregue de um dispositivo particular, com um _buffer_ local, e a CPU movimenta dados de e para a memória principal para e a partir de _buffers_ locais. Um controlador informa a CPU de que terminou a sua operação com uma **interrupção**, que transfere o controlo de uma rotina de serviço através do _interrupt vector_, que contém os endereços de todas as rotinas. As interrupções são desativadas enquanto outra interrupção está a ser processada de forma a evitar a sua perda; uma interrupção gerada por _software_ devido a erro ou pedido do utilizador é chamada por ***trap***. A maior parte das CPU tem duas linhas de interrupção:
+* **Linha de interrupção não mascarável**, reservada para eventos como erros de memória irrecuperáveis;
+* **Linha de interrupção mascarável**, que pode ser desligada pela CPU antes da execução de uma sequência de instruções críticas que não podem ser interrompidas.
+
+Durante _input_/_output_, as interrupções são feitas por vários dispositivos quando estão prontos para serviço, que significam o fim da saída de dados, a disponibilidade da entrada de dados ou a deteção de uma falha. O controlador interrompe a CPU, que a deteta e despacha para o _interrupt handler_, rotina que determina a causa da interrupção, executa o processamento necessário e termina, fazendo a CPU regressar ao estado anterior à interrupção.
+
+Qualquer transferência é um _output_ de um dispositivo e um _input_ para outro. O controlador tem um ou mais registos para dados (registos _data-in_, _data-out_) e sinais de controlo (registos _status_, _control_). A interação entre a CPU e um controlador faz-se por **aperto de mão** (_handshaking_), utilizando dois bits (_busy_ bit do registo _status_ e _ready_ bit do registo _command_):
+* A CPU lê repetidamente o bit _busy_ até que seja 0 (_busy-wait cicle_), ativa o bit _write_ a 1 no registo _command_ e escreve um byte no registo _data-out_. A CPU ativa o bit _ready_ a 1 no registo _command_ e, quando o controlador nota que o bit _ready_ está a 1, escreve o bit _busy_ a 1;
+* O controlador lê o registo _command_ e vê o comando _write_, lendo o registo _data-out_ para obter o byte e fazer o _input_/_output_ para o dispositivo; desativa o bit _ready_ a 0, assim como o bit _error_ no registo _status_, para indicar que a transferência foi bem sucedida, colocando depois o bit _busy_ a 9 para indicar que a transferência terminou.
+
+O **método síncrono** faz que, após o início de uma operação de _input_/_output_, o controlo só retorne ao programa do utilizador após essa operação através de uma instrução _wait_. Desvantagens: no máximo um pedido de _input_/_output_ é atendido de cada vez; não existe processamento de _input_/_output_ simultâneo; contenção para acesso à memória (ciclo _wait_). O **método assíncrono** faz que, após o início de uma operação de _input_/_output_, o controlo retorne ao programa do utilizador sem esperar pela terminação da operação de _input_/_output_. Vantagens: permite operações de _input_/_output_ concorrentes e processamento simultâneo. Desvantagens: implementação mais complexa.
+
+A **interface de _input_/_output_ do _kernel_** é um conjunto de operações de _input_/_output_ independentes de _hardware_, e os ***device drivers*** são módulos do _kernel_ dependentes do _hardware_, cada um encapsulando o funcionamento específico de cada dispositivo. Vantagem: facilidade na implementação de novos periféricos. Os dispositivos de _input_/_output_ caracterizam-se por:
+* _Character-stream_ / _block_ - transferência de bytes um a um (dispositivo de carateres) ou em bloco (dispositivo de blocos);
+* Sequenciais / Acesso Aleatório;
+* Síncronos / Assíncronos - transferência de dados com tempos de resposta previsíveis ou não;
+* Partilháveis / Dedicados - se há partilha concorrente de processos ou não;
+* Velocidade de operação;
+* _Read-Write_ / _Read-Only_ / _Write-Only_.
+
+(PÁGINA 8)
+
+*Pergunta 1.* b, c, g
+
+*Pergunta 2.* a, e, f, g
+
+*Pergunta 3.* aumentar a segurança
+
 ## Aula Prática 1
 
 **Bash Shell** (_Born Again Shell_), **SH Bourne Shell** (_Bourne Shell_), **CSH**, **TCSK** são CLI (_Command Line Interpretor_) do sistema operativo Linux.
 GUI (_Graphical User Interface_).
 
-LOOP
-    leitura de comandos (ambiente gráfico -> cliques) (CLI -> instruções escritas)
-    interpretação
-        parsing
-        ação
-            execução de novos comandos que o sistema operativo pode encontrar
-            funcionalidade do próprio programa _shell_ (embutida)
+LOOP:
+* leitura de comandos (ambiente gráfico -> cliques) (CLI -> instruções escritas)
+* interpretação
+  * parsing
+  * ação
+    * execução de novos comandos que o sistema operativo pode encontrar
+    * funcionalidade do próprio programa _shell_ (embutida)
 
 EDITORES
-    linha a linha : `ed`
-    screen based : `vi emacs`
-    complex screen based : `vim xemacs`
-    graphics : `gedit` `notepad` `notepad++`
-    ides: `netbeans` `intellij` `vscode` `vspro`
+* linha a linha : `ed`
+* screen based : `vi emacs`
+* complex screen based : `vim xemacs`
+* graphics : `gedit` `notepad` `notepad++`
+* ides: `netbeans` `intellij` `vscode` `vspro`
 
 Tudo em Linux é um ficheiro (ficheiros 'normais', pastas, _sockets_, discos, periféricos).
 
@@ -65,3 +101,8 @@ Tudo em Linux é um ficheiro (ficheiros 'normais', pastas, _sockets_, discos, pe
 página 1 -> bash
 página 2 -> linux sys calls
 página 3 -> c standard library
+
+
+
+
+***aihdoahgsdoahdoi afio aufaihfpi uagiuag ioug aoifg a of ga***

@@ -23,4 +23,11 @@ Em IHC pretendem-se ferramentas / sistemas que:
 
 ## Aula Teórica 2
 
-Utilizador humano = IPU (_Information Processing Unit_) com psicologia cognitiva (sistemas percetivo, motor e cognitivo - perceção de capacidades e limitações, facilidade e dificuldade, agradabilidade, _modus operandi_ [tato, áudio, voz]).
+Um utilizador humano pode ser considerado um IPU (_Information Processing Unit_) com psicologia cognitiva (sistemas percetivo, motor e cognitivo - perceção de capacidades e limitações, facilidade e dificuldade, agradabilidade, _modus operandi_ [tato, áudio, voz]). Possui informação de _input_/_output_ (visão, audição, tato, movimento), informação guardada em memória (sentidos), informação processada e aplicada (pensamento, resolução de problemas, capacidades, erros), dimensão emocional e unicidade individual.
+
+A visão é um _input_, através dos sentido, que envolve dois passos: receção física de um estímulo (no olho), interpretação e processamento. A perceção do que se vê assenta em quatro pontos:
+* **Tamanho** - medindo o ângulo visual em graus, minutos e segundos;
+* **Profundidade**;
+* **Brilho**;
+* **Cor**.
+A acuidade (perceção) visual é a habilidade de uma pessoa em distinguir os mínimos detalhes. A matiz de cor refere-se ao conjunto de cores 'puras' dentro de um espaço de cor. A visão cromática tem três componentes (**tom** [espetro de cor], **intensidade** [brilho da cor], **saturação** [quantidade de branco]), com maior acuidade para verde e menor para azul. O processamento visual implica a ação do cérebro na significância do sinal de _input_ visual, ou seja, o que vemos é uma interpretação baseada nas expectativas. Há uma tendência para aumentar linhas horizontais e diminuir as verticais, ficando o 'centro ótico' percebido numa posição ligeiramente acima do centro real. Na leitura, o olho humano faz movimentos rápidos (sacadas [_saccades_]) e pausas (fixações [_fixations_]).

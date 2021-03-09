@@ -69,7 +69,13 @@ O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e 
   * Códigos de Reed-Solomon;
   * Códigos convolucionais.
 
-Modelo OSI (_Open Systems Interconnection_) -> próxima aula
+Protocolo TCP/IP 
+* Camada Física (1) > Camada de Ligação de Dados (2) > Camada de Redes > Camada de Transporte > Camada de Aplicação
+Modelo OSI (_Open Systems Interconnection_) - concetual, não implementado fisicamente
+* Camada Física (1) > Camada de Ligação de Dados (2) > Camada de Redes > Camada de Transporte > Camada de Sessão > Camada de Apresentação > Camada de Aplicação
+  * Mnemónica: _People Desperately Need To See Pamela Anderson_ (aaa -> aplicação) // _All People Seem To Need Data Processing_
+
+255 dec = 11111111 bin = FF hex
 
 ---
 
@@ -86,9 +92,11 @@ Num _hub_, toda a informação é partilhada com todos os dispositivos (o que pr
 
 Para evitar / diminuir o efeito de ataques informáticos e impedir grandes danos por falhas técnicas, deve haver vários pontos de acesso, circuitos redundantes e implementação de _firewalls_ (sendo necessário entender como é que as informações são trocadas).
 
-As tabelas ARP ligam o IP de cada máquina ao seu MAC Address após o envio de pacotes por `ping`. Uma tabela ARP é normalmente constituída por: endereço de internet, endereço físico, tipo.
+As tabelas ARP (_Address Resolution Protocol_) ligam o IP de cada máquina ao seu MAC Address após o envio de pacotes por `ping`. Uma tabela ARP é normalmente constituída por: endereço de internet, endereço físico, tipo.
 
 _Top Level Domain_ são máquinas servidores de DNS que permitem associar nomes a IP's.
+
+Máquinas iguais ligam-se com cabos cruzados.
 
 2.3. `arp -a`
 2.4. `ping <endereço-computador-recetor>`
