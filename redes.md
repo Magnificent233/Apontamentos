@@ -123,3 +123,7 @@ Máquinas iguais ligam-se com cabos cruzados.
 9.1.1. `enable` > `interface fastEthernet 0/0` > `ip address 192.168.1.1 255.255.255.0` > `no shutdown` > `description descricao`
 (para a primeira porta fastEthernet)
 12.  _Default Gateways_ servem para especificar um endereço IP predefinido para onde são enviados todos os pacotes de uma rede.
+
+### Aula Prática 3
+
+Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_Domain Name System_]), usando DHCP (_Dynamic Host Configuration Protocol_).
