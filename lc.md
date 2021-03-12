@@ -30,6 +30,8 @@ As **árvores de derivação (ou dedução)** são utilizadas para mostrar uma p
 
 Na **lógica de predicados** (lógica de primeira ordem), expressões com uma ou mais incógnitas (variáveis) que são verdadeiras ou falsas dependendo do valor das suas variáveis.
 
+---
+
 ## Aula Teórica 2
 
 A **indução matemática** possui:
@@ -50,34 +52,135 @@ Na **indução estrutural**, utilizada para provar propriedades sobre os element
 * `v ⊩ P ⋀ Q` se `v ⊩ P` ou `v ⊩ Q`;
 * `v ⊩ P ⋁ Q` se `v ⊩ P` ou `v ⊩ Q`;
 * `v ⊩ P → Q` se `v ⊮ P` ou `v ⊩ Q`.
-Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmula `P ∈ Fp` é satisfazível. Dada uma f ormula `P ∈ Fp` e uma valoração `v`, tem-se: `v ⊩ P` se `v(P) = V` e `v ⊮ P` se `v(P) = F`.
+Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmula `P ∈ Fp` é satisfazível. Dada uma fórmula `P ∈ Fp` e uma valoração `v`, tem-se: `v ⊩ P` se `v(P) = V` e `v ⊮ P` se `v(P) = F`.
 
-**Àlgebra de Boole:** considere-se o conjunto de valores de verdade `{V, F}` e as operações `∧, ∨, ¬`:
+**Àlgebra de Boole:** considere-se o conjunto de valores de verdade `{V, F}` e as operações `∧, ⋁, ¬`:
 * `∧ : {V, F} × {V, F} → {V, F}`:
   * `V ∧ p = p` (V ́e o elemento neutro de `∧`);
   * `F ∧ p = F` (F ́e o elemento absorvente de `∧`);
-* `∨ : {V,F } × {V, F} → {V, F}`:
-  * `V ∨ p = V` (V ́e o elemento absorvente de `∨`);
-  * `F ∨ p = p` (F ́e o elemento neutro de `∨`);
+* `⋁ : {V,F } × {V, F} → {V, F}`:
+  * `V ⋁ p = V` (V ́e o elemento absorvente de `⋁`);
+  * `F ⋁ p = p` (F ́e o elemento neutro de `⋁`);
 * `¬ : {V, F} → {V, F}`:
   * `¬V = F`;
   * `¬F = V`.
 **Propriedades da Álgebra de Boole** (assumindo `p, q ∈ {V, F}`; provas nos diapositivos 25-26)
 * `¬(¬p) = p`;
-* `p ∧ p = p` e `p ∨ p = p`;
-* `p ∨ ¬p = V`;
-* `p ∧ ¬p = F`;
-* `¬(p ∨ q) = (¬p) ∧ (¬q)`;
-* `¬(p ∧ q) = (¬p) ∨ (¬q)`.
+* `p ⋀ p = p` e `p ⋁ p = p`;
+* `p ⋁ ¬p = V`;
+* `p ⋀ ¬p = F`;
+* `¬(p ⋁ q) = (¬p) ⋀ (¬q)`;
+* `¬(p ⋀ q) = (¬p) ⋁ (¬q)`.
+
+**Extensão da Valoração para Fp:** função `v: Fp -> {V, F}`. definida indutivamente da seguinte forma, `P, Q ∈ Fp`:
+* `v(⊥) = F`;
+* `∀ p ∈ Pp`, se `P = p` então `v(P) = p`;
+* `v(P ⋀ Q) = v(P) ⋀ v(Q)`;
+* `v(P ⋁ Q) = v(P) ⋁ v(Q)`;
+* `v(P → Q) = (¬v(P)) ⋁ v(Q)`.
+
+---
+
+## Aula Teórica 3
+
+**Proposição** (satisfazibilidade): `v ⊩ P` se `v ⊮ ¬P` e `v ⊮ P` se `v ⊩ ¬P`.
+
+Dado `S ⊆ Fp`, se `v ⊩ Q` para todo o `Q ∈ S`, então `v ⊩ S`. `S ⊆ Fp` diz-se *possível* se existe uma valoração v que satisfaz todas as fórmulas de S, caso contrário, diz-se *contraditório*. Uma fórmula `Q ∈ Fp` é:
+* **Possível**, se existe alguma `v(Q) = V`;
+* **Válida**/**Tautologia** (`⊨ Q`), se existe sempre `v(Q) = V` (uma tautologia é sempre uma fórmula possível);
+* **Contraditória**, se não existe qualquer `v(Q) = V`;
+* Se Q não é uma tautologia, então `⊭ Q`.
+
+Uma fórmula que não é válida pode ser possível ou contraditória. Uma fórmula que não é contraditória pode ser possível ou válida. Uma fórmula que não é possível é contraditória.
+
+**Lema:**
+* A negação de uma fórmula válida é contraditória;
+* A negação de uma fórmula contraditória é válida;
+* A negação de uma fórmula possível (não tautológica) é possível.
+
+**Sumário de Tabelas de Verdade**
+* `¬p`: valor de verdade oposto ao de `p`;
+* `p ⋀ q`: verdadeira se e só se `p` e `q` são verdadeiras, caso contrário, é falsa;
+* `p ⋁ q`: falsa se e só se `p` e `q` são falsas, caso contrário, é verdadeira;
+* `p → q`: falsa se e só se `p` é verdadeira e `q` é falsa, caso contrário, é verdadeira;
+* `p ↔ q`: verdadeira se e só se `p` e `q` têm o mesmo valor de verdade, caso contrário, é falsa.
+
+---
 
 ## Exercícios
 
-### Aula Teórica 1, diapositivo 34
+### Aula Teórica 1
 
-**Considerando `Pp = {p, q, r}`, calcule `Sf (p ⋁ (q → p))`.**
+#### Diapositivo 34
+
+**Considerando `Pp = {p, q, r}`, calcule `Sf (p ∨ (q → p))`.**
 
   Sf (p ⋁ (q → p)) =
 = {p ⋁ (q → p)} Sb (p) ∪ Sb (q → p) =
 = {p ⋁ (q → p)} ∪ {p} ∪ {q → p} ∪ Sb (q) ∪ Sb (p) =
 = {p ⋁ (q → p), p} ∪ {q → p} ∪ {q} ∪ {p} =
 = {p ⋁ (q → p), q → p, p, q}
+
+### Aula Teórica 2
+
+#### Diapositivo 14
+
+**Prove que qualquer que seja A € Fp, A contém um número par de parêntesis (0 é um número par).**
+
+Casos Base: A = ⊥ : tem 0 parêntesis (0 é par)
+            A = p, p ∈ Pp : tem 0 parêntesis (0 é par)
+Passos de Indução: A = ¬Q, Q ∈ Fp
+                   H.I.: Q tem um número par de parêntesis, n.
+                         Se Q tem n parêntesis, então (¬Q) tem n + 2 parêntesis.
+                         Por H.I., n é par, portanto n + 2 também é.
+                   A = P ⋀ Q, P,Q ∈ Fp
+                   H.I.: P ⋀ Q tem um número par de parêntesis, n.
+                         Se P ⋀ Q tem n parêntesis, então (P ⋀ Q) tem n + 2 parêntesis.
+                         Por H.I., n é par, portanto n + 2 também é.
+                   A = P ⋁ Q, P,Q ∈ Fp
+                   H.I.: P ⋁ Q tem um número par de parêntesis, n.
+                         Se P ⋁ Q tem n parêntesis, então (P ⋁ Q) tem n + 2 parêntesis.
+                         Por H.I., n é par, portanto n + 2 também é.
+                   A = P → Q, P,Q ∈ Fp
+                   H.I.: P → Q tem um número par de parêntesis, n.
+                         Se P → Q tem n parêntesis, então (P → Q) tem n + 2 parêntesis.
+                         Por H.I., n é par, portanto n + 2 também é.
+
+### Aula Teórica 3
+
+#### Diapositivo 38
+
+**Construa a tabela de verdade das seguintes proposições:**
+
+* `(p ↔ q) ↔ r`
+  * `p | q | r | p ↔ q | (p ↔ q) ↔ r`
+  * `V | V | V | _ V _ | _ _ V`
+  * `V | V | F | _ V _ | _ _ F`
+  * `V | F | V | _ F _ | _ _ F`
+  * `V | F | F | _ F _ | _ _ V`
+  * `F | V | V | _ F _ | _ _ F`
+  * `F | V | F | _ F _ | _ _ V`
+  * `F | F | V | _ V _ | _ _ V`
+  * `F | F | F | _ V _ | _ _ F`
+
+* `(p ↔ q) ⋀ (p ↔ r)`
+  * `p | q | r | p ↔ q | p ↔ r | (p ↔ q) ⋀ (p ↔ r)`
+  * `V | V | V |  _ V _  | _ V _ | _ _ _ _ V`
+  * `V | V | F |  _ V _  | _ F _ | _ _ _ _ F`
+  * `V | F | V |  _ F _  | _ V _ | _ _ _ _ F`
+  * `V | F | F |  _ F _  | _ F _ | _ _ _ _ F`
+  * `F | V | V |  _ F _  | _ F _ | _ _ _ _ F`
+  * `F | V | F |  _ F _  | _ V _ | _ _ _ _ F`
+  * `F | F | V |  _ V _  | _ F _ | _ _ _ _ F`
+  * `F | F | F |  _ V _  | _ V _ | _ _ _ _ V`
+
+#### Diapositivo 44
+
+**Verifique se `(a → b) ↔ (¬b → ¬a)` é válida, contraditória ou possível.**
+
+* A fórmula é válida:
+  * `a | b | ¬a | ¬b | (a → b) | (¬b → ¬a) | (a → b) ↔ (¬b → ¬a)`
+  * `V | V | _F | _F | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
+  * `V | F | _F | _V | _ _ F _ | _ _ F _ _ | _ _ _ _ V`
+  * `F | V | _V | _F | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
+  * `F | F | _V | _V | _ _ V _ | _ _ V _ _ | _ _ _ _ V`

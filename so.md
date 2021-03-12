@@ -59,21 +59,33 @@ Qualquer transferência é um _output_ de um dispositivo e um _input_ para outro
 
 O **método síncrono** faz que, após o início de uma operação de _input_/_output_, o controlo só retorne ao programa do utilizador após essa operação através de uma instrução _wait_. Desvantagens: no máximo um pedido de _input_/_output_ é atendido de cada vez; não existe processamento de _input_/_output_ simultâneo; contenção para acesso à memória (ciclo _wait_). O **método assíncrono** faz que, após o início de uma operação de _input_/_output_, o controlo retorne ao programa do utilizador sem esperar pela terminação da operação de _input_/_output_. Vantagens: permite operações de _input_/_output_ concorrentes e processamento simultâneo. Desvantagens: implementação mais complexa.
 
-A **interface de _input_/_output_ do _kernel_** é um conjunto de operações de _input_/_output_ independentes de _hardware_, e os ***device drivers*** são módulos do _kernel_ dependentes do _hardware_, cada um encapsulando o funcionamento específico de cada dispositivo. Vantagem: facilidade na implementação de novos periféricos. Os dispositivos de _input_/_output_ caracterizam-se por:
-* _Character-stream_ / _block_ - transferência de bytes um a um (dispositivo de carateres) ou em bloco (dispositivo de blocos);
+A **interface de _input_/_output_ do _kernel_** é um conjunto de operações de _input_/_output_ independentes de _hardware_, e os ***device drivers*** são módulos do _kernel_ dependentes do _hardware_, cada um encapsulando o funcionamento específico de cada dispositivo. Vantagem: facilidade na implementação de novos periféricos. Os relógios e temporizadores (_clocks_, _timers_) permitem determinar tempo corrente / decorrido e ativar um temporizador para despoletar uma operação numa dada altura Os dispositivos de _input_/_output_ caracterizam-se por:
+* _Character-stream_ / _block_ - transferência de bytes um a um (dispositivo de carateres [teclado, rato, com interface básica _get_, _put_]) ou em bloco (dispositivo de blocos [disco rígido, com interface básica _read_, _write_, _seek_; dispositivo de rede, com _sockets_]);
 * Sequenciais / Acesso Aleatório;
 * Síncronos / Assíncronos - transferência de dados com tempos de resposta previsíveis ou não;
 * Partilháveis / Dedicados - se há partilha concorrente de processos ou não;
 * Velocidade de operação;
 * _Read-Write_ / _Read-Only_ / _Write-Only_.
 
-(PÁGINA 8)
+Um DMA (***Direct Memory Access***) permite que certos dispositivos de _hardware_ de alta velocidade num computador acedam a memória do sistema para efetuar operações de _input_/_output_ independentemente da CPU. O controlador transfere blocos de dados do _buffer_ diretamente para a memória principal sem intervenção da CPU, com uma interrupção gerada por bloco (e não por byte), permitindo execução simultânea de CPU e operações de _input_/_output_. A transferência de dados pode ser feita por pedido síncrono do _software_ ou impulso assíncrono do _hardware_ para o sistema.
+
+Armazenamento:
+* **Memória Principal:** só acedida pela CPU;
+* **Memória Secundária:** extensão da memória principal com grande capacidade de armazenamento não-volátil;
+* **Discos Magnéticos:** pratos de vidro ou metal rígido revestidos de material magnético de gravação com pistas (_tracks_) divididas em setores (_sectors_);
+* ***Caching*:** cópia de informação num sistema de armazenamento utilizando memória de alta velocidade para guardar dados recentemente acedidos.
+
+A partilha de recursos do sistema requer que o sistema operativo assegure que um programa incorreto não faça com que outros programas funcionem incorretamente. A proteção de _hardware_ é assegurada por:
+* **Operação em _dual-mode_:** diferencia pelo menos dois modos de operação, _user-mode_ (desencadeada pelo utilizador) e _monitor-mode_/_kernel-mode_/_system-mode_/_bit-mode_ (desencadeada pelo sistema operativo), em que quando uma interrupção ocorre, o _hardware_ comuta para o _monitor-mode_;
+* **Proteção de _input_/_output_:** todas as instruções de _input_/_output_ são instruções privilegiadas, assegurando que um programa do utilizador não consegue controlar o computador em _monitor-mode_;
+* **Proteção de memória:** adiciona dois registos que determinam a gama de endereços a que um programa pode aceder (**registo de base**, endereço mais baixo da memória física; **registo limite**, tamanho da gama), em que as instruções de carregamento dos registos de base e de limite são instruções privilegiadas;
+* **Proteção da CPU:** o temporizador interrompe o computador após um período de tempo especificado, assegurando que o sistema operativo possa manter controlo e implementar _time-sharing_ e em que _load-timer_ é uma instrução privilegiada.
 
 *Pergunta 1.* b, c, g
 
 *Pergunta 2.* a, e, f, g
 
-*Pergunta 3.* aumentar a segurança
+*Pergunta 3.* aumentar a segurança pela diferenciação de tipos de modo de utilizador
 
 ## Aula Prática 1
 
@@ -102,7 +114,14 @@ página 1 -> bash
 página 2 -> linux sys calls
 página 3 -> c standard library
 
+## Aula Prática 3
 
+ctrl + z -> suspender
 
+fg -> voltar a excecutar último comando / script
 
-***aihdoahgsdoahdoi afio aufaihfpi uagiuag ioug aoifg a of ga***
+0 -> sucesso
+
+`grep` -> procupar expressões regulares, que podem ser especificadas
+* ^ -> início de uma linha
+* $ -> fim de uma linha

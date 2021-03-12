@@ -69,13 +69,33 @@ O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e 
   * Códigos de Reed-Solomon;
   * Códigos convolucionais.
 
-Protocolo TCP/IP 
-* Camada Física (1) > Camada de Ligação de Dados (2) > Camada de Redes > Camada de Transporte > Camada de Aplicação
-Modelo OSI (_Open Systems Interconnection_) - concetual, não implementado fisicamente
-* Camada Física (1) > Camada de Ligação de Dados (2) > Camada de Redes > Camada de Transporte > Camada de Sessão > Camada de Apresentação > Camada de Aplicação
-  * Mnemónica: _People Desperately Need To See Pamela Anderson_ (aaa -> aplicação) // _All People Seem To Need Data Processing_
+**Modelo TCP/IP**:
+* Camada Física (1)
+* Camada de Ligação de Dados (2)   // CAMADA FÍSICA E CAMADA DE LIGAÇÃO DE DADOS SÃO CORRESPONDENTES? OU A CAMADA FÍSICA SIMPLESMENTE NÃO EXISTE NO TCP IP, MAS SIM NO OSI?
+* Camada de Redes
+* Camada de Transporte
+* Camada de Aplicação
+**Modelo OSI (_Open Systems Interconnection_)** - concetual, não implementado fisicamente:
+* Camada **Física** (1)
+* Camada de **Ligação de Dados** (2)
+  * Responsável por transmitir dados sobre um canal físico;
+  * Funcionalidades: endereçamento físico, isolamento da topologia de rede;
+  * Serviço não fiável (o recetor não envia ACKs (_Acknowledgment Code_) ao emissor para validar a boa receção das tramas) e sem conexão (não existe estabelecimento de um circuito virtual (_handshake_) entre o emissor e o recetor);
+  * Possui duas subcamadas:
+    * _Link Layer Control_ (LLC) - faz a multiplexagem dos protocolos das camadas superiores e controla erros;
+    * _Media Access Control_ (MAC) - controla o acesso ao meio físico, implementando algoritmos de controlo / resolução de colisões CSMA (_Carrier-Sense Multiple Access); // ESTA SUBCAMADA MAC É EQUIVALENTE AO ENDEREÇO MAC? OU SÃO DUAS COISAS COM O MESMO NOME MAS QUE NÃO SÃO IGUAIS?
+* Camada de **Redes**
+* Camada de **Transporte**
+* Camada de **Sessão**
+* Camada de **Apresentação**
+* Camada de **Aplicação**
+  * Mnemónica: _People Desperately Need To See Pamela Anderson_ (ascendente) // _All People Seem To Need Data Processing_ (descendente)
 
-255 dec = 11111111 bin = FF hex
+`255 dec = 11111111 bin = FF hex`
+
+O **endereço MAC** (_Media Access Control_) faz endereçamento ao nível da ligação e é necessário para encaminhar uma trama de um interface para outro interface da mesma rede. É armazenado na EPROM do computador (placa de rede) e escreve-se em notação hexadecimal com separador `:`, `.` ou `-`. São geridos pelo IEEE (_Institute of Electrical and Electronics Engineers_) e devem ser únicos numa LAN.
+
+As **tabelas ARP** (_Address Resolution Protocol_) são locais para cada máquina e permitem que uma comunicação crie uma trama _ethernet_ com o endereço MAC associado ao endereço IP de destino. São dinâmicas, construídas a cada nova comunicação, e constituídas por endereços IP, endereços MAC e TTL (_Time To Live_).
 
 ---
 
