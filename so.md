@@ -87,6 +87,40 @@ A partilha de recursos do sistema requer que o sistema operativo assegure que um
 
 *Pergunta 3.* aumentar a segurança pela diferenciação de tipos de modo de utilizador
 
+---
+
+## Aula Teórica 3
+
+
+**Modelo de compilação**
+* Pré-processador (`.i`) - `cc -E main.c -o main.i`, `cc -E sub.c -o sub.i`
+* Compilador (`.s`) - `cc -Wall -ansi -S *.i`
+* Assembler (`.o`) - `cc -c *.s`
+* _Linkagem_ (`.out`) - `cc -o exemplo main.o sub.o -lm`
+  * Estática (código embutido)
+  * Dinâmica (endereço do código)
+    * *Modelo de _Run-Time_: programa executável > chamada ao sistema > início > realocação de código > execução do programa
+* Programa binário executável
+
+O _scope_ de uma variável define as secções de código onde a variável está válida. Símbolos são entidades lexicais que nomeiam funções, variáveis e constantes, cada um com um valor (endereço de memória). O código consiste de definições e referências de símbolos, que podem ser locais ou externas (globais). Cada ficheiro-objeto executável tem uma tabela de símbolos. Os símbolos podem ser **fortes** (procedimentos e variáveis globais inicializadas) ou **fracos** (variáveis globais não inicializadas), seguindo as seguintes regras:
+* um símbolo forte só pode aparecer uma vez;
+* Um símbolo fraco pode ser sobreposto por um símbolo forte com o mesmo nome;
+* Se há vários símbolos fracos, o _linker_ pode escolher um aleatoriamente.
+
+Um _linker_ funde ficheiros objetos num único ficheiro objeto executável, realocando símbolos das suas posições relativas nos ficheiros `.o` para posições 'absolutas' no executável. _Linkers_ são **modularidáveis** (o programa pode ser escrito numa coleção de ficheiros-fonte mais pequenos, permitindo construir bibliotecas de funções comuns) e **eficientes** (não necessita de recompilar todos os ficheiros após alterações; permite utilizar apenas os programas que contenham o código desejado).
+
+O formato **ELF** (_Executable and Linkable Format_) é um formato binário padrão para ficheiros-objeto. É constituído por _elf header_ (número mágico, tipo, máquina, ordenação de bytes), _program header table_ (tamanho de página, segmentos de endereços virtuais de memória, tamanho de segmentos), _.text section_ (código), _.data section_ (dados estáticos inicializados), _.bss section_ (dados estáticos não inicializados), _.symtab section_ (tabela de símbolos, nomes de variáveis estáticas e procedimentos, nomes e localizações de secções), _.rel.text section_ (informação realocada da secção _.text_, endereços de instruções a alterar no executável, instruções a executar), _.rel.data section_ (realocação da secção _.data_, endereços de apontadores de dados que precisam de ser modificados no executável), _.debug section_ (informação para _debugging_).
+
+As **bibliotecas estáticas** (ficheiros de arquivo `.a`) concatenam arquivos de objetos relocáveis relacionados num único ficheiro com um índice (arquivo), melhorando o _linker_ de modo a que este procure referências externas não resolvidas ao observar os símbolos de um ou mais arquivos e as ligue a ficheiros executáveis. O _archiver_ permite atualizações pontuais, como recompilar uma função modificada ou substituir ficheiros `.o` num arquivo. O algoritmo do _linker_ para encontrar referências externas é:
+* Examinar ficheiros `.o` e `.a` na linha de comandos, mantendo uma lista de referências não resolvidas;
+* A cada novo `.o` ou `.a` encontrado, tentar resolver as referências;
+* Se alguma entrada na lista continuar não resolvida, mostrar erro.
+Isto implica ordem específica de ficheiros e colocação de bibliotecas no final da linha de comandos. Tal pontenciona a duplicação de código comum nos ficheiros executáveis e na memória, e que a reparação de pequenos _bugs_ requira que cada aplicação seja explicitamente relincada.
+
+As **bibliotecas partilhadas** (_Dynamic Link Libraries_, DLL) permitem que a _linkagem_ dinâmica ocorra antes ou durante a execução do ficheiro e sejam partilhadas por processos múltiplos.
+
+---
+
 ## Aula Prática 1
 
 **Bash Shell** (_Born Again Shell_), **SH Bourne Shell** (_Bourne Shell_), **CSH**, **TCSK** são CLI (_Command Line Interpretor_) do sistema operativo Linux.
