@@ -147,3 +147,4 @@ Máquinas iguais ligam-se com cabos cruzados.
 ### Aula Prática 3
 
 Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_Domain Name System_]), usando DHCP (_Dynamic Host Configuration Protocol_).
+11. Os domínios de email devem ser adicionados ao servidor DNS para que todos os dispositivos ligados ao servidor os reconheçam.
