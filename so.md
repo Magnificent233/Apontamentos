@@ -159,3 +159,6 @@ fg -> voltar a excecutar último comando / script
 `grep` -> procupar expressões regulares, que podem ser especificadas
 * ^ -> início de uma linha
 * $ -> fim de uma linha
+
+id=$(tail -n 1 frutas.txt | cut -d : -f 1)
+let novoid=id++
