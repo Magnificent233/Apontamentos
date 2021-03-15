@@ -97,6 +97,31 @@ O **endereço MAC** (_Media Access Control_) faz endereçamento ao nível da lig
 
 As **tabelas ARP** (_Address Resolution Protocol_) são locais para cada máquina e permitem que uma comunicação crie uma trama _ethernet_ com o endereço MAC associado ao endereço IP de destino. São dinâmicas, construídas a cada nova comunicação, e constituídas por endereços IP, endereços MAC e TTL (_Time To Live_).
 
+O endereço _default gateway_ (só configurado nos clientes) é o endereço da interface mais próxima do router mais próximo. Serve para conseguir enviar tramas de computadores para o router.
+
+`sh ip route` -> código que, aplicado num router, que mostra a tabela de rotas IP conhecidas pelo router (tabela de routing).
+
+O **hub** atua no nível 1 (físico) e interliga segmentos de uma rede, permitindo aumentar a máxima distância entre nós, embora não isole os segmentos a nível de colisões. (obsoleto)
+
+O **switch** atua no nível 2 (ligação) e armazena e encaminha frames Ethernet com base no endereço MAC de destino, diminuindo o nível de colisão a cada segmento, utilizando o protocolo CSMA/CD para garantir o acesso. É um dispositivo **transparente**, ou seja, são _plug-and-play self-learning_ e não precisa de ser configurado. Executam filtragem (_filtering_, determinar se uma trama deve ou não ser encaminhada para uma área da rede [VLANs, _Virtual Local Area Network_]) e encaminhamento (_forwarding_, determinar para que área da rede uma trama deve ser encaminhada). Vários switches não podem criar uma rede em anel, derivado ao _spanning tree protocol_ (STP). Cada switch mantém uma _switch table_, que mostra os endereços MAC conhecidos pelo switch, interface e _time stamp_, a que se acede pelo comando `sh mac address-table`. O switch memoriza os endereços dos dispositivos que estão ligados a cada uma das suas interfaces, cujos elementos (endereço MAC, interface, instante de chegada) são guardados na tabela de switching e eliminados ao final de um período de tempo quando não são recebidas novas frames. Quando um switch recebe uma trama:
+* Extrai o endereço MAC de origem da trama e procura o endereço na tabela de switching:
+  * Se encontrar, não executa quaisquer operações;
+  * Se não encontrar, cria um novo elemento com esse endereço, nome da interface recetora e instante de chegada;
+* Extrai o endereço MAC de destino da trama e procura o endereço na tabela de switching:
+  * Se encontrar e se a interface é a mesma por onde a trama chegou, então descarta a trama;
+  * Se encontrar e se a interface é diferente, encaminha a trama para a interface associada;
+  * Se não encontrar, propaga a trama para todas as interfaces, exceto a de chegada.
+
+**Switches** e **Routers** são ambos dispositivos _store-and-forward_. Routers examinam e mudam o cabeçalho do pacote/datagrama (nível 3), implementando algoritmos e tabelas de routing através de ligações em anel. Switches examinam o cabeçalho da trama (e podem alterá-lo em VLANs; nível 2), mantêm tabelas de switching e implementam algoritmos de filtragem e manutenção da prevenção de ciclos, não devendo ser ligados em anel.
+
+**Bridges** são equipamentos que atuam no nível 2 e ligam várias redes diferentes no nível físico ou de ligação, mas com o mesmo protocolo no nível de rede ou transporte, permitindo a criação de uma rede homogénea, possuindo uma tabela dinâmica que contém todos os endereços de rede, e podem impedir a passagem de certos tipos de pacotes.
+
+Algoritmo CSMA/CD Ethernet:
+* O adaptador recebe o datagrama do nível de rede e constrói uma trama;
+* Se o adaptador detetar que o canal está livre, começa a transmitir (senão espera que fique livre);
+  * Se o adaptador conseguir transmitir a trama até ao fim sem que haja colisões, a transmissão é um sucesso;
+  * Se o adaptador detetar uma colisão, interrompe a emissão e envia sinal de engarrafamento, tentando ao final de algum tempo (_exponential backoff_) enviar uma nova transmissão.
+
 ---
 
 ### Aula Prática 1
