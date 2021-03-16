@@ -36,3 +36,25 @@ O `scanf` é 'guloso' porque guarda todo o _buffer_ para si, apropriando-se de t
 Quando uma função é chamada com o prefixo do módulo (por exemplo, `Printf.printf`), diz-se que tem um nome **qualificado** - está-se a qualificar a função `printf` pelo módulo `Printf`. Também se pode abrir o módulo com a instrução `open <nome-do-módulo>`, utilizando as suas funções sem prefixação ao longo do programa.
 
 A ordem de avaliação de uma lista de expressões em OCaml **não é especificada**, no entanto, os mais recentes escolheram avaliar da esquerda para a direita. Regra de ouro: **nunca implementar programas que dependem de mecanismos com comportamento não especificado**. Os parâmetros de uma função são sempre avaliados antes da avaliação da função (**avaliação ansiosa**; existe também a **avaliação preguiçosa**, quando a função é avaliada primeiro que os parâmetros [linguagem Haskell]).
+
+C:
+int soma (int x) {
+  int i = 0, res = 0;
+  for (i = 0; i < x; i++) {
+    res += i;
+  }
+  return res;
+}
+
+int soma_rec (int x) {
+  return (x <= 0) ? 0 : x + soma_rec (x - 1);
+}
+
+OCAML:
+let soma x =
+  let res = ref 0 in (* res = ref 0 -> implica que o primeiro valor de res é 0, mas que pode ser mutável; ref == referência *)
+  for i = 1 to x do
+    res := !res + i (* atribui-se o valor de !res + i à variável res, embora res continue sempre a apontar para 0 *)
+  done; !res
+
+let rec soma_rec x = if x <= 0 then 0 else x + soma_rec (x - 1)
