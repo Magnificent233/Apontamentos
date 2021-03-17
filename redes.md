@@ -173,3 +173,15 @@ Máquinas iguais ligam-se com cabos cruzados.
 
 Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_Domain Name System_]), usando DHCP (_Dynamic Host Configuration Protocol_).
 11. Os domínios de email devem ser adicionados ao servidor DNS para que todos os dispositivos ligados ao servidor os reconheçam.
+
+### Aula Prática 4
+
+3.3.2. `enable` > `show vlan`
+3.11.1. `enable` > `show interface trunk`
+3.11.2. Porta trunk é ?
+3.11.3. _Seria possível estabelecer a comunicação entre as VLANs sem a utilização do trunk? Justifique._
+3.12. `copy running-config startup-config`
+4.1.2. `int f0/0.5`
+4.2. `show running-config`
+4.3. `copy running-config startup-config`
+5. `sh run`
