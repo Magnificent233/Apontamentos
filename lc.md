@@ -12,7 +12,7 @@ Um sistema formal de raciocínio é composto por:
     * símbolo ⊥ -> falso/absurdo;
     * proposições atómicas -> Pp = p, q, r...
     * conetivos (ordenados da maior precedência para a menor) -> ¬, ⋀, ⋁, →, ↔;
-      * Conjunção e disjunção são associatvas à esquerda; implicação é associativa à direita;
+      * Conjunção e disjunção são associativas à esquerda; implicação é associativa à direita;
     * parêntesis -> (, );
   * Linguagem (fórmulas [Fp]):
     * _BOT_: `⊥ ∈ Fp`;
@@ -104,6 +104,32 @@ Uma fórmula que não é válida pode ser possível ou contraditória. Uma fórm
 * `p ⋁ q`: falsa se e só se `p` e `q` são falsas, caso contrário, é verdadeira;
 * `p → q`: falsa se e só se `p` é verdadeira e `q` é falsa, caso contrário, é verdadeira;
 * `p ↔ q`: verdadeira se e só se `p` e `q` têm o mesmo valor de verdade, caso contrário, é falsa.
+
+---
+
+## Aula Teórica 4
+
+**Lema (Símbolos Omissos):** sejam `A ∈ Fp` e `v1`, `v2` duas valorações. Se para todo o `a ∈ Sb(a)` se tem que `v1(a) = v2(a)`, então `v1(A) = v2(A)`.
+
+**Consequência Semântica:** (definição, 19)
+
+Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, não existe qualquer valoração tal que `v ⊩ s`. Se `S ⊆ Fp` é contraditório, então para qualquer `A ∈ Fp` tem-se `S ⊨ A`.
+
+* Se `S = ∅`, então `∅ ⊨ A` é equivalente a `⊨ A`.
+* Tem-se que `⊨ A` se e só se A é uma tautologia.
+* Se `S = {Q}`, `Q ∈ Fp` e `S ⊨ A`, então diz-se que A é uma consequência semântica de Q e escreve-se `Q ⊨ A`.
+
+PROPOSIÇÃO 4.1??
+
+**Proposição:** sejam `Q, A ∈ Fp`, `{Q} ⊨ A` se e só se `⊨ Q → A`.
+
+**Proposição:** `{s1, ..., sn} ⊨ A`, `n ∈ N`, se e só se `⊨ (s1 ⋀ ... ⋀ sn) → A`.
+
+**Proposição:** `{s1, ..., sn} ⊨ A` se e só se `s1 ⋀ ... ⋀ sn ⊨ A`.
+
+**Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ^ B} ⊨ A` e `{A ^ B } ⊨ B`. `{A} ⊨ A ⋁ B` e `{B} ⊨ A ⋁ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ⋀ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ⋁ B` se e só se `S ⊨ A` ou `S ⊨ B`.
+
+A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` e `B ⊨ C` então `A ⊨ C`, `A, B, C ∈ Fp`), logo, é uma **pré-ordem**.
 
 ---
 
