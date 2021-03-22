@@ -42,5 +42,16 @@ O tato é normalmente usado como um _feedback_ inconsciente (teclas, cinestesia,
 
 A memória humana armazena factos, processamentos e ações e está dividida concetualmente em três partes: memória sensorial, de curta duração (_short-term_, STM, ou memória de trabalho) e de longa duração (_long term_, LTM). A memória sensorial passa a memória de curta duração pela atenção a adeterminado estímulo, que passa a memória de longa duração com a repetição do estímulo.
 * A **memória sensorial** responde a estímulos dos sentidos (visão, audição, tato), que está a ser constantemente a ser alterada. A memória sensorial é transferida para a memória de curta duração através da **atenção** (ação de foco num determinado item ao filtrar os restantes _inputs_ recebidos ao mesmo tempo) - se não houver atenção, haveria uma sobrecarga de informação;
-* A **memória de curta duração** tem efeitos de recência (recordar as últimas palavras / letras / números / contas) e interferência;
-* A **memória de longa duração** .
+* A **memória de curta duração** tem efeitos de recência (recordar as últimas palavras / letras / números / contas) e interferência. A informação é dividida em partes mais pequenas com significado (_chunking_ ), que aumenta a eficácia do uso da memória, que leva a _closure_ (perda de localização mental que induz a erros);
+* A **memória de longa duração** é o repositório para todo o conhecimento, **episódico** (sequências de eventos) ou **semântico** (estruturas de factos, conceitos, capacidades, bem como classes com atributos e conexões tipo herança). Facilita a recuperação de informação, representa a relação entre duas unidades de informação e suporta inferência e generalização. A informação está organizada em estruturas de dados, instanciadas com valores com relações tipo-subtipo e uma extensão da rede semântica, com mais detalhes. A representação de conhecimento de procedimento segue as regras de condição/ação: se a condição se verifica, então a ação é realizada. A informação concetual é mais difícil de recordar do que a informação de objetos.
+  * A **lembrança** é informação reproduzida pela memória assistida por pistas (categorização, imagem), mais fácil de recordar;
+  * O **reconhecimento** é a informação que providencia pistas, menos complexa para se recordar porque a informação contextual dá assistência.
+  * A **decadência** é a perda de informação gradual e lentamente; a **interferência** é a reposição de informação antiga por nova informação (interferência retroativa) ou a interferência de informação antiga por nova informação (interferência proativa).
+
+---
+
+## Aula Teórica 4
+
+O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalizar de casos vistos para casos não vistos, não fiável), **raciocínio evento-causa** (não fiável).
+
+O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas.

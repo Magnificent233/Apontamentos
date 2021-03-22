@@ -122,6 +122,15 @@ Algoritmo CSMA/CD Ethernet:
   * Se o adaptador conseguir transmitir a trama até ao fim sem que haja colisões, a transmissão é um sucesso;
   * Se o adaptador detetar uma colisão, interrompe a emissão e envia sinal de engarrafamento, tentando ao final de algum tempo (_exponential backoff_) enviar uma nova transmissão.
 
+Toda a transmissão de dados feita em redes tem três bases fundamentais: esquema de endereçamento, protocolos comuns e negociação formatada. A camada 3 (de rede) serve para:
+* Encapsular segmentos em pacotes no emissor (no emissor);
+* Encaminhar pacotes do emissor ao recetor (no meio da rede);
+* Entregar os (SLIDE 9)
+
+Há dois tipos de _routing_:
+* **_Cut-through_** - o router começa a transmitir o pacote recebido assim que interpreta o cabeçalho;
+* **_Store-and-forward_** - o pacote é recebido, armazenado, processado e retransmitido.
+
 ---
 
 ### Aula Prática 1
