@@ -71,3 +71,43 @@ L[3] = 4;
 100512 |  200504 |                           200512 |  200200 |
 100516 |         |                           200516 |         | 
   ...  |   ...   |  ...                        ...  |   ...   | ...
+  
+**Exercício:** usando pilhas e filas, verificar se um número inteiro não nulo é capicua.
+_Teoria_
+N = 21365
+Pilha: 5 - 6 - 3 - 1 - 2 (topo)
+Fila : (frente) 5 - 6 - 3 - 1 - 2 (cauda)
+Capicua ? se topo = frente, então Pop(Pilha) e Remover(Fila); se topo != frente, então não é capicua. Quando Pilha e Fila ficarem vazias, então conclui-se que N é capicua.
+
+_Código_
+#include <stdio.h>
+#include <stdlib.h>
+#include "EADPilha.h"
+#include "EADFila.h"
+
+int main () {
+  int numero, auxiliar, digito;
+  PNodoPilha pilha;
+  PNodoFila fila;
+  printf("Introduza um valor inteiro maior que zero: ");
+  scanf("%i", &numero);
+  auxiliar = numero;
+  pilha = CriarPilha ();
+  fila = CriarFila ();
+  while (auxiliar != 0) {
+    digito = auxiliar % 10;
+    pilha = Push (digito, pilha);
+    fila = Juntar (digito, fila);
+    auxiliar = auxiliar / 10;
+  }
+  while (PilhaVazia (pilha) == 0 && Topo (pilha) == Frente (fila)) {
+    pilha = Pop (pilha);
+    fila = Remover (fila);
+  }
+  if (PilhaVazia (pilha) == 1) {
+    printf("%i é capicua.\n", numero);
+  else {
+    printf("%i não é capicua.\n", numero);
+  }
+  return 0;
+}
