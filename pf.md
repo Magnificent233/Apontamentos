@@ -37,6 +37,10 @@ Quando uma função é chamada com o prefixo do módulo (por exemplo, `Printf.pr
 
 A ordem de avaliação de uma lista de expressões em OCaml **não é especificada**, no entanto, os mais recentes escolheram avaliar da esquerda para a direita. Regra de ouro: **nunca implementar programas que dependem de mecanismos com comportamento não especificado**. Os parâmetros de uma função são sempre avaliados antes da avaliação da função (**avaliação ansiosa**; existe também a **avaliação preguiçosa**, quando a função é avaliada primeiro que os parâmetros [linguagem Haskell]).
 
+`failwith` - inicia uma exceção específica (`Failure`) com parâmetro único de tipo `string`.
+
+`raise` - levanta exceções escolhidas pelo programador com parâmetro duplo de tipo de exceção e de tipo `string`.
+
 C:
 int soma (int x) {
   int i = 0, res = 0;
