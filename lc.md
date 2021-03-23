@@ -111,15 +111,13 @@ Uma fórmula que não é válida pode ser possível ou contraditória. Uma fórm
 
 **Lema (Símbolos Omissos):** sejam `A ∈ Fp` e `v1`, `v2` duas valorações. Se para todo o `a ∈ Sb(a)` se tem que `v1(a) = v2(a)`, então `v1(A) = v2(A)`.
 
-**Consequência Semântica:** (definição, 19)
+**Consequência Semântica:** sejam `S ⊆ Fp` e `A ∈ Fp`. `A` é uma consequência semântica (ou lógica) de `S` (`S ⊨ A`) se para toda a valoração `v` tal que `v ⊩ s` se tem `v ⊩ A`.
 
-Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, não existe qualquer valoração tal que `v ⊩ s`. Se `S ⊆ Fp` é contraditório, então para qualquer `A ∈ Fp` tem-se `S ⊨ A`.
+Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, não existe qualquer valoração tal que `v ⊩ s`. Se `S ⊆ Fp` é contraditório, então para qualquer `A ∈ Fp` tem-se `S ⊨ A`. A partir de conjuntos contraditórios pode obter-se qualquer conclusão.
 
 * Se `S = ∅`, então `∅ ⊨ A` é equivalente a `⊨ A`.
 * Tem-se que `⊨ A` se e só se A é uma tautologia.
 * Se `S = {Q}`, `Q ∈ Fp` e `S ⊨ A`, então diz-se que A é uma consequência semântica de Q e escreve-se `Q ⊨ A`.
-
-PROPOSIÇÃO 4.1??
 
 **Proposição:** sejam `Q, A ∈ Fp`, `{Q} ⊨ A` se e só se `⊨ Q → A`.
 
@@ -210,3 +208,9 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
   * `V | F | _F | _V | _ _ F _ | _ _ F _ _ | _ _ _ _ V`
   * `F | V | _V | _F | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
   * `F | F | _V | _V | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
+
+### Aula Teórica 4
+
+#### Diapositivo 34
+
+**Determine se `{p, ¬q} ⊨ (p ⋁ r) ⋀ (¬q ⋁ ¬r)`.**

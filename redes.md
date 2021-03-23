@@ -194,3 +194,12 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
 4.2. `show running-config`
 4.3. `copy running-config startup-config`
 5. `sh run`
+
+* Passo 1 > criação das VLANs (switch)
+  * `enable` > `configure terminal` > `vlan <num-vlan>` > `name <nome-vlan>`
+* Passo 2 > configuração das interfaces (ligações do switch aos computadores)
+  * `enable` > `configure terminal` > `int fa<interface>` > `switchport mode access` > `switchport access vlan <num-vlan>`
+* Passo 3 > configuração da porta trunk (ligação do switch ao router)
+  * `enable` > `configure terminal` > `interface fa<interface>` > `switchport mode trunk` > `switchport trunk allowed vlan <num-vlan>` > `switchport trunk allowed vlan add <num-vlan2>`
+* Passo 4 > ativação da interface ligada ao switch (router)
+  * `enable` > `configure terminal` > `int f<interface>.<num-vlan>` > `encapsulation dot1Q <num-vlan>` > `ip address <default-gateway-vlan> <máscara-de-rede>`

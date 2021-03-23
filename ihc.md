@@ -52,6 +52,6 @@ A memória humana armazena factos, processamentos e ações e está dividida con
 
 ## Aula Teórica 4
 
-O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalizar de casos vistos para casos não vistos, não fiável), **raciocínio evento-causa** (não fiável).
+O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalizar de casos vistos para casos não vistos, não fiável), **abdução** (raciocínio evento-causa, não fiável).
 
 O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas.
