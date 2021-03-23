@@ -54,4 +54,25 @@ A memória humana armazena factos, processamentos e ações e está dividida con
 
 O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalizar de casos vistos para casos não vistos, não fiável), **abdução** (raciocínio evento-causa, não fiável).
 
-O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas.
+O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas. Também é possível fazer por **analogia**, o mapeamento é difícil se os domínios são semanticamente diferentes. A atividade de capacidades é caracterizada por _chunking_ para otimiar memória de curta duração. O concetual é escolhido em detrimento de grupos de problemas superficiais e a informação é estruturada com maior eficiência.
+
+Os humanos criam modelos mentais para explicar o mundo para cada evento, comportamento, sistema, que podem colidir com a realidade. Se esses modelos estiverem errados (diferentes do sistema atual), podem ocorrer erros:
+* Deslizes / Falhas / Faltas - intenção certa, mas falha para fazer bem, causada por capacidade física pobre, desatenção. Têm aspeto similar mas funcionam de forma diferente;
+* Enganos - intenção errada, causada por compreensão incorreta.
+
+As emoções são o resultado da avaliação para as respostas fisiológicas, de acordo com toda a situação em que se encontra, envolvendo respostas físicas e cognitivas a estímulos. A resposta biológica para estímulo físico é chamado **afeto**, que leva para uma interpretação como emoção, positiva (cria resolução de problemas) ou negativa (_narrow thinking?_). As implicações para o _design_ de interfaces são no _stress_ (aumenta a dificuldade da resolução de problemas), utilizadores **relaxados** tornam-se mais tolerantes a falhas no _design_ e interfaces esteticamente atraentes e recompensadoras aumentam afeto positivo.
+
+As diferenças estendem-se a cada indivíduo. A longo prazo, género e habilidades físicas e intelectuais; a curto prazo, efeito de _stress_ ou fadiga; mutáveis, idade.
+
+## Aula Teórica 5
+
+Um sistema computacional é composto por vários elementos que afetam a interação:
+* Dispositivos de entrada e saída:
+ * Teclado - dispositivo mais comum 
+* Realidade virtual;
+* Interação física;
+* Papel;
+* Memória;
+* Processamento.
+
+A computação ubíqua é percetível principalmente pela _Internet of Things_ (IoT), em que múltiplos dispositivos computacionais diferentes estão ligados entre si através da Internet.
