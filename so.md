@@ -91,7 +91,6 @@ A partilha de recursos do sistema requer que o sistema operativo assegure que um
 
 ## Aula Teórica 3
 
-
 **Modelo de compilação**
 * Pré-processador (`.i`) - `cc -E main.c -o main.i`, `cc -E sub.c -o sub.i`
 * Compilador (`.s`) - `cc -Wall -ansi -S *.i`
@@ -118,6 +117,12 @@ As **bibliotecas estáticas** (ficheiros de arquivo `.a`) concatenam arquivos de
 Isto implica ordem específica de ficheiros e colocação de bibliotecas no final da linha de comandos. Tal pontenciona a duplicação de código comum nos ficheiros executáveis e na memória, e que a reparação de pequenos _bugs_ requira que cada aplicação seja explicitamente relincada.
 
 As **bibliotecas partilhadas** (_Dynamic Link Libraries_, DLL) permitem que a _linkagem_ dinâmica ocorra antes ou durante a execução do ficheiro e sejam partilhadas por processos múltiplos.
+
+---
+
+## Aula Teórica 4
+
+
 
 ---
 

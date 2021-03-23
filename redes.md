@@ -125,11 +125,38 @@ Algoritmo CSMA/CD Ethernet:
 Toda a transmissão de dados feita em redes tem três bases fundamentais: esquema de endereçamento, protocolos comuns e negociação formatada. A camada 3 (de rede) serve para:
 * Encapsular segmentos em pacotes no emissor (no emissor);
 * Encaminhar pacotes do emissor ao recetor (no meio da rede);
-* Entregar os (SLIDE 9)
+* Entregar os segmentos ao nível de transporte no recetor (no recetor);
+* Implementar os protocolos ao nível de rede em todos os _hosts_ (computadores e routers);
+* Examinar o _header_ de todos os pacotes (no router).
 
 Há dois tipos de _routing_:
 * **_Cut-through_** - o router começa a transmitir o pacote recebido assim que interpreta o cabeçalho;
 * **_Store-and-forward_** - o pacote é recebido, armazenado, processado e retransmitido.
+
+O _Internet Protocol_ (IP) foi criado em 1974 por Vint Cerf e Bob Khan. O IPv4 é referenciado pela primeira vez na RFC 791 (setembro de 1981) e o IPv6 na RFC 2460 (1998). Nas redes IP só há dois tipos de endereços:
+* **IPv4** - do tipo 192.168.4.3, podem ser públicos (usados em redes locais) ou privados (uso cobrado aos utilizadores finais, visíveis por todas as outras máquinas da Internet, incluindo as que estão dentro de uma rede local), cujos blocos são atribuídos pela IANA (_Internet Assigned Numbers Authority_);
+* **IPv6** - podem ser públicos ou _Unique Local Addresses_.
+
+Um datagrama IPv4 contém **versão** (4 bits), **comprimento do cabeçalho** (IHL, 4 bits), **tipo de serviço** (8 bits), **comprimento total** (16 bits), **identificação** (16 bits), **_flags_** (3 bits), **_offset_** (13 bits), **time to live** (TTL, 8 bits), **protocolo** (8 bits), **_header checksum_** (16 bits), **endereço de origem** (32 bits), **endereço de destino** (32 bits), **opções** (32 bits). Um datagrama IPv6 contém **versão** (4 bits), **classe de tráfego** (8 bits), **_flow label_** (20 bits), **_payload length_** (16 bits), **_header_ seguinte** (8 bits), **_hop limit_** (8 bits), **endereço de origem** (128 bits), **endereço de destino** (128 bits).
+
+Os endereços IP podem ser de várias classes:
+* **Classe A:** `net.host.host.host`
+  * Endereços: rede (8 bits), _host_ (24 bits) - de 1.0.0.0 a 127.255.255.255;
+  * Máscara de rede: 255.0.0.0;
+* **Classe B:** `net.net.host.host`
+  * Endereços: rede (16 bits), _host_ (16 bits) - de 128.0.0.0 a 191.255.255.255;
+  * Máscara de rede: 255.255.0.0;
+* **Classe C:** `net.net.net.host`
+  * Endereços: rede (24 bits), _host_ (8 bits) - de 192.0.0.0 a 223.255.255.255;
+  * Máscara de rede: 255.255.255.0;
+* **Classe D:** `multicast`
+  * Endereços: endereço _multicast_ (32 bits) - de 224.0.0.0 a 239.255.255.255;
+  * Máscara de rede: não aplicável;
+* **Classe E:** `research`
+  * Endereços: reservado para uso futuro (32 bits) - de 240.0.0.0 a 255.255.255.255;
+  * Máscara de rede: não aplicável.
+
+A máscara de rede é utilizada localmente com o endereço de origem ou com o endereço local para determinar se a máquina está dentro ou fora da subrede.
 
 ---
 
