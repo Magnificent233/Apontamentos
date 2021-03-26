@@ -4,17 +4,17 @@
 
 Um computador moderno é constituído por um CPU (_Central Processing Unit_), memória (principal [RAM (_Random Access Memory_), volátil], secundária [discos, persistente]) e periféricos (dispositivos de entrada / saída [ecrã, impressora, rato...]). Respeita o modelo de Von-Neumann e é gerido por uma camada de _software_: sistema operativo. 
 
-Um **sistema operativo** é um programa intermediário entre o utilizador e o _hardware_, que gere e reserva recrursos da máquina, permitindo que múltiplos programas (de vários utilizadores) utilizem a máquina ao mesmo tempo (_multiplexing_, partilha de recursos em tempo e espaço). Controla a execução de programas dos utilizadores e de operações dos periféricos para evitar erros e utilização indevida. O _kernel_ (núcleo) é o único programa que está sempre pronto a correr (todos os outros são aplicações ou programas de sistema).
+Um **sistema operativo** é um programa intermediário entre o utilizador e o _hardware_, que gere e reserva recursos da máquina, permitindo que múltiplos programas (de vários utilizadores) utilizem a máquina ao mesmo tempo (_multiplexing_, partilha de recursos em tempo e espaço). Controla a execução de programas dos utilizadores e de operações dos periféricos para evitar erros e utilização indevida. O _kernel_ (núcleo) é o único programa que está sempre pronto a correr (todos os outros são aplicações ou programas de sistema).
 
 Um sistema de computação tem um ou mais CPUs ligados através de uma ligação comum (_bus_) a uma memória comum (RAM) e é composto por:
 * _Hardware_: recursos físicos (CPU, memória, periféricos);
 * Sistema operativo: controla e coordena a utilização do _hardware_;
-* Programas: aplicações (definem formas de utilização dos recursos do sistemas para resolver problemas do utilizador [compiladores, SGBD's, jogos,...]), utilitários (conjunto de programas de sistema que têm funcionalidades muito úteis [gestor de ficheiros, instaladores]);
+* Programas: aplicações (definem formas de utilização dos recursos dos sistemas para resolver problemas do utilizador [compiladores, SGBD's, jogos,...]), utilitários (conjunto de programas de sistema que têm funcionalidades muito úteis [gestor de ficheiros, instaladores]);
 * Utilizadores: pessoas, máquinas, outros computadores, serviços de web.
 
 Um sistema operativo liberta o utilizador da complexidade do _hardware_, tornando os humanos (utilizadores, programadores) mais eficazes e produtivos. Enquanto máquina virtual (_top-down view_), permite transformar um conjunto diversificado de _hardware_ numa máquina simples de utilizar, virtualizar o _hardware_ de modo a apresentar uma abstração simples e de fácil compreensão, apresentar uma interface que trata de modo uniforme operações sobre entidades semelhantes e garantir fiabilidade e segurança. Enquanto gestor de recursos (_bottom-up view_), permite obter o máximo rendimento do _hardware_, garantir uma gestão de recursos e otimizar o desempenho.
 
-A partição de memória em sistemas batch enquadra-se em dois modelos:
+A partição de memória em sistemas _batch_ enquadra-se em dois modelos:
 * Sistema monoprogramado - em que se combinam dois ou mais canais de informação num meio de comunicação comum (um sistema operativo e uma área de utilizador);
 * Sistema multiprogramado - em que vários _jobs_ são mantidos em memória principal, simultaneamente, e a CPU é multiplexada entre eles com partilha espacial (um sistema operativo e várias tarefas na área de utilizador).
 
@@ -33,11 +33,11 @@ Em sistemas multiprocessador / core:
 * _Symmetric Multiprocessing_ (SMP): cada processador corre a única instância do sistema operativo, que escalona trabalho a qualquer dos processadores;
 * _Assymetric Multiprocessing_ (AMP): o processador-mestre corre o sistema operativo e escalona trabalho aos processadores-escravos, que correm as aplicações.
 
-Sistemas de Tempo Real - sistema com necessiades temporais onde os resultados têm de ser produzidos dentro de um tempo específico (prazo, _deadline_);
+Sistemas de Tempo Real - sistema com necessidades temporais onde os resultados têm de ser produzidos dentro de um tempo específico (prazo, _deadline_);
 * Sistemas Embebidos - dispositivo de computação embutido num sistema maior (aviões, automóveis, satélites..., com múltiplos _inputs_ e _outputs_ físicos);
 * Sistemas Críticos - com efeitos catastróficos em caso de falha (controlo de comportas, central nuclear, sistema médico);
-* istemas de Tempo Real Duro - garantem que as tarefas são executadas dentro das _deadlines_;
-* Sistemas de Tempo Real Suave - tarefas de tempo real têm prioridade sobre tarefas normais.
+* Sistemas Estritos de Tempo Real - garantem que as tarefas são executadas dentro das _deadlines_;
+* Sistemas Latos de Tempo Real - tarefas de tempo real têm prioridade sobre tarefas normais.
 
 ---
 
@@ -81,11 +81,11 @@ A partilha de recursos do sistema requer que o sistema operativo assegure que um
 * **Proteção de memória:** adiciona dois registos que determinam a gama de endereços a que um programa pode aceder (**registo de base**, endereço mais baixo da memória física; **registo limite**, tamanho da gama), em que as instruções de carregamento dos registos de base e de limite são instruções privilegiadas;
 * **Proteção da CPU:** o temporizador interrompe o computador após um período de tempo especificado, assegurando que o sistema operativo possa manter controlo e implementar _time-sharing_ e em que _load-timer_ é uma instrução privilegiada.
 
-*Pergunta 1.* b, c, g
+*Pergunta 1.* b, c, g (b, c, d, g)
 
-*Pergunta 2.* a, e, f, g
+*Pergunta 2.* a, e, f, g (e, g, h)
 
-*Pergunta 3.* aumentar a segurança pela diferenciação de tipos de modo de utilizador
+*Pergunta 3.* aumentar a segurança pela diferenciação de tipos de modo de utilizador (read,write, combinação entre os dois ;; executar código de algo em group mode)
 
 ---
 
@@ -122,7 +122,87 @@ As **bibliotecas partilhadas** (_Dynamic Link Libraries_, DLL) permitem que a _l
 
 ## Aula Teórica 4
 
+Um **processo** é um programa em execução sequencial que inclui secção de texto, contador de programa, registos do processador, pilha (_stack_) com variáveis locais, funções, endereços de retorno, e secção de dados com variáveis globais. Esta noção permite que vários utilizadores a usar várias cópias do mesmo programa em simultâneo. Um processo é representado por um **bloco de controlo do processo** (_PCB-process control block_), que é a representação do conceito pelo SO e contém um identificador único (valor inteiro chamado _process ID_). Cada processo tem informação associada:
+* **Estado do processo** - diagramas de estados;
+* **Contador do programa (PC)** - endereço da próxima instrução a ser executada;
+* **Registos da CPU** - acumuladores, registos de indexação, ponteiros de pilha, registos gerais, ...;
+* **Informação de escalonamento da CPU** - prioridade do processo, ponteiros para filas de escalonamento, ...;
+* **Informação de gestão de memória** - valores dos registos de base e de limite, tabelas de paginação / segmentação;
+* **Informação de inventário** - CPU gasto, memória usada;
+* **Informação de estado de I/O** - lista de dispositivos I/O afetados, lista de ficheiros abertos, ....
 
+Para maximizar a utilização da CPU deve haver sempre um processo a correr (em execução) e, num dado instante, só um processo pode usar um dispositivo de I/O. Isto obriga a troca entre os processos em execução (comutação do contexto), separação por estádios (filas de processos) e escolha dos processos nas filas e transições (escalonamento). A **comutação do contexto** define a partilha do processor através de um mecanismo de comutação de processos através da salvaguarda do estado do processo que perde a CPU e a restauração do estado do processo que ganha a CPU; se for demasiado frequente, pode ter um custo _overhead_ para o sistema. O sistema operativo executa muitos processos em simultâneo, com o CPU multiplexado entre eles, fornecendo também mecanismos de manipulação e comunicação (_InterProcess Communication_ (IPC)).
+
+Um _dispatcher_ é um procedimento que atribui o processador de um processo para outro e previne que um processo ocupe todo o tempo do CPU. Num modelo de dois estados, o programa é _dispatched_ e pausado em ciclo, até terminar.
+
+Num modelo de cinco estados, o processo é criado (_new_), as instruções são executadas (_running_), o processo espera que algum evento ocorra (_waiting_) ou que lhe seja atribuído o processador (_ready_), até terminar a execução (_terminated_). Só um processo pode estar no estado _running_, mas vários podem estar nos estados _ready_ e _waiting_.
+
+No escalonamento de processos, um novo processo é colocado na _ready queue_, onde fica em espera até ser selecionado e despachado para a CPU. Durante a sua execução, o processo pode emitir um pedido I/O e ser colocado numa _I/O device queue_; ser removido da CPU por interrupção do _timer_ e transitar de novo para a _ready queue_; criar um novo subprocesso, ficando à espera que ele termine; esperar por um _interrupt_ qualquer e pela sua reinicialização. A _ready queue_ contém os PCBs dos processos residentes na memória em estado _ready_ (prontos e à espera de executar); as _waiting queues_ contém processos em espera da conclusão de I/O ou outro dispositivo. Qualquer recurso pode ter associada uma fila de escalonamento, e existe migração de processos entre as várias filas.
+
+Um processo migra entre várias filas de escalonamento durante o seu tempo de vida, e o sistema operativo deve selecionar processos destas filas com base nalgum método ou algoritmo com três tipos de escalonadores:
+* **Escalonador de curto prazo:** seleciona os processos que devem ser executados de seguida e reserva a CPU necessária, sendo invocado com alta frequência;
+* **Escalonador de médio prazo:** aloca memória para os processos, sendo invocado apenas quando necessário. Remove processos da memória, que podem ser reintroduzidos e continuarão a sua execução do ponto onde tinham sido deixados, permitindo uma mistura de processos - _swapping_;
+* **Escalonador de longo prazo:** seleciona os processos que devem ser levados para a fila _ready_ e controla o grau de multiprogramação, sendo invocado com pouca frequência.
+
+O **processo progenitor** (pai) cria **processos progénito** (filho), que por sua vez criam outros processos, formando uma árvore de processos. Processos pai e filho podem executar concorrentemente ou o processo pai pode esperar que os processos filho sejam concluídos. O processo filho duplica o espaço do processo pai e carrega um novo programa. Os recursos podem ser partilhados na totalidade entre processos pai e filho, ou os processos filho podem partilhar um subconjunto dos recursos do processo pai, ou não há partilha de recursos. A chamada à função `fork()` cria um novo processo, e a chamada seguinte ao sistema `exec()` depois de um `fork()` é usada para substituir o espaço de memória do processo com um novo programa.
+
+O controlo de processos é feito por _signals_ ao sistema operativo com `CTRL + C` (matar processo ativo), `CTRL + Z` (suspender processo ativo) e `CTRL + ALT + DEL` (interrupção de sistema). 
+
+Quando um processo é executado, o _shell_ original é posto em _background_ e o novo processo é posto no _foreground_. Quando um processo está em _background_ quer dizer que está pronto (_waiting_) para executar ou até mesmo em execução na memória, mas não é possível interagir com ele. Um processo pode ser terminado por:
+* **Terminação normal:** quando acaba a execução da sua última instrução e pede ao sistema operativo que o elimine com a função `exit ()`. O processo devolve (`return`) eventualmente dados ao progenitor (via a chamada ao sistema `wait`) e recursos do processo pai são libertados pelo sistema operativo;
+* **Terminação abrupta:** quando o processo pai termina a execução dos processos filho através de uma chamada ao sistema (`abort`). O processo filho excedeu os recursos reservados ou a sua tarefa não é mais necessária, ou o processo pai está a terminar, o que obriga os processos filho a terminar também.
+
+Na cooperação entre processos, estes podem classificar-se como:
+* **Independentes:** não podem afetar nem ser afetados pela execução de outros processos;
+* **Cooperantes:** podem afetar ou ser afetados pela execução de outros processos, permitindo partilha de informação, aceleração da computação, modularidade e utilidade, embora seja mais complexo e exija sincronização, por IPC:
+  * **Memória partilhada** - uma área de memória é partilhada pelos processos que querem comunicar, com a comunicação sob o controlo dos processos do utilizador e não do sistema operativo, sendo necessário fornecer e usar um mecanismo que permita aos processos sincronizar as suas ações no acesso a essa memória;
+  * **Passagem de mensagem** - os processos comunicam entre si sem recorrer a variáveis partilhadas, mas através de mensagens de tamanho fixo ou variável enviadas por `send (message)` e recebidas por `receive (message)`.
+
+Métodos de comunicação entre processos (IPC):
+* **_Pipes_** (não síncronos) - conduta que permite a comunicação entre dois processos, unidirecionais, apenas acessíveis pelo processo que os criou e requerendo relações pai-filho;
+* **_Named Pipes_** (não síncronos) - mais poderosos que _pipes_ ordinários, com comunicação bidirecional e sem necessidade de relações pai-filho;
+* _Message Queues (síncronos);
+* _Shared Memory Segments_ (não síncronos);
+* _Sockets_ - _pipes full duplex_ de rede;
+* _Remote Procedure Calls_ (RPC);
+* _Remote Method Invocation_ (Java RMI).
+
+O problema produtor-consumidor é um paradigma para processos de cooperação: o processo produtor produz informação que é consumida por um processo consumidor, com _unbounded-buffer_ se não tiver limite de tamanho, ou _bounded-buffer_ se tiver limite de tamanho.
+
+---
+
+## Aula Teórica 5
+
+O processo filho criado pela chamada ao sistema `fork()` duplica o espaço de memória do processo pai, executando depois em concorrência, quando o `fork()` devolve valores diferentes para os diferentes processos, podendo o programa tomar várias linhas de ação através de uma instrução de controlo _if_. O processo pai pode esperar a terminação do processo filho usando a chamada `wait()`. A função `fork()` cria um novo processo (processo filho) que é uma cópia exata do processo inicial (processo pai), exceto que: o ID no processo filho é único e diferente do do processo pai, o processo filho tem a sua própria cópia dos descritores do processo pai, os recursos utilizados pelo processo filho são inicializados a 0. O processo filho (ou pai) pode carregar um novo programa usando a chamada ao sistema `exec()`, que necessita do nome de um novo programa - o texto e variáveis do programa velho são substituídos pelo novo, que herda também o identificador do processo (PID) e outras informações.
+
+Um processo pai pode terminar-se com uma chamada a `exit()`, sendo depois os processos filho herdados pelo processo `init`. Processos pai podem esperar pela terminação dos processos filho pela chamada `wait()`, que retorna ao processo pai caso o processo filho já tenha terminado, ou bloqueia o processo pai caso contrário. `exit()` termina o processo de chamada: todos os ficheiros são fechados, o _output_ do _buffer_ é escrito e são chamadas funções `exit` registadas. `_exit()` termina a execução sem fechar quaisquer ficheiros, esvaziar o _output_ ou chamar qualquer função `exit`.
+
+O escalonamento do processor tem por principal objetivo maximizar o uso da CPU através de multiprogramação (remoção da CPU de um processo para a atribuir a outro). Um **ciclo _burst CPU - I/O_** é a execução de um processo com execução na CPU e espera no I/O. O sucesso do escalonamento da CPU depende de vários ciclos CPU-I/O tal que uma intermitência (_burst_) de execução da CPU alterna com uma intermitência (_burst_) de espera pela finalização de uma operação I/O. Os processos _I/O-bound_ têm grande número de _CPU bursts_ de curta duração, e os processos _CPU-bound_ têm pequeno número de _CPU-bursts_ de longa duração. Quando a CPU fica livre, cabe ao sistema operativo selecionar um dos processos da _ready queue_ para executar, através do escalonador de curto prazo quando um processo comuta de _running_ para _waiting_, _ready_ ou _terminated_ ou de _waiting_ para _ready_.
+
+No **escalonamento não preemtivo**, o processo ocupa a CPU até ao seu término ou até que passe para o estado _waiting_, sendo depois selecionado um novo processo da _ready queue_, sem garantir a execução em primeiro lugar dos processos com prioridade mais alta (adequado para sistemas de tempo real). No **escalonamento preemtivo**, usa-se um mecanismo de interrupção que suspende o processo em execução e invoca um cronograma para determinar qual processo é executado em seguida (o que pode causar problemas de inconsistência de dados).
+
+Um despachador (_dispatcher_) é o módulo que despacha o controlo da CPU para o processo selecionado pelo escalonador de curto prazo, fazendo comutação de contexto, comutação para o modo de utilizador e salto para o endereço certo de memória de forma a (re)executá-lo. O tempo que decorre entre a paragem de execução de um processo e o início de outro é designado por _latência de despacho_.
+
+Os algoritmos de escalonamento são comparados por, usando uma média entre todos:
+* **Utilização da CPU:** uso da CPU (maximização);
+* **Débito (_throughput_):** número de processos concluídos por unidade de tempo (maximização);
+* **Tempo de circulação (_turnaround_):** tempo que decorre entre o instante em que um processo é submetido e o instante em que é concluído (minimização);
+* **Tempo de espera:** soma dos períodos dispendidos na _ready queue_ (minimização);
+* **Tempo de resposta:** tempo que decorre entre a submissão de um pedido e o início da resposta (sistemas interativos, minimização).
+
+Algoritmos de escalonamento (Tempo Médio de Espera, TME; Tempo Médio de _Turnaround_, TMT):
+* **_First Come, First Served_ (FCFS)** - processos selecionados (servidos) pela ordem de chegada à _queue_ (com _convoy effect_, processo curto antes de processo longo). O tempo médio de espera pode ser bastante elevado dependendo da duração e frequência dos _bursts_; não é preemtivo (logo inadequado para sistemas interativos ou de tempo real, mas adequado para sistemas _batch_);
+* **_Shortest Job First_ (SJB)** - a cada processo associa-se o tempo do seu próximo _CPU burst_, selecionando o processo com o _CPU burst_ mais pequeno (o desempate faz-se com FCFS). É um algoritmo ótimo (porque minimiza o tempo médio de espera de um dado conjunto de processos), embora seja problemático determinar qual é o valor do próximo _CPU burst_ de um processo (fórmula: aula 5.16). Pode ser:
+  * Não preemtivo - ao ser atribuída CPU a um processo, este não pode ser preemcionado até completar o seu _CPU burst_;
+  * Preemtivo - se um novo processo chega à _ready queue_ com um _CPU burst_ menor que o tempo restante do processo em execução, então há preemção (_Shortest Remaining Time First (SRTF));
+* **Prioridade** - caso geral do SJB, em que a cada processo é atribuída uma prioridade e o escalonador atribui a CPU ao processo com maior prioridade (menor inteiro, cujo desempate se faz com FCFS). Processos de baixa prioridade arriscam-se a nunca ser executados (_starvation_), o que é solucionado por _aging_ (à medida que o tempo passa, a prioridade de um processo aumenta). A prioridade é atribuída de acordo com: limites de tempo, requisitos de memória, número de ficheiros abertos, duração média dos _bursts_ de I/O e de CPU (fatores internos), importância, preço pago pelo uso, proprietário (fatores externos);
+* **_Round Robin_** - concebido para sistemas de _time sharing_ e semelhante ao FCFS (mas preemtivo), atribui a cada processo uma pequena unidade de tempo na CPU (_time quantum_ ou _time slice_), ao final do qual o processo é preemcionado e adicionado à cauda da _ready queue_ (tratada como uma fila circular). Se há `n` processos na _ready queue_ e o _time quantum_ é `q`, cada processo obtém `1/n` do tempo da CPU em fatias de `q` unidades de tempo de uma vez, sem que nenhum processo espere mais do que `(n - 1) * q` unidades de tempo. Se `q` é grande, aplica-se FIFO, se não, a sobrecarga é muito elevada;
+* **Multifila** - usado quando os processos podem ser classificados em classes distintas e particionados em várias filas dependendo do processo (_foreground_, sistemas interativos (RR), e _background_, sistemas _batch_ (FCFS)));
+* **Multifila com Transbordo** - permite prioridades por fila, preemção, generalidade e configurabilidade, e também a movimentação de processos entre várias filas.
+
+A avaliação de algoritmos é feita por **modelação e simulação**: definir um _workload_/_trace_ e depois simular o desempenho de cada algoritmo, podendo ser **determinístico** (definir um _workload_ baseado em dados reais ou inventados) ou **aleatório** (utilizar processos aleatórios e probabilísticos).
+
+Num escalonamento multiprocessador, é usada uma única _ready queue_ para evitar que haja processadores inativos enquanto outros têm processos à espera. Há duas políticas de escalonamento multiprocessador: **processadores autoescalonáveis** (cada processador é responsável pela seleção de um processo existente na _ready queue_ partilhada) e **processador meste - processadores escravo**, em que um processador (mestre) desempenha o papel de escalonador dos restantes (escravos).
 
 ---
 
@@ -164,3 +244,23 @@ fg -> voltar a excecutar último comando / script
 `grep` -> procupar expressões regulares, que podem ser especificadas
 * ^ -> início de uma linha
 * $ -> fim de uma linha
+
+---
+
+## Minitestes
+
+* **Quais das funções seguintes das bibliotecas _standard_ de C nunca podem invocar uma chamada ao sistema no Linux?** : `strcmp`, `sqrt`.
+* **Qual declaração sobre o DMA é sempre verdadeira?** : Exige sempre um _hardware_ especial / dedicado.
+* **Considere o seguinte programa escrito em C. `main () { printf("ola"); asm(cli); }` Qual declaração está correta?** : O programa compila com avisos e executa com erro sem imprimir "ola" no ecrã.
+* **Pode-se descrever os objetivos de um sistema operativo em tudo menos** : projetar uma solução informática.
+* **O papel principal do temporizador de um sistema computacional para o sistema operativo é** : fornecer um mecanismo para poder sempre controlar o sistema.
+* **O que não é um exemplo de um recurso que é habitualmente multiplexado por espaço?** : CPU.
+* **O único programa que está sempre ponto a correr é** : o _kernel_ de um sistema operativo.
+* **Um sistema operativo faz cada um dos seguintes, exceto** : garantir que os programas encerram a sua execução.
+* **Quais das seguintes instruções devem ser privilegiadas?** : Limpar a memória. Aceder a um dispositivo de entrada/saída. Modificar as entradas na tabela de _status_ do dispositivo. Definir o valor do temporizador.
+* **Qual declaração sobre o tratamento das interrupções num sistema operativo multiprogramado e preemtivo está incorreta?** : Quando é determinado que a nova sequência de instruções é concluída, a CPU restaura o PC antigo e a execução da sequência original prossegue.
+* **O que não é um exemplo de um recurso que é habitualmente multiplexado por tempo?** : Memória principal.
+* **No modelo de Von Neumann, quais das declarações seguintes estão falsas?** : Um sistema operativo é necessário para gerir a computação. Um programa está gravado num disco.
+* **A principal função do interpretador de comandos é** : obter e executar o próximo comando especificado pelo utilizador.
+* **O que é um sistema operativo?** : Todas as opções indicadas (Um conjunto de programas que gere os recursos físicos de um computador. Um sistema para ajudar utilizadores a atingirem os seus objetivos. Um fornecedor de serviços de sistema às aplicações).
+* **Qual dos seguintes deve ser implementado como _software_ confiável no _kernel_?** : Gerente de multiprogramação.

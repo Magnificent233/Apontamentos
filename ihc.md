@@ -76,3 +76,15 @@ Um sistema computacional é composto por vários elementos que afetam a interaç
 * Processamento.
 
 A computação ubíqua é percetível principalmente pela _Internet of Things_ (IoT), em que múltiplos dispositivos computacionais diferentes estão ligados entre si através da Internet.
+
+---
+
+## Aulas Práticas
+
+Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação / comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
+
+No tratamento de eventos de interfaces gráficas, uma `component` (exemplo, _Button_) informa um `listener` de que algo aconteceu. Um `listener` é a implementação (`implements`) de uma interface (exemplo, `ActionListener`), especificando a resposta ao evento correspondente, terendo de ficar "registado" na `component` correspondente.
+
+A partir do Java 8, é possível implementar aspetos de programação funcional, o que simplifica o código, nomeadamente em situações de classes anónimas interiores, permitindo uma definição dinâmica de funções e a sua passagem como argumento de outra função / método. Assim, um método pode receber tipos primitivos, objetos e funções (_lambdas_). Em Java, uma expressão _lambda_ é composta por três partes: lista de argumentos, símbolo `->` e corpo do _lambda_.
+
+O Java oferece infraestrutura de suporte ao desenvolvimento MVC (_Model-View-Controller_), ideal para projetos com GUI (_Graphic User Interface_). Os pares **observado-observador** são uma das técnicas de suporte em JavaFX: um dos objetos tem características de observado (classe) e está emparelhado com outro objeto com características de observador (interface). Quando o estado do observado é alterado, o observador é notificado diretamente. A JavaFX disponibiliza os conceitos de **propriedade observável** e **ligação entre propriedades**, que permitem criar dependências automáticas entre as propriedades de diferentes objetos, através de uma nova convenção de nomes.

@@ -220,7 +220,8 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
 4.1.2. `int f0/0.5`
 4.2. `show running-config`
 4.3. `copy running-config startup-config`
-5. `sh run`
+5. `sh run`1
+11.3. O `ip helper-address` transmite um _broadcast_ para um único IP especificado.
 
 * Passo 1 > criação das VLANs (switch)
   * `enable` > `configure terminal` > `vlan <num-vlan>` > `name <nome-vlan>`
@@ -230,3 +231,22 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
   * `enable` > `configure terminal` > `interface fa<interface>` > `switchport mode trunk` > `switchport trunk allowed vlan <num-vlan>` > `switchport trunk allowed vlan add <num-vlan2>`
 * Passo 4 > ativação da interface ligada ao switch (router)
   * `enable` > `configure terminal` > `int f<interface>.<num-vlan>` > `encapsulation dot1Q <num-vlan>` > `ip address <default-gateway-vlan> <máscara-de-rede>`
+
+### Aula Prática 5
+
+1.1.1. 192.168.17.6 (dec) = 11000000.10101000.00010001.00000110 (bin)
+4.EQUIPAMENTO | INTERFACE |  ENDEREÇO IPv4  |   MÁSCARA SUBREDE    |   GATEWAY
+      R1      |   R1.I1   |  192.168.31.1   | 255.255.255.192 / 26 | -----------
+      R1      |   R1.I2   |  192.168.31.65  | 255.255.255.252 / 30 | -----------
+      R2      |   R2.I1   |  192.168.32.129 | 255.255.255.192 / 26 | -----------
+      R2      |   R2.I2   |  192.168.32.2   | 255.255.255.252 / 30 | -----------
+      R3      |   R3.I1   |  192.168.30.1   | 255.255.255.224 / 19 | -----------
+      R3      |   R3.I2   |  192.168.31.66  | 255.255.255.252 / 30 | -----------
+      R3      |   R3.I3   |  192.168.32.1   | 255.255.255.252 / 30 | -----------
+      A       |    A.I1   |  192.168.31.2   | 255.255.255.192 / 26 | 192.168.31.1
+      B       |    B.I1   |  192.168.31.3   | 255.255.255.192 / 26 | 192.168.31.1
+      C       |    C.I1   |  192.168.32.130 | 255.255.255.192 / 26 | 192.168.32.129
+      D       |    D.I1   |  192.168.32.131 | 255.255.255.192 / 26 | 192.168.32.129
+      E       |    E.I1   |  192.168.30.2   | 255.255.255.224 / 19 | 192.168.30.1
+7.1.3. Endereço de sumarização de rede: 11000000.10101000.00000010.00000000
+       Máscara de subrede: 

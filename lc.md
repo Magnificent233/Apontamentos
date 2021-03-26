@@ -131,6 +131,44 @@ A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` 
 
 ---
 
+## Aula Teórica 5
+
+**Equivalência Lógica:** sejam `A, B ∈ Fp`. Diz-se que A e B são logicamente (ou semanticamente) equivalentes se e só se `A ⊨ B` e `B ⊨ A`, e escreve-se `A ≡ B`. Se para todas as valorações v se tem que `v(A) = v(B)` então A e B são logicamente equivalentes, e escreve-se `A ≡ B`. A e B são logicamente equivalentes (`A ≡ B`) se e só se `⊨ (A -> B) ^ (B -> A)`.
+
+A equivalência `↔` é um operador booleano da lógica proposicional (linguagem objeto, usada em fórmulas). A equivalência lógica `≡` é uma notação para pares de fórmulas em lógica proposicional (metalinguagem). No entanto, `A ≡ B` se e só se `⊨ A ↔ B`. A equivalência lógica é *reflexiva* (`A ≡ A`), *simétrica* (se `A ≡ B` então `B ≡ A`) e *transitiva* (se `A ≡ B` e `B ≡ C`, então `A ≡ C`, `A, B, C ∈ Fp`), logo, é uma **relação de equivalência**.
+
+**Caracterização da Igualdade por Leibniz:** dois termos são o mesmo (eadema) se um pode ser substituído pelo outro sem alterar a validade de qualquer afirmação (_salva veritate_). A **substituição de igual por igual** diz que, se duas fórmulas A e B são logicamente equivalentes (`A ≡ B`), então A pode ser substituído por B (ou B por A) em qualquer fórmula.
+
+Algumas leis da lógica proposicional:
+* *Dupla Negação:* ~~P ≡ P
+* *Idempotência da ^:* P ^ P ≡ P
+* *Idempotência da v:* P v P ≡ P
+* *Terceiro excluído:* P v ~P ≡ T
+* *Contradição:* P ^ ~P ≡ BOTTOM
+* *De Morgan:* ~(P v Q) ≡ (~P) ^ (~Q)
+* *De Morgan:*
+* (dispositivos 22 / 23 / 24)
+
+Um **monoide** é um conjunto equipado com uma operação binária associativa (25).
+
+32/33?
+
+Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (SÍMBOLO MANHOSO) é uma tautologia se e só se existirem 1 <= i, j<= n, Li = T ou Li = ~Lj.
+
+Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: (l11 v ... v l1k1) ^ ... ^ (ln1 v ... v lnkn), onde cada l_ij é um literal. Uma fórmula A € Fp tal que FNC(A), é:
+* uma tautologia, se todas as disjunções são tautologias;
+* contraditória, se pelo menos uma das disjunções é contraditória;
+* possível, se nenhum dos anteriores se verificar.
+
+Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunção de conjunções de literais: (l11 ^ ... ^ l1k1) v ... v (ln1 ^ ... ^ lnkn), onde cada l_ij é um literal. Uma fórmula A € Fp tal que FND(A), é:
+* uma tautologia, se pelo menos uma das conjunções é tautologia;
+* contraditória, se todas as conjunções são contraditória;
+* possível, se nenhum dos anteriores se verificar.
+
+Considere-se A1, B1 € Fp tal que FNC(A1) e FND(B1). Existem A2, B2 € Fp tais que A2 ≡ ~A1 e B2 ≡ ~B1 e FND(A2) e FNC(B2).
+
+---
+
 ## Exercícios
 
 ### Aula Teórica 1
