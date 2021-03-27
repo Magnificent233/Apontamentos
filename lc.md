@@ -125,7 +125,7 @@ Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, n
 
 **Proposição:** `{s1, ..., sn} ⊨ A` se e só se `s1 ⋀ ... ⋀ sn ⊨ A`.
 
-**Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ^ B} ⊨ A` e `{A ^ B } ⊨ B`. `{A} ⊨ A ⋁ B` e `{B} ⊨ A ⋁ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ⋀ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ⋁ B` se e só se `S ⊨ A` ou `S ⊨ B`.
+**Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ⋀ B} ⊨ A` e `{A ⋀ B } ⊨ B`. `{A} ⊨ A ⋁ B` e `{B} ⊨ A ⋁ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ⋀ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ⋁ B` se e só se `S ⊨ A` ou `S ⊨ B`.
 
 A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` e `B ⊨ C` então `A ⊨ C`, `A, B, C ∈ Fp`), logo, é uma **pré-ordem**.
 
@@ -133,39 +133,52 @@ A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` 
 
 ## Aula Teórica 5
 
-**Equivalência Lógica:** sejam `A, B ∈ Fp`. Diz-se que A e B são logicamente (ou semanticamente) equivalentes se e só se `A ⊨ B` e `B ⊨ A`, e escreve-se `A ≡ B`. Se para todas as valorações v se tem que `v(A) = v(B)` então A e B são logicamente equivalentes, e escreve-se `A ≡ B`. A e B são logicamente equivalentes (`A ≡ B`) se e só se `⊨ (A -> B) ^ (B -> A)`.
+**Equivalência Lógica:** sejam `A, B ∈ Fp`. Diz-se que A e B são logicamente (ou semanticamente) equivalentes se e só se `A ⊨ B` e `B ⊨ A`, e escreve-se `A ≡ B`. Se para todas as valorações v se tem que `v(A) = v(B)` então A e B são logicamente equivalentes, e escreve-se `A ≡ B`. A e B são logicamente equivalentes (`A ≡ B`) se e só se `⊨ (A → B) ⋀ (B → A)`.
 
 A equivalência `↔` é um operador booleano da lógica proposicional (linguagem objeto, usada em fórmulas). A equivalência lógica `≡` é uma notação para pares de fórmulas em lógica proposicional (metalinguagem). No entanto, `A ≡ B` se e só se `⊨ A ↔ B`. A equivalência lógica é *reflexiva* (`A ≡ A`), *simétrica* (se `A ≡ B` então `B ≡ A`) e *transitiva* (se `A ≡ B` e `B ≡ C`, então `A ≡ C`, `A, B, C ∈ Fp`), logo, é uma **relação de equivalência**.
 
 **Caracterização da Igualdade por Leibniz:** dois termos são o mesmo (eadema) se um pode ser substituído pelo outro sem alterar a validade de qualquer afirmação (_salva veritate_). A **substituição de igual por igual** diz que, se duas fórmulas A e B são logicamente equivalentes (`A ≡ B`), então A pode ser substituído por B (ou B por A) em qualquer fórmula.
 
 Algumas leis da lógica proposicional:
-* *Dupla Negação:* ~~P ≡ P
-* *Idempotência da ^:* P ^ P ≡ P
-* *Idempotência da v:* P v P ≡ P
-* *Terceiro excluído:* P v ~P ≡ T
-* *Contradição:* P ^ ~P ≡ BOTTOM
-* *De Morgan:* ~(P v Q) ≡ (~P) ^ (~Q)
-* *De Morgan:*
-* (dispositivos 22 / 23 / 24)
+* *Dupla Negação:* `¬¬P ≡ P`
+* *Idempotência da ⋀:* `P ⋀ P ≡ P`
+* *Idempotência da ⋁:* `P ⋁ P ≡ P`
+* *Terceiro excluído:* `P ⋁ ¬P ≡ T`
+* *Contradição:* `P ⋀ ¬P ≡ ⊥`
+* *De Morgan:* `¬(P ⋁ Q) ≡ (¬P) ⋀ (¬Q)`
+* *De Morgan:* `¬(P ⋀ Q) ≡ (¬P) ⋁ (¬Q)`
+* *Contrapositiva da →:* `P → Q ≡ ¬Q → ¬P`
+* *Contrapositiva da ↔:* `P ↔ Q ≡ ¬P ↔ ¬Q`
+* *Comutatividade da ⋀:* `P ⋀ Q ≡ Q ⋀ P`
+* *Comutatividade da ⋁:* `P ⋁ Q ≡ Q ⋁ P`
+* *Associatividade da ⋀:* `(P ⋀ Q) ⋀ R ≡ P ⋀ (Q ⋀ R) ≡ P ⋀ Q ⋀ R`
+* *Associatividade da ⋁:* `(P ⋁ Q) ⋁ R ≡ P ⋁ (Q ⋁ R) ≡ P ⋁ Q ⋁ R`
+* *Associatividade da ↔:* `(P ↔ Q) ↔ R ≡ P ↔ (Q ↔ R) ≡ P ↔ Q ↔ R`
+* *Distributividade da ⋀:* `P ⋀ (Q ⋁ R) ≡ (P ⋀ Q) ⋁ (P ⋀ R)`
+* *Distributividade da ⋁:* `P ⋁ (Q ⋀ R) ≡ (P ⋁ Q) ⋀ (P ⋁ R)`
+* *Fórmula normal disjuntiva:* `P → Q = ¬P ⋁ Q`
+* *Elemento neutro da ⋀:* `P ⋀ T = P`
+* *Elemento absorvente da ⋀:* `P ⋀ ⊥ = ⊥`
+* *Elemento neutro da ⋁:* `P ⋁ ⊥ = P`
+* *Elemento absorvente da ⋁:* `P ⋁ T = T`
 
-Um **monoide** é um conjunto equipado com uma operação binária associativa (25).
+Um **monoide** é um conjunto equipado com uma operação binária associativa e um elemento neutro (`(Fp, ⋀, T)`, `(Fp, ⋁, ⊥)`).
 
-32/33?
+Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (`(n)⋁_(i = j) Li`) é uma tautologia se e só se existirem `1 ≤ i`, `j ≤ n`, `Li = T` ou `Li = ¬Lj`.
 
-Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (SÍMBOLO MANHOSO) é uma tautologia se e só se existirem 1 <= i, j<= n, Li = T ou Li = ~Lj.
-
-Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: (l11 v ... v l1k1) ^ ... ^ (ln1 v ... v lnkn), onde cada l_ij é um literal. Uma fórmula A € Fp tal que FNC(A), é:
+Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: `(l_11 ⋁ ... ⋁ l_1k1) ⋀ ... ⋀ (l_n1 ⋁ ... ⋁ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FNC(A), é:
 * uma tautologia, se todas as disjunções são tautologias;
 * contraditória, se pelo menos uma das disjunções é contraditória;
 * possível, se nenhum dos anteriores se verificar.
 
-Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunção de conjunções de literais: (l11 ^ ... ^ l1k1) v ... v (ln1 ^ ... ^ lnkn), onde cada l_ij é um literal. Uma fórmula A € Fp tal que FND(A), é:
+Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunção de conjunções de literais: `(l_11 ⋀ ... ⋀ l_1k1) ⋁ ... ⋁ (l_n1 ⋀ ... ⋀ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FND(A), é:
 * uma tautologia, se pelo menos uma das conjunções é tautologia;
 * contraditória, se todas as conjunções são contraditória;
 * possível, se nenhum dos anteriores se verificar.
 
-Considere-se A1, B1 € Fp tal que FNC(A1) e FND(B1). Existem A2, B2 € Fp tais que A2 ≡ ~A1 e B2 ≡ ~B1 e FND(A2) e FNC(B2).
+Considere-se `A1, B1 ∈ Fp` tal que FNC(A1) e FND(B1). Existem `A2, B2 ∈ Fp` tais que `A2 ≡ ¬A1` e `B2 ≡ ¬B1` e FND(A2) e FNC(B2), ou seja, para uma FNC existe sempre uma FND que lhe é logicamente equivalente e vice-versa.
+
+**Lema:** para toda a fórmula `A ∈ Fp` existem fórmulas `A1, A2 ∈ Fp` tais que `A ≡ A1` e FNC(A1) e `A ≡ A2` e FND(A2). Toda a fórmula tem uma forma normal equivalente.
 
 ---
 
