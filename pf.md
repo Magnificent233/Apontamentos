@@ -62,3 +62,5 @@ let soma x =
   done; !res
 
 let rec soma_rec x = if x <= 0 then 0 else x + soma_rec (x - 1)
+
+Compilar gráficos: `ocamlfind ocamlopt -package graphics graphics.cmxa mandelbrot-ml -o mandel`.

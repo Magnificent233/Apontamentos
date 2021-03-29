@@ -156,7 +156,19 @@ Os endereços IP podem ser de várias classes:
   * Endereços: reservado para uso futuro (32 bits) - de 240.0.0.0 a 255.255.255.255;
   * Máscara de rede: não aplicável.
 
-A máscara de rede é utilizada localmente com o endereço de origem ou com o endereço local para determinar se a máquina está dentro ou fora da subrede.
+A máscara de rede é utilizada localmente com o endereço de origem ou com o endereço local para determinar se a máquina está dentro ou fora da subrede. Os datagramas IP são divididos em 'fragmentos' pela rede e assemblados no destino, com os bits do _header IP_ usados para identificação e ordenação.
+
+Na entrega de pacotes, é importante ter em conta o atraso (_delay_), a irregularidade de tempo de separação entre pacotes (_jitter_) e a perda (_loss_), quando aplicadas a um pacote isolado ou a um fluxo de pacotes (_flow_). Nas redes de pacotes não existe estabelecimento de conexão no nível rede, os routers não guardam o estado relativamente às conexões _end-to-end_ e os pacotes são encaminhados usando o endereço _host_ de destino (podendo seguir rotas diferentes). A determinação do caminho a seguir em cada router é feita pela análise do endereço de destino (pela tabela de encaminhamento, que associa um intervalo de redes a um interface de saída, enviando depois o pacote pela interface associada ao intervalo a que pertence o endereço de destino - usando o conceito de _hot potato routing_, de Paul Baran). As tabelas de encaminhamento podem ser:
+* **Estáticas:** permitem a definição de políticas de encaminhamento, mas em caso de avaria exigem reconfiguração do router;
+* **Dinâmicas:** permitem que pacotes com o mesmo destino sigam pelo caminho ativo, exigindo uma atualização permanente.
+
+Os endereços das tabelas de encaminhamento são obtidos por _Classless InterDomain Routing_ (CIDR), em que cada zona de rede tem um comprimento arbitrário de formato `xxx.yyy.zzz.kkk / nn`, em que `nn` é o número de bits do endereço de rede - _routing_ por intervalos ou por classes -, ou por _prefix matching_ - comparação da parte mais significativa de cada endereço.
+
+Os algoritmos de _intra-domain routing_ devem ser corretos, ótimos, eficientes, robustos, estáveis, justos (_fairness_) e simples. Podem ser:
+* **_Link State_:** cada router troca informações com todos os routers da rede sobre os seus vizinhos (routers diretamente ligados) quando há uma mudança na rede (se um router vizinho não responde a uma mensagem), havendo inundação (_flood_) de informação na rede. Tem rápida convergência, alta quantidade de tráfego e resposta rápida a mudanças (_Open Shortest Path First_ (OSPF), _Intermediate System to Intermediate System_ (IS-IS)), no entanto, o algoritmo _Dijkstra_ é muito pesado para os processadores, muitas mudanças implicam muitas atualizações e usa-se _reliable flooding_ para os pacotes;
+* **_Distance Vector_:** cada router troca informações de toda a rede com os seus vizinhos em intervalos regulares (_Routing Information Protocol_ (RIP), de onde deriva o _Border Gateway Protocol_ (BGP), que determina as rotas entre _Autonomous Systems_ (AS), partes da Internet geridas por uma dada entidade). Pode ocorrer _count-to-infinity_, baixa convergência e baixa fidelidade em caso de falhas de _links_.
+
+No _routing_ hierárquico, os routers são agregados em regiões (_autonomous systems_ (AS)), onde todos correm o mesmo protocolo (_"intra-AS" routing protocol_) e um deles é o router de _gateway_, que também é responsável por dar _routing_ aos endereços fora da AS (_"inter-AS" routing protocol_). Em _inter-AS_, o administrador controla como o tráfego é navegado e quem navega na sua rede; em _intra-AS_ não há decisões de política porque só há um administrador, o que aumenta o foco na _performance_. É poupado tamanho da tabela de _routing_ e o tráfego de atualização é reduzido. A internet global consiste de AS interconetadas entre si: _stub AS_ (pequena corporação), _multihomed AS_ (grande corporação, sem tráfego), _transit AS_ (fornecedor). 
 
 ---
 

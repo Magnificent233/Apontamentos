@@ -68,7 +68,9 @@ As diferenças estendem-se a cada indivíduo. A longo prazo, género e habilidad
 
 Um sistema computacional é composto por vários elementos que afetam a interação:
 * Dispositivos de entrada e saída:
- * Teclado - dispositivo mais comum 
+ * Teclado - dispositivo mais comum, permite entrada de texto rápida e precisa;
+ * Caneta e tablet - captura a informação escrita manualmente, interpretando símbolos individuais em diferentes tipos de manuscrição;
+ * Reconhecimento de discurso - eficaz com um utilizador único, mas com sistemas de vocabulário limitados, interferências de ruído externo, problema de identificação de sotaques e pronunciação;
 * Realidade virtual;
 * Interação física;
 * Papel;
