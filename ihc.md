@@ -64,6 +64,8 @@ As emoções são o resultado da avaliação para as respostas fisiológicas, de
 
 As diferenças estendem-se a cada indivíduo. A longo prazo, género e habilidades físicas e intelectuais; a curto prazo, efeito de _stress_ ou fadiga; mutáveis, idade.
 
+---
+
 ## Aula Teórica 5
 
 Um sistema computacional é composto por vários elementos que afetam a interação:
@@ -71,8 +73,15 @@ Um sistema computacional é composto por vários elementos que afetam a interaç
  * Teclado - dispositivo mais comum, permite entrada de texto rápida e precisa;
  * Caneta e tablet - captura a informação escrita manualmente, interpretando símbolos individuais em diferentes tipos de manuscrição;
  * Reconhecimento de discurso - eficaz com um utilizador único, mas com sistemas de vocabulário limitados, interferências de ruído externo, problema de identificação de sotaques e pronunciação;
-* Realidade virtual;
-* Interação física;
+ * Rato - comum e fácil de usar, com movimento planar (detetado mecanicamente (bola) ou oticamente (laser)) e botões; é um dispositivo de manipulação indireta, rápido e preciso;
+ * Touchpad - por movimento leve de traço;
+* Realidade virtual:
+ * Posicionamento espacial em três dimensões;
+ * Realidade aumentada (Pokemon GO);
+* Interação física:
+ * Ecrã sensível ao toque - deteta a presença de toque no ecrã (rápido, intuitivo, limpo e seguro de dano; mas o toque pode marcar o ecrã, impreciso, cansativo);
+ * Interação multimodo co-localizada - uso colaborativo de ecrãs;
+ * _Eyegaze_ - controlo de interfaces pela direção do olhar através de um feixe laser refletido na retina, usado para avaliação (controlo mãos-livres)
 * Papel;
 * Memória;
 * Processamento.
@@ -81,11 +90,30 @@ A computação ubíqua é percetível principalmente pela _Internet of Things_ (
 
 ---
 
+## Aula Teórica 6
+
+A comunicação entre utilizador (linguagem de tarefas) e sistema (linguagem _core_) compreende **domínio** (área de trabalho em estudo), **objetivo** a atingir e **tarefa** (como chegar ao objetivo). O modelo de Donald Norman engloba sete etapas e concentra-se na visão do utilizador sobre a interface (ciclo de execução (E) / avaliação (A):
+1. Estabelecimento do objetivo;
+2. Formulação de intenção (E);
+3. Especificação de ações na interface (E);
+4. Execução de ação (E);
+5. Perceção do estado do sistema (A);
+6. Interpretação do estado do sistema (A);
+7. Avaliação do estado do sistema com respeito ao objetivo (A).
+
+Alguns sistemas são mais difíceis de usar que outros, devido ao **golfo de execução** (a formulação de ações do utilizador difere das ações permitidas pelo sistema) ou ao **golfo de avaliação** (as expectativas do utilizador de alteração de estados do sistema são diferentes da real apresentação do seu estado).
+
+A extensão do modelo de Norman tem quatro partes na sua interação de _framework_: Utilizador (traduz ações na interface e alterações no estado do sistema que são refletidos no _output_, interpretados pelo utilizador), Input, Sistema, Output. Este modelo não é restringido a sistemas de computadores eletrónicos, identifica todos os principias componentes envolvidos na interação, permite avaliação comparativa de sistemas e é abstrato.
+
+A **ergonomia da interação** é o estudo de características físicas da interação, também chamados de fatores humanos, boa para definir padrões e diretrizes para constrangir a forma como se desenham certos aspetos de sistemas.
+
+---
+
 ## Aulas Práticas
 
 Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação / comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
 
-No tratamento de eventos de interfaces gráficas, uma `component` (exemplo, _Button_) informa um `listener` de que algo aconteceu. Um `listener` é a implementação (`implements`) de uma interface (exemplo, `ActionListener`), especificando a resposta ao evento correspondente, terendo de ficar "registado" na `component` correspondente.
+No tratamento de eventos de interfaces gráficas, uma `component` (exemplo, _Button_) informa um `listener` de que algo aconteceu. Um `listener` é a implementação (`implements`) de uma interface (exemplo, `ActionListener`), especificando a resposta ao evento correspondente, tendo de ficar "registado" na `component` correspondente.
 
 A partir do Java 8, é possível implementar aspetos de programação funcional, o que simplifica o código, nomeadamente em situações de classes anónimas interiores, permitindo uma definição dinâmica de funções e a sua passagem como argumento de outra função / método. Assim, um método pode receber tipos primitivos, objetos e funções (_lambdas_). Em Java, uma expressão _lambda_ é composta por três partes: lista de argumentos, símbolo `->` e corpo do _lambda_.
 
