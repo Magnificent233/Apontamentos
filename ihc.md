@@ -74,14 +74,14 @@ Um sistema computacional é composto por vários elementos que afetam a interaç
  * Caneta e tablet - captura a informação escrita manualmente, interpretando símbolos individuais em diferentes tipos de manuscrição;
  * Reconhecimento de discurso - eficaz com um utilizador único, mas com sistemas de vocabulário limitados, interferências de ruído externo, problema de identificação de sotaques e pronunciação;
  * Rato - comum e fácil de usar, com movimento planar (detetado mecanicamente (bola) ou oticamente (laser)) e botões; é um dispositivo de manipulação indireta, rápido e preciso;
- * Touchpad - por movimento leve de traço;
+ * Touchpad - por movimento leve de traço, com diferentes graus de sensibilidade;
 * Realidade virtual:
  * Posicionamento espacial em três dimensões;
- * Realidade aumentada (Pokemon GO);
+ * Realidade aumentada (Pokemon GO) - mistura elementos de realidade virtual e efetiva, criando um ambiente misto em tempo real;
 * Interação física:
  * Ecrã sensível ao toque - deteta a presença de toque no ecrã (rápido, intuitivo, limpo e seguro de dano; mas o toque pode marcar o ecrã, impreciso, cansativo);
  * Interação multimodo co-localizada - uso colaborativo de ecrãs;
- * _Eyegaze_ - controlo de interfaces pela direção do olhar através de um feixe laser refletido na retina, usado para avaliação (controlo mãos-livres)
+ * _Eyegaze_ - controlo de interfaces pela direção do olhar através de um feixe laser refletido na retina, usado para avaliação (controlo mãos-livres);
 * Papel;
 * Memória;
 * Processamento.
@@ -103,9 +103,9 @@ A comunicação entre utilizador (linguagem de tarefas) e sistema (linguagem _co
 
 Alguns sistemas são mais difíceis de usar que outros, devido ao **golfo de execução** (a formulação de ações do utilizador difere das ações permitidas pelo sistema) ou ao **golfo de avaliação** (as expectativas do utilizador de alteração de estados do sistema são diferentes da real apresentação do seu estado).
 
-A extensão do modelo de Norman tem quatro partes na sua interação de _framework_: Utilizador (traduz ações na interface e alterações no estado do sistema que são refletidos no _output_, interpretados pelo utilizador), Input, Sistema, Output. Este modelo não é restringido a sistemas de computadores eletrónicos, identifica todos os principias componentes envolvidos na interação, permite avaliação comparativa de sistemas e é abstrato.
+A extensão do modelo de Norman tem quatro partes na sua interação de _framework_: Utilizador, Input, Sistema, Output, que interagem através de tradução entre linguagens: o utilizador traduz ações na interface, que são traduzidas em alterações no estado do sistema, que se refletem no _display_ do _output_ e são interpretados pelo utilizador. Este modelo não é restringido a sistemas de computadores eletrónicos, identifica todos os principais componentes envolvidos na interação, permite avaliação comparativa de sistemas e é abstrato.
 
-A **ergonomia da interação** é o estudo de características físicas da interação, também chamados de fatores humanos, boa para definir padrões e diretrizes para constrangir a forma como se desenham certos aspetos de sistemas.
+A **ergonomia da interação** é o estudo de características físicas da interação, também chamados de fatores humanos, boa para definir padrões e diretrizes para constrangir a forma como se desenham certos aspetos de sistemas (organização de comandos e controlos, ambiente envolvente, problemas de saúde, uso da cor).
 
 ---
 
