@@ -4,22 +4,22 @@
 
 **Lógica:** análise e teoria do pensamento válido; estudo e determinação dos modos de pensamento discursivo que permitem evitar contradições e erros. Utilizada em desenho de _hardware_, linguagens de programação, inteligência artificial e, em especial, na verificação de programas. A maioria dos sistemas críticos são controlados por _software_, que é extremamente importante que funcione bem. Testar um programa mostra a existência de erros, não a ausência deles.
 
-Na **lógica proposicional**, valores booleanos estão na base da lógica (verdadeiro, falso). Proposições são afirmações passíveis de serem verdadeiras ou falsas. Proposições atómicas não podem ser simplificadas; proposições compostas são formadas por proposições atómicas ligadas por conetivos (não [¬], e [⋀], ou [⋁], se [→], se e só se [↔]). O objetivo é determinar se a combinação de proposições atómicas resulta numa conclusão válida - **raciocínio** -, focando nas regras que manipulam os conetivos lógicos.
+Na **lógica proposicional**, valores booleanos estão na base da lógica (verdadeiro, falso). Proposições são afirmações passíveis de serem verdadeiras ou falsas. Proposições atómicas não podem ser simplificadas; proposições compostas são formadas por proposições atómicas ligadas por conetivos (não [¬], e [∧], ou [∨], se [→], se e só se [↔]). O objetivo é determinar se a combinação de proposições atómicas resulta numa conclusão válida - **raciocínio** -, focando nas regras que manipulam os conetivos lógicos.
 
 Um sistema formal de raciocínio é composto por:
 * Sintaxe:
   * Alfabeto (símbolos):
     * símbolo ⊥ -> falso/absurdo;
     * proposições atómicas -> Pp = p, q, r...
-    * conetivos (ordenados da maior precedência para a menor) -> ¬, ⋀, ⋁, →, ↔;
+    * conetivos (ordenados da maior precedência para a menor) -> ¬, ∧, ∨, →, ↔;
       * Conjunção e disjunção são associativas à esquerda; implicação é associativa à direita;
     * parêntesis -> (, );
   * Linguagem (fórmulas [Fp]):
     * _BOT_: `⊥ ∈ Fp`;
     * _PROP_: se `p ∈ Pp`, então `p ∈ Fp`;
     * _NEG_: se `p ∈ Fp`, então `¬p ∈ Fp`;
-    * _DIS_: se `p, q ∈ Fp`, então `p ⋁ q ∈ Fp`;
-    * _CON_: se `p, q ∈ Fp`, então `p ⋀ q ∈ Fp`;
+    * _DIS_: se `p, q ∈ Fp`, então `p ∨ q ∈ Fp`;
+    * _CON_: se `p, q ∈ Fp`, então `p ∧ q ∈ Fp`;
     * _IMP_: se `p, q ∈ Fp`, então `p → q ∈ Fp`.
 * Semântica: significado dos símbolos e fórmulas;
 * Cálculo: sistema de prova.
@@ -43,41 +43,41 @@ Na **indução estrutural**, utilizada para provar propriedades sobre os element
   * **Definição:** para mostrar que uma propriedade é válida para todas as fórmulas `A ∈ Fp`:
     * Provar que uma propriedade é válida para todas as fórmulas atómicas (`⊥` e `p ∈ Pp`);
     * Assumir que a propriedade é válida para `A ∈ Fp` e provar que é válida para `¬A`;
-    * Assumir que a propriedade é válida para `A, B ∈ Fp` e provar que é válida para `A op B` (`op ∈ {⋁, ⋀, →}`.
+    * Assumir que a propriedade é válida para `A, B ∈ Fp` e provar que é válida para `A op B` (`op ∈ {∨, ∧, →}`.
 
 **Semântica da lógica proposicional -** define o significado das fórmulas; a cada proposição atómica é atribuído um valor de verdade (verdadeiro, V; falso, F) de forma a determinar o valor de verdade da fórmula. Uma **valoração** (ou estrutura de interpretação) é uma função `v : Pp → {V, F}` que atribui um valor de verdade a cada proposição atómica. Há uma **relação de satisfação**, sendo `v` uma valoração e `P, Q ∈ Fp`, de `⊩` definida por:
 * `v ⊮ ⊥` (`v ⊩ ⊥` não se verifica);
 * `v ⊩ p`, `p ∈ Pp` se `v(p) = V`;
 * `v ⊩ ¬p` se `v ⊮ p`;
-* `v ⊩ P ⋀ Q` se `v ⊩ P` ou `v ⊩ Q`;
-* `v ⊩ P ⋁ Q` se `v ⊩ P` ou `v ⊩ Q`;
+* `v ⊩ P ∧ Q` se `v ⊩ P` ou `v ⊩ Q`;
+* `v ⊩ P ∨ Q` se `v ⊩ P` ou `v ⊩ Q`;
 * `v ⊩ P → Q` se `v ⊮ P` ou `v ⊩ Q`.
 Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmula `P ∈ Fp` é satisfazível. Dada uma fórmula `P ∈ Fp` e uma valoração `v`, tem-se: `v ⊩ P` se `v(P) = V` e `v ⊮ P` se `v(P) = F`.
 
-**Àlgebra de Boole:** considere-se o conjunto de valores de verdade `{V, F}` e as operações `∧, ⋁, ¬`:
+**Àlgebra de Boole:** considere-se o conjunto de valores de verdade `{V, F}` e as operações `∧, ∨, ¬`:
 * `∧ : {V, F} × {V, F} → {V, F}`:
   * `V ∧ p = p` (V ́e o elemento neutro de `∧`);
   * `F ∧ p = F` (F ́e o elemento absorvente de `∧`);
-* `⋁ : {V,F } × {V, F} → {V, F}`:
-  * `V ⋁ p = V` (V ́e o elemento absorvente de `⋁`);
-  * `F ⋁ p = p` (F ́e o elemento neutro de `⋁`);
+* `∨ : {V,F } × {V, F} → {V, F}`:
+  * `V ∨ p = V` (V ́e o elemento absorvente de `∨`);
+  * `F ∨ p = p` (F ́e o elemento neutro de `∨`);
 * `¬ : {V, F} → {V, F}`:
   * `¬V = F`;
   * `¬F = V`.
 **Propriedades da Álgebra de Boole** (assumindo `p, q ∈ {V, F}`; provas nos diapositivos 25-26)
 * `¬(¬p) = p`;
-* `p ⋀ p = p` e `p ⋁ p = p`;
-* `p ⋁ ¬p = V`;
-* `p ⋀ ¬p = F`;
-* `¬(p ⋁ q) = (¬p) ⋀ (¬q)`;
-* `¬(p ⋀ q) = (¬p) ⋁ (¬q)`.
+* `p ∧ p = p` e `p ∨ p = p`;
+* `p ∨ ¬p = V`;
+* `p ∧ ¬p = F`;
+* `¬(p ∨ q) = (¬p) ∧ (¬q)`;
+* `¬(p ∧ q) = (¬p) ∨ (¬q)`.
 
 **Extensão da Valoração para Fp:** função `v: Fp -> {V, F}`. definida indutivamente da seguinte forma, `P, Q ∈ Fp`:
 * `v(⊥) = F`;
 * `∀ p ∈ Pp`, se `P = p` então `v(P) = p`;
-* `v(P ⋀ Q) = v(P) ⋀ v(Q)`;
-* `v(P ⋁ Q) = v(P) ⋁ v(Q)`;
-* `v(P → Q) = (¬v(P)) ⋁ v(Q)`.
+* `v(P ∧ Q) = v(P) ∧ v(Q)`;
+* `v(P ∨ Q) = v(P) ∨ v(Q)`;
+* `v(P → Q) = (¬v(P)) ∨ v(Q)`.
 
 ---
 
@@ -100,8 +100,8 @@ Uma fórmula que não é válida pode ser possível ou contraditória. Uma fórm
 
 **Sumário de Tabelas de Verdade**
 * `¬p`: valor de verdade oposto ao de `p`;
-* `p ⋀ q`: verdadeira se e só se `p` e `q` são verdadeiras, caso contrário, é falsa;
-* `p ⋁ q`: falsa se e só se `p` e `q` são falsas, caso contrário, é verdadeira;
+* `p ∧ q`: verdadeira se e só se `p` e `q` são verdadeiras, caso contrário, é falsa;
+* `p ∨ q`: falsa se e só se `p` e `q` são falsas, caso contrário, é verdadeira;
 * `p → q`: falsa se e só se `p` é verdadeira e `q` é falsa, caso contrário, é verdadeira;
 * `p ↔ q`: verdadeira se e só se `p` e `q` têm o mesmo valor de verdade, caso contrário, é falsa.
 
@@ -121,11 +121,11 @@ Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, n
 
 **Proposição:** sejam `Q, A ∈ Fp`, `{Q} ⊨ A` se e só se `⊨ Q → A`.
 
-**Proposição:** `{s1, ..., sn} ⊨ A`, `n ∈ N`, se e só se `⊨ (s1 ⋀ ... ⋀ sn) → A`.
+**Proposição:** `{s1, ..., sn} ⊨ A`, `n ∈ N`, se e só se `⊨ (s1 ∧ ... ∧ sn) → A`.
 
-**Proposição:** `{s1, ..., sn} ⊨ A` se e só se `s1 ⋀ ... ⋀ sn ⊨ A`.
+**Proposição:** `{s1, ..., sn} ⊨ A` se e só se `s1 ∧ ... ∧ sn ⊨ A`.
 
-**Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ⋀ B} ⊨ A` e `{A ⋀ B } ⊨ B`. `{A} ⊨ A ⋁ B` e `{B} ⊨ A ⋁ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ⋀ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ⋁ B` se e só se `S ⊨ A` ou `S ⊨ B`.
+**Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ∧ B} ⊨ A` e `{A ∧ B } ⊨ B`. `{A} ⊨ A ∨ B` e `{B} ⊨ A ∨ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ∧ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ∨ B` se e só se `S ⊨ A` ou `S ⊨ B`.
 
 A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` e `B ⊨ C` então `A ⊨ C`, `A, B, C ∈ Fp`), logo, é uma **pré-ordem**.
 
@@ -133,7 +133,7 @@ A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` 
 
 ## Aula Teórica 5
 
-**Equivalência Lógica:** sejam `A, B ∈ Fp`. Diz-se que A e B são logicamente (ou semanticamente) equivalentes se e só se `A ⊨ B` e `B ⊨ A`, e escreve-se `A ≡ B`. Se para todas as valorações v se tem que `v(A) = v(B)` então A e B são logicamente equivalentes, e escreve-se `A ≡ B`. A e B são logicamente equivalentes (`A ≡ B`) se e só se `⊨ (A → B) ⋀ (B → A)`.
+**Equivalência Lógica:** sejam `A, B ∈ Fp`. Diz-se que A e B são logicamente (ou semanticamente) equivalentes se e só se `A ⊨ B` e `B ⊨ A`, e escreve-se `A ≡ B`. Se para todas as valorações v se tem que `v(A) = v(B)` então A e B são logicamente equivalentes, e escreve-se `A ≡ B`. A e B são logicamente equivalentes (`A ≡ B`) se e só se `⊨ (A → B) ∧ (B → A)`.
 
 A equivalência `↔` é um operador booleano da lógica proposicional (linguagem objeto, usada em fórmulas). A equivalência lógica `≡` é uma notação para pares de fórmulas em lógica proposicional (metalinguagem). No entanto, `A ≡ B` se e só se `⊨ A ↔ B`. A equivalência lógica é *reflexiva* (`A ≡ A`), *simétrica* (se `A ≡ B` então `B ≡ A`) e *transitiva* (se `A ≡ B` e `B ≡ C`, então `A ≡ C`, `A, B, C ∈ Fp`), logo, é uma **relação de equivalência**.
 
@@ -141,37 +141,37 @@ A equivalência `↔` é um operador booleano da lógica proposicional (linguage
 
 Algumas leis da lógica proposicional:
 * *Dupla Negação:* `¬¬P ≡ P`
-* *Idempotência da ⋀:* `P ⋀ P ≡ P`
-* *Idempotência da ⋁:* `P ⋁ P ≡ P`
-* *Terceiro excluído:* `P ⋁ ¬P ≡ T`
-* *Contradição:* `P ⋀ ¬P ≡ ⊥`
-* *De Morgan:* `¬(P ⋁ Q) ≡ (¬P) ⋀ (¬Q)`
-* *De Morgan:* `¬(P ⋀ Q) ≡ (¬P) ⋁ (¬Q)`
+* *Idempotência da ∧:* `P ∧ P ≡ P`
+* *Idempotência da ∨:* `P ∨ P ≡ P`
+* *Terceiro excluído:* `P ∨ ¬P ≡ T`
+* *Contradição:* `P ∧ ¬P ≡ ⊥`
+* *De Morgan:* `¬(P ∨ Q) ≡ (¬P) ∧ (¬Q)`
+* *De Morgan:* `¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)`
 * *Contrapositiva da →:* `P → Q ≡ ¬Q → ¬P`
 * *Contrapositiva da ↔:* `P ↔ Q ≡ ¬P ↔ ¬Q`
-* *Comutatividade da ⋀:* `P ⋀ Q ≡ Q ⋀ P`
-* *Comutatividade da ⋁:* `P ⋁ Q ≡ Q ⋁ P`
-* *Associatividade da ⋀:* `(P ⋀ Q) ⋀ R ≡ P ⋀ (Q ⋀ R) ≡ P ⋀ Q ⋀ R`
-* *Associatividade da ⋁:* `(P ⋁ Q) ⋁ R ≡ P ⋁ (Q ⋁ R) ≡ P ⋁ Q ⋁ R`
+* *Comutatividade da ∧:* `P ∧ Q ≡ Q ∧ P`
+* *Comutatividade da ∨:* `P ∨ Q ≡ Q ∨ P`
+* *Associatividade da ∧:* `(P ∧ Q) ∧ R ≡ P ∧ (Q ∧ R) ≡ P ∧ Q ∧ R`
+* *Associatividade da ∨:* `(P ∨ Q) ∨ R ≡ P ∨ (Q ∨ R) ≡ P ∨ Q ∨ R`
 * *Associatividade da ↔:* `(P ↔ Q) ↔ R ≡ P ↔ (Q ↔ R) ≡ P ↔ Q ↔ R`
-* *Distributividade da ⋀:* `P ⋀ (Q ⋁ R) ≡ (P ⋀ Q) ⋁ (P ⋀ R)`
-* *Distributividade da ⋁:* `P ⋁ (Q ⋀ R) ≡ (P ⋁ Q) ⋀ (P ⋁ R)`
-* *Fórmula normal disjuntiva:* `P → Q = ¬P ⋁ Q`
-* *Elemento neutro da ⋀:* `P ⋀ T = P`
-* *Elemento absorvente da ⋀:* `P ⋀ ⊥ = ⊥`
-* *Elemento neutro da ⋁:* `P ⋁ ⊥ = P`
-* *Elemento absorvente da ⋁:* `P ⋁ T = T`
+* *Distributividade da ∧:* `P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)`
+* *Distributividade da ∨:* `P ∨ (Q ∧ R) ≡ (P ∨ Q) ∧ (P ∨ R)`
+* *Fórmula normal disjuntiva:* `P → Q = ¬P ∨ Q`
+* *Elemento neutro da ∧:* `P ∧ T = P`
+* *Elemento absorvente da ∧:* `P ∧ ⊥ = ⊥`
+* *Elemento neutro da ∨:* `P ∨ ⊥ = P`
+* *Elemento absorvente da ∨:* `P ∨ T = T`
 
-Um **monoide** é um conjunto equipado com uma operação binária associativa e um elemento neutro (`(Fp, ⋀, T)`, `(Fp, ⋁, ⊥)`).
+Um **monoide** é um conjunto equipado com uma operação binária associativa e um elemento neutro (`(Fp, ∧, T)`, `(Fp, ∨, ⊥)`).
 
-Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (`(n)⋁_(i = j) Li`) é uma tautologia se e só se existirem `1 ≤ i`, `j ≤ n`, `Li = T` ou `Li = ¬Lj`.
+Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (`(n)∨_(i = j) Li`) é uma tautologia se e só se existirem `1 ≤ i`, `j ≤ n`, `Li = T` ou `Li = ¬Lj`.
 
-Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: `(l_11 ⋁ ... ⋁ l_1k1) ⋀ ... ⋀ (l_n1 ⋁ ... ⋁ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FNC(A), é:
+Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: `(l_11 ∨ ... ∨ l_1k1) ∧ ... ∧ (l_n1 ∨ ... ∨ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FNC(A), é:
 * uma tautologia, se todas as disjunções são tautologias;
 * contraditória, se pelo menos uma das disjunções é contraditória;
 * possível, se nenhum dos anteriores se verificar.
 
-Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunção de conjunções de literais: `(l_11 ⋀ ... ⋀ l_1k1) ⋁ ... ⋁ (l_n1 ⋀ ... ⋀ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FND(A), é:
+Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunção de conjunções de literais: `(l_11 ∧ ... ∧ l_1k1) ∨ ... ∨ (l_n1 ∧ ... ∧ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FND(A), é:
 * uma tautologia, se pelo menos uma das conjunções é tautologia;
 * contraditória, se todas as conjunções são contraditória;
 * possível, se nenhum dos anteriores se verificar.
@@ -179,6 +179,23 @@ Uma fórmula A diz-se em **forma normal disjuntiva** (FND(A)) se é uma disjunç
 Considere-se `A1, B1 ∈ Fp` tal que FNC(A1) e FND(B1). Existem `A2, B2 ∈ Fp` tais que `A2 ≡ ¬A1` e `B2 ≡ ¬B1` e FND(A2) e FNC(B2), ou seja, para uma FNC existe sempre uma FND que lhe é logicamente equivalente e vice-versa.
 
 **Lema:** para toda a fórmula `A ∈ Fp` existem fórmulas `A1, A2 ∈ Fp` tais que `A ≡ A1` e FNC(A1) e `A ≡ A2` e FND(A2). Toda a fórmula tem uma forma normal equivalente.
+
+---
+
+## Aula Teórica 6
+
+Uma fórmula `A ∈ Fp`, na qual não existem ocorrências de `→`, diz-se em **forma normal negativa** (FNN(A)) se todas as negações que ocorrem na fórmula se aplicam apenas a proposições atómicas. As FND, FNC e FNN não são únicas.
+
+**Conversão para FNC:**
+* Tabelas de verdade - para cada linha da tabela onde o valor é `F`, cria-se uma disjunção que nega as proposições atómicas que têm o valor `V`;
+* Algoritmo Ƭ - algoritmo determinístico, que usa as seguintes regras (exemplos nos diapositivos 26 a 32):
+  * `IMPL_FREE` - remove todas as implicações (`P → Q = ¬P ∨ Q`);
+  * `NNF` - remove negações duplas (`¬¬`) e negações de fórmulas não atómicas pelas regras de De Morgan, transformando em FNN;
+  * `CNF`
+    * Se `S` é um literal, `CNF(S) = S`;
+    * Se `S = S1 ∧ S2`, então `CNF(S1) ∧ CNF(S2)`;
+    * Se `S = S1 ∨ S2`, então `CNF(S1) ∨ CNF(S2)` e define-se `DISTR`, que aplica as leis da distributividade de forma apropriada;
+* Algoritmo de Horn () - 
 
 ---
 
@@ -190,11 +207,11 @@ Considere-se `A1, B1 ∈ Fp` tal que FNC(A1) e FND(B1). Existem `A2, B2 ∈ Fp` 
 
 **Considerando `Pp = {p, q, r}`, calcule `Sf (p ∨ (q → p))`.**
 
-  Sf (p ⋁ (q → p)) =
-= {p ⋁ (q → p)} Sb (p) ∪ Sb (q → p) =
-= {p ⋁ (q → p)} ∪ {p} ∪ {q → p} ∪ Sb (q) ∪ Sb (p) =
-= {p ⋁ (q → p), p} ∪ {q → p} ∪ {q} ∪ {p} =
-= {p ⋁ (q → p), q → p, p, q}
+  Sf (p ∨ (q → p)) =
+= {p ∨ (q → p)} Sb (p) ∪ Sb (q → p) =
+= {p ∨ (q → p)} ∪ {p} ∪ {q → p} ∪ Sb (q) ∪ Sb (p) =
+= {p ∨ (q → p), p} ∪ {q → p} ∪ {q} ∪ {p} =
+= {p ∨ (q → p), q → p, p, q}
 
 ### Aula Teórica 2
 
@@ -208,13 +225,13 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
                    H.I.: Q tem um número par de parêntesis, n.
                          Se Q tem n parêntesis, então (¬Q) tem n + 2 parêntesis.
                          Por H.I., n é par, portanto n + 2 também é.
-                   A = P ⋀ Q, P,Q ∈ Fp
-                   H.I.: P ⋀ Q tem um número par de parêntesis, n.
-                         Se P ⋀ Q tem n parêntesis, então (P ⋀ Q) tem n + 2 parêntesis.
+                   A = P ∧ Q, P,Q ∈ Fp
+                   H.I.: P ∧ Q tem um número par de parêntesis, n.
+                         Se P ∧ Q tem n parêntesis, então (P ∧ Q) tem n + 2 parêntesis.
                          Por H.I., n é par, portanto n + 2 também é.
-                   A = P ⋁ Q, P,Q ∈ Fp
-                   H.I.: P ⋁ Q tem um número par de parêntesis, n.
-                         Se P ⋁ Q tem n parêntesis, então (P ⋁ Q) tem n + 2 parêntesis.
+                   A = P ∨ Q, P,Q ∈ Fp
+                   H.I.: P ∨ Q tem um número par de parêntesis, n.
+                         Se P ∨ Q tem n parêntesis, então (P ∨ Q) tem n + 2 parêntesis.
                          Por H.I., n é par, portanto n + 2 também é.
                    A = P → Q, P,Q ∈ Fp
                    H.I.: P → Q tem um número par de parêntesis, n.
@@ -238,8 +255,8 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
   * `F | F | V | _ V _ | _ _ V`
   * `F | F | F | _ V _ | _ _ F`
 
-* `(p ↔ q) ⋀ (p ↔ r)`
-  * `p | q | r | p ↔ q | p ↔ r | (p ↔ q) ⋀ (p ↔ r)`
+* `(p ↔ q) ∧ (p ↔ r)`
+  * `p | q | r | p ↔ q | p ↔ r | (p ↔ q) ∧ (p ↔ r)`
   * `V | V | V |  _ V _  | _ V _ | _ _ _ _ V`
   * `V | V | F |  _ V _  | _ F _ | _ _ _ _ F`
   * `V | F | V |  _ F _  | _ V _ | _ _ _ _ F`
@@ -264,4 +281,4 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 
 #### Diapositivo 34
 
-**Determine se `{p, ¬q} ⊨ (p ⋁ r) ⋀ (¬q ⋁ ¬r)`.**
+**Determine se `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`.**
