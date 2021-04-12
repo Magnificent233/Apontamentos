@@ -179,7 +179,7 @@ Um processo pai pode terminar-se com uma chamada a `exit()`, sendo depois os pro
 
 O escalonamento do processor tem por principal objetivo maximizar o uso da CPU através de multiprogramação (remoção da CPU de um processo para a atribuir a outro). Um **ciclo _burst CPU - I/O_** é a execução de um processo com execução na CPU e espera no I/O. O sucesso do escalonamento da CPU depende de vários ciclos CPU-I/O tal que uma intermitência (_burst_) de execução da CPU alterna com uma intermitência (_burst_) de espera pela finalização de uma operação I/O. Os processos _I/O-bound_ têm grande número de _CPU bursts_ de curta duração, e os processos _CPU-bound_ têm pequeno número de _CPU-bursts_ de longa duração. Quando a CPU fica livre, cabe ao sistema operativo selecionar um dos processos da _ready queue_ para executar, através do escalonador de curto prazo quando um processo comuta de _running_ para _waiting_, _ready_ ou _terminated_ ou de _waiting_ para _ready_.
 
-No **escalonamento não preemtivo**, o processo ocupa a CPU até ao seu término ou até que passe para o estado _waiting_, sendo depois selecionado um novo processo da _ready queue_, sem garantir a execução em primeiro lugar dos processos com prioridade mais alta (adequado para sistemas de tempo real). No **escalonamento preemtivo**, usa-se um mecanismo de interrupção que suspende o processo em execução e invoca um cronograma para determinar qual processo é executado em seguida (o que pode causar problemas de inconsistência de dados).
+No **escalonamento não preentivo**, o processo ocupa a CPU até ao seu término ou até que passe para o estado _waiting_, sendo depois selecionado um novo processo da _ready queue_, sem garantir a execução em primeiro lugar dos processos com prioridade mais alta (adequado para sistemas de tempo real). No **escalonamento preentivo**, usa-se um mecanismo de interrupção que suspende o processo em execução e invoca um cronograma para determinar qual processo é executado em seguida (o que pode causar problemas de inconsistência de dados).
 
 Um despachador (_dispatcher_) é o módulo que despacha o controlo da CPU para o processo selecionado pelo escalonador de curto prazo, fazendo comutação de contexto, comutação para o modo de utilizador e salto para o endereço certo de memória de forma a (re)executá-lo. O tempo que decorre entre a paragem de execução de um processo e o início de outro é designado por _latência de despacho_.
 
@@ -203,6 +203,24 @@ Algoritmos de escalonamento (Tempo Médio de Espera, TME; Tempo Médio de _Turna
 A avaliação de algoritmos é feita por **modelação e simulação**: definir um _workload_/_trace_ e depois simular o desempenho de cada algoritmo, podendo ser **determinístico** (definir um _workload_ baseado em dados reais ou inventados) ou **aleatório** (utilizar processos aleatórios e probabilísticos).
 
 Num escalonamento multiprocessador, é usada uma única _ready queue_ para evitar que haja processadores inativos enquanto outros têm processos à espera. Há duas políticas de escalonamento multiprocessador: **processadores autoescalonáveis** (cada processador é responsável pela seleção de um processo existente na _ready queue_ partilhada) e **processador meste - processadores escravo**, em que um processador (mestre) desempenha o papel de escalonador dos restantes (escravos).
+
+---
+
+## Aula Teórica 6
+
+**Sistemas de Tempo Real** têm o tempo (prazo temporal em que processos precisam de ser criados/executados) como fator mais importante. Os processos podem ser **periódicos** (surgem depois de um intervalo de tempo fixo) ou **esporádicos** (surgem em instantes sem padrão regular). O escalonamento de múltiplos processos (com ou sem prazo temporal) é chamado de **escalonamento de tempo real**. Para cada processo sabe-se a sua frequência de execução, a sua quantidade de trabalho e a sua _deadline_.
+
+O _schedule_ é o plano de ordem de execução. É **válido** quando no máximo uma tarefa é atribuída ao processador num dado instante, **viável** quando todas as tarefas alcançam as especificações temporais e **competente** quando é possível escalonar todos os processos de forma viável. Para que o escalonamento competente exista, é necessário que cada processo termine a sua execução antes da chegada de uma nova instância desse mesmo processo, e o tempo de código do sistema operativo, ao fazer comutação de contexto, despacho, ..., é desprezado (zero) - embora teoricamente possível, é praticamente impossível.
+
+Os processos são periódicos e independentes. No escalonamento preentivo, um processo em execução pode ser interrompido para outro com maior prioridade, com a preenção a ocorrer instantaneamente e sem sobrecargas. O _deadline_ de cada processo coincide com o seu período, o tempo de computação de cada processo é conhecido e constante e as decisões de escalonamento são tomadas durante a execução.
+
+O **_Rate Monotonic Scheduling_** é um algoritmo estático em que o escalonamento dos processos é baseado em parâmetros fixos, em que a prioridade é proporcional à frequência de ocorrência do processo (períodos mais curtos (alta frequência) implicam prioridade alta; períodos mais longos (baixa frequência) implicam prioridade baixa).
+
+O **_Earliest Deadline First Scheduling_** é um algoritmo dinâmico em que o escalonamento dos processos é feito por uma lista de processos ordenada por _deadlines_, não requerendo processos periódicos. A ordenação de um processo é definida segundo o seu _deadline_ absoluto, sendo que o mais prioritário é o que tem o _deadline_ mais próximo em tempo real. A ordem de execução das tarefas é atualizada a cada chegada de um novo processo.
+
+O **_Priority Inheritance Protocol_** é uma solução simples, mas fraca, em que uma tarefa na sua secção crítica não pode ser preentida, pelo que tarefas com uma prioridade mais alta podem sofrer bloqueio desnecessário. Quando uma tarefa bloqueia uma ou mais tarefas com priorirdade mais alta, ignora a sua prioridade original e executa a sua secção crítica no nível de mais alta prioridade de todas as tarefas que está a bloquear - a herança de prioridade é transitiva, podendo haver _deadlocks_ e bloqueios em cadeia.
+
+O **_Priority Ceiling Protocol_** associa uma prioridade com cada recurso partilhado do sistema. Uma tarefa só pode começar uma nova secção crítica quando a sua prioridade é mais alta que todas as prioridades máximas de todos os recursos partilhados bloqueados por outras tarefas.
 
 ---
 
@@ -248,6 +266,8 @@ fg -> voltar a excecutar último comando / script
 ---
 
 ## Minitestes
+
+#### Miniteste 1 - Bases, Estruturas e Arquitetura de um SO
 
 * **Quais das funções seguintes das bibliotecas _standard_ de C nunca podem invocar uma chamada ao sistema no Linux?** : `strcmp`, `sqrt`.
 * **Qual declaração sobre o DMA é sempre verdadeira?** : Exige sempre um _hardware_ especial / dedicado.

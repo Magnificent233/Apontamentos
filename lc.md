@@ -188,14 +188,30 @@ Uma fórmula `A ∈ Fp`, na qual não existem ocorrências de `→`, diz-se em *
 
 **Conversão para FNC:**
 * Tabelas de verdade - para cada linha da tabela onde o valor é `F`, cria-se uma disjunção que nega as proposições atómicas que têm o valor `V`;
-* Algoritmo Ƭ - algoritmo determinístico, que usa as seguintes regras (exemplos nos diapositivos 26 a 32):
+* Algoritmo Ƭ - algoritmo determinístico que verifica a validade de uma fórmula, que usa as seguintes regras (`Ƭ(s) = CNF (NNF (IMPL_FREE (S)))`):
   * `IMPL_FREE` - remove todas as implicações (`P → Q = ¬P ∨ Q`);
   * `NNF` - remove negações duplas (`¬¬`) e negações de fórmulas não atómicas pelas regras de De Morgan, transformando em FNN;
   * `CNF`
     * Se `S` é um literal, `CNF(S) = S`;
     * Se `S = S1 ∧ S2`, então `CNF(S1) ∧ CNF(S2)`;
-    * Se `S = S1 ∨ S2`, então `CNF(S1) ∨ CNF(S2)` e define-se `DISTR`, que aplica as leis da distributividade de forma apropriada;
-* Algoritmo de Horn () - 
+    * Se `S = S1 ∨ S2`, então `CNF(S1) ∨ CNF(S2)` e define-se `DISTR`, que aplica as leis da distributividade de forma apropriada.
+* Algoritmo de Horn (H) - fórmula em FNC em que em cada disjunção existe no máximo um literal positivo, que verifica a satisfazibilidade de uma fórmula:
+  * **Lema:** `L ≡ T → L`; `n^∨_i=1 ¬L_i ≡ (n^∧_i=1 L_i) → ⊥`; `n^∨_i=1 ¬L_i ∨ L ≡ (n^∧_i=1 L_i) → L` - transforma uma fórmula de Horn em forma de Horn;
+  * **Teorema:** `H(S) = V` se e só se S é possível; `H(S) = F` se e só se S é contraditória;
+  * **Lema:** sejam `C0, C1 ⊆ Pp ∪ {⊥, ⊤}` e F uma fórmula em forma de Horn. `A` é **monótona** se `C0 ⊆ C1 → A(F, C0) ⊆ A(F, C1)`. `A` é **crescente** se `C0 ⊆ A(F, C0) ⊆ C0 ∪ n^∪_i=1 L_i`;
+    * A negação de uma fórmula válida é contraditória (e vice-versa);
+    * Determina-se `T = Ƭ(¬S)`. Se T é forma de Horn, calcula-se Ƭ: se for `F`, então S é válida dado que T é contraditória e `T ≡ ¬S`.
+
+---
+
+## Aula Teórica 7
+
+**Proposição:** considere-se uma fórmula de Horn, Q, que é satisfazível e tal que `A(Q, ⊤) = S` e `⊥ ∉ S`. Tem-se que `v ⊩ Q` quando `v(p) = V` para todo o `p ∈ S` e `v(q) = F` para todo o `q ∉ S`.
+
+Um sistema de prova é:
+* **Correto (_Soundness_)** se tudo o que se consegue provar é de facto verdade:
+  * **Teorema:** para uma fórmula Q em forma de Horn, tem-se que `H(Q) = V` se e só se Q é possível (**SAT**); `H(Q) = F` se e só se Q é contraditória (**UNSAT**);
+* **Completo (_Completeness_)** se tudo o que é verdade tem uma prova.
 
 ---
 
@@ -282,3 +298,26 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 #### Diapositivo 34
 
 **Determine se `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`.**
+
+* v(p) = V
+* v(¬q) = V ⇔ {definição de valoração}
+  * ⇔ ¬v(q) = V ⇔ {¬V = F}
+  * ⇔ v(q) = F
+* v((p ∨ r) ∧ (¬q ∨ ¬r)) ⇔ {definição de valoração}
+  * ⇔ v(p ∨ r) ∧ v(¬q ∨ ¬r) ⇔ {definição de valoração}
+  * ⇔ (v(p) ∨ v(r)) ∧ (v(¬q) ∨ v(¬r) ⇔ {v(p) = V; v(¬q) = V}
+  * ⇔ (V ∨ v(r)) ∧ (V ∨ v(¬r)) ⇔ {V é o elemento absorvente da disjunção}
+  * ⇔ V ∧ V ⇔ {V é o elemento neutro da conjunção}
+  * ⇔ V , logo, `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`
+
+### Aula Teórica 6
+
+#### Diapositivo 55
+
+**Determine a natureza de `ɸ = p ∧ ¬q ∧ (q ∨ ¬p)`.**
+
+### Aula Teórica 7
+
+#### Diapositivo 15
+
+**Utilizando o algoritmo Ƭ, determine a validade de `{p → q, p} ⊨ p ∧ q`.**

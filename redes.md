@@ -14,9 +14,9 @@ Redes de computadores classificam-se quanto a:
   *  Internet - planeta;
   *  Rede interplanetária - galáxia (por exemplo, ligações entre Terra e Marte);
 * **Topologia** - variam consoante as conexões físicas e lógicas:
-  * Barramento (_bus_) - vários equipamentos partilham o mesmo meio de acesso (por exemplo, _wifi_). Defeitos: _hidden node_ (quando um nodo pode comunicar com um ponto de acesso sem fios (AP), mas não consegue comunicar com outros nodos que comuniquem com esse mesmo AP);caso um elemento pare, toda a rede deixa de funcionar (*mas não devia dar para voltar atrás? perguntar*);
+  * Barramento (_bus_) - vários equipamentos partilham o mesmo meio de acesso (por exemplo, _wifi_). Defeitos: _hidden node_ (quando um nodo pode comunicar com um ponto de acesso sem fios (AP), mas não consegue comunicar com outros nodos que comuniquem com esse mesmo AP); caso um elemento pare, toda a rede deixa de funcionar;
   * Ponto a ponto - dois equipamentos a partilhar o mesmo meio de acesso. Defeitos: tipologia bastante limitada;
-  * Anel (_ring_) - barramento fechado que permite redundância. 
+  * Anel (_ring_) - barramento fechado que permite redundância;
   * Estrela (_star_) - uma máquina central concentra toda a comunicação da rede. Defeitos: Se a máquina central parar, toda a rede para;
   * Malha (_mesh_) - não existe organização definida; rede dinâmica que pode variar várias vezes por dia. Defeitos: não é prática numa rede pequena;
 * **Canal**
@@ -33,7 +33,7 @@ Redes de computadores classificam-se quanto a:
 * **Redes e Serviços Internet**
   * Computadores: redes de acesso (tributárias) - geram tráfego;
   * Rede interior: rede de transporte (_backbone_, rede nuclear) - transporta tráfego, resistente a problemas técnicos;
-  * Equipamentos interno: pontos de agregação de tráfego - junção de tráfegos para transporte.
+  * Equipamentos internos: pontos de agregação de tráfego - junção de tráfegos para transporte.
 * **Multiplexagem de canal**
   * No tempo - síncrono (STDM), assíncrono (ATDM);
   * Em frequência - xDSL (_x Digital Subscriber Line_), WDM (_Wavelength Division Multiplexing_);
@@ -47,7 +47,7 @@ Redes de computadores classificam-se quanto a:
 * **Redes de Pacotes de Dados**
   * Pacote / Datagrama (_packet_)
   * Trama / Quadro (_frame_)
-    * **Organização:** PRE (preâmbulo, 7 bytes, avisar que irá ser transmitido algo); SFD (_Start-of-Frame Delimiter_, 1 byte); DA (_Destination Address_, 6 bytes); SA (_Source Address_, 6 bytes); _Length / Type_ (4 bytes); Dados (_Data_, _Pad_, 46 a 1500 dados); FCS (_Frame Check Sequence_, 4 bytes);
+    * **Organização:** PRE (preâmbulo, 7 bytes, avisar que irá ser transmitido algo); SFD (_Start-of-Frame Delimiter_, 1 byte); DA (_Destination Address_, 6 bytes); SA (_Source Address_, 6 bytes); _Length / Type_ (4 bytes); Dados (_Data_, _Pad_, 46 a 1500 bytes); FCS (_Frame Check Sequence_, 4 bytes);
       * O FCS é gerado do SFD à Pad e o erro é detetado do SFD à FCS final;
 * **Relação de Funcionalidade**;
 * **Tipo de Protocolos**;...
@@ -71,10 +71,11 @@ O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e 
 
 **Modelo TCP/IP**:
 * Camada Física (1)
-* Camada de Ligação de Dados (2)   // CAMADA FÍSICA E CAMADA DE LIGAÇÃO DE DADOS SÃO CORRESPONDENTES? OU A CAMADA FÍSICA SIMPLESMENTE NÃO EXISTE NO TCP IP, MAS SIM NO OSI?
+* Camada de Ligação de Dados (2)
 * Camada de Redes
 * Camada de Transporte
 * Camada de Aplicação
+
 **Modelo OSI (_Open Systems Interconnection_)** - concetual, não implementado fisicamente:
 * Camada **Física** (1)
 * Camada de **Ligação de Dados** (2)
@@ -83,7 +84,7 @@ O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e 
   * Serviço não fiável (o recetor não envia ACKs (_Acknowledgment Code_) ao emissor para validar a boa receção das tramas) e sem conexão (não existe estabelecimento de um circuito virtual (_handshake_) entre o emissor e o recetor);
   * Possui duas subcamadas:
     * _Link Layer Control_ (LLC) - faz a multiplexagem dos protocolos das camadas superiores e controla erros;
-    * _Media Access Control_ (MAC) - controla o acesso ao meio físico, implementando algoritmos de controlo / resolução de colisões CSMA (_Carrier-Sense Multiple Access); // ESTA SUBCAMADA MAC É EQUIVALENTE AO ENDEREÇO MAC? OU SÃO DUAS COISAS COM O MESMO NOME MAS QUE NÃO SÃO IGUAIS?
+    * _Media Access Control_ (MAC) - controla o acesso ao meio físico, implementando algoritmos de controlo / resolução de colisões CSMA (_Carrier-Sense Multiple Access_);
 * Camada de **Redes**
 * Camada de **Transporte**
 * Camada de **Sessão**
@@ -93,17 +94,17 @@ O BER (_Bit Error Rate_) é o rácio de bits que têm erro numa comunicação e 
 
 `255 dec = 11111111 bin = FF hex`
 
-O **endereço MAC** (_Media Access Control_) faz endereçamento ao nível da ligação e é necessário para encaminhar uma trama de um interface para outro interface da mesma rede. É armazenado na EPROM do computador (placa de rede) e escreve-se em notação hexadecimal com separador `:`, `.` ou `-`. São geridos pelo IEEE (_Institute of Electrical and Electronics Engineers_) e devem ser únicos numa LAN.
+O **endereço MAC** (_Media Access Control_) faz endereçamento ao nível da ligação e é necessário para encaminhar uma trama de uma interface para outra interface da mesma rede. É armazenado na EPROM do computador (placa de rede) e escreve-se em notação hexadecimal com separador `:`, `.` ou `-`. São geridos pelo IEEE (_Institute of Electrical and Electronics Engineers_) e devem ser únicos numa LAN.
 
 As **tabelas ARP** (_Address Resolution Protocol_) são locais para cada máquina e permitem que uma comunicação crie uma trama _ethernet_ com o endereço MAC associado ao endereço IP de destino. São dinâmicas, construídas a cada nova comunicação, e constituídas por endereços IP, endereços MAC e TTL (_Time To Live_).
 
 O endereço _default gateway_ (só configurado nos clientes) é o endereço da interface mais próxima do router mais próximo. Serve para conseguir enviar tramas de computadores para o router.
 
-`sh ip route` -> código que, aplicado num router, que mostra a tabela de rotas IP conhecidas pelo router (tabela de routing).
+`sh ip route` -> código que, aplicado num router, mostra a tabela de rotas IP conhecidas pelo router (tabela de routing).
 
 O **hub** atua no nível 1 (físico) e interliga segmentos de uma rede, permitindo aumentar a máxima distância entre nós, embora não isole os segmentos a nível de colisões. (obsoleto)
 
-O **switch** atua no nível 2 (ligação) e armazena e encaminha frames Ethernet com base no endereço MAC de destino, diminuindo o nível de colisão a cada segmento, utilizando o protocolo CSMA/CD para garantir o acesso. É um dispositivo **transparente**, ou seja, são _plug-and-play self-learning_ e não precisa de ser configurado. Executam filtragem (_filtering_, determinar se uma trama deve ou não ser encaminhada para uma área da rede [VLANs, _Virtual Local Area Network_]) e encaminhamento (_forwarding_, determinar para que área da rede uma trama deve ser encaminhada). Vários switches não podem criar uma rede em anel, derivado ao _spanning tree protocol_ (STP). Cada switch mantém uma _switch table_, que mostra os endereços MAC conhecidos pelo switch, interface e _time stamp_, a que se acede pelo comando `sh mac address-table`. O switch memoriza os endereços dos dispositivos que estão ligados a cada uma das suas interfaces, cujos elementos (endereço MAC, interface, instante de chegada) são guardados na tabela de switching e eliminados ao final de um período de tempo quando não são recebidas novas frames. Quando um switch recebe uma trama:
+O **switch** atua no nível 2 (ligação) e armazena e encaminha frames Ethernet com base no endereço MAC de destino, diminuindo o nível de colisão a cada segmento, utilizando o protocolo CSMA/CD para garantir o acesso. É um dispositivo **transparente**, ou seja, é _plug-and-play self-learning_ e não precisa de ser configurado. Executa filtragem (_filtering_, determinar se uma trama deve ou não ser encaminhada para uma área da rede [VLANs, _Virtual Local Area Network_]) e encaminhamento (_forwarding_, determinar para que área da rede uma trama deve ser encaminhada). Vários switches não podem criar uma rede em anel, derivado ao _spanning tree protocol_ (STP). Cada switch mantém uma _switch table_, que mostra os endereços MAC conhecidos pelo switch, interface e _time stamp_, a que se acede pelo comando `sh mac address-table`. O switch memoriza os endereços dos dispositivos que estão ligados a cada uma das suas interfaces, cujos elementos (endereço MAC, interface, instante de chegada) são guardados na tabela de switching e eliminados ao final de um período de tempo quando não são recebidas novas frames. Quando um switch recebe uma trama:
 * Extrai o endereço MAC de origem da trama e procura o endereço na tabela de switching:
   * Se encontrar, não executa quaisquer operações;
   * Se não encontrar, cria um novo elemento com esse endereço, nome da interface recetora e instante de chegada;
@@ -158,7 +159,7 @@ Os endereços IP podem ser de várias classes:
 
 A máscara de rede é utilizada localmente com o endereço de origem ou com o endereço local para determinar se a máquina está dentro ou fora da subrede. Os datagramas IP são divididos em 'fragmentos' pela rede e assemblados no destino, com os bits do _header IP_ usados para identificação e ordenação.
 
-Na entrega de pacotes, é importante ter em conta o atraso (_delay_), a irregularidade de tempo de separação entre pacotes (_jitter_) e a perda (_loss_), quando aplicadas a um pacote isolado ou a um fluxo de pacotes (_flow_). Nas redes de pacotes não existe estabelecimento de conexão no nível rede, os routers não guardam o estado relativamente às conexões _end-to-end_ e os pacotes são encaminhados usando o endereço _host_ de destino (podendo seguir rotas diferentes). A determinação do caminho a seguir em cada router é feita pela análise do endereço de destino (pela tabela de encaminhamento, que associa um intervalo de redes a um interface de saída, enviando depois o pacote pela interface associada ao intervalo a que pertence o endereço de destino - usando o conceito de _hot potato routing_, de Paul Baran). As tabelas de encaminhamento podem ser:
+Na entrega de pacotes, é importante ter em conta o atraso (_delay_), a irregularidade de tempo de separação entre pacotes (_jitter_) e a perda (_loss_), quando aplicadas a um pacote isolado ou a um fluxo de pacotes (_flow_). Nas redes de pacotes não existe estabelecimento de conexão no nível de rede, os routers não guardam o estado relativamente às conexões _end-to-end_ e os pacotes são encaminhados usando o endereço _host_ de destino (podendo seguir rotas diferentes). A determinação do caminho a seguir em cada router é feita pela análise do endereço de destino (pela tabela de encaminhamento, que associa um intervalo de redes a um interface de saída, enviando depois o pacote pela interface associada ao intervalo a que pertence o endereço de destino - usando o conceito de _hot potato routing_, de Paul Baran). As tabelas de encaminhamento podem ser:
 * **Estáticas:** permitem a definição de políticas de encaminhamento, mas em caso de avaria exigem reconfiguração do router;
 * **Dinâmicas:** permitem que pacotes com o mesmo destino sigam pelo caminho ativo, exigindo uma atualização permanente.
 
@@ -189,19 +190,23 @@ As tabelas ARP (_Address Resolution Protocol_) ligam o IP de cada máquina ao se
 
 _Top Level Domain_ são máquinas servidores de DNS que permitem associar nomes a IP's.
 
-Máquinas iguais ligam-se com cabos cruzados.
-
 2.3. `arp -a`
 2.4. `ping <endereço-computador-recetor>`
-2.5. Não, porque são endereços diferentes.
-2.6. A. IP e subnet mask.
-     B. Protocolo DHCP.
+2.5. Não, porque pertencem a redes diferentes.
+2.6. A. `Config` > `FastEthernet 0` > `Static` > `IPv4 Address + Submask`
+     B. `Config` > `FastEthernet 0` > `DHCP`
+        `Desktop` > `IPConfiguration` > `FastEthernet 0` > `Static` > `IPv4 Address + Submask`
+        `Desktop` > `IPConfiguration` > `FastEthernet 0` > `DHCP`
      C. `255.255.255.0`
-     D. Classe C. (verificar tabela de classes de IP's)
-     E.
-3.5. Não, porque são endereços diferentes.
-4. `ipconfig`
-5. Não sei
+     D. Classe C. (_net.net.net.host_)
+     E. Não. (?)
+3.5. Não, porque pertencem a redes diferentes.
+1. `ipconfig`
+2. Zero.
+6.1. Cabo direto - liga equipamentos (PCs, servidores, routers a switches, hubs ou bridges).
+     Cabo cruzado - liga equipamentos da mesma camada segundo o modelo OSI.
+6.2. Ambas as entradas fazem uso dos pares 2 e 3 do cabo (num total de 4).
+6.3. As entradas do recebter e do transmissor são diferentes, com cabos trocados entre si.
 
 ### Aula Prática 2
 
@@ -224,15 +229,15 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
 
 ### Aula Prática 4
 
-3.3.2. `enable` > `show vlan`
+3.2. `enable` > `show vlan`
 3.11.1. `enable` > `show interface trunk`
-3.11.2. Porta trunk é ?
-3.11.3. _Seria possível estabelecer a comunicação entre as VLANs sem a utilização do trunk? Justifique._
+3.11.2. A porta trunk permite o acesso simultâneo de clientes múltiplos à rede pela partilha de um conjunto de circuitos, transportadores, canais ou frequências, em vez de providenciar canais para cada cliente.
+3.11.3. Não, porque as VLANs não conseguiriam comunicar entre si.
 3.12. `copy running-config startup-config`
 4.1.2. `int f0/0.5`
 4.2. `show running-config`
 4.3. `copy running-config startup-config`
-5. `sh run`1
+5. `sh run`
 11.3. O `ip helper-address` transmite um _broadcast_ para um único IP especificado.
 
 * Passo 1 > criação das VLANs (switch)
@@ -260,9 +265,25 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
       C       |    C.I1   |  192.168.32.130 | 255.255.255.192 / 26 | 192.168.32.129
       D       |    D.I1   |  192.168.32.131 | 255.255.255.192 / 26 | 192.168.32.129
       E       |    E.I1   |  192.168.30.2   | 255.255.255.224 / 19 | 192.168.30.1
+7.1.3. 192.168.2.0/28 255.255.255.240
+7.1.4. `ip route <endereço-rede-destino> <submáscara-rede-destino> <endereço-próximo-salto> [permanent]`
+       `ip route <endereço-rede-destino> <submáscara-rede-destino> <endereço-interface-saída> [permanent]`
+       _permanent_ é uma cláusula facultativa que evita a perda dos endereços de routing em caso de falha do router. Routing estático é o protocolo que permite a troca de informações entre routers.
+NOTA: não consegui implementar as rotas de sumarização (mas dá se puser a rede pretendida e a porta do router dessa rede que está ligada ao router atual), mas aqui ficam os cálculos.
+8.1.1. R3 - 192.168.31.0  (dec) = 11000000.10100100.00011111.00000000 (bin)
+            192.168.31.64 (dec) = 11000000.10100100.00011111.01000000 (bin)
+            192.168.33.0  (dec) = 11000000.10100100.00100001.00000000 (bin)
+                                  11000000.10100100.00 => 192.168.0.0/18 255.255.255.192
+9.1 R2 - 192.168.32.129 (dec) = 11000000.10100100.00100000.10000001 (bin)
+         192.168.32.1   (dec) = 11000000.10100100.00100000.00000001 (bin)
+                                11000000.10100100.00100000 => 192.168.32.0/24 255.255.255.0
+9.2 R1 - 192.168.31.1  (dec) = 11000000.10100100.00011111.00000001 (bin)
+         192.168.31.65 (dec) = 11000000.10100100.00011111.01000001 (bin)
+                               11000000.10100100.00011111.0 => 192.168.31.0/25 255.255.255.128
 
 Rota estática R > R: `enable` > `configure terminal` > `ip route <IP-rede-destino> <mascara-rede-destino> <IP-router-rede-destino>`
 
 ### Aula Prática 6
 
-4.2. 2001:DB8:5F73:A:0000:0000:0000:0001
+4.2. 2001:DB8:5F73:A:0000:0000:0000:0001 <==> 2001:DB8:5F73:A::1
+5.6. `ipv6 route <endereço-rede-destino> <endereço-interface-saída>` (?)
