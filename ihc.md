@@ -109,6 +109,20 @@ A **ergonomia da interação** é o estudo de características físicas da inter
 
 ---
 
+## Aula Teórica 7
+
+O meio industrial tem dados numéricos, com fluxo de dados alto e ambiente sujo; o meio de escritório tem dados textuais, com fluxo de dados baixo e ambiente limpo. Uma interface industrial tradicional é composta de mostradores e botões, uma interface industrial moderna é composta de ecrã e teclados (mais barata e flexível, permitindo representações múltiplas e valores precisos, mas não localizada, com falta de contexto e interfaces mais complexas). Num meio de escritório há manipulação direta de um mundo artificial, num meio industrial há manipulação indireta do mundo real através de uma interface.
+
+O _design_ está ligado também a interações, não só a interfaces, e também a intervenções, e não só a artefactos: não apenas o sistema, mas também documentação, manuais, tutoriais - o que se diz e faz. O _design_ define-se como a obtenção de objetivos (propósito: para quem, porquê) com restrições (materiais, plataformas, tempo, energia). A regra de ouro de _design_ é **entender os materiais** - perceber o objeto, o utilizador e a interação entre ambos. O processo de _design_ divide-se em quatro fases:
+* Requisitos - o que há vs o que é querido;
+* Análise - ordenamento e compreensão;
+* _Design_ - com criação de protótipos que seguem para análise, o que fazer, como decidir, _guidelines_, heurística;
+* Implementação - arquitetura, documentação, ajuda.
+
+**Um sistema perfeito está mal desenhado.**
+
+---
+
 ## Aulas Práticas
 
 Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação / comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
