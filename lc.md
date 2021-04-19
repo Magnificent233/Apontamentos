@@ -215,6 +215,18 @@ Um sistema de prova é:
 
 ---
 
+## Aula Teórica 8
+
+Uma **cláusula** é uma disjunção de literais em que o conjunto vazio representa o `⊥` (elemento neutro da disjunção). A cláusula `{p ∨ ⊥ ∨ q}` é representada por `{p, q}`. Uma fórmula em FNC é um conjunto de cláusulas e pode ser representada por um conjunto de conjuntos que representam cláusulas, em que o conjunto vazio representa o `T` (elemento neutro da conjunção).
+
+A **resolução** consiste em manipulações simbólicas de fórmulas em FNC, que segue a regra da resolução e permite determinar se uma fórmula é contraditória (não satisfazível) ou possível (satisfazível). A **regra da resolução** diz que a partir de duas clásulas `C1` e `C2` tal que para um literal `p` se tem `p ∈ C1` e `¬p ∈ C2` pode-se inferir uma cláusula composta por todos os literais de `C1` e `C2` exceto o `p` e o `~p`. Ou seja, obtêm-se a fórmula `R = (C1 \ {p}) ∪ (C2 \ {¬p})` (cláusula **resolvente**). Uma FNC é contraditória se e só se o `∅` é derivado apenas usando a regra da resolução.
+
+A **dedução natural** consiste num conjunto de regras de inferência que permitem inferir fórmulas a partir de outras fórmulas, permitindo inferir conclusões a partir de um conjunto de hipóteses, determinando a validade de fórmulas ou raciocínio por manipulação sintática das fórmulas. Quer-se saber se a partir de um conjunto de hipóteses (premissas), ∑, é possível construir uma prova para uma fórmula 𝛙 (conclusão) usando as regras de inferência; se possível, então `∑ ⊢ 𝛙`. Se existe uma prova de `∑ ⊢ 𝛙` então 𝛙 é uma **consequência** do conjunto de premissas ∑. Se existe uma prova `⊢ 𝛙`, então 𝛙 é um **teorema** do sistema dedutivo. Dadas duas fórmulas `𝛙, ɸ ∈ Fp`, diz-se que 𝛙 e ɸ são **dedutivamente equivalentes** se e só se `𝛙 ⊢ ɸ` e `ɸ ⊢ 𝛙`, e denota-se por `𝛙 ⊣⊢ ɸ`.
+
+**Teorema:** para uma fórmula C (conclusão) e um conjunto de fórmulas P (premissas), tem-se: **correção**, se P ⊢ C então P ⊨ C; **completude**, se P ⊨ C, então P ⊢ C.
+
+---
+
 ## Exercícios
 
 ### Aula Teórica 1

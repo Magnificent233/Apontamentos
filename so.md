@@ -224,6 +224,22 @@ O **_Priority Ceiling Protocol_** associa uma prioridade com cada recurso partil
 
 ---
 
+## Aula Teórica 7
+
+O conceito de um processo pode ser dividido em dois:
+* Conjunto de recursos necessários para a execução de um programa (espaço de endereçamento com texto e dados do programa, tabela de descritores de ficheiros abertos pelo processo, informação sobre processos-filho, código para tratar de sinais, informação sobre o próprio programa);
+* Linha ou contexto de execução (_thread_, com um _program counter_ (pc) que guarda informação sobre a próxima instrução a executar, contexto (registo dos valores das variáveis atuais), _stack_ (histórico de execução com um _frame_ para cada procedimento chamado mas não terminado)).
+
+Processos são usados para agrupar recursos (independentes e com variáveis, _stack_ e alocação de memória próprias) e _threads_ são as entidades escalonadas para execução no CPU (rotinas com partilha de espaço de memória e variáveis globais).
+
+_Threads_ são muito rápidas (com criação, comutação e término de _threads_ mais rápido que os de processos), permitem partilha de recursos e a criação de várias _user interfaces_ e escalabilidade (usam um modelo mais simples e portável do que processos). No entanto, é fácil fazer erros com _threads_ (concorrência) e há mais problemas de segurança. _Threads_ múltipas podem estar a executar simultaneamente para aproveitar arquiteturas e pode haver um conjunto de _threads_ (_thread pool_) prontas para executar, sem desperdício de tempo para a sua inicialização. _Threads_ são implementadas por:
+* **_Kernel-Level Threads_** - chamadas ao sistema. O _kernel_ pode escalonar várias _threads_ do mesmo processo em vários processadores ao mesmo tempo e as _threads_ podem ser aproveitadas pelas rotinas do próprio _kernel_; no entanto, a troca entre _threads_ implica ações do _kernel_ que podem ter um custo significativo;
+* **_User-Level Threads_** - bibliotecas de _threads_. A troca de _threads_ não envolve o _kernel_ (logo, mais simples e sem custos), o escalonamento pode ser específico para uma aplicação e podem ser executadas em qualquer sistema operativo; no entanto, muitas das chamadas ao sistema são bloqueadas pelo _kernel_ e duas _threads_ do mesmo processo não podem ser executadas em simultâneo numa arquitetura com múltiplos processadores.
+
+O _standard_ **POSIX** define uma _Application Programming Interface_ (API) para a escrita, criação, destruição, sincronização e agendamento de aplicações com _multithreading_. A rotina `pthread_join()` espera pelo término de uma _thread_ específica. Se uma _thread_ não executa a operação da união por não precisar de saber o término de outra por ela criada, está-se na presença de _detached threads_. Uma _thread_ pode precisar de terminar outra _thread_ (_canceled thread_). Quando duas ou mais _threads_ podem alterar em simultâneo as mesmas variáveis globais (ou uma alterar enquanto outra está a ler) poderá ser necessário sincronizar o acesso a essa variável para evitar problemas - **secção crítica**, que deve ser protegida com um trinco lógico (funções `pthread_mutex_lock()` e  `pthread_mutex_unlock()`). Estes _locks_ são implementados com variáveis mutuamente exclusivas, cujo _default_ é NULL e, quando criada dinamicamente (através de _malloc_), deve ser destruída com a função `pthread_mutex_destroy()`.
+
+---
+
 ## Aula Prática 1
 
 **Bash Shell** (_Born Again Shell_), **SH Bourne Shell** (_Bourne Shell_), **CSH**, **TCSK** são CLI (_Command Line Interpretor_) do sistema operativo Linux.
