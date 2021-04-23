@@ -240,6 +240,40 @@ O _standard_ **POSIX** define uma _Application Programming Interface_ (API) para
 
 ---
 
+## Aula Teórica 8
+
+Há três tipos de problemas de gestão de recursos:
+* _Starvation_ (inanição) - um processo fica indefinidamente bloqueado sem recursos devido à política de escalonamento da CPU;
+* _Deadlock_ (impasse / bloqueio mútuo) - quando dois processos se bloqueiam entre si;
+* Inconsistência / Corrupção de Dados - dois processos com acesso à mesma estrutura de dados não podem atualizá-la sem sincronização.
+
+A **condição de corrida** é a situação em que vários processos acedem e manipulação dados partilhados em simultâneo, podendo criar inconsistências nos dados, tornando-se necessário haver **sincronização** para o evitar. Uma operação atómica é uma instrução executada na totalidade sem interrupção. Um _spooler_ é uma fila composta por um diretório onde é guardada uma cópia dos ficheiros a imprimir e uma estrutura de dados a controlar a ordem de impressão. O _kernel_ do sistema operativo ou o processo responsável pelo _spooler_ deve detetar disponibilidade da impressora, enviar o ficheiro para a impressora quando ela estiver livre, atualizar o diretório do _spooler_ ao remover o ficheiro, e atualizar a fila de espera.
+
+Os problemas clássicos de sincronização são:
+* Produtor-Consumidor (_bounded-buffer_) - o processo-produtor produz itens para uma fila, que são removidos por um processo-consumidor, sendo a fila partilhada entre ambos;
+* _Readers / Writers Problem_ - os dados partilhados entre os vários processos são lidos apenas por alguns processos e escritos apenas por outros (que modificam os dados), de modo a que os dados a serem lidos não estejam a ser alterados;
+* Jantar de Filósofos - partilha de um número finito de recursos entre um número de processos maior que o número de recursos.
+
+Na partilha de dados por vários processos, cada processo tem um segmento de código (**secção crítica**) no qual os dados partilhados são acedidos. Para assegurar que, enquanto um processo está a executar na secção crítica, nenhum outro processo pode executar na sua secção crítica:
+* Exclusão mútua - só um processo de cada vez pode entrar e executar na secção crítica;
+* Progressão - um processo a executar numa secção não-crítica não pode impedir outros processos de entrar na secção crítica;
+* Espera Limitada - um processo que queira entrar numa secção crítica não deve ficar à espera indefinidamente.
+
+A consistência de dados é assegurada por vários mecanismos de sincronização:
+* _Software_ - mecanismos genéricos de uma linguagem de programação (algoritmos experimental, de Dekker, de 2, de Lamport);
+* _Hardware_ - mecanismos disponibilizados pelo _hardware_;
+* Recursos do sistema operativo - semáforos, passagem de mensagens;
+* Monitores - mecanismo específico de uma linguagem de programação.
+
+O algoritmo de **solução alternância estrita** garante a exclusão mútua a apenas dois processos, não garante progressão ou espera limitada e só funciona se os dois processos forem absolutamente alternativos. O algoritmo de **Dekker** / **Peterson** garante exclusão mútua e progressão, mas obriga a que o número de processos seja dois e não garante a espera limitada. O algoritmo de **Lamport** atribui uma senha de entrada na secção crítica (que não está garantido ser a superior), e o processo efetua um ciclo para determinar se o seu número de ordem é o menor de todos; se for, entra na secção crítica.
+
+Para simplificar os algoritmos, pode usar-se variáveis que funcionam como trincos lógicos de uma estrutura de dados, que é fechado quando se acede à estrutura de dados e aberto à saída, manipulado por duas primitivas: _lock_ e _unlock_. Um processo que tenta aceder a uma secção crítica protegida por um trinco ficará em ciclo no teste até o trinco ser libertado.
+
+Também se pode inibir as interrupções
+DIAPOSITIVO 7.19 >>>> DIAPOSITIVO 7.25
+
+---
+
 ## Aula Prática 1
 
 **Bash Shell** (_Born Again Shell_), **SH Bourne Shell** (_Bourne Shell_), **CSH**, **TCSK** são CLI (_Command Line Interpretor_) do sistema operativo Linux.
