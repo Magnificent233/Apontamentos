@@ -269,8 +269,9 @@ O algoritmo de **solução alternância estrita** garante a exclusão mútua a a
 
 Para simplificar os algoritmos, pode usar-se variáveis que funcionam como trincos lógicos de uma estrutura de dados, que é fechado quando se acede à estrutura de dados e aberto à saída, manipulado por duas primitivas: _lock_ e _unlock_. Um processo que tenta aceder a uma secção crítica protegida por um trinco ficará em ciclo no teste até o trinco ser libertado.
 
-Também se pode inibir as interrupções
-DIAPOSITIVO 7.19 >>>> DIAPOSITIVO 7.25
+Também se pode inibir as interrupções antes da entrada de uma secção crítica e ativá-las de novo à saída, impedindo a troca de processos pela CPU (o que garante que um processo pode utilizar uma variável partilhada sem a interferência de nenhum outro processo); no entanto, apenas funciona com sistemas de uniprocessador, pode impedir o tratamento de interrupções e pode implicar o _crash_ do sistema operativo e problemas a nível de _cache_.
+
+Os trincos lógicos podem ser feitos por _hardware_ através da implementação da exclusão mútua, garantindo ou não a espera limitada. Todos os processos que não conseguem entrar na secção crítica ficam à espera, não havendo nenhum mecanismo que evite a preenção de um processo quando está a executar na zona crítica - **espera ativa**, quando um processo a executar na secção crítica é retirado do processador: o trinco mantém-se fechado e os outros processos vão passando sucessivamente pelos processadores, continuando a testar o trinco para verificar a sua abertura e a gastar CPU.
 
 ---
 
