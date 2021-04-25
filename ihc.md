@@ -90,6 +90,10 @@ A computação ubíqua é percetível principalmente pela _Internet of Things_ (
 
 ---
 
+=== FIM DE MATÉRIA PRIMEIRA FREQUÊNCIA ===
+
+---
+
 ## Aula Teórica 6
 
 A comunicação entre utilizador (linguagem de tarefas) e sistema (linguagem _core_) compreende **domínio** (área de trabalho em estudo), **objetivo** a atingir e **tarefa** (como chegar ao objetivo). O modelo de Donald Norman engloba sete etapas e concentra-se na visão do utilizador sobre a interface (ciclo de execução (E) / avaliação (A):
@@ -113,13 +117,51 @@ A **ergonomia da interação** é o estudo de características físicas da inter
 
 O meio industrial tem dados numéricos, com fluxo de dados alto e ambiente sujo; o meio de escritório tem dados textuais, com fluxo de dados baixo e ambiente limpo. Uma interface industrial tradicional é composta de mostradores e botões, uma interface industrial moderna é composta de ecrã e teclados (mais barata e flexível, permitindo representações múltiplas e valores precisos, mas não localizada, com falta de contexto e interfaces mais complexas). Num meio de escritório há manipulação direta de um mundo artificial, num meio industrial há manipulação indireta do mundo real através de uma interface.
 
-O _design_ está ligado também a interações, não só a interfaces, e também a intervenções, e não só a artefactos: não apenas o sistema, mas também documentação, manuais, tutoriais - o que se diz e faz. O _design_ define-se como a obtenção de objetivos (propósito: para quem, porquê) com restrições (materiais, plataformas, tempo, energia). A regra de ouro de _design_ é **entender os materiais** - perceber o objeto, o utilizador e a interação entre ambos. O processo de _design_ divide-se em quatro fases:
+O _design_ está ligado também a interações, não só a interfaces, e também a intervenções, e não só a artefactos: não apenas o sistema, mas também documentação, manuais, tutoriais - o que se diz e faz. O _design_ define-se como a obtenção de objetivos (propósito: para quem, porquê) com restrições (materiais, plataformas, tempo, energia) e _trade-offs_ (bom vs ótimo). A regra de ouro de _design_ é **entender os materiais** - perceber o objeto, o utilizador e a interação entre ambos. O processo de _design_ divide-se em quatro fases:
 * Requisitos - o que há vs o que é querido;
 * Análise - ordenamento e compreensão;
-* _Design_ - com criação de protótipos que seguem para análise, o que fazer, como decidir, _guidelines_, heurística;
+* _Design_ - com criação de protótipos que seguem para análise, o que fazer, como decidir, _guidelines_, heurística (modelos cognitivos);
 * Implementação - arquitetura, documentação, ajuda.
 
 **Um sistema perfeito está mal desenhado.**
+
+É necessário conhecer os utilizadores, observá-los, falar com eles e imaginar situações hipotéticas de modo a criar a melhor aplicação possível - seja por observação direta, entrevistas ou sondagens. A partir desses dados, deve criar-se uma _persona_ (real ou não) que sirva como pessoa-tipo para a utilização da aplicação.
+
+A criação de cenários auxilia na comunicação e validação de ideias e compreensão de dinâmicas, podendo ser reações hipotéticas prováveis ou _walkthroughs_ detalhados, de modo a explorar interação (o que acontece quando), cognição (o pensamento dos utilizadores) e arquitetura (o que acontece internamente ao programa). A criação de cenários utiliza linearidade de vida e tempo, sendo fácil de perceber e concreta; no entanto, não há possibilidade de escolha ou condições especiais e falha no não desejado - pelo que se deve usar vários cenários ou outros métodos.
+
+O _design_ tem quatro níveis:
+* **Escolha de ferramentas** - menus, botões, etiquetas...;
+* **_Design_ de ecrã** - agrupamento de objetos;
+* **_Design_ de navegação na aplicação** - ocorrências;
+* **Ambiente** - outras aplicações, sistema operativo.
+
+Internamente a um ecrã, deve pensar-se **localmente** (a partir do ecrã para fora) e **globalmente** (estrutura da aplicação, movimento entre ecrãs, relações com outras aplicações). É necessário ter um sentido de localização: saber onde se está, o que se pode fazer, o que vai acontecer e o que foi feito.
+
+---
+
+## Aula Teórica 8
+
+Um _designer_ deve perguntar-se o que deve fazer o utilizador, pensar na informação necessária e na sua ordem, dando primazia ao funcionamento e não ao aspeto. Deve ter-se cuidado com a forma como se agregam as formas e as informações, mantendo um equilíbro entre estética e funcionalidade. O alinhamento de texto deve ser sempre à esquerda e de números deve ser por separação da parte inteira com a parte decimal.
+
+Numa _view_, há elementos ativos e passivos (onde se clica e escreve), deve haver estilo consistente e etiquetas e ícones _standard_ para ações comuns, com alteração do estilo de letra de acordo com o estado atual. As componentes de uma _view_ fornecem ao utilizador um conjunto de facilidades - características que os objetos têm que nos fazem utilizá-los de uma determinada forma. Uma boa implementação de facilitadores naturais formam uma interface intuitiva.
+
+O _web design_ partilha alguns princípios, diretrizes e padrões, com aplicações mais gerais, embora haja diferenças específicas a nível estético e funcional (interação) e a navegação seja uma experiência integral - o utilizador controla a navegação numa diversidade de dispositivos e contextos. Os dez erros mais comuns são: má procura; leitura _online_ de ficheiros PDF; não alteração de cores de _links_ visitados; texto não escalável; tamanho de fonte estático; títulos com baixa visibilidade na ferramenta de pesquisa; aparência de publicidade; violação de convenções de _design_; abertura de novas janelas de _browsing_; irresponsividade a questões dos utilizadores.
+
+No _design_ de _layouts_, é necessário manter em mente que a atenção humana é seletiva. O **minimalismo** é apelativo, deve ser consistente e esperar interação (equilíbrio entre estética, funcionalidade, usabilidade), deve ter em conta diferenças de _layout_ nos diferentes dispositivos. Deve-se jogar com a presença de elementos **destacados**, por exemplo, texto a negrito para especificar títulos ou frases de maior relevo. Formas de evidenciar as relações entre elementos:
+* **Grau** - maior importância implica maior destaque;
+* **Proximidade** - elementos relacionados estão agrupados;
+* **Enquadramento** - elementos subordinados aparecem aninhados;
+* **Acima da Dobra** - informação mais relevante apresentada no topo.
+
+O conteúdo de uma página deve ser apresentado em forma de pirâmide invertida: título conciso, texto conciso, texto mais detalhado e possivelmente "desnecessário". Os bons _links_ permitem ter uma prévia do destino, devendo ser visualmente distintos do restante do conteúdo, curtos e expressivos de um alvo concreto e reconhecível. Em termos de localização e orientação, deve ser providenciado um sentido de localização através de **_breadcrumbs_** (caminhos de migalhas), que estejam colocados (usualmente) no topo da página, tenham fontes pequenas, destaquem o último ícone e permitam o regresso direto à página inicial. Os componentes _standard_ de uma página são:
+* **Página Inicial** - focado num tópico principal, constrói a imagem da marca, facilita navegação e atrai o retorno;
+* **Registo/_Login_** - coleção da informação mínima necessária, com uma política de privacidade clara, método de recuperação de palavra-passe e possibilidade de exploração pré-registo;
+* **Carrinho de Compras** - acessível em todo o lado, fácil de adicionar, não aceita produtos não disponíveis e com informação detalhada para cada item;
+* **Ferramenta de Pesquisa** - localização consistente, evitar procuras bloqueadas, providenciar categorias _default_, flexibilidade de resultados e organização por relevância.
+
+---
+
+## Aula Teórica 9
 
 ---
 

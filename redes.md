@@ -173,6 +173,42 @@ No _routing_ hierárquico, os routers são agregados em regiões (_autonomous sy
 
 ---
 
+A notação binária refere-se ao facto de os computadores apenas com 0s e 1s. Para definir uma rede e porções de um endereço, os dispositivos usam padrões separados de 32 bits - máscara de subrede - que indica onde procurar cada porção num dado IPv4.
+
+Há três formas de transmitir em IPv4:
+* **_unicast_** - processo de enviar um pacote de um anfitrião para outro anfitrião;
+* **_broadcast_** - processo de enviar um pacote de um anfitrião para todos os anfitriões da rede;
+* **_multicast_** - processo de enviar um pacote de um anfitrião para um grupo selecionado de anfitriões (na mesma rede ou em redes diferentes), reduzindo tráfego pelo uso de endereços exclusivos.
+
+Em IPv4, os blocos de endereços privados são anfitriões que não requerem acesso à Internet  os endereços de espaço partilhado não são globalmente roteáveis e apenas usados para redes provedoras de serviços. Os endereços de uso especial são:
+* _Network and Broadcast_ - dentro de cada rede, o primeiro e último endereços não podem ser atribuídos a anfitriões;
+* _Loopback_ - endereço 127.0.0.1, que permite que os anfitriões usam para direcionar tráfego para si próprios;
+* _Link Local_ - endereços automaticamente atribuídos ao anfitrião local;
+* _TEST-NET_ - colocados à parte para propósitos de ensino e aprendizagem, usados em documentação e exemplos;
+* _Experimental_ - reservados.
+
+_Classless Addressing_ (ou _Classless Inter-Domain Routing_ (CIDR)) cria um novo conjunto de padrões que permite aos provedores de serviços alocar endereços IPv4 em qualquer limite de endereço. A atribuição de endereços IP é dado por _Regional Internet Registries_ (RIR): RIPE, APNIN, AFRINIC, LACNIC, ARIN, controladas pela _Internet Assigned Numbers Authority_ (IANA). Os ISP de _tier 1_ são serviços (inter)nacionais diretamente ligadas à _backbone_ da Internet; os de _tier 2_ focam-se em clientes empresariais e os de _tier 3_ oferecem conetividade à Internet a clientes particulares, a partir de serviços comprados aos de _tier 2_.
+
+As técnicas de migração entre IPv4 e IPv6 podem ser divididos em:
+* **_Dual-Stack_** - permite que IPv4 e IPv6 coexistam na mesma rede, correndo ambos os protocolos em simultâneo;
+* **_Tunneling_** - transporte de um pacote IPv6 para uma rede IPv4, encapsulado dentro de um pacote IPv4 (e vice-versa);
+* **_Translation_** - traduz um pacote IPv4 para IPv6 e vice-versa (_routing_ NAT64);
+
+Em IPv6 há três tipos de endereços (não há _broadcast_):
+* **_unicast_** - um pacote enviado para um endereço _unicast_ (identificação única de uma interface) é recebida pela interface atribuiu esse endereço. Podem ser:
+  * _Global unicast_ - endereços públicos, roteáveis e configuráveis estática ou dinamicamente;
+  * _Link local_ - endereços privados, não roteáveis, usados para comunicar com outros dispositivos dentro da mesma rede local;
+  * _Loopback_ - endereço que permite enviar um pacote para si próprio;
+  * _Unspecified_ - usado como endereço de origem quando o dispositivo não tem endereço IPv6 permanente ou quando a origem é irrelevante para o destino do pacote;
+  * _Unique local_ - endereços privados, usados para comunicação numa rede ou entre um número limitado de redes;
+  * _Embedded IPv4_ - endereço auxiliar na transição IPv4-IPv6;
+* **_multicast_** - ;
+* **_anycast_** - pedido _unicast_ que é respondido por duas máquinas diferentes que partilham o mesmo endereço de rede.
+
+A atribuição dinâmica de endereços IPv4 é feita através de _Automatic Private IP Address_ (APIPA); e a de IPv6 é por _Stateless Address Autoconfiguration_ (SLAAC).
+
+---
+
 ### Aula Prática 1
 
 DHCP -> endereço de rede não estático de uma rede sem fios com autenticação pelo MAC Address (não há dois MAC Address's iguais)

@@ -221,9 +221,32 @@ Uma **cláusula** é uma disjunção de literais em que o conjunto vazio represe
 
 A **resolução** consiste em manipulações simbólicas de fórmulas em FNC, que segue a regra da resolução e permite determinar se uma fórmula é contraditória (não satisfazível) ou possível (satisfazível). A **regra da resolução** diz que a partir de duas clásulas `C1` e `C2` tal que para um literal `p` se tem `p ∈ C1` e `¬p ∈ C2` pode-se inferir uma cláusula composta por todos os literais de `C1` e `C2` exceto o `p` e o `~p`. Ou seja, obtêm-se a fórmula `R = (C1 \ {p}) ∪ (C2 \ {¬p})` (cláusula **resolvente**). Uma FNC é contraditória se e só se o `∅` é derivado apenas usando a regra da resolução.
 
-A **dedução natural** consiste num conjunto de regras de inferência que permitem inferir fórmulas a partir de outras fórmulas, permitindo inferir conclusões a partir de um conjunto de hipóteses, determinando a validade de fórmulas ou raciocínio por manipulação sintática das fórmulas. Quer-se saber se a partir de um conjunto de hipóteses (premissas), ∑, é possível construir uma prova para uma fórmula 𝛙 (conclusão) usando as regras de inferência; se possível, então `∑ ⊢ 𝛙`. Se existe uma prova de `∑ ⊢ 𝛙` então 𝛙 é uma **consequência** do conjunto de premissas ∑. Se existe uma prova `⊢ 𝛙`, então 𝛙 é um **teorema** do sistema dedutivo. Dadas duas fórmulas `𝛙, ɸ ∈ Fp`, diz-se que 𝛙 e ɸ são **dedutivamente equivalentes** se e só se `𝛙 ⊢ ɸ` e `ɸ ⊢ 𝛙`, e denota-se por `𝛙 ⊣⊢ ɸ`.
+A **dedução natural** consiste num conjunto de regras de inferência que permitem inferir fórmulas a partir de outras fórmulas, permitindo inferir conclusões a partir de um conjunto de hipóteses, determinando a validade de fórmulas ou raciocínio por manipulação sintática das fórmulas. Quer-se saber se a partir de um conjunto de hipóteses (premissas), ∑, é possível construir uma prova para uma fórmula 𝛙 (conclusão) usando as regras de inferência; se possível, então `∑ ⊢ 𝛙`. Se existe uma prova de `∑ ⊢ 𝛙` então 𝛙 é uma **consequência** do conjunto de premissas ∑. Se existe uma prova `⊢ 𝛙`, então 𝛙 é um **teorema** do sistema dedutivo. Dadas duas fórmulas `𝛙, φ ∈ Fp`, diz-se que 𝛙 e φ são **dedutivamente equivalentes** se e só se `𝛙 ⊢ φ` e `φ ⊢ 𝛙`, e denota-se por `𝛙 ⊣⊢ φ`.
 
-**Teorema:** para uma fórmula C (conclusão) e um conjunto de fórmulas P (premissas), tem-se: **correção**, se P ⊢ C então P ⊨ C; **completude**, se P ⊨ C, então P ⊢ C.
+**Teorema:** para uma fórmula C (conclusão) e um conjunto de fórmulas P (premissas), tem-se: **correção**, se `P ⊢ C` então `P ⊨ C`; **completude**, se `P ⊨ C`, então `P ⊢ C`.
+
+---
+
+## Aula Teórica 9
+
+Em **lógica de primeira ordem** existem:
+* **Termos**, que denotam entidades/objetos em estudo:
+  * _Variáveis_ - representadas por letras minúsculas, denotam elementos não especificados e podem ser vistas como _placeholders_ para valores concretos;
+  * _Constantes_ (C) - denotam elementos concretos;
+  * _Funções_ (F) - denotam transformações sobre elementos (variáveis ou constantes), representadas por letras ou nomes com letra minúscula;
+* **Fórmulas**, que denotam valores de verdade:
+  * _Predicados_ - expressam propriedades/relações;
+  * _Fórmulas com quantificadores_ - `∃`, quantificador existencial (existe pelo menos um elemento do domínio considerado que satisfaz a propriedade); `∀`, quantificador universal (todos os elementos do domínio considerado satisfazem a propriedade).
+
+Um sistema formal de raciocínio é composto por **sintaxe** (alfabeto, conjunto de símbolos; linguagem, conjunto de fórmulas), **semântica** (significado de termos e fórmulas) e **cálculo** (sistema de prova e raciocínio). Uma assinatura de primeira ordem consiste num par de conjuntos distintos, `Σ = (SF, SP)`, onde `SF = {SF_i}, i ≥ 0` é um conjunto de conjuntos disjuntos de símbolos de função (se `i = 0` as funções são constantes) e `SP = {SP_i}, i ≥ 0` é um conjunto de conjuntos disjuntos de símbolos de predicado.
+
+**Definição:** o conjunto de variáveis num termo `Vars^T_∑`, denotado por V(t), é definido indutivamente como: `V(x) = {x}` para todo o `x ∈ Vars`; `V(c) = ∅` para todo o `c ∈ SF_0`; se `t_1, ..., t_n ∈ Vars^T_∑` e `f ∈ SF_n, n ≥ 0`, então `V(f(t_1, ..., t_n)) = n^∪_i=1 V(t_i)`. Um termo diz-se **fechado** se não contém variáveis ou **aberto** caso contrário.
+
+As **variáveis livres** de uma fórmula φ (`FV(φ)`) são as que ocorrem em φ sem estarem quantificadas; as **variáveis ligadas** de uma fórmula φ (`BV(φ)`) são as que ocorrem quantificadas em φ. Uma fórmula diz-se **fechada** se não contém variáveis livres ou **aberta** caso contrário.  (definição formal nos diapositivo 54 e 55). **Definição:** o conjunto das variáveis ligadas numa fórmula `φ ∈ Vars^F_Σ` define-se como `V(φ) = FV(φ) ∪ BV(φ)`.
+
+**Definições:** seja `φ ∈ Vars^F_Σ` e `FV() = {x1, ..., xn}, n ≥ 0`. Então, `∀ x1 ... ∀ xnφ` é o **fecho universal** de φ e `∃ x1 ... ∃ xnφ` é o **fecho existencial** de φ.
+
+A **substituição** de variáveis por termos (`{t/x}`) só pode ser aplicada a variáveis livres.
 
 ---
 
@@ -326,7 +349,7 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 
 #### Diapositivo 55
 
-**Determine a natureza de `ɸ = p ∧ ¬q ∧ (q ∨ ¬p)`.**
+**Determine a natureza de `φ = p ∧ ¬q ∧ (q ∨ ¬p)`.**
 
 ### Aula Teórica 7
 
