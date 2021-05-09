@@ -207,11 +207,27 @@ Em IPv6 há três tipos de endereços (não há _broadcast_):
 
 A atribuição dinâmica de endereços IPv4 é feita através de _Automatic Private IP Address_ (APIPA); e a de IPv6 é por _Stateless Address Autoconfiguration_ (SLAAC).
 
+Os _routers_ são computadores especializados com CPU, sistema operativo, memória e armazenamento responsáveis pelo roteamento de tráfego entre redes, podendo ter múltiplas interfaces com endereços IP diferentes. _Routers_ usam rotas estáticas e protocolos de _routing_ dinâmico, utilizando as tabelas de _routing_ para determinar o melhor trajeto para enviar pacotes. Um _switch_ pode alterar um cabeçalho, sem nunca alterar o pacote; um _router_ pode não encapsular pacotes, mas analisa-os e fragmenta-os para envio. Para permitir o acesso à rede, os dispositivos devem ser configurados com a seguinte informação: endereço IP (anfitrião único numa rede local), máscara de subrede (subrede do anfitrião) e _default gateway_ (identificação do _router_ para onde é enviado o pacote quando o destino não pertence à mesma subrede).
+
+O melhor trajeto é selecionado por um protocolo de _routing_ baseado no valor ou métrica usados para determinar a distância para atingir uma rede, escolhendo-se o menor. Os protocolos dinâmicos usam as suas próprias regras e métricas para construir e atualizar tabelas de _routing_: RIP (_Routing Information Protocol_, pelo número de saltos), OSPF (_Open Shortest Path First_, baseado na largura de banda cumulativa da origem ao destino), EIGRP (_Enhanced Interior Gateway Routing Protocol_, largura de banda, demora, carregamento, confiabilidade).
+
+Uma tabela de _routing_ é um ficheiro guardado na RAM que contém informação sobre rotas diretamente conectadas, rotas remotas e associações de rede ou de próximo salto. As **rotas estáticas** devem ser implementadas manualmente após as interfaces diretamente conectadas serem adicionadas à tabela de _routing_, devendo ser atualizadas se houver alteração de topologia. As **rotas dinâmicas** são usadas para partilhar informação sobre a acessibilidade e estado de redes remotas, encontrando novas redes e mantendo tabelas de _routing_.
+
+O **_routing_ estático** permite aumentar a segurança da rede, usar menor largura de banda (já que as rotas não gastam CPU para serem definidas) e a rota é conhecida. No entanto, há perda de tempo na configuração inicial e manutenção de rotas, a configuração é propensa a erros, requer a intervenção do administrador da rede para a manutenção das rotas, a manutenção de redes grandes ou em crescimento é inexequível, requer conhecimento completo de toda a rede para uma implementação funcional. Tem três usos primários: manutenção simples de redes pequenas ou definitivas; _routing_ de e para redes _stub_ (acedidas por uma única rota sem routers vizinhos); uso de uma única rede predefinida para representar uma rota para qualquer rede sem outra ligação. O _routing_ estático é usado para conetar uma rede específica, providenciar um _gateway_ de último recurso para uma rede _stub_, reduzir o número de rotas ao sumarizar diversas redes contíguas como uma única rota estática, criar uma rota de _backup_.
+
+A **sumarização de rotas** (ou agregação de rotas) é o processo de propagar um conjunto contíguo de endereços como um único endereço menos específico, com uma menor máscara de rede, reduzindo o número de entradas em atualizações de _routing_ e em tabelas locais de _routing_.
+
+Uma VLAN é uma partição lógica da camada dois de uma rede feita num switch, sendo um domínio de _broadcast_ usualmente com a sua própria rede IP. VLANs podem ser múltiplas e mutuamente isoladas, e pacotes só podem passar entre elas através de um router. VLANS aumentam segurança, reduzem custos, aumentam performance, diminuem domínios de _broadcast_, aumentam a eficácia dos técnicos e simplificam a gestão de processos e aplicações.
+
+Uma VLAN pode ser de dados, geral, nativa ou de gestão. As VLANs de voz são sensíveis ao tempo e requerem largura de dados garantida para assegurar qualidade, transmissão prioritária relativamente a outros tipos de tráfego de rede, capacidade de ser transmitidas em zonas de rede congestionadas, atraso menor do que 150 milissegundos através da rede. Um _trunk_ VLAN carrega mais do que uma VLAN e é usualmente estabelecido entre switches para que dispositivos dentro da mesma VLAN possam comunicar entre si.
+
+
+
 ---
 
 ### Aula Prática 1
 
-DHCP -> endereço de rede não estático de uma rede sem fios com autenticação pelo MAC Address (não há dois MAC Address's iguais)
+DHCP -> endereço de rede não estático de uma rede sem fios com autenticação pelo MAC Address (não há dois MAC Address's iguais dentro da mesma rede)
 
 O _subnet mask_ indica a gama de valores que é possível utilizar num código IPv4, ou seja, determina a quantidade de máquinas que é possível ligar à rede (por exemplo, 255.255.255.0 [base decimal] == 11111111.11111111.11111111.00000000 [base binária]). Em IPv4 tem-se quatro conjuntos de 256 símbolos:
 * 192.168.1.0                 -> código IPv4 de identificação da rede;

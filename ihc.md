@@ -163,6 +163,71 @@ O conteúdo de uma página deve ser apresentado em forma de pirâmide invertida:
 
 ## Aula Teórica 9
 
+φ = (1 +sqrt 5) / 2 ≃ 1.618...
+
+Não se vê diretamente os objetos, mas sim a luz que é emitida ou refletida por eles. A luz é uma onda eletromagnética, visível a olho humano entre 400nm e 700nm - visão monocromática. A **cor** pode ser uma _impressão_ produzida pela luz na retina ao ser emitida, difundida ou refletida; uma _sensação_ fisiológica provocada pela ação da luz incidente numa região da retina sobre os pigmentos; um _conjunto das características da luz_ distintas das suas heterogeneidades espaciais e temporais.
+
+Os sete princípios da estética são: **harmonia** (composição de elementos similares com cores próximas em luminosidade e intensidade), **contraste** (combinação de cores opostas ou de diferentes níveis de saturação), **ritmo**, **repetição** (repetição de formas e tons em padrões bem definidos), **gradação**, **equilíbrio** (distribuição (as)simétrica de elementos) e **dominância** (dominância de cor, unificando partes em conflito).
+
+---
+
+## Aula Teórica 10
+
+O principal objetivo de _design_ da interação é o desenho para usabilidade máxima, usando princípios de usabilidade, diretrizes, normas e padrões. **Princípios** são regras abstratas de _design_, com alta generalidade e baixa autoridade; **diretrizes** têm maior autoridade e menor generalidade; **padrões** são regras de _design_ específicas, com alta autoridade e aplicação limitada.
+
+Os princípios que suportam a usabilidade podem ser de:
+* **Aprendizagem** - facilidade com que novos utilizadores iniciam interações efetivas e atingem máxima performance:
+  * **Previsão** - determinação de ações futuras de baseadas em ações passadas;
+  * **Síntese** - aceção do efeito de ações passadas;
+  * **Familiaridade** - interligação entre conhecimentos passados e o novo sistema;
+  * **Generalização** - extensão de conhecimento de interações específicas em novas situações;
+  * **Consistência** - semelhança de comportamento decorrente de situações semelhantes ou objetivos;
+* **Flexibilidade** - multiplicidade de formas com que o utilizador e o sistema trocam informações:
+  * **Iniciativa de diálogo** - liberdade de restrições impostas pelo sistema;
+  * **_Multithreading_** - capacidade de suporte de interação do utilizador para mais do que uma tarefa em simultâneo;
+  * **Migração de Tarefas** - transferência de responsabilidade pela execução da tarefa entre o utilizador e o sistema;
+  * **Substitutividade** - permitir que valores equivalentes de _input_ e _output_ sejam substituídos entre si;
+  * **Parametrização** - modificação do sistema pelo utilizador (adaptabilidade), ajuste automático do sistema (adaptatividade);
+* **Robustez** - nível de suporte dado ao utilizador para assegurar realização e avaliação bem-sucedidas de comportamento direcionado a metas:
+  * **Observabilidade** - capacidade do utilizador avaliar o estado interno do sistema através da sua representação;
+  * **Recuperabilidade** - capacidade do utilizador de corrigir ações após reconhecimento de erro;
+  * **Responsividade** - perceção do utilizador do ritmo de comunicação com o sistema;
+  * **Conformidade de Tarefas** - grau com que o sistema de suporte serve todas as tarefas do utilizador.
+
+Os padrões são definidos por corpos nacionais e internacionais para assegurar conformidade entre uma grande comunidade de _designers_, com uma teoria de base e mudanças lentas de tecnologia. O padrão ISO 9241 define usabilidade como eficácia (precisão, completude), eficiência (recursos) e satisfação (conforto, aceitação) com a qual os utilizadores concluem tarefas.
+
+Há diretrizes que são mais abstratas (princípios), aplicáveis durante as atividades iniciais do programa; e outras mais detalhadas, mais adequadas para a observação durante as atividades finais do programa. Três coleções de princípios e diretrizes:
+* **As dez heurísticas de Nielsen**:
+  * Visibilidade do estado do sistema;
+  * Compatibilidade entre sistema e mundo real;
+  * Controlo e liberdade do utiliador;
+  * Consistência e padrões;
+  * Prevenção de erros;
+  * Reconhecimento ao invés de recordação;
+  * Flexibilidade e eficiência de uso;
+  * _Design_ estético e minimalista;
+  * Ajuda aos utilizadores para reconhecer, diagnosticar e recuperar de erros;
+  * Ajuda e documentação;
+* **Os sete princípios de Norman**:
+  * Uso de conhecimento do mundo e do utilizador;
+  * Simplicação da estrutura de tarefas;
+  * Visibilidade das coisas (golfos de execução e avaliação);
+  * Mapeamento correto;
+  * Exploração do poder de restrições naturais e artificiais;
+  * _Design_ para erro;
+  * Padronização em caso de falha;
+* **As oito regras de ouro de Shneiderman**:
+  * Consistência;
+  * Permissão a utilizadores frequentes do uso de atalhos;
+  * Oferta de _feedback_ informativo;
+  * Desenho de diálogos para permitir o _closure_;
+  * Oferta de prevenção de erros e gestão simples de erros;
+  * Fácil retrocesso de ações;
+  * Suporte local de controlo interno;
+  * Redução de carga de memória de curto prazo.
+
+Um padrão é uma solução invariável para um problema recorrente, dentro de um contexto específico. Não existem isolados, mas estão ligados entre si para a geração de _designs_ completos. Capturam o _design_ prático não teórico, capturam as propriedades essenciais comuns de bons exemplos de _design_, representam o conhecimento de _design_ em vários níveis (social, organizacional, concetual, detalhado), incorporam valores e exprimem a dimensão humana, são intuitivos e fáceis de ler e podem ajudar no desenvolvimento de um _design_.
+
 ---
 
 ## Aulas Práticas

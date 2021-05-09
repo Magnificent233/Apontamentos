@@ -240,7 +240,7 @@ O _standard_ **POSIX** define uma _Application Programming Interface_ (API) para
 
 ---
 
-## Aula Teórica 8
+## Aula Teórica 8 / 9
 
 Há três tipos de problemas de gestão de recursos:
 * _Starvation_ (inanição) - um processo fica indefinidamente bloqueado sem recursos devido à política de escalonamento da CPU;
@@ -272,6 +272,52 @@ Para simplificar os algoritmos, pode usar-se variáveis que funcionam como trinc
 Também se pode inibir as interrupções antes da entrada de uma secção crítica e ativá-las de novo à saída, impedindo a troca de processos pela CPU (o que garante que um processo pode utilizar uma variável partilhada sem a interferência de nenhum outro processo); no entanto, apenas funciona com sistemas de uniprocessador, pode impedir o tratamento de interrupções e pode implicar o _crash_ do sistema operativo e problemas a nível de _cache_.
 
 Os trincos lógicos podem ser feitos por _hardware_ através da implementação da exclusão mútua, garantindo ou não a espera limitada. Todos os processos que não conseguem entrar na secção crítica ficam à espera, não havendo nenhum mecanismo que evite a preenção de um processo quando está a executar na zona crítica - **espera ativa**, quando um processo a executar na secção crítica é retirado do processador: o trinco mantém-se fechado e os outros processos vão passando sucessivamente pelos processadores, continuando a testar o trinco para verificar a sua abertura e a gastar CPU.
+
+Um **semáforo** é um mecanismo de sincronização sem espera ativa que consiste numa variável e numa fila de espera associada a um recurso que contém todos os descritores dos processos bloqueados no semáforo, manipulado através de duas primitivas atómicas (_wait_ e _signal_). **Bloquear** um processo num semáforo significa retirá-lo do estado de execução (_running state_) e movê-lo para a fila de processos bloqueados (_waiting state_); **desbloquear** um processo significa retirá-lo da fila de processos bloqueados _waiting state_ e inseri-lo na fila de processos executáveis (_ready state_). Dois ou mais processos podem executar uma secção crítica com exclusão mútua, progressão e espera limitada - semáforo binário de exclusão mútua. Dois ou mais processos podem cooperar através de sinais, em que um processo é obrigado a parar num local especificado até receber um determinado sinal - semáforo de manipulação de eventos.
+* *Deadlock* ocorre quando dois ou mais processos estão à espera indefinidamente por um evento que só pode ser causado por um dos processos à espera;
+* *Starvation* é um bloqueio indefinido, em que um processo corre o risco de nunca ser removido da fila do semáforo na qual está suspenso.
+
+Outros métodos de comunicação entre processos:
+* _Pipes_ - sincronização e comunicação unidirecional através do _kernel_ (interação entre um produtor (remetente, emissor) e um consumidor (destinatário, recetor) de informação);
+* _Message Queues_ - sincronização e comunicação bidirecional através do _kernel_ (comunicação através de _mailboxes_ ordenadas em FIFO, com as primitivas _send (mailbox, message)_ e _receive (mailbox, message)_, cujas mensagens contêm tipo, comprimento e dados);
+* _Shared Memory_ - comunicação rápida de dados sem sincronização (exige o uso de um semáforo partilhado);
+* _Signals_ - permitem sincronização (comunicação do acontecimento de um evento, mas sem comunicação de dados ou informação);
+* _Sockets_ - comunicação por canal bidirecional sem sincronização.
+
+A capacidade da _mailbox_ pode ser:
+* **Capacidade zero** - não pode haver mensagens armazenadas, o emissor tem de esperar pela disponibilidade do recetor e os processos têm de sincronizar em qualquer troca de mensagens;
+* **Capacidade limitada** - tamanho finito, se a fila estiver cheia não há necessidade de bloquear o emissor, o sucesso de envio não implica sucesso de receção;
+* **Capacidade ilimitada** - tamanho infinito, o emissor nunca é bloqueado, o sucesso de envio não implica sucesso de receção.
+
+A passagem de mensagens pode ser **assíncrona** (o emissor envia um pedido e continua a execução), **síncrona** (o emissor fica bloqueado até receção da mensagem) ou **cliente/servidor** (o emissor fica bloqueado até o recetor lhe responder). Uma falha num processo não implica necessariamente a falha de todo o sistema, mas quando ocorre alguma avaria deve ser executado algum processo de recuperação de erro. A terminação anormal de um processo pode decorrer porque o processo B bloqueia indefinidamente à espera de uma mensagem do processo Q que já terminou ou porque o processo P envia uma mensagem ao processo Q que já terminou.
+
+Um conjunto de sistemas está mutuamente bloqueado (**_deadlocked_**) quando cada processo do conjunto está atribuído a pelo menos um recurso mas está à espera da libertação de um recurso atribuído a outro processo do conjunto. Os **recursos** podem ser físicos (ciclos CPU, espaço de memória, dispositivos de I/O) ou lógicos (semáforos, ficheiros, _sockets_) e preentivos (podem ser removidos do processo proprietário sem problema) ou não preentivos (não podem ser removidos sem que a computação falhe). Um processo requisita, utiliza e liberta um recurso; se o recurso não estiver disponível, o programa continua (sem utilizar o recurso) ou espera que o recurso fique disponível. Para ocorrer _deadlock_, há quatro condições:
+* **Exclusão mútua** - um recurso pode ser atribuído apenas a um processo;
+* **Posse e espera** - um processo na posse de um recurso está à espera de mais recursos;
+* **Não preenção** - um recurso só pode ser libertado pelo processo proprietário depois de terminar o seu uso, sem poder ser removido;
+* **Espera circular** - existe um encadeamento circular de dois ou mais processos, cada um à espera de um recurso na posse do processo seguinte.
+
+Se num grafo de alocação de recursos não houver ciclos, então não há _deadlock_; se houver pelo menos um ciclo, e se existir apenas uma instância de cada recurso então há _deadlock_, se existirem várias instâncias então há a possibilidade de haver _deadlock_ (deve ser analisado por análise virtual e argumento lógico, algoritmos de deteção de ciclos ou _model checkers_). Para evitar e prevenir _deadlocks_, o sistema operativo deve conhecer sempre o estado do sistema e guardar informações suplementares sobre cada processo (ou configurar o sistema _a priori_ para evitar processos), embora muitas vezes se use o 'algoritmo de avestruz' (fingir que não existem _deadlocks_).
+
+---
+
+## Aula Teórica 10
+
+Um programa deve ser colocado na memória dentro do contexto de um processo para poder ser executado. O _binding_ ou conexão de endereços a instruções e dados a endereços de memória pode acontecer em três estágios diferentes:
+* Tempo de compilação - se a localização em memória de um programa é conhecida _a priori_, então o código absoluto pode ser gerado, se não, o código é recompilado;
+* Tempo de carregamento - se a localização em memória não é conhecida em tempo de compilação, então é necessário gerar código relocável;
+* Tempo de execução - se um processo pode ser transladado durante a sua execução de um segmento de memória para outro, então os endereços são alterados a nível de _hardware_.
+
+O processo que contém o programa poderá transitar entre o disco e a memória durante o seu tempo de execução, sendo cada instrução e dados acedidos pela CPU à medida que o programa é executado e cujo espaço é libertado após o término da execução. Em multiprogramação há dois problemas: **código relocável** (como a localização da memória física não é conhecida _a priori_, os endereços são relativos) e **proteção** (deve assegurar-se de que um programa não interfere noutro enquanto executam), que podem ser solucionados usando **registo base** para o endereço físico mais baixo da memória e **registo limite** para o endereço físico mais elevado da memória, permitindo mudar um processo de uma parte da memória para outra.
+
+O **endereço lógico** (virtual) é gerado pela CPU e o **endereço físico** é gerado pela MMU (_Memory Management Unit_, dispositivo de _hardware_ que transforma endereços virtuais em endereços físicos). Se forem conectados em tempo de compilação ou carregamento, os endereços devem ser iguais; se forem conectados em tempo de execução, os endereços devem ser diferentes.
+
+A **locação contínua de memória em partição única** pretende proteger o espaço de endereçamento do sistema operativo de modo a evitar alterações por parte dos processos e o espaço de endereçamento dos processos uns dos outros, através do _registo de recolocação_ (endereço físico mais baixo gerado pela CPU) e do _registo limite_ (gama de endereços lógicos usados pelo processo).
+* Uma solução é subdividir a memória em **partições de tamanho fixo**, para as quais são atribuídos processos à medida que são executados e o seu espaço de memória é liberto. No entanto, torna-se difícil saber o tamanho de partição necessário por um processo; um processo posto numa das filas pode ser proibido de executar devido a outros processos também em espera; há desperdício de memória (_fragmentação interna_, quando um programa tem tamanho menor que a partição).
+* Outra solução é a subdivisão da memória em **partições de tamanho variável** de acordo com o tamanho dos processos, com algoritmos de _first-fit_, _best-fit_ ou _worst-fit_. No entanto, pode haver _fragmentação externa_.
+* Outra solução é a **paginação**, em que a memória física é dividida em blocos de tamanho fixo (molduras) e a memória lógica é dividida em blocos do mesmo tamanho (páginas). As páginas (cujo endereço gerado na CPU tem _page number_ e _page offset_) são atribuídas a molduras de acordo com o seu tamanho e os programas são executados. A tabela de páginas é guardada na memória principal, acedida em conjunto com os dados e instruções, e o acesso à memória pode ser resolvido através de uma cache de pesquisa rápida. A proteção de memória é garantida com um bit de proteção em cada moldura, que pode ser válido (se a página associada está no endereçamento lógico do processo) ou inválido (se a página associada não está no endereçamento lógico do processo).
+
+A segmentação é um esquema de gestão de memória que reflete a visão que o utilizador tem da memória. A tabela de segmentação traduz endereços lógicos bidimensionais em endereços físicos unidimensionais (com base (endereço físico do início do segmento de memória) e limite (comprimento do segmento)). 
 
 ---
 
