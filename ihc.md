@@ -219,7 +219,6 @@ Há diretrizes que são mais abstratas (princípios), aplicáveis durante as ati
 * **As oito regras de ouro de Shneiderman**:
   * Consistência;
   * Permissão a utilizadores frequentes do uso de atalhos;
-  * Oferta de _feedback_ informativo;
   * Desenho de diálogos para permitir o _closure_;
   * Oferta de prevenção de erros e gestão simples de erros;
   * Fácil retrocesso de ações;
@@ -227,6 +226,39 @@ Há diretrizes que são mais abstratas (princípios), aplicáveis durante as ati
   * Redução de carga de memória de curto prazo.
 
 Um padrão é uma solução invariável para um problema recorrente, dentro de um contexto específico. Não existem isolados, mas estão ligados entre si para a geração de _designs_ completos. Capturam o _design_ prático não teórico, capturam as propriedades essenciais comuns de bons exemplos de _design_, representam o conhecimento de _design_ em vários níveis (social, organizacional, concetual, detalhado), incorporam valores e exprimem a dimensão humana, são intuitivos e fáceis de ler e podem ajudar no desenvolvimento de um _design_.
+
+---
+
+## Aula Teórica 11
+
+No golfo de execução, a formulação de ações do utilizador podem ser diferentes das ações permitidas pelo sistema; no golfo de avaliação, as expectativas do utilizador do estado do sistema mudado podem ser diferentes da real apresentação do estado.
+
+Os modelos cognitivos modelam aspetos do utilizador (compreensão, conhecimento, intenções, processamento) e categorizam aspetos comuns (competência vs performance, preferência computacional, divisões). A arquitetura cognitiva junta os modelos hierárquico, linguístico e físico.
+
+Os **modelos hierárquicos** representam uma tarefa de utilizador e estrutura de objetivos. O processamento mental usa a estratégia de dividir para conquistar, no modelo GOMS:
+* _Goals_ - o que o utilizador quer atingir;
+* _Operators_ - ações básicas executadas pelo utilizador;
+* _Methods_ - decomposição de um objetivo em subobjetivos;
+* _Selection_ - escolha entre métodos concorrentes.
+No entanto, há problemas de granularidade (onde começar/terminar); o comportamento é aprendido por rotina, não por resolução de problemas; pode haver conflito entre as diversas formas de atingir um objetivo; e pode haver deteção de erros.
+
+Os **modelos linguísticos** representam a gramática utilizador-sistema, pela compreensão do comportamento do utilizador e da dificuldade cognitiva baseada na análise de linguagem entre ambos:
+* Forma de Backus-Naur (BNF) - visão sintática do diálogo na perspetiva do utilizador (terminais - mais baixo nível de comportamento do utilizador (clique do rato, movimento do rato); não-terminais - alto nível de abstração (seleção de menu, posicionamento do rato)). Sintaxe: `não-terminal ::= expressão` (contém terminais e não-terminais, combinados em sequência (+) ou em alternativa (|)). Utiliza muitas regras e operadores, cuja sintaxe pode ser igual para semânticas diferentes, sem reflexão da perceção do utilizador da resposta do sistema e verificação mínima de consistência;
+* Gramática de Tarefa-Ação (TAG) - explicitação da consistência através da codificação do conhecimento do mundo do utilizador em regras de gramática parametrizadas, em que os não-terminais são modificados para incluir caraterísticas semânticas adicionais. Também tem em conta o conhecimento pré-existente do utilizador e congruência entre caraterísticas e comandos, modelados como regras derivadas.
+
+Os **modelos físicos** representam as capacidades motoras humanas, baseados em conhecimentos empíricos, em que a tarefa do utilizador é aquisição e execução por:
+* _Keystroke Level Model_ (KLM) - baixo nível do GOMS, com seis operadores na fase de execução: motores (K - _keystroking_, P - _pointing_, H - _homing_, D - desenho), mentais (M - preparação mental) e do sistema (R - responsividade), cujo tempo é calculado empiricamente. Heurísticas:
+  * **Regra 0** - _inserção inicial de operatores candidatos M_ - inserir M antes de todos os K ou B que representam entradas do utilizador e de todo o P que representa um comando ou inicia uma sequência de manipulação direta;
+  * **Regra 1** - _remoção de Ms antecipados_ - se M está entre operadores com alta variabilidade de duração, deve ser eliminado;
+  * **Regra 2** - _remoção de Ms dentro de unidades cognitivas_ - se uma sequência de K forma uma unidade cognitiva, então removem-se todos os Ms exceto o primeiro;
+  * **Regra 3** - _remoção de Ms anteriores a delimitadores consecutivos_ - se K é um delimitador redundante no fim de uma unidade cognitiva (comando), deve ser removido;
+  * **Regra 4** - _remoção de Ms delimitadores de comandos_ - se K é delimitador de um comando, apagar o M em frente; se K for delimitador para um argumento ou sequência variável, manter o M;
+  * **Regra 5** - _remoção de Ms sobrepostos_ - não contar os M após R;
+* _Buxton's 3-state model_ - estado 0 (sem _feedback_), estado 1 (monitorização), estado 2 (arrasto).
+
+---
+
+## Aula Teórica 12
 
 ---
 

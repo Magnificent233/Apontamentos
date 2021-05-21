@@ -221,7 +221,54 @@ Uma VLAN é uma partição lógica da camada dois de uma rede feita num switch, 
 
 Uma VLAN pode ser de dados, geral, nativa ou de gestão. As VLANs de voz são sensíveis ao tempo e requerem largura de dados garantida para assegurar qualidade, transmissão prioritária relativamente a outros tipos de tráfego de rede, capacidade de ser transmitidas em zonas de rede congestionadas, atraso menor do que 150 milissegundos através da rede. Um _trunk_ VLAN carrega mais do que uma VLAN e é usualmente estabelecido entre switches para que dispositivos dentro da mesma VLAN possam comunicar entre si.
 
+A camada de transporte controla as comunicações individuais entre as aplicações de origem e destino; segmenta os dados para garantir que cabem nos PDUs das camadas inferiores e reassembla os dados recebidos numa _data stream_; identifica as aplicações que correspondem a cada um dos _data streams_. A comunicação pode ser _connectionless_ (_User Datagram Protocol_ (UDP)), _connection oriented_ (_Transmission Control Protocol_, (TCP)), entre outros. O TCP é orientado à ligação (exige um _handshake_ e envia os dados em qualquer direção após se estabelecer o circuito virtual), é fiável, ordenado, pesado e cria _flow_ de pacotes; o UDP não considera o estado do recetor, não é fiável, ordenado, é leve, as mensagens não são fragmentadas, não há controlo de congestão.
 
+Numa transmissão UDP, o recetor não confirma a receção dos dados (_streaming media_, jogos multijogador, _voice over IP_, _Domain Name System_ (DNS), _Simple Network Management Protocol_ (SNMP), _Routing Information Protocol_ (RIP), _Dynamic Host Configuration Protocol_ (DHCP)); os portos podem ser _portos bem conhecidos_, controlados pela IANA (0 - 1023), _portos registados_ (IANA, 1024 - 49151), _portos dinâmicos, efémeros ou privados_ (49152 - 65535):
+* 20 (TCP) - FTP;
+* 21 (TCP) - FTP control;
+* 22 (TCP / UDP) - SSH;
+* 23 (TCP) - TELNET;
+* 25 (TCP) - SMTP;
+* 53 (TCP/UDP) - DNS;
+* 80 (TCP/UDP) - HTTP;
+* 110 (TCP) - POP3;
+* 443 (TCP) - HTTPS (sobre SSL/TLS).
+
+Numa transmissão TCP, o cliente usa portos bem conhecidos como porto de destino e portos aleatórios como portos de origem, e o servidor usa o porto de destino do pedido como porta de origem e o porto de origem do pedido como porto de destino. Usa-se um _handshake_ SYN ACK (_synchronize_ _acknowlegment_) para iniciar e um FIN ACK (_final_ _acknowledgment_) para terminar. O tamanho da janela determina o número de bytes enviados antes do _acknowledgment_, que toma o valor do próximo byte esperado. Se os segmentos são perdidos devido à congestão, o recetor vai reconhecer o último segmento sequencial recebido e responder com uma janela de tamanho menor. Datagramas e segmentos diferentes podem tomar rotas diferentes.
+
+No UDP há _connectionless_, o _overhead_ é menor, há requerimentos de transmissão rápida, não há entrega garantida, não há reconhecimento de receção. No TCP há estabelecimento de sessão, segmentos de mensagem em sequência, entrega garantida, entrega ordenada e controlo de fluxo.
+
+O PDU é a unidade de medida de dados de um protocolo. Na camada física (1) é o bit; na camada de ligação de dados (2) é a trama; na camada de rede (3) é o pacote; na camada de transporte (4) é o segmento; nas camadas de sessão, apresentação e aplicação (5, 6, 7) é variável (podendo ser dados ou mensagens).
+
+A conexão sem fios permite maior flexibilidade e produtividade, redução de custos e capacidade de crescimento e adaptação para requerimentos em mudança. As redes _wireless_ podem ser classificadas como:
+* _Wireless Personal-Area Network_ (WPAN);
+* _Wireless LAN_ (WLAN);
+* _Wireless Wide-Area Network_ (WWAN);
+* _Bluetooth_ - WPAN IEEE 802.15;
+* _Wireless Fidelity_ (Wi-Fi) - WLAN IEEE 802.11;
+* _Worldwide Interoperability for Microwave Access_ (WiMax);
+* _Cellular Broadband_ - organizações nacionais, internacionais e corporativas que utilizam acesso móvel para providenciar conetividade de rede de _broadband_ móvel;
+* _Satellite Broadband_.
+
+As frequências do espetro eletromagnético são, das menores para as maiores: energia e telefonia, ondas rádio (muito baixa frequência (VLF), baixa frequência (LF), média frequência (MF), alta frequência(HF), muito alta frequência (VHF), ultra alta frequência (UHF), super alta frequência (SHF), extremamente alta frequência (EHF)), infravermelhos, luz visível, ultravioletas, raios-X, raios gama, raios cósmicos.
+
+Uma rede cablada é física, segue o protocolo CSMA/CD (deteção de colisões), requer ligação por cabos, não tem consequências de interferência de sinal e segue as regras impostas pelo IEEE. Uma rede _wireless_ é virtual, segue o protocolo CSMA/CA (evitação de colisões), tem interferência de sinal e requer regulação adicional das autoridades de cada país.
+
+As antenas _wireless_ podem ser:
+* Omnidirecionais - com cobertura de 360 graus;
+* Direcionais - focam o sinal numa direção específica, aumentando o sinal de e para o _access point_ na direção em que a antena está a apontar;
+* Yagi - tipo de antena direcional para rede Wi-Fi de longa distância.
+
+A topologia de redes _wireless_ pode ser modo Ad Hoc, modo infraestrutural e _tethering_ (_hotspot_ pessoal). Uma _frame_ 802.11 é constituída por cabeçalho (controlo de _frame_, duração, endereço 1, endereço 2, endereço 3, controlo de sequência, endereço 4), _payload_ e FCS. Numa operação sem fios, os parâmetros de associação são:
+* **SSID** - identificador único para distinção de redes sem fios múltiplas próximas;
+* **Palavra-passe** - ou chave de segurança, para permitir a autenticação do cliente ao _access point_;
+* **Modo de rede** - padrões WLAN 802.11a/b/g/n/ac/ad, que podem ou não ser utilizados em simultâneo;
+* **Modo de segurança** - WEP, WPA, WPA2;
+* **Definições de canal** - bandas de frequência usadas para transmitir dados _wireless_, que podem ser definidas manual ou automaticamente.
+
+Um _access point_ pode ser descoberto em **modo passivo** (o AP anuncia o seu serviço através de _broadcast_ de _frames_ farol com SSID, padrões suportados e definições de segurança, que permitem aos clientes saber que redes e APs estão disponíveis numa dada área) ou em **modo ativo** (os clientes devem saber o nome do SSID e inicializam o processo ao transmitir uma _frame_ de pedido de sondagem, que inclui o SSID e padrões suportados). A autenticação pode ser **aberta** (se for direta) ou **de chave partilhada** (se é necessário haver uma palavra-passe partilhada _a priori_ entre cliente e AP).
+
+---
 
 ---
 

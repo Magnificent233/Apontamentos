@@ -321,63 +321,32 @@ A segmentação é um esquema de gestão de memória que reflete a visão que o 
 
 ---
 
-## Aula Prática 1
+## Aula Teórica 11
 
-**Bash Shell** (_Born Again Shell_), **SH Bourne Shell** (_Bourne Shell_), **CSH**, **TCSK** são CLI (_Command Line Interpretor_) do sistema operativo Linux.
-GUI (_Graphical User Interface_).
+Em sistemas apenas com memória física, os endereços gerados pelo CPU têm uma correspondência quase direta aos endereços da memória física. A execução de programas com tamanho total superior à capacidade de memória é conseguido por:
+* **Overlay** - mecanismo obsoleto de linguagem de programação. Mantinha-se em memória apenas as instruções e dados necessários em determinada altura, dividindo o programa em secções logicamente distintas. O programador era responsável pela divisão do programa, numa operação difícil e dispendiosa em termos temporais;
+* **Swapping** - mecanismo embutido no sistema operativo que usa memória secundária como memória principal. Um processo pode ser temporariamente expulso (_swapped out_) da memória para um _backing store_ (disco que aloja cópias das imagens de memória dos processos dos utilizadores), e depois readmitido (_swapped in_) para continuar a sua execução;
+* **Memória virtual** - extensão do conceito lógico de memória. Apenas a parte ativa (_working set_) do programa precisa de estar em memória (maior eficácia), fornecendo mecanismos de simplificação de gestão de memória e proteção (por _demand paging_ e _demand segmentation_).
 
-LOOP:
-* leitura de comandos (ambiente gráfico -> cliques) (CLI -> instruções escritas)
-* interpretação
-  * parsing
-  * ação
-    * execução de novos comandos que o sistema operativo pode encontrar
-    * funcionalidade do próprio programa _shell_ (embutida)
+Num sistema com memória virtual, o _hardware_/_software_ traduzem os endereços virtuais para endereços físicos através de uma estrutura de dados gerida pelo sistema operativo. Se o espaço virtual tem 32 bits (4 GB) e a página tem 12 bits (4 KB), então a tabela de páginas tem 20 bits de entradas de 32 bits - gastando 4 MB. Cada página, além de uma _frame_, tem associado um bit válido/inválido (1 = válido (dentro da memória), 0 = inválido (fora da memória)), que é inicializado a 0.
 
-EDITORES
-* linha a linha : `ed`
-* screen based : `vi emacs`
-* complex screen based : `vim xemacs`
-* graphics : `gedit` `notepad` `notepad++`
-* ides: `netbeans` `intellij` `vscode` `vspro`
+Em _demand paging_, uma página é trazida para a memória apenas quando necessária (diminuindo o I/O e memória necessários e o tempo de resposta e permitindo mais utilizadores). As zonas de memória virtual não carregados em memória principal e com dados ou código dos processos estão numa _backing store_. Uma _page fault_ é uma instrução na CPU que utiliza um endereço lógico traduzido pelo _memory management unit_ (MMU) (1) para uma página que não está na memória (_trap OS_) (2); obtém-se a localização da _frame_ (3), há o _swap_ de páginas na _frame_ (4), _reset_ de tabelas (5) e recomeço da instrução (6). No _hardware_, o processador sinaliza o controlador (lê um bloco de comprimento P que começa no endereço de disco X e guarda no endereço de memória Y), lê-se pela memória de acesso direto (DMA) sob o controlo de I/O, que interrompe o processo e faz o sistema operativo retomar os processos suspensos. A probabilidade de uma falha de página está entre 0 (sem falhas) e 1 (cada referência é uma falha).
 
-Tudo em Linux é um ficheiro (ficheiros 'normais', pastas, _sockets_, discos, periféricos).
+Se não houver uma _frame_ disponível, o sistema operativo terá de encontrar uma página em memória não utilizada e utilizá-la. O **mecanismo de substituição** completa a separação da memória lógica da memória física - permitindo que uma grande memória virtual possa ser fornecida por uma pequena memória física. A execução do processo é parada e o sistema operativo localiza a página no _backing store_ e uma _frame_ livre (se existir, utiliza-a, se não, seleciona uma vítima através de algoritmos); o processo é inserido na _frame_ e as estruturas do sistema operativo são atualizadas, recomeçando a execução do processo. Os algoritmos usam uma dada sequência de referências à memória (_reference string_) e calculam o número de falhas da página:
+* **FIFO** (_First In First Out_);
+* **Random** - a página de substituição é escolhida aleatoriamente entre as m _frames_ de probabilidade 1/m;
+* **Optimal** (Beladys) - substituição da página que não vai ser usada durante a maior quantidade do tempo (_benchmark_ contra o qual outros algoritmos podem ser comparados);
+* **LRU** (_Least Recently Used_) - os programas acedem à memória por _localidade temporal_ (se um endereço for acedido agora, há uma grande probabilidade de ser acedido no futuro próximo) e _localidade espacial_ (se um endereço for acedido, há uma grande probabilidade de os próximos endereços serem endereços próximos), ou seja, as páginas muito utilizadas nas últimas instruções têm grande probabilidade de ser utilizadas novamente na seguinte e as páginas não utilizadas permanecerão sem uso.
 
-`man`
-página 1 -> bash
-página 2 -> linux sys calls
-página 3 -> c standard library
+O LRU pode ser implementado com _contadores_ (cada página tem um relógio associado com valor inicial nulo que é atualizado de cada vez que a página é utilizada, comparando-se depois os valores dos relógios) ou com _pilhas_ (guarda-se uma estrutura de dados que representa uma pilha de páginas usadas, com a última referenciada no topo).
 
-## Aula Prática 3
+Também é preciso definir uma **política de alocação**, especificando quantas _frames_ são tidas por um processo, baseadas num _working set_: conjunto de páginas que um processo referencia ativamente. As páginas usadas de um processo têm de ser mantidas na memória, e outras páginas não utilizadas podem estar inválidas (libertando espaço em memória para outros processos) - havendo necessidade de otimizar o tamanho do conjunto de trabalho. O **esquema de frequência de _page fault_** define uma taxa de falhas aceitável - se for demasiado baixa implica perda de _frames_, se for demasiado alta implica ganho de _frames_.
 
-ctrl + z -> suspender
+Se um processo não tiver páginas válidas (_frames_) suficientes, a taxa de falhas de páginas pode ser muito alta, havendo baixa taxa de utilização do CPU, aumentando o grau de multiprogramação e adicionando outro processo ao sistema. No **_thrashing_**, os processos estão ocupados na troca de páginas, não fazendo qualquer trabalho.
 
-fg -> voltar a excecutar último comando / script
-
-0 -> sucesso
-
-`grep` -> procupar expressões regulares, que podem ser especificadas
-* ^ -> início de uma linha
-* $ -> fim de uma linha
-
----
-
-## Minitestes
-
-#### Miniteste 1 - Bases, Estruturas e Arquitetura de um SO
-
-* **Quais das funções seguintes das bibliotecas _standard_ de C nunca podem invocar uma chamada ao sistema no Linux?** : `strcmp`, `sqrt`.
-* **Qual declaração sobre o DMA é sempre verdadeira?** : Exige sempre um _hardware_ especial / dedicado.
-* **Considere o seguinte programa escrito em C. `main () { printf("ola"); asm(cli); }` Qual declaração está correta?** : O programa compila com avisos e executa com erro sem imprimir "ola" no ecrã.
-* **Pode-se descrever os objetivos de um sistema operativo em tudo menos** : projetar uma solução informática.
-* **O papel principal do temporizador de um sistema computacional para o sistema operativo é** : fornecer um mecanismo para poder sempre controlar o sistema.
-* **O que não é um exemplo de um recurso que é habitualmente multiplexado por espaço?** : CPU.
-* **O único programa que está sempre ponto a correr é** : o _kernel_ de um sistema operativo.
-* **Um sistema operativo faz cada um dos seguintes, exceto** : garantir que os programas encerram a sua execução.
-* **Quais das seguintes instruções devem ser privilegiadas?** : Limpar a memória. Aceder a um dispositivo de entrada/saída. Modificar as entradas na tabela de _status_ do dispositivo. Definir o valor do temporizador.
-* **Qual declaração sobre o tratamento das interrupções num sistema operativo multiprogramado e preemtivo está incorreta?** : Quando é determinado que a nova sequência de instruções é concluída, a CPU restaura o PC antigo e a execução da sequência original prossegue.
-* **O que não é um exemplo de um recurso que é habitualmente multiplexado por tempo?** : Memória principal.
-* **No modelo de Von Neumann, quais das declarações seguintes estão falsas?** : Um sistema operativo é necessário para gerir a computação. Um programa está gravado num disco.
-* **A principal função do interpretador de comandos é** : obter e executar o próximo comando especificado pelo utilizador.
-* **O que é um sistema operativo?** : Todas as opções indicadas (Um conjunto de programas que gere os recursos físicos de um computador. Um sistema para ajudar utilizadores a atingirem os seus objetivos. Um fornecedor de serviços de sistema às aplicações).
-* **Qual dos seguintes deve ser implementado como _software_ confiável no _kernel_?** : Gerente de multiprogramação.
+Outras utilizações de memória virtual são:
+* **COW** (_Copy On Write_) - processos pai e filho partilham as mesmas páginas de memória; se qualquer dos dois processos altera dados numa página partilhada, então a página é copiada, ficando cada processo com uma cópia própria. Os processos são criados de forma mais eficaz e rápida e as páginas livres são alocadas de um conjunto de páginas livres mantido pelo sistema operativo;
+* **MMF** (_Memory Mapped Files_) - processos são tratados como rotinas de acesso à memória mapeando blocos do disco a páginas em memória. Um ficheiro é inicialmente lido com _demand paging_, em que uma parte do ficheiro do tamanho de uma página é lido do sistema de ficheiros para uma _frame_ e qualquer leitura/escrita subsequente é tratada como acesso à memória, permitindo a partilha de um ficheiro entre múltiplos processos pelas páginas em memória;
+* **Seleção de tamanho de página** - determinação do tamanho de página a utilizar, fornecendo a possibilidade ao administrador de alterar o tamanho da página e de ter múltiplos tamanhos diferentes, de modo a permitir a otimização de tamanho pelas próprias aplicações, não havendo aumento significativo de fragmentação;
+* **Bloqueio de I/O** - as páginas são fechadas (_locked_) em memória e não podem ser retiradas;
+* **Localidade**.
