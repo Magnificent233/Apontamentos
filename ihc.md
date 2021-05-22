@@ -260,6 +260,16 @@ Os **modelos físicos** representam as capacidades motoras humanas, baseados em 
 
 ## Aula Teórica 12
 
+As notações de diálogo podem ser **diagramáticas** (redes de transição de estado, diagramas JSD, gráficos de fluxo) ou **textuais** (gramáticas formais, regras de produção, CSP). O diálogo está linkado com as **semânticas** (o que faz) e a **apresentação** (como é) do sistema, permitindo a análise de descrições formais por ações inconsistentes, dificuldade em reverter ações, ações em falta ou potenciais erros de tipagem. O diálogo em interfaces refere-se à estrutura da interação a um nível sintático da comunicação humano-computador, com níveis **lexical** (formas, teclas), **sintático** (ordem e estrutura de inputs e outputs) e **semântico** (efeito na aplicação e dados internos).
+
+Os diálogos são integrados num programa. Num sistema grande pode-se analisar o diálogo, alterar plataformas, analisar sistemas e separar léxico/sintaxe da semântica, e antes de construir o sistema as notações auxiliam na perceção dos _designs_ propostos.
+
+As propriedades de _State Transition Networks_ são **acessibilidade** (facilidade de acesso entre diversos pontos), **reversabilidade** (capacidade de voltar ao estado anterior sem refazer ações), **estados perigosos** (estados não desejados). Os _State Charts_ são extensões de STN com hierarquia, subredes concorrentes, escapes e histórico.
+
+As redes Petri são gráficos de fluxo com locais, transições e contadores que representam estados de diálogo concorrentes, usados para especificações de interfaces de utilizador. Os _flowcharts_ usam caixas para processos e eventos utilizados para diálogo; os diagramas _Jackson Structured Design_ (JSD) são estruturas em árvore menos expressivas, com maior clareza e indicadas para menus.
+
+As notações textuais incluem **gramática** (expressões regulares, JSD, _Backus-Naur Form_ (BNF, puramente sintática)).
+
 ---
 
 ## Aulas Práticas
