@@ -268,6 +268,10 @@ A topologia de redes _wireless_ pode ser modo Ad Hoc, modo infraestrutural e _te
 
 Um _access point_ pode ser descoberto em **modo passivo** (o AP anuncia o seu serviço através de _broadcast_ de _frames_ farol com SSID, padrões suportados e definições de segurança, que permitem aos clientes saber que redes e APs estão disponíveis numa dada área) ou em **modo ativo** (os clientes devem saber o nome do SSID e inicializam o processo ao transmitir uma _frame_ de pedido de sondagem, que inclui o SSID e padrões suportados). A autenticação pode ser **aberta** (se for direta) ou **de chave partilhada** (se é necessário haver uma palavra-passe partilhada _a priori_ entre cliente e AP).
 
+Existem vários protocolos para enviar/receber emails: **SMTP** (_Simple Mail Transfer Protocol_, camada de aplicação, _standard_ para envio de emails (RFC 2821), cujo endereço está registado no campo MX do DNS), **POP** (_Post Office Protocol_ (RFC 1225)), **IMAP** (_Internet Message Access Protocol_ (RFC 3501)).
+
+Uma _firewall_ controla os acessos do exterior ou do interior e decide que tráfego sai e entra com base em regras. Podem implementar outros serviços, como _proxying_ e _network address translation_ (NAT) e _federated authentication_ (RADIUS).
+
 ---
 
 ---

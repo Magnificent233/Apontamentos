@@ -272,6 +272,39 @@ As notações textuais incluem **gramática** (expressões regulares, JSD, _Back
 
 ---
 
+## Aula Teórica 13
+
+A **avaliação** testa a usabilidade e funcionalidade de um sistema, em laboratório, campo ou em colaboração com utilizadores, e avalia _design_ e implementação. Algumas técnicas de avaliação:
+* **_Walkthrough_ Cognitivo** - avalia o _design_ em termos de apoio ao utilizador na aprendizagem de uma tarefa, usualmente realizado por profissionais em psicologia cognitiva, utilizando princípios psicológicos para identificar potenciais problemas. Requer especificação ou protótipo do sistema, descrições das tarefas a realizar pelos utilizadores, lista completa das ações necessárias para concluir uma tarefa e indicações de quem são os utilizadores em termos de que avaliação pode ser retirada. Considera o impacto de cada interação no utilizador, que processos cognitivos são requeridos, que problemas de aprendizagem podem acontecer e se o _design_ leva o utilizador a gerar os objetivos corretos;
+* **Avaliação Heurística** - identifica critérios de usabilidade examinados por profissionais para verificar que não são violados. Identificam problemas de usabilidade e caracterização detalhada do problema (quão comum é, facilidade em ultrapassar, persistência, impacto na perceção do utilizador, severidade (de 0 a 4):
+  * 0 - não é problema;
+  * 1 - problema estético - não necessário corrigir;
+  * 2 - problema menor de usabilidade - baixa prioridade de correção;
+  * 3 - problema maior de usabilidade - alta prioridade de correção;
+  * 4 - catástrofe de usabilidade - imperativo de corrigir);
+* **Avaliação Baseada em _Reviews_** - inclui métodos empíricos, experimentais ou observacionais, inquéritos e monitorização fisiológica:
+  * **Estudos em laboratório** têm equipamento especializado disponível e um ambiente ininterrupto, mas há falta de contexto e dificuldade de observação de vários utilizadores diferentes em cooperação; é apropriado se a localização do sistema é perigosa ou impraticável para sistemas de utilizador único permitir a manipulação controlada de uso;
+  * **Estudos no terreno** têm ambiente natural, retenção de contexto e a possibilidade de estudos longitudinais, mas há distrações, barulho e interrupções; é apropriado quando o contexto é fundamental (**princípio de incerteza de Heisenberg**);
+  * **Estudos experimentais** avaliam determinados aspetos do comportamento interativo, testando uma determinada hipótese com diversas condições experimentais que podem alterar a medida comportamental; tem objetos de estudo, variáveis (independentes (alteráveis para produzir diferentes condições) ou dependentes (calculáveis na experiência)), hipótese (predição de resultado, hipótese nula, hipótese indutiva) e experiência. A análise de dados é feita a partir de informações previamente conhecidas, escolha de técnica estatística para tipo de dados e atributos discretos ou contínuos, e pode ser testada por testes **paramétricos** (distribuição normal, robusto, potente), **não paramétricos** (distribuição não normal, pouco potente) ou por **tabela de contingência** (classificação dados por atributos discretos e contagem total de cada item). O **_design_ experimental** pode ser **inter sujeitos** (cada sujeito trabalha segundo uma única condição, sem transferência de aprendizagem e requerendo mais utilizadores) ou **intra sujeitos** (cada sujeito trabalha segundo cada condição, com tranferência de aprendizagem e menos custoso e sem problema de variância de utilizadores);
+  * **Estudos observacionais** recorrem a papel e caneta, áudio, vídeo, _logs_ de computador, cadernos ou ferramentas de análise automatizada, e incluem:
+    * **_think aloud_** - o utilizador é filmado a realizar tarefas e é-lhe pedido que descreva o que está a fazer e porquê e o que pensa que vai acontecer. É simples, requer pouca experiência, pode providenciar _insight_ útil e mostrar como o sistema é usado de facto; no entanto, é subjetivo, seletivo e o ato de descrição pode alterar _performance_ de tarefas;
+    * **Avaliação cooperativa** - tanto o utilizador como o avaliador podem ir perguntando questões ao longo da avaliação, numa variação do _think aloud_ que permite menos restrições e maior facilidade de uso, encoraja a crítica do sistema por parte do utilizador e permite a clarificação de dúvidas;
+    * **_Walkthroughs_ pós-tarefas** - dados recolhidos em que o utilizador reage após o evento através de intenção. O analista tem tempo para focar em incidentes relevantes e evita interrupções excessivas de tarefas, mas há pouca novidade e pode haver interpretação errada de eventos. A transcrição é devolvida ao participante para comentário, útil para identificar razões para ações e alternativas consideradas;
+  * **Questionários** - o analista faz perguntas preparadas ao utilizador, num método informal, subjetivo e relativamente barato. Pode ser variável de acordo com o contexto, problemas são mais fáceis de analisar e pode obter opiniões do utilizador e identificar problemas imprevistos, mas é muito subjetivo, gasta muito tempo e necessita de _design_ específico;
+* **Métodos Fisiológicos** - ligam mudanças físicas a resposta emocional, através de atividade cardíaca (pressão arterial, volume, pulsação - _stress_, raiva), atividade sudorípara (_Galvanic Skin Response_ (GSR) - prazer, esforço mental), atividade muscular (_electromyogram_ (EMG) - envolvimento numa tarefa) e atividade cerebral (_electroencephalogram_ (EEG) - tomada de decisões, atenção, motivação):
+  * **_Eye tracking_** - equipamento especializado segue os movimentos do olho e calcula a quantidade de processamento cognitivo requerido por um _display_, através de _fixations_ (quando o olho mantém uma posição estável), _saccades_ (movimento rápido entre dois pontos de interesse) e _scan paths_ (movimento para um alvo com baixa fixação).
+
+Um método de avaliação é escolhido por:
+* Processamento - _design_ vs implementação;
+* Estilo de avaliação - laboratório vs campo;
+* Objetividade - subjetivo vs objetivo;
+* Tipo de medições - qualitativas vs quantitativas;
+* Nível de informação - alto vs baixo;
+* Nível de interferência - intrusivo vs não intrusivo;
+* Recursos disponíveis - tempo, objetos de estudo, equipamento, experiência.
+
+---
+
 ## Aulas Práticas
 
 Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação / comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
@@ -281,3 +314,5 @@ No tratamento de eventos de interfaces gráficas, uma `component` (exemplo, _But
 A partir do Java 8, é possível implementar aspetos de programação funcional, o que simplifica o código, nomeadamente em situações de classes anónimas interiores, permitindo uma definição dinâmica de funções e a sua passagem como argumento de outra função / método. Assim, um método pode receber tipos primitivos, objetos e funções (_lambdas_). Em Java, uma expressão _lambda_ é composta por três partes: lista de argumentos, símbolo `->` e corpo do _lambda_.
 
 O Java oferece infraestrutura de suporte ao desenvolvimento MVC (_Model-View-Controller_), ideal para projetos com GUI (_Graphic User Interface_). Os pares **observado-observador** são uma das técnicas de suporte em JavaFX: um dos objetos tem características de observado (classe) e está emparelhado com outro objeto com características de observador (interface). Quando o estado do observado é alterado, o observador é notificado diretamente. A JavaFX disponibiliza os conceitos de **propriedade observável** e **ligação entre propriedades**, que permitem criar dependências automáticas entre as propriedades de diferentes objetos, através de uma nova convenção de nomes.
+
+// Falta a aula prática da semana de 17-21/05 //
