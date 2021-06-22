@@ -1,5 +1,8 @@
 # Lógica Computacional
 
+##### Atualizado em 11-06-2021
+###### A partir de: apontamentos das aulas teóricas
+
 ## Aula Teórica 1
 
 **Lógica:** análise e teoria do pensamento válido; estudo e determinação dos modos de pensamento discursivo que permitem evitar contradições e erros. Utilizada em desenho de _hardware_, linguagens de programação, inteligência artificial e, em especial, na verificação de programas. A maioria dos sistemas críticos são controlados por _software_, que é extremamente importante que funcione bem. Testar um programa mostra a existência de erros, não a ausência deles.
@@ -9,18 +12,18 @@ Na **lógica proposicional**, valores booleanos estão na base da lógica (verda
 Um sistema formal de raciocínio é composto por:
 * Sintaxe:
   * Alfabeto (símbolos):
-    * símbolo ⊥ -> falso/absurdo;
-    * proposições atómicas -> Pp = p, q, r...
-    * conetivos (ordenados da maior precedência para a menor) -> ¬, ∧, ∨, →, ↔;
+    * símbolo ⊥ → falso/absurdo;
+    * proposições atómicas → Pp = p, q, r...
+    * conetivos (ordenados da maior precedência para a menor) → ¬, ∧, ∨, →, ↔;
       * Conjunção e disjunção são associativas à esquerda; implicação é associativa à direita;
-    * parêntesis -> (, );
+    * parêntesis → (, );
   * Linguagem (fórmulas [Fp]):
-    * _BOT_: `⊥ ∈ Fp`;
-    * _PROP_: se `p ∈ Pp`, então `p ∈ Fp`;
-    * _NEG_: se `p ∈ Fp`, então `¬p ∈ Fp`;
-    * _DIS_: se `p, q ∈ Fp`, então `p ∨ q ∈ Fp`;
-    * _CON_: se `p, q ∈ Fp`, então `p ∧ q ∈ Fp`;
-    * _IMP_: se `p, q ∈ Fp`, então `p → q ∈ Fp`.
+    *  ⊥ : `⊥ ∈ Fp`;
+    *  PROP : se `p ∈ Pp`, então `p ∈ Fp`;
+    *  NEG : se `p ∈ Fp`, então `¬p ∈ Fp`;
+    *  DIS : se `p, q ∈ Fp`, então `p ∨ q ∈ Fp`;
+    *  CON : se `p, q ∈ Fp`, então `p ∧ q ∈ Fp`;
+    *  IMP : se `p, q ∈ Fp`, então `p → q ∈ Fp`.
 * Semântica: significado dos símbolos e fórmulas;
 * Cálculo: sistema de prova.
 
@@ -64,7 +67,8 @@ Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmul
 * `¬ : {V, F} → {V, F}`:
   * `¬V = F`;
   * `¬F = V`.
-**Propriedades da Álgebra de Boole** (assumindo `p, q ∈ {V, F}`; provas nos diapositivos 25-26)
+
+**Propriedades da Álgebra de Boole** (assumindo `p, q ∈ {V, F}`; provas nos diapositivos 25-26):
 * `¬(¬p) = p`;
 * `p ∧ p = p` e `p ∨ p = p`;
 * `p ∨ ¬p = V`;
@@ -72,7 +76,7 @@ Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmul
 * `¬(p ∨ q) = (¬p) ∧ (¬q)`;
 * `¬(p ∧ q) = (¬p) ∨ (¬q)`.
 
-**Extensão da Valoração para Fp:** função `v: Fp -> {V, F}`. definida indutivamente da seguinte forma, `P, Q ∈ Fp`:
+**Extensão da Valoração para Fp:** função `v: Fp → {V, F}`, definida indutivamente da seguinte forma, `P, Q ∈ Fp`:
 * `v(⊥) = F`;
 * `∀ p ∈ Pp`, se `P = p` então `v(P) = p`;
 * `v(P ∧ Q) = v(P) ∧ v(Q)`;
@@ -85,7 +89,7 @@ Diz-se que `v` satisfaz `P` se `v ⊩ P`; se esta valoração existir, a fórmul
 
 **Proposição** (satisfazibilidade): `v ⊩ P` se `v ⊮ ¬P` e `v ⊮ P` se `v ⊩ ¬P`.
 
-Dado `S ⊆ Fp`, se `v ⊩ Q` para todo o `Q ∈ S`, então `v ⊩ S`. `S ⊆ Fp` diz-se *possível* se existe uma valoração v que satisfaz todas as fórmulas de S, caso contrário, diz-se *contraditório*. Uma fórmula `Q ∈ Fp` é:
+Dado `S ⊆ Fp`, se `v ⊩ Q` para todo o `Q ∈ S`, então `v ⊩ S`. `S ⊆ Fp` diz-se _possível_ se existe uma valoração v que satisfaz todas as fórmulas de S, caso contrário, diz-se _contraditório_. Uma fórmula `Q ∈ Fp` é:
 * **Possível**, se existe alguma `v(Q) = V`;
 * **Válida**/**Tautologia** (`⊨ Q`), se existe sempre `v(Q) = V` (uma tautologia é sempre uma fórmula possível);
 * **Contraditória**, se não existe qualquer `v(Q) = V`;
@@ -127,7 +131,7 @@ Um conjunto S diz-se contraditório (`S ⊨ ⊥`) quando, para todo `s ∈ S`, n
 
 **Proposições:** sejam `A, B, Q ∈ Fp` e `S, S' ⊆ Fp`. `{Q, ¬Q} ⊨ ⊥`. `S ⊨ ⊥` e `S' ⊆ S'` então `S' ⊨ ⊥`. `S ⊨ A` se e só se `S, ¬A ⊨ ⊥`. `S ⊨ ¬A` se e só se `S, A ⊨ ⊥`. `{A ∧ B} ⊨ A` e `{A ∧ B } ⊨ B`. `{A} ⊨ A ∨ B` e `{B} ⊨ A ∨ B.`. `∀ A ∈ S, S ⊨ A`. `S ⊨ A` então `S, B ⊨ A`. Se `S ⊨ A` e `S, A ⊨ B` então `S ⊨ B`. `S ⊨ A → B` se e só se `S, A ⊨ B`. `S ⊨ A ∧ B` se e só se `S ⊨ A` e `S ⊨ B`. `S ⊨ A ∨ B` se e só se `S ⊨ A` ou `S ⊨ B`.
 
-A consequência semântica é *reflexiva* (`A ⊨ A`) e *transitiva* (`A ⊨ B` e `B ⊨ C` então `A ⊨ C`, `A, B, C ∈ Fp`), logo, é uma **pré-ordem**.
+A consequência semântica é _reflexiva_ (`A ⊨ A`) e _transitiva_ (`A ⊨ B` e `B ⊨ C` então `A ⊨ C`, `A, B, C ∈ Fp`), logo, é uma **pré-ordem**.
 
 ---
 
@@ -164,7 +168,7 @@ Algumas leis da lógica proposicional:
 
 Um **monoide** é um conjunto equipado com uma operação binária associativa e um elemento neutro (`(Fp, ∧, T)`, `(Fp, ∨, ⊥)`).
 
-Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (`(n)∨_(i = j) Li`) é uma tautologia se e só se existirem `1 ≤ i`, `j ≤ n`, `Li = T` ou `Li = ¬Lj`.
+Um **literal** é uma proposição atómica (literal positivo) ou a sua negação (literal negativo). Uma disjunção de literais (`(n)∨ (i = j) L_i`) é uma tautologia se e só se existirem `1 ≤ i`, `j ≤ n`, `L_i = T` ou `L_i = ¬L_j`.
 
 Uma fórmula A diz-se em **forma normal conjuntiva** (FNC(A)) se é uma conjunção de disjunções de literais: `(l_11 ∨ ... ∨ l_1k1) ∧ ... ∧ (l_n1 ∨ ... ∨ l_nkn)`, onde cada `l_ij` é um literal. Uma fórmula `A ∈ Fp` tal que FNC(A), é:
 * uma tautologia, se todas as disjunções são tautologias;
@@ -188,17 +192,17 @@ Uma fórmula `A ∈ Fp`, na qual não existem ocorrências de `→`, diz-se em *
 
 **Conversão para FNC:**
 * Tabelas de verdade - para cada linha da tabela onde o valor é `F`, cria-se uma disjunção que nega as proposições atómicas que têm o valor `V`;
-* Algoritmo Ƭ - algoritmo determinístico que verifica a validade de uma fórmula, que usa as seguintes regras (`Ƭ(s) = CNF (NNF (IMPL_FREE (S)))`):
-  * `IMPL_FREE` - remove todas as implicações (`P → Q = ¬P ∨ Q`);
+* Algoritmo Ƭ - algoritmo determinístico que verifica a validade de uma fórmula, que usa as seguintes regras (`Ƭ(S) = CNF (NNF (IMPL FREE (S)))`):
+  * `IMPL FREE` - remove todas as implicações (`P → Q = ¬P ∨ Q`);
   * `NNF` - remove negações duplas (`¬¬`) e negações de fórmulas não atómicas pelas regras de De Morgan, transformando em FNN;
   * `CNF`
     * Se `S` é um literal, `CNF(S) = S`;
-    * Se `S = S1 ∧ S2`, então `CNF(S1) ∧ CNF(S2)`;
-    * Se `S = S1 ∨ S2`, então `CNF(S1) ∨ CNF(S2)` e define-se `DISTR`, que aplica as leis da distributividade de forma apropriada.
-* Algoritmo de Horn (H) - fórmula em FNC em que em cada disjunção existe no máximo um literal positivo, que verifica a satisfazibilidade de uma fórmula:
+    * Se `S = S_1 ∧ S_2`, então `CNF(S_1) ∧ CNF(S_2)`;
+    * Se `S = S_1 ∨ S_2`, então `CNF(S_1) ∨ CNF(S_2)` e define-se `DISTR`, que aplica as leis da distributividade de forma apropriada.
+* Algoritmo de Horn (Ɦ) - fórmula em FNC em que em cada disjunção existe no máximo um literal positivo, que verifica a satisfazibilidade de uma fórmula:
   * **Lema:** `L ≡ T → L`; `n^∨_i=1 ¬L_i ≡ (n^∧_i=1 L_i) → ⊥`; `n^∨_i=1 ¬L_i ∨ L ≡ (n^∧_i=1 L_i) → L` - transforma uma fórmula de Horn em forma de Horn;
-  * **Teorema:** `H(S) = V` se e só se S é possível; `H(S) = F` se e só se S é contraditória;
-  * **Lema:** sejam `C0, C1 ⊆ Pp ∪ {⊥, ⊤}` e F uma fórmula em forma de Horn. `A` é **monótona** se `C0 ⊆ C1 → A(F, C0) ⊆ A(F, C1)`. `A` é **crescente** se `C0 ⊆ A(F, C0) ⊆ C0 ∪ n^∪_i=1 L_i`;
+  * **Teorema:** `Ɦ(S) = V` se e só se S é possível; `Ɦ(S) = F` se e só se S é contraditória;
+  * **Lema:** sejam `C_0, C_1 ⊆ P_p ∪ {⊥, ⊤}` e F uma fórmula em forma de Horn. `A` é **monótona** se `C_0 ⊆ C_1 → A(F, C_0) ⊆ A(F, C_1)`. `A` é **crescente** se `C_0 ⊆ A(F, C_0) ⊆ C_0 ∪ n^∪_i=1 L_i`;
     * A negação de uma fórmula válida é contraditória (e vice-versa);
     * Determina-se `T = Ƭ(¬S)`. Se T é forma de Horn, calcula-se Ƭ: se for `F`, então S é válida dado que T é contraditória e `T ≡ ¬S`.
 
@@ -210,7 +214,7 @@ Uma fórmula `A ∈ Fp`, na qual não existem ocorrências de `→`, diz-se em *
 
 Um sistema de prova é:
 * **Correto (_Soundness_)** se tudo o que se consegue provar é de facto verdade:
-  * **Teorema:** para uma fórmula Q em forma de Horn, tem-se que `H(Q) = V` se e só se Q é possível (**SAT**); `H(Q) = F` se e só se Q é contraditória (**UNSAT**);
+  * **Teorema:** para uma fórmula Q em forma de Horn, tem-se que `Ɦ(Q) = V` se e só se Q é possível (**SAT**); `Ɦ(Q) = F` se e só se Q é contraditória (**UNSAT**);
 * **Completo (_Completeness_)** se tudo o que é verdade tem uma prova.
 
 ---
@@ -219,7 +223,7 @@ Um sistema de prova é:
 
 Uma **cláusula** é uma disjunção de literais em que o conjunto vazio representa o `⊥` (elemento neutro da disjunção). A cláusula `{p ∨ ⊥ ∨ q}` é representada por `{p, q}`. Uma fórmula em FNC é um conjunto de cláusulas e pode ser representada por um conjunto de conjuntos que representam cláusulas, em que o conjunto vazio representa o `T` (elemento neutro da conjunção).
 
-A **resolução** consiste em manipulações simbólicas de fórmulas em FNC, que segue a regra da resolução e permite determinar se uma fórmula é contraditória (não satisfazível) ou possível (satisfazível). A **regra da resolução** diz que a partir de duas clásulas `C1` e `C2` tal que para um literal `p` se tem `p ∈ C1` e `¬p ∈ C2` pode-se inferir uma cláusula composta por todos os literais de `C1` e `C2` exceto o `p` e o `~p`. Ou seja, obtêm-se a fórmula `R = (C1 \ {p}) ∪ (C2 \ {¬p})` (cláusula **resolvente**). Uma FNC é contraditória se e só se o `∅` é derivado apenas usando a regra da resolução.
+A **resolução** consiste em manipulações simbólicas de fórmulas em FNC, que segue a regra da resolução e permite determinar se uma fórmula é contraditória (não satisfazível) ou possível (satisfazível). A **regra da resolução** diz que a partir de duas clásulas `C_1` e `C_2` tal que para um literal `p` se tem `p ∈ C_1` e `¬p ∈ C_2` pode-se inferir uma cláusula composta por todos os literais de `C_1` e `C_2` exceto o `p` e o `¬p`. Ou seja, obtêm-se a fórmula `R = (C_1 \ {p}) ∪ (C_2 \ {¬p})` (cláusula **resolvente**). Uma FNC é contraditória se e só se o `∅` é derivado apenas usando a regra da resolução.
 
 A **dedução natural** consiste num conjunto de regras de inferência que permitem inferir fórmulas a partir de outras fórmulas, permitindo inferir conclusões a partir de um conjunto de hipóteses, determinando a validade de fórmulas ou raciocínio por manipulação sintática das fórmulas. Quer-se saber se a partir de um conjunto de hipóteses (premissas), ∑, é possível construir uma prova para uma fórmula 𝛙 (conclusão) usando as regras de inferência; se possível, então `∑ ⊢ 𝛙`. Se existe uma prova de `∑ ⊢ 𝛙` então 𝛙 é uma **consequência** do conjunto de premissas ∑. Se existe uma prova `⊢ 𝛙`, então 𝛙 é um **teorema** do sistema dedutivo. Dadas duas fórmulas `𝛙, φ ∈ Fp`, diz-se que 𝛙 e φ são **dedutivamente equivalentes** se e só se `𝛙 ⊢ φ` e `φ ⊢ 𝛙`, e denota-se por `𝛙 ⊣⊢ φ`.
 
@@ -242,11 +246,99 @@ Um sistema formal de raciocínio é composto por **sintaxe** (alfabeto, conjunto
 
 **Definição:** o conjunto de variáveis num termo `Vars^T_∑`, denotado por V(t), é definido indutivamente como: `V(x) = {x}` para todo o `x ∈ Vars`; `V(c) = ∅` para todo o `c ∈ SF_0`; se `t_1, ..., t_n ∈ Vars^T_∑` e `f ∈ SF_n, n ≥ 0`, então `V(f(t_1, ..., t_n)) = n^∪_i=1 V(t_i)`. Um termo diz-se **fechado** se não contém variáveis ou **aberto** caso contrário.
 
-As **variáveis livres** de uma fórmula φ (`FV(φ)`) são as que ocorrem em φ sem estarem quantificadas; as **variáveis ligadas** de uma fórmula φ (`BV(φ)`) são as que ocorrem quantificadas em φ. Uma fórmula diz-se **fechada** se não contém variáveis livres ou **aberta** caso contrário.  (definição formal nos diapositivo 54 e 55). **Definição:** o conjunto das variáveis ligadas numa fórmula `φ ∈ Vars^F_Σ` define-se como `V(φ) = FV(φ) ∪ BV(φ)`.
+As **variáveis livres** de uma fórmula φ (`FV(φ)`) são as que ocorrem em φ sem estarem quantificadas; as **variáveis ligadas** de uma fórmula φ (`BV(φ)`) são as que ocorrem quantificadas em φ. Uma fórmula diz-se **fechada** se não contém variáveis livres ou **aberta** caso contrário (definição formal nos diapositivo 54 e 55). **Definição:** o conjunto das variáveis ligadas numa fórmula `φ ∈ Vars^F_Σ` define-se como `V(φ) = FV(φ) ∪ BV(φ)`.
 
-**Definições:** seja `φ ∈ Vars^F_Σ` e `FV() = {x1, ..., xn}, n ≥ 0`. Então, `∀ x1 ... ∀ xnφ` é o **fecho universal** de φ e `∃ x1 ... ∃ xnφ` é o **fecho existencial** de φ.
+**Definições:** seja `φ ∈ Vars^F_Σ` e `FV() = {x_1, ..., x_n}, n ≥ 0`. Então, `∀ x_1 ... ∀ x_n φ` é o **fecho universal** de φ e `∃ x_1 ... ∃ x_n φ` é o **fecho existencial** de φ.
 
-A **substituição** de variáveis por termos (`{t/x}`) só pode ser aplicada a variáveis livres.
+A **substituição** de variáveis por termos (`{t/x}`) só pode ser aplicada a variáveis livres, definida indutivamente por:
+* `x{t/x} = t` para todo `x ∈ Vars`;
+* `c{t/x} = c` para todo `c ∈ SF_0`;
+* se `t_1, ..., t_n ∈ Vars^T Σ` e `f ∈ SF n`, `n >= 0`, então `f(t_1, ..., t_n){t/x} = f(t_1{t/x}, ..., t_n{t/x})`.
+
+A substituição também pode ser aplicada a fórmulas. Dadas `𝛙, φ ∈ Vars^F_Σ`, `x ∈ Vars`, `t ∈ Vars^T_Σ`, a fórmula `φ{t/x}` é definida indutivamente por:
+* `⊥{t/x} = ⊥` e `Q{t/x} = Q` se `Q ∈ SP_0`;
+* se `t_1, ..., t_n ∈ Vars^T_Σ` e `P(t_1, ..., t_n) ∈ Vars^F_Σ` para todo `P ∈ SP_n`, `n >= 0`, então `P(t_1, ..., t_n) = P(t_1{t/x}, ..., t_n{t/x})`;
+* `(¬φ){t/x} = ¬(φ{t/x})`;
+* `(φ ◇ 𝛙){t/x} = φ{t/x} ◇ 𝛙{t/x}`, para `◇ ∈ {∧, ∨, →}`;
+* `(∀x φ){t/x} = ∀x φ` e `(∃x φ){t/x} = ∃x φ`;
+* `(∀y φ){t/x} = ∀y (φ{t/x})` e `(∃x φ){t/x} = ∃x (φ{t/x})`, com `y ∈ Vars\{x}`.
+
+Dadas `𝛙, φ ∈ Vars^F_Σ`, `x ∈ Vars`, `t ∈ Vars^T_Σ`, o termo t diz-se **livre para x** em φ se:
+* φ é uma fórmula atómica (predicado ou ⊥);
+* `φ = ¬𝛙` e t é livre para x em φ;
+* `φ = 𝛙_1 ◇ 𝛙_2`, para `◇ ∈ {∧, ∨, →}`, t é livre para x em 𝛙_1 e 𝛙_2;
+* `φ = ∀x 𝛙` e `φ = ∃x 𝛙`;
+* `φ = ∀y 𝛙` e `φ = ∃y 𝛙`, com `y ∈ Vars\{x}`, `y ∉ V(t)` e t livre para x em φ.
+
+---
+
+## Aula Teórica 10
+
+A lógica proposicional é **decidível** por tabelas de verdade ou problema de decisão SAT (programa que determina a satisfazibilidade de uma fórmula e a valoração que a satisfaz) ou SMT (_Satisfiability Modulo Theories_, uma extensão de SAT).
+
+A lógica de primeira ordem é **indecidível**. A avaliação de uma fórmula depende do significado de variáveis, quantificadores e símbolos de função e predicado num dado universo. Uma **estrutura de interpretação** sobre `Σ = (SF, SP)` é um par `Ɱ = (U, I)` onde:
+* `U` é um conjunto não vazio - **universo**, ou domínio, da estrutura;
+* `I` é uma **função de interpretação** tal que:
+  * associa a cada `c ∈ SF_0` uma constante `I(c) ∈ U`;
+  * associa a cada símbolo de função `f` em cada `SF_n`, `n > 0`, uma função n-ária `I(f) : U^n → U`;
+  * associa a cada símbolo de predicado `P` em cada `SP_n`, `n >= 0`, um predicado n-ário `I(P) : U^n → {V, F}` (predicados `P` 0-ários (`P ∈ SP_0`) são interpretados como valores de verdade (V, F)).
+
+Uma **atribuição** em `Ɱ = (U, I)` é uma função `ρ: Vars → U` que associa a cada variável em `Vars` um elemento do domínio `U`, denotando-se `ρ [x → a]` a atribuição que mapeia `x` para `a` e todas as outras variáveis `y` para `ρ(y)`.
+
+Dada uma estrutura de interpretação `Ɱ = (U, I)` sobre uma assinatura `Σ = (SF, SP)` e uma atribuição `ρ ∈ Vars^ATR_Ɱ`, a **interpretação dos termos** em `Ɱ` com `ρ` é dada por uma função `ρ^⟦.⟧_Ɱ : Vars^T_Σ → U` definida indutivamente por:
+* `ρ^⟦x⟧_Ɱ = ρ(x)`, para `x ∈ Vars`;
+* `ρ^⟦c⟧_Ɱ = I(c)`, para `c ∈ SF_0`;
+* `ρ^⟦f(t_1, ..., t_n⟧_Ɱ = I(f)(ρ^⟦t_1⟧_Ɱ, ..., ρ^⟦t_n⟧,_Ɱ`, para `t ∈ SF_n` e `t_1, ..., t_n ∈ Vars^T_Σ`, com `n > 0`.
+
+Dada uma estrutura de interpretação `Ɱ = (U, I)` sobre uma assinatura `Σ = (SF, SP)` e uma atribuição `ρ ∈ Vars^ATR_Ɱ`, a **avaliação de uma fórmula** em `Ɱ` com `ρ` é dada por uma função `ρ^⟦.⟧_Ɱ : Vars^T_Σ → U` definida indutivamente por:
+* `ρ^⟦⊥⟧_Ɱ = F`;
+* `ρ^⟦P⟧_Ɱ = I(P)`, para todo `P ∈ SP_0`;
+* `ρ^⟦P(t_1, ..., t_n)⟧_Ɱ = I(P)(ρ^⟦t_1⟧_Ɱ, ..., ρ^⟦t_n⟧_Ɱ)`, para todo `P ∈ SP_0` e `t_1, ..., t_n ∈ Vars^T_S`, com `n > 0`;
+* `ρ^⟦¬φ⟧_Ɱ = ¬ρ^⟦φ⟧_Ɱ`;
+* `ρ^⟦φ ∧ 𝛙⟧_Ɱ = ρ^⟦φ⟧_Ɱ ∧ ρ^⟦𝛙⟧_Ɱ`;
+* `ρ^⟦φ ∨ 𝛙⟧_Ɱ = ρ^⟦φ⟧_Ɱ ∨ ρ^⟦𝛙⟧_Ɱ`;
+* `ρ^⟦φ → 𝛙⟧_Ɱ = ¬ρ^⟦φ⟧_Ɱ ∨ ρ^⟦𝛙⟧_Ɱ`;
+* `ρ^⟦∀x φ⟧_Ɱ = V` se `ρ[x → u]^⟦φ⟧_Ɱ = V` para todo o `u ∈ U` e `ρ^⟦∀x φ⟧_Ɱ = F` se `ρ[x → u]^⟦φ⟧_Ɱ = F` para todo o `u ∈ U`;
+* `ρ^⟦∃x φ⟧_Ɱ = V` se `ρ[x → u]^⟦φ⟧_Ɱ = V` para todo o `u ∈ U` e `ρ^⟦∃x φ⟧_Ɱ = F` se `ρ[x → u]^⟦φ⟧_Ɱ = F` para todo o `u ∈ U`.
+
+Diz-se que uma fórmula `𝛙` é **satisfeita** por `Ɱ` com `ρ` (`Ɱ, ρ ⊩ 𝛙`) se `ρ^⟦𝛙⟧_Ɱ = V` e **não satisfeita** por `Ɱ` com `ρ` (`Ɱ, ρ ⊮ 𝛙`) se `ρ^⟦𝛙⟧_Ɱ = F`. Diz-se que uma fórmula `𝛙` é **satisfeita** por `Ɱ` (`Ɱ ⊩ 𝛙`) se para toda a atribuição `ρ` se tem `Ɱ, ρ ⊩ 𝛙` - `Ɱ` é chamado um **modelo** de `𝛙`. `Ɱ, ρ ⊩ ¬𝛙` se e só se `Ɱ ⊮ 𝛙`, e `Ɱ ⊩ ¬𝛙` se e só se `Ɱ ⊮ 𝛙`.
+
+Uma fórmula `𝛙` diz-se **satisfazível** ou **possível** se existir uma estrutura de interpretação `Ɱ` e uma atribuição `ρ` tal que `Ɱ, ρ ⊩ 𝛙`; **contraditória** se não é possível; **válida** ou **tautologia** se para toda a estrutura de interpretação `Ɱ` e toda a atribuição `ρ` se tem `Ɱ, ρ ⊩ 𝛙`, ou seja, `Ɱ ⊩ 𝛙` (`⊨ 𝛙`).
+
+Uma estrutura de interpretação `Ɱ` com uma atribuição `ρ` satisfaz um conjunto de fórmulas `Γ ⊆ Vars^F_∑` se satisfizer todas as fórmulas de `Γ` (`Ɱ, ρ ⊩ Γ`). Uma fórmula `𝛙` é uma **consequência semântica** de `Γ` se para toda a estrutura de interpretação `Ɱ` e toda a atribuição `ρ` tal que `Ɱ, ρ ⊩ Γ` se tem `Ɱ, ρ ⊩ 𝛙` (`Γ ⊨ 𝛙`). Duas fórmulas `𝛙` e `φ` dizem-se **logicamente equivalentes** se para toda a estrutura de interpretação `Ɱ` e toda a atribuição `ρ` se tem `Ɱ, ρ ⊩ 𝛙` se e só se `Ɱ, ρ ⊩ φ` (`𝛙 ≡ φ`).
+
+---
+
+## Aula Teórica 11
+
+Uma fórmula de primeira ordem diz-se na **Forma Normal Prenex** (FNP) quando todos os quantificadores ocorrem no exterior da fórmula. Considere-se uma fórmula `A` na forma normal prenex `A ≡ Q_1 x_1 ... Q_n x_n B` onde cada `Q_i` é um quantificador, com `1 <= i <= n`; se `FNC(B)` então diz-se que `A` está na Forma Normal Conjuntiva Prenex (FNCP). A conversão para FNP segue os seguintes passos:
+* Eliminação dos símbolos de implicação (`𝛙 → φ ≡ ¬𝛙 ∨ φ`) ;
+* Aplicação das leis de De Morgan até não existirem quantificadores negados (`¬∀x φ ≡ ∃x ¬φ`; `¬∃x φ ≡ ∀x ¬φ`);
+* Passagem dos quantificadores para o início da fórmula, com `x' ∉ FV(𝛙)`, renomeando variáveis com o mesmo símbolo mas ligadas a quantificadores diferentes para que todos os quantificadores utilizem variáveis distintas:
+  * `𝛙 ∧ (∀x φ) ≡ ∀x' (𝛙 ∧ φ{x'/x}`;
+  * `𝛙 ∨ (∀x φ) ≡ ∀x' (𝛙 ∨ φ{x'/x}`;
+  * `𝛙 ∧ (∃x φ) ≡ ∃x' (𝛙 ∧ φ{x'/x}`;
+  * `𝛙 ∨ (∃x φ) ≡ ∃x' (𝛙 ∨ φ{x'/x}`.
+
+Uma fórmula na forma prenex diz-se **universal** quando só contém quantificadores universais. Uma fórmula `A` de primeira ordem encontra-se na **Forma Normal de Skolem** (FNS) se `A ≡ ∀x_1 ... ∀x_n B` e `B` se encontra na forma normal conjuntiva. A skolemização consiste em:
+* Converter a fórmula em forma normal conjunta prenex;
+* Substituir todas as ocorrências de variáveis existencialmente quantificadas por novas funções das variáveis quantificadas universalmente que as precedem (`∀x_1 ... ∀x_n ∃y B ⇝ ∀x_1 ... ∀x_n B{f(x_1, ..., x_n)/y}`).
+
+Para executar a **resolução**, para além da skolemização, deve-se concluir a transformação da fórmula inicial em conjuntos de cláusulas através dos seguintes passos:
+* Circunscrever os quantificadores aos conjuntos FNC (`∀x (P(x) ∧ Q(x)) ≡ ∀x P(x) ∧ ∀x Q(x)`);
+* Renomear as variáveis universalmente quantificadas (`∀x (P(x) ∧ Q(x)) ≡ ∀x P(x) ∧ ∀y Q(y)`);
+* Separar as cláusulas;
+* Eliminar os quantificadores.
+
+Um conjunto de literais `L` diz-se **unificável** se existe uma substituição que aplicada a `L` torna o conjunto singular (em que os vários literais ficam todos iguais), sendo que as unificações não são necessariamente únicas. Uma variável não pode ser unificada com uma função que a contém.
+
+**Algoritmo Martelli-Montanari:** seja `U` um conjunto de pares de termos (predicados, funções, variáveis) `s_1 ≈ t_1`; enquanto for possível, escolhe-se arbitrariamente um par de termos de `U` de um dos tipos e executa-se a ação correspondente. Se não abortar, o algoritmo termina e o `U` final é o **unificador mais geral** (umg):
+* `f(s_1, ..., s_n) ≈ f(t_1, ..., t_n)` - substituir em `U` pelos pares `s_1 ≈ t_1, ..., s_n ≈ t_n`;
+* `f(s_1, ..., s_n) ≈ g(t_1, ..., t_n)`, com `f != g` - abortar, não é possível unificar;
+* `x ≈ x` - apagar, pois corresponde a uma substituição vazia (sem qualquer efeito);
+* `t ≈ x` em que `t` não é uma variável - substituir por `x ≈ t`;
+* `x ≈ t` em que `x` não ocorre em `t` - substituir por `t/x` e aplicar a substituição `{t/x}` em todos os outros pares de `U`;
+* `x ≈ t` em que `x` ocorre em `t` - abortar, não é possível unificar.
 
 ---
 
@@ -258,18 +350,20 @@ A **substituição** de variáveis por termos (`{t/x}`) só pode ser aplicada a 
 
 **Considerando `Pp = {p, q, r}`, calcule `Sf (p ∨ (q → p))`.**
 
+```
   Sf (p ∨ (q → p)) =
 = {p ∨ (q → p)} Sb (p) ∪ Sb (q → p) =
 = {p ∨ (q → p)} ∪ {p} ∪ {q → p} ∪ Sb (q) ∪ Sb (p) =
 = {p ∨ (q → p), p} ∪ {q → p} ∪ {q} ∪ {p} =
 = {p ∨ (q → p), q → p, p, q}
+```
 
 ### Aula Teórica 2
 
 #### Diapositivo 14
 
-**Prove que qualquer que seja A € Fp, A contém um número par de parêntesis (0 é um número par).**
-
+**Prove que qualquer que seja A ∈ Fp, A contém um número par de parêntesis (0 é um número par).**
+```
 Casos Base: A = ⊥ : tem 0 parêntesis (0 é par)
             A = p, p ∈ Pp : tem 0 parêntesis (0 é par)
 Passos de Indução: A = ¬Q, Q ∈ Fp
@@ -288,6 +382,7 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
                    H.I.: P → Q tem um número par de parêntesis, n.
                          Se P → Q tem n parêntesis, então (P → Q) tem n + 2 parêntesis.
                          Por H.I., n é par, portanto n + 2 também é.
+```
 
 ### Aula Teórica 3
 
@@ -295,38 +390,42 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 
 **Construa a tabela de verdade das seguintes proposições:**
 
-* `(p ↔ q) ↔ r`
-  * `p | q | r | p ↔ q | (p ↔ q) ↔ r`
-  * `V | V | V | _ V _ | _ _ V`
-  * `V | V | F | _ V _ | _ _ F`
-  * `V | F | V | _ F _ | _ _ F`
-  * `V | F | F | _ F _ | _ _ V`
-  * `F | V | V | _ F _ | _ _ F`
-  * `F | V | F | _ F _ | _ _ V`
-  * `F | F | V | _ V _ | _ _ V`
-  * `F | F | F | _ V _ | _ _ F`
+```
+1. (p ↔ q) ↔ r
+  p | q | r | p ↔ q | (p ↔ q) ↔ r
+  V | V | V |   V   |    V
+  V | V | F |   V   |    F
+  V | F | V |   F   |    F
+  V | F | F |   F   |    V
+  F | V | V |   F   |    F
+  F | V | F |   F   |    V
+  F | F | V |   V   |    V
+  F | F | F |   V   |    F
 
-* `(p ↔ q) ∧ (p ↔ r)`
-  * `p | q | r | p ↔ q | p ↔ r | (p ↔ q) ∧ (p ↔ r)`
-  * `V | V | V |  _ V _  | _ V _ | _ _ _ _ V`
-  * `V | V | F |  _ V _  | _ F _ | _ _ _ _ F`
-  * `V | F | V |  _ F _  | _ V _ | _ _ _ _ F`
-  * `V | F | F |  _ F _  | _ F _ | _ _ _ _ F`
-  * `F | V | V |  _ F _  | _ F _ | _ _ _ _ F`
-  * `F | V | F |  _ F _  | _ V _ | _ _ _ _ F`
-  * `F | F | V |  _ V _  | _ F _ | _ _ _ _ F`
-  * `F | F | F |  _ V _  | _ V _ | _ _ _ _ V`
+2. (p ↔ q) ∧ (p ↔ r)
+  p | q | r | p ↔ q | p ↔ r | (p ↔ q) ∧ (p ↔ r)
+  V | V | V |   V   |   V   |       V
+  V | V | F |   V   |   F   |       F
+  V | F | V |   F   |   V   |       F
+  V | F | F |   F   |   F   |       F
+  F | V | V |   F   |   F   |       F
+  F | V | F |   F   |   V   |       F
+  F | F | V |   V   |   F   |       F
+  F | F | F |   V   |   V   |       V
+```
 
 #### Diapositivo 44
 
 **Verifique se `(a → b) ↔ (¬b → ¬a)` é válida, contraditória ou possível.**
 
-* A fórmula é válida:
-  * `a | b | ¬a | ¬b | (a → b) | (¬b → ¬a) | (a → b) ↔ (¬b → ¬a)`
-  * `V | V | _F | _F | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
-  * `V | F | _F | _V | _ _ F _ | _ _ F _ _ | _ _ _ _ V`
-  * `F | V | _V | _F | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
-  * `F | F | _V | _V | _ _ V _ | _ _ V _ _ | _ _ _ _ V`
+```
+A fórmula é válida:
+  a | b | ¬a | ¬b | (a → b) | (¬b → ¬a) | (a → b) ↔ (¬b → ¬a)
+  V | V |  F |  F |    V    |     V     |         V
+  V | F |  F |  V |    F    |     F     |         V
+  F | V |  V |  F |    V    |     V     |         V
+  F | F |  V |  V |    V    |     V     |         V
+```
 
 ### Aula Teórica 4
 
@@ -334,16 +433,18 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 
 **Determine se `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`.**
 
-* v(p) = V
-* v(¬q) = V ⇔ {definição de valoração}
-  * ⇔ ¬v(q) = V ⇔ {¬V = F}
-  * ⇔ v(q) = F
-* v((p ∨ r) ∧ (¬q ∨ ¬r)) ⇔ {definição de valoração}
-  * ⇔ v(p ∨ r) ∧ v(¬q ∨ ¬r) ⇔ {definição de valoração}
-  * ⇔ (v(p) ∨ v(r)) ∧ (v(¬q) ∨ v(¬r) ⇔ {v(p) = V; v(¬q) = V}
-  * ⇔ (V ∨ v(r)) ∧ (V ∨ v(¬r)) ⇔ {V é o elemento absorvente da disjunção}
-  * ⇔ V ∧ V ⇔ {V é o elemento neutro da conjunção}
-  * ⇔ V , logo, `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`
+```
+v(p) = V
+v(¬q) = V ⇔ {definição de valoração}
+  ⇔ ¬v(q) = V ⇔ {¬V = F}
+  ⇔ v(q) = F
+v((p ∨ r) ∧ (¬q ∨ ¬r)) ⇔ {definição de valoração}
+  ⇔ v(p ∨ r) ∧ v(¬q ∨ ¬r) ⇔ {definição de valoração}
+  ⇔ (v(p) ∨ v(r)) ∧ (v(¬q) ∨ v(¬r) ⇔ {v(p) = V; v(¬q) = V}
+  ⇔ (V ∨ v(r)) ∧ (V ∨ v(¬r)) ⇔ {V é o elemento absorvente da disjunção}
+  ⇔ V ∧ V ⇔ {V é o elemento neutro da conjunção}
+  ⇔ V , logo, `{p, ¬q} ⊨ (p ∨ r) ∧ (¬q ∨ ¬r)`
+```
 
 ### Aula Teórica 6
 
@@ -351,8 +452,59 @@ Passos de Indução: A = ¬Q, Q ∈ Fp
 
 **Determine a natureza de `φ = p ∧ ¬q ∧ (q ∨ ¬p)`.**
 
+```
+φ = p ∧ ¬q ∧ (q ∨ ¬p) ≡ (⊤ → p) ∧ (q → ⊥) ∧ (p → q) = 𝛙
+  A (𝛙, {⊤}) =
+= A ((⊤ → p) ∧ (q → ⊥)  (p → q), {⊤}) =
+= A ((q → ⊥)  (p → q), {⊤, p}) =
+= A (q → ⊥, {⊤, p, q}) = 
+= A (⊤, {⊤, p, q, ⊥}) =
+= {⊤, p, q, ⊥}
+Como ⊥ € A(𝛙, {⊤}), então Ɦ(𝛙) = F, logo, 𝛙 é contraditória. Como 𝛙 ≡ φ, então φ também é contraditória.
+```
+
+
 ### Aula Teórica 7
 
 #### Diapositivo 15
 
 **Utilizando o algoritmo Ƭ, determine a validade de `{p → q, p} ⊨ p ∧ q`.**
+
+```
+φ = {p → q, p} ⊨ p ∧ q ≡ ⊨ ((p → q) ∨ p) → (p ∧ q) = 𝛙
+Ƭ(𝛙) = CNF(NNF(IMPL_FREE(𝛙))) = CNF(NNF(IMPL_FREE(((p → q) ∨ p) → (p ∧ q))))
+  IMPL_FREE(((p → q) ∨ p) → (p ∧ q)) =
+= ¬IMPL_FREE((p → q) ∨ p) ∨ IMPL_FREE (p ∧ q) = (otimização)
+= ¬((IMPL_FREE(p → q)) ∨ p) ∨ (p ∧ q) =
+= ¬((¬IMPL_FREE(p) ∨ IMPL_FREE(q)) ∨ p) ∨ (p ∧ q) = (otimização)
+= ¬((¬p ∨ q) ∨ p) ∨ (p ∧ q)
+  NNF(¬((¬p ∨ q) ∨ p) ∨ (p ∧ q)) =
+= (NNF(¬(¬p ∨ q)) ∧ NNF(¬p)) ∨ NNF(p ∧ q) = (otimização)
+= ((NNF(¬¬p) ∧ NNF(¬q)) ∧ ¬p) ∨ (p ∧ q) = (otimização)
+= ((p ∧ ¬q) ∧ ¬p) ∨ (p ∧ q)
+  CNF(((p ∧ ¬q) ∧ ¬p) ∨ (p ∧ q)) =
+= DISTR(CNF((p ∧ ¬q) ∧ ¬p), CNF(p ∧ q)) = (otimização)
+= DISTR((p ∧ ¬q) ∧ ¬p, p ∧ q) =
+= ((p ∧ ¬q) ∧ ¬p) ∧ (p ∧ q) = (associatividade, simetria, idempotência da conjunção)
+= p ∧ ¬p ∧ q ∧ ¬q
+Como, para qualquer valoração de p e q, 𝛙 é falsa, então também φ é falsa e, por isso, {p → q, p} ⊭ p ∧ q.
+```
+
+### Aula Teórica 9
+
+#### Diapositivo 65
+
+**Calcule as seguintes substituições:**
+```
+1. (∃x (P(x,y) ∧ ∀y (¬Q(x, y)))){s(z)/y} =
+= ∃x (P(x,y){s(z)/y} ∧ (∀y (¬Q(x, y)){s(z)/y})) =
+= ∃x (P(x{s(z)/y}, y{s(z)/y}) ∧ ∀y (¬Q(x, y){s(z)/y})) =
+= ∃x (P(x, s(z)) ∧ ∀y (¬Q(x{s(z)/y}, y{s(z)/y})) =
+= ∃x (P(x, s(z)) ∧ ∀y (¬Q(x, s(z))
+
+2. (∃x (P(x,y) ∧ ∀y (¬Q(x, y)))){s(z)/x} =
+= ∃x (P(x,y){s(z)/x} ∧ (∀y (¬Q(x, y)){s(z)/x})) =
+= ∃x (P(x{s(z)/x}, y{s(z)/x}) ∧ ∀y (¬Q(x, y){s(z)/x})) =
+= ∃x (P(s(z), y) ∧ ∀y (¬Q(x{s(z)/x}, y{s(z)/x})) =
+= ∃x (P(s(z), y) ∧ ∀y (¬Q(s(z), y)
+```

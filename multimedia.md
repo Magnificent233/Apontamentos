@@ -1,5 +1,8 @@
 # Multimédia
 
+##### Atualizado em 21-06-2021
+###### A partir de: apontamentos das aulas teóricas, sebenta
+
 * Texto e imagem fixa são independentes do tempo; imagem animada, vídeo e som são dependentes do tempo e obrigam a uma sincronização temporal.
 
 ---
@@ -7,11 +10,11 @@
 ## Digitalização - Representação Digital de Dados
 
 * Digitalizar uma informação significa representar essa informação usando representação binária.
-* Som / Sinal acústico: variação da pressão do ar ao longo do tempo, definido por:
+* **Som/Sinal acústico**: variação da pressão do ar ao longo do tempo, definido por:
   * Frequência: número de vibrações por unidade de tempo, ou seja, definição física da altura e timbre do som (baixa frequência: som grave; alta frequência: som agudo);
   * Amplitude: valor máximo do desvio em relação ao ponto central do movimento vibratório, ou seja, definição da potência do som (baixa amplitude: som fraco; alta amplitude: som forte).
-* Imagem: conjunto de pontos coloridos ou em níveis de cinzento (bitmap) ou conjunto de objetos predefinidos ou definidos pelas suas numerosas características (vetorial).
-* Processo de digitalização:
+* **Imagem**: conjunto de pontos coloridos ou em níveis de cinzento (bitmap) ou conjunto de objetos predefinidos ou definidos pelas suas numerosas características (vetorial).
+* **Processo de digitalização**:
   * _Amostragem:_ passagem de uma variação contínua para elementos descontínuos ou discretos em valores numéricos;
     * No som, a imagem elétrica da onda sonora é partida em amostras, definindo intervalos constantes cujo número condiciona a qualidade de restituição final;
     * Na imagem, separam-se os pixeis por unidade de largura.
@@ -27,13 +30,13 @@
 ## Representação de Áudio Digital
 
 * _Pulse Code Modulation (PCM):_ fases de amostragem e quantização de áudio. O teorema de Nyquist determina a frequência de amostragem mínima de modo a poder reconstruir o som original.
-* Algoritmos de Compressão de Som
-  * Modulações Diferenciais - reduzir o número de bits necessário à quantização de cada amostra codificando apenas a diferença entre duas amostras sucessivas.
+* **Algoritmos de Compressão de Som**
+  * **Modulações Diferenciais** - reduzir o número de bits necessário à quantização de cada amostra codificando apenas a diferença entre duas amostras sucessivas.
     * Modulação Delta: substituir o valor que define uma amplitude de uma amostra por um único sinal, positivo ou negativo, representando a variação do sinal em relação ao seu valor precedente;
     * _Differential Pulse Code Modulation (DPCM):_ codificar o sinal de variação e alguns bits suplementares à expressão da diferença entre o valor de uma amostra com o valor da amostra precedente;
     * _Adaptative Differential Pulse Code Modulation (ADPCM):_ codificar a diferença entre duas amostras sucessivas, tomando em consideração a evolução do sinal sobre as amostras precedentes.
-  * Algoritmos Generalistas Não Destrutivos - procurar ocorrências múltiplas de uma mesma série de bytes, guardando-as num dicionário com os códigos mais curtos possíveis de modo a substituir no ficheiro comprimido as longas séries de bytes do ficheiro original, fazendo que, após a descompressão, o ficheiro original permaneça íntegro (sem perda de informação).
-  * Algoritmos Destrutivos: Codificação PsicoAcústica - suprimir as modulações "inúteis" (não audíveis pelo ouvido humano), reduzindo o tamanho do ficheiro sem degradar a qualidade de reprodução;
+  * **Algoritmos Generalistas Não Destrutivos** - procurar ocorrências múltiplas de uma mesma série de bytes, guardando-as num dicionário com os códigos mais curtos possíveis de modo a substituir no ficheiro comprimido as longas séries de bytes do ficheiro original, fazendo que, após a descompressão, o ficheiro original permaneça íntegro (sem perda de informação).
+  * **Algoritmos Destrutivos**: Codificação PsicoAcústica - suprimir as modulações "inúteis" (não audíveis pelo ouvido humano), reduzindo o tamanho do ficheiro sem degradar a qualidade de reprodução;
     * A banda das frequências audíveis máxima e ótima é de 20 Hz a 20 kHz; o ouvido humano é mais sensível a frequências próximas de 3000 Hz e é inútil codificar sons fora do intervalo 500 Hz - 10 kHz;
     * Efeito de máscara: se, num grupo de frequências idênticas ou vizinhas, algumas têm amplitude muito superior às outras, apenas elas serão percebidas.
 * MP3 - utiliza todas as técnicas descritas, começando com uma codificação RLC e terminando com o algoritmo de Huffman.
@@ -42,8 +45,8 @@
 
 ## Cor e Codificação da Cor
 
-* Bastonetes são sensíveis à intensidade luminosa em toda a gama do comprimento de onda a que o olho humano é sensível, mas não detetam cor; cones são sensíveis a apenas alguns comprimentos de onda, permitindo a interpretação de cor. A cor que provoca maior sensação visual é o verde, a menos, o azul. O olho é mais sensível à luminância do que à crominância.
-* Modelos de Cor
+* **Bastonetes** são sensíveis à intensidade luminosa em toda a gama do comprimento de onda a que o olho humano é sensível, mas não detetam cor; **cones** são sensíveis a apenas alguns comprimentos de onda, permitindo a interpretação de cor. A cor que provoca maior sensação visual é o verde, a menos, o azul. O olho é mais sensível à luminância do que à crominância.
+* **Modelos de Cor**
   * RGB - cada cor é obtida por síntese aditiva das três cores primárias (vermelho, verde, azul), dependente dos periféricos utilizados na aquisição e representação;
   * CMY - ciano, magenta, amarelo; fundado sobre a capacidade de absorção da luz pela tinta de impressão depositada no papel, a síntese das cores é subtrativa;
     * CMYK - a junção das três cores com saturações máximas não é suficiente para produzir a cor preta, pelo que se adiciona um quarto plano para a representar;
@@ -65,7 +68,7 @@
 
 ## Imagem Digital
 
-* Imagem Bitmap - o ficheiro é constituído pelos dados da cor de cada ponto (pixel, elemento mais pequeno), alinhados horizontal e verticalmente como linhas e colunas de uma matriz.
+* **Imagem Bitmap** - o ficheiro é constituído pelos dados da cor de cada ponto (pixel, elemento mais pequeno), alinhados horizontal e verticalmente como linhas e colunas de uma matriz.
   * Resolução de uma imagem: número de pontos digitalizados, afixados ou imprimidos por unidade de largura.
   * Entrelaçamento: visualização progressiva; consiste em reordenar as linhas das imagens, organizando-as em grupos que vão sendo apresentados e aumentando a qualidade e o número de detalhes.
   * Vantagens:
@@ -80,7 +83,7 @@
     * Formato JPEG (_Joint Photographic Experts Group_) - utiliza compressão com perdas, permite adaptar qualidade de imagem e 'true color', permite representação sequencial (linha a linha) ou progressiva (passagens sucessivas); aceita entrelaçamento progressivo, mas não transparência ou animação.
     * Formato PNG (_Portable Network Graphics_) - utiliza compressão sem perdas, permite entrelaçamento e transparência por canal _alpha_, formato livre.
     * Formato TIFF (_Tagged Image File Format_) - utiliza compressão LZW, preserva a qualidade da imagem original.
-* Imagem Vetorial - o ficheiro contém a descrição matemática das figuras elementares que o constituem.
+* **Imagem Vetorial** - o ficheiro contém a descrição matemática das figuras elementares que o constituem.
   * Vantagens: 
     * Imagens descritas textualmente, logo fáceis de alterar, manipular e transformar e eficazmente comprimidas;
     * Tamanho de memória independente do tamanho de imagem;
@@ -96,11 +99,11 @@
 
 ## Codificação Fonte
 
-* Compressão - reduzir ao máximo o volume de armazenamento e transferência, mantendo a capacidade de restituir a integridade dessa informação (compressão sem perdas).
+* **Compressão** - reduzir ao máximo o volume de armazenamento e transferência, mantendo a capacidade de restituir a integridade dessa informação (compressão sem perdas).
   * Taxa de Compressão: relação entre o tamanho do ficheiro original e o tamanho do ficheiro comprimido;
   * (As)Simetria: velocidade e qualidade de restituição do documento original;
   * Com ou Sem Perdas: no primeiro caso, o algoritmo de compressão é irreversível, pois não é possível recuperar na íntegra o ficheiro original a partir do ficheiro comprimido; no segundo caso, é reversível.
-* Incerteza vs Informação
+* **Incerteza vs Informação**
   * Uma experiência fornece informação se e só se o seu resultado elimina uma certa incerteza;
   * A quantidade de informação e o nível de incerteza são diretamente proporcionais.
     * Entropia: fórmula matemática que permite calcular a quantidade média de informação de uma experiência tendo em conta o seu nível de incerteza, exprimindo o número médio de bits por símbolo necessários para a codificação ideal de um determinado alfabeto. Se a repartição é uniforme, a entropia é máxima (codificação de comprimento fixo).
@@ -129,22 +132,22 @@
 
 * Medidas de Distorção - MSE (_Mean Square Error_, erro médio quadrado); SNR (_Signal to Noise Ratio_); PSNR (_Peak Signal to Noise Ratio_).
 * Sistema de Compressão
-  * Transformada - representar os dados da imagem de modo a eliminar redundâncias estatísticas, normalmente invertível;
+  * **Transformada** - representar os dados da imagem de modo a eliminar redundâncias estatísticas, normalmente invertível;
     * Os componentes de baixa frequência (variações suaves) constituem a base de uma imagem e as altas frequências (_edges_) fornecem detalhe.
     * Pixeis numa imagem exibem um certo nível de correlação com os seus vizinhos, que podem ser exploradas para prever o seu valor, de modo a mapear os dados espaciais (correlacionados) em coeficientes transformados (não correlacionados);
     * DCT (_Discrete Cosine Transform_) - decomposição de uma função/sinal em componentes sinusoidais (ondas cosseno de diferentes tamanhos/formas, independentes), que quando adicionadas formam o sinal original;
       * Após a decorrelação em componentes DC (mais importantes, primeiro coeficiente da transformada, que corresponde ao valor médio da sequência tratada) e AC (menos importantes), cada coeficiente da transformada pode ser codificado independentemente sem perder a eficiência da compressão.
       * Propriedades:
-        * Decorrelação - remoção da redundância entre pixeis vizinhos.
-        * Compactação de Energia - capacidade de compactar dados de entrada no menor número de coeficientes possível.
-        * Separabilidade - possibilidade de possibilitar o cálculo de `F(u,v)` em dois passos com uso sucessivo de operações 1D sobre as linhas e colunas de uma imagem.
-        * Simetria - a matriz de transformação pode ser calculada previamente e depois aplicada à imagem, aumentando a eficiência da computação.
+        * Decorrelação - remoção da redundância entre pixeis vizinhos;
+        * Compactação de Energia - capacidade de compactar dados de entrada no menor número de coeficientes possível;
+        * Separabilidade - possibilidade de possibilitar o cálculo de `F(u,v)` em dois passos com uso sucessivo de operações 1D sobre as linhas e colunas de uma imagem;
+        * Simetria - a matriz de transformação pode ser calculada previamente e depois aplicada à imagem, aumentando a eficiência da computação;
         * Ortogonalidade - a matriz da transformada é igual à matriz da inversa.
     * DWT (_Discrete Wavelet Transform_) - decomposição de uma imagem para separar as variações suaves dos detalhes, pelo uso de filtros de síntese _low-pass_ e _high-pass_.
-  * Quantização - reduzir o número de valores de amplitude possíveis para codificação, não invertível;
+  * **Quantização** - reduzir o número de valores de amplitude possíveis para codificação, não invertível;
     * Quantização Escalar - cada símbolo de _input_ é tratado separadamente na produção do _output_; se o _input_ for dividido em níveis iguais, é Quantizador Uniforme, se não, é Quantizador Não Uniforme. Função que mapeia cada elemento de um subconjunto de R a um valor particular desse subconjunto.
     * Quantização Vetorial - os símbolos de entrada são processados em grupos (vetores) para gerar o _output_.
-  * Codificação - explorar a não uniformidade da distribuição de probabilidade dos índices de quantização;
+  * **Codificação** - explorar a não uniformidade da distribuição de probabilidade dos índices de quantização;
     * Codificação Diferencial ou Preditiva: se amostras sucessivas estão próximas umas das outras, apenas se precisa de codificar a primeira amostra com um grande número de bits.
 * Norma JPEG - método de compressão com perdas com codificação por transformada DCT.
   * Codificação Sequencial - cada componente é codificado numa única passagem da esquerda para a direita e de cima para baixo:
@@ -162,14 +165,14 @@
 
 ## Representação de Vídeo Digital
 
-* Vídeo Analógico - amostragem por linhas em modo progressivo ou entrelaçado, primeiro as linhas pares e depois as linhas ímpares. O número de frames por segundo (fps) e a resolução da imagem é determinada pelo _standard_ de distinção de imagem, serviços de sincronização e de posicionamento dos feixes de eletrões.
-* Vídeo Digital - guardado quer em memória, quer em suportes digitais, possibilitando edição não linear, gravações sucessivas, fácil encriptação e tolerância a erros de transmissão.
-* Compressão de Vídeo - tira-se proveito das redundâncias espaciais, psicosensoriais, estatísticas e temporais.
+* **Vídeo Analógico** - amostragem por linhas em modo progressivo ou entrelaçado, primeiro as linhas pares e depois as linhas ímpares. O número de frames por segundo (fps) e a resolução da imagem é determinada pelo _standard_ de distinção de imagem, serviços de sincronização e de posicionamento dos feixes de eletrões.
+* **Vídeo Digital** - guardado quer em memória, quer em suportes digitais, possibilitando edição não linear, gravações sucessivas, fácil encriptação e tolerância a erros de transmissão.
+* **Compressão de Vídeo** - tira-se proveito das redundâncias espaciais, psicosensoriais, estatísticas e temporais.
   * Compressão Temporal - exploração de semelhanças entre imagens sucessivas, identificando redundância no tempo, mesmo com alterações no espaço.
     * Compressão Temporal Unidirecional - diferença entre a imagem corrente e a imagem precedente. As que são codificadas apenas espacialmente são chamadas imagens _intra_ ou _key frame_, as obtidas por diferença são imagens _delta_, que podem ser submetidas a uma compressão espacial; descompressão espacial antes de juntar as diferenças à imagem precedente para obter a imagem corrente.
     * Compressão Temporal Bidirecional - diferença entre a imagem corrente e as imagens precedente e sequente, com compensação de movimento (não se calculam as diferenças de um bloco com o mesmo bloco da imagem anterior, mas com os blocos mais próximos).
   * Compressão Baseada nos Objetos de Vídeo (VOP) - envolve estimação do movimento, predição compensada em movimento seguida da codificação de texturas. Codificação baseada em conteúdos, onde a sequência de imagens de entrada pode ter uma forma e localização arbitrárias, estendida pela codificação da informação referente à forma e à transparência, que pode melhorar a eficiência da compressão.
-* Norma MPEG - algoritmo de compressão híbrida e assimétrica (compressão mais complexa que descompressão): predição apenas aplicada para a compressão temporal, transformada DCT seguida da quantização dos coeficientes transformados assegura codificação espacial, codifição entrópica.
+* **Norma MPEG** - algoritmo de compressão híbrida e assimétrica (compressão mais complexa que descompressão): predição apenas aplicada para a compressão temporal, transformada DCT seguida da quantização dos coeficientes transformados assegura codificação espacial, codifição entrópica.
   * MPEG-1 
     * Define três tipos de imagem:
       * I (imagens _intra_ ou de referência) - comprimidas segundo um algoritmo JPEG, servem de referência para imagens P e B;
@@ -182,12 +185,12 @@
     * Perfil Escalável em SNR: receção sobre dois níveis graças à organização de duas tramas distintas de dados;
     * Perfil Escalável Espacialmente: idêntico ao anterior, com uma trama de dados suplementares;
     * Perfil Alto: dispõe de todas as técnicas dos perfis anteriores, com uma codificação 4:2:2.
-  * MPEG-4 - permite a decomposição de uma cena em objetos (imagens fixas, objetos de vídeo ou áudio, texto, gráficos, sons, rostos), que permite que os vídeos possam ser compostos e manipulados com operações simples através de um descritor de objetos (identificaçao de todos os dados binários associados aos objetos). Adaptação dimensional permite otimizar a difusão do fluxo de dados em função do débito e/ou do sistema de representação que possui o utilizador final.
+  * MPEG-4 - permite a decomposição de uma cena em objetos (imagens fixas, objetos de vídeo ou áudio, texto, gráficos, sons, rostos), que permite que os vídeos possam ser compostos e manipulados com operações simples através de um descritor de objetos (identificação de todos os dados binários associados aos objetos). Adaptação dimensional permite otimizar a difusão do fluxo de dados em função do débito e/ou do sistema de representação que possui o utilizador final.
     * Objetos de Média: representação de unidades de conteúdo de áudio, vídeo e audiovisual, naturais ou sintetizados;
     * Objetos de Média Compostos: descrição da composição dos objetos na criação dos objetos que formam as cenas audiovisuais;
     * Descrição da Cena: definição das relações espácio-temporais entre os objetos;
     * Interação com a cena audiovisual gerada no recetor;
-    * Identificação de propriedade intelectual.
+    * Identificação de propriedade intelectual:
       * Perfil Visual: cinco níveis de exigência para a codificação de dados naturais e quatro níveis para a codificação de dados sintetizados ou mistos;
       * Perfil Áudio: quatro níveis definidos pelo número de técnicas integradas e débito requerido;
       * Perfil Gráfico: três níveis de tratamento de elementos gráficos e textuais;

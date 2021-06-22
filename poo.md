@@ -1,9 +1,14 @@
+# Programação Orientada a Objetos
+
+##### Atualizado em 16-06-2021
+###### A partir de: apontamentos das aulas teóricas
+
 ## Revisões / Bases
 
 **Identificadores JAVA**
 
-* Não podem começar por um dígito.
-* Combinações de letras, dígitos e carateres `_` e `$`.
+* Não podem começar por um dígito;
+* Combinações de letras, dígitos e carateres `_` e `$`;
 * Convenções: _classes_ começam com maiúscula; _subprogramas_ e _variáveis_ começam com minúscula; _constantes_ são escritas em maiúsculas.
 
 **Tipos Primitivos:** boolean, char, byte, short, int, long, float, double.
@@ -52,24 +57,23 @@ Usado quando as `instruções` devem ser executadas pelo menos uma vez. No final
 
 ## Aula 01 - Conceito de Objeto
 
-**Objetos:** representação de uma entidade sob a forma de um identificador único, um conjunto de atributos privados (_estado_ do objeto) e um conjunto de operações (_comportamento_ do objeto). Destas operações, algumas são invocáveis do exterior (_operações públicas_ - _interface_ do objeto [Application Programmer's Interface, API]), outras são apenas internas ao objeto (_operações privadas_). Aos identificadores que guardam os valores dá-se o nome de _variáveis de instância_. Às operações que representam o comportamento do objeto dá-se o nome de _métodos de instância_.
+**Objetos:** representação de uma entidade sob a forma de um identificador único, um conjunto de atributos privados (_estado_ do objeto) e um conjunto de operações (_comportamento_ do objeto). Destas operações, algumas são invocáveis do exterior (_operações públicas_ - _interface_ do objeto [_Application Programmer's Interface_, API]), outras são apenas internas ao objeto (_operações privadas_). Aos identificadores que guardam os valores dá-se o nome de _variáveis de instância_. Às operações que representam o comportamento do objeto dá-se o nome de _métodos de instância_.
 
 **Mensagens:** os objetos interatuam entre si através de um mecanismo de envio de mensagens. O _recetor_ é o identificador do objeto que recebe a mensagem, a _mensagem_ é o identificador do método:
-
-* `recetor.mensagem();` - envio de mensagem sem argumentos a um objeto, sem retorno de resultado pelo método correspondente.
-* `recetor.mensagem(arg1, arg2, ..., argn);` - envio de uma mensagem com argumentos, sem retorno de resultado.
-* `resultado = recetor.mensagem();` - envio de uma mensagem sem argumentos, com retorno de resultado.
+* `recetor.mensagem();` - envio de mensagem sem argumentos a um objeto, sem retorno de resultado pelo método correspondente;
+* `recetor.mensagem(arg1, arg2, ..., argn);` - envio de uma mensagem com argumentos, sem retorno de resultado;
+* `resultado = recetor.mensagem();` - envio de uma mensagem sem argumentos, com retorno de resultado;
 * `resultado = recetor.mensagem();` - envio de uma mensagem com argumentos e com retorno de resultado.
 
 Os argumentos e o resultado de uma mensagem têm de ser compatíveis com o tipo dos parâmetros e do valor devolvido pelo método correspondente.
 
 **Instâncias vs Classes**
 
-Uma __classe__ é um objeto que contém a descrição da estrutura e comportamento de objetos do mesmo tipo e que cria objetos particulas que possuem igual estrutura e comportamento. Por __métodos de instanciação__, os objetos são _inicializados_, passando a existir e a poder receber mensagens de outros objetos.
+Uma **classe** é um objeto que contém a descrição da estrutura e comportamento de objetos do mesmo tipo e que cria objetos particulares que possuem igual estrutura e comportamento. Por **métodos de instanciação**, os objetos são _inicializados_, passando a existir e a poder receber mensagens de outros objetos.
 
 Cada objeto tem as suas próprias variáveis de estado enquanto o código que implementa os métodos permanece armazenado na classe. Os objetos têm um comportamento comum, mas o seu estado é variável.
 
-Quando um objeto é instanciado, a inicialização do seu estado é feita por invocação automática de um método de inicialização - __construtor da classe__.
+Quando um objeto é instanciado, a inicialização do seu estado é feita por invocação automática de um método de inicialização - **construtor da classe**.
 
 ---
 
@@ -79,15 +83,15 @@ Quando um objeto é instanciado, a inicialização do seu estado é feita por in
 
 A tecnologia Java baseia-se na ideia de que qualquer programa deve poder ser executado sem ser alterado ou recompilado; o código-fonte é _compilado_ para uma representação intermédia, independente do sistema de execução e da arquitetura da máquina (_byte-code_), que depois é interpretado sobre o ambiente de cada máquina específica pela _Java Virtual Machine_ (JVM). A JVM recebe _byte-code_ e transforma-o em instruções executáveis na máquina onde o ambiente Java é instalado.
 
-__Aplicações Java__ são programas que, após serem compilados, apenas requerem uma JVM para serem interpretados e executados.
+**Aplicações Java** são programas que, após serem compilados, apenas requerem uma JVM para serem interpretados e executados.
 
-__*Applets*__ são porções de código Java não executável por si próprio, requerendo a existência de um _browser_ que incorpore e execute a JVM.
+**_Applets_** são porções de código Java não executável por si próprio, requerendo a existência de um _browser_ que incorpore e execute a JVM.
 
-Em Java os programas são constituídos por diversas __classes__, tipos de dados agrupados em pacotes (_packages_), que possuem __atributos__ (variáveis) e __métodos__ (funções). Um __construtor__ é uma operação especial da classe, com o mesmo nome da classe, identificado pela sua lista de parâmetros, para criar objetos, mas sem declarar o tipo do resultado.
+Em Java os programas são constituídos por diversas **classes**, tipos de dados agrupados em pacotes (_packages_), que possuem **atributos** (variáveis) e **métodos** (funções). Um **construtor** é uma operação especial da classe, com o mesmo nome da classe, identificado pela sua lista de parâmetros, para criar objetos, mas sem declarar o tipo do resultado.
 
-__Tipos referenciados__ são entidades às quais se acede através de uma variável que contém o seu endereço; ou seja, o que é atribuído e manipulado são _referências_ (endereços).
+**Tipos referenciados** são entidades às quais se acede através de uma variável que contém o seu endereço; ou seja, o que é atribuído e manipulado são _referências_ (endereços).
 
-__Arrays__ são entidades referenciadas, mas não são objetos. São criados dinamicamente em tempo de execução e o seu espaço é automaticamente reaproveitado quando deixam de estar referenciados.
+**Arrays** são entidades referenciadas, mas não são objetos. São criados dinamicamente em tempo de execução e o seu espaço é automaticamente reaproveitado quando deixam de estar referenciados.
 
 ---
 
@@ -95,7 +99,7 @@ __Arrays__ são entidades referenciadas, mas não são objetos. São criados din
 
 ## Aula 03 - Classes e Instanciação de Objetos
 
-Um _argumento_ é um valor passado para uma função quando esta é chamada; um _parâmetro_ é um valor passado para uma função quando esta é definida. Uma _classe_ define a estrutura, propriedades e comportamento de um objeto; uma _instância_ é a referência a um determinado objeto.
+Um **argumento** é um valor passado para uma função quando esta é chamada; um **parâmetro** é um valor passado para uma função quando esta é definida. Uma **classe** define a estrutura, propriedades e comportamento de um objeto; uma **instância** é a referência a um determinado objeto.
 
 `class Contador { <instruções> }`
 
@@ -107,23 +111,23 @@ _Assinatura de um método:_ constituída pelo identificador do método e pelo n�
 
 Um valor do tipo _String_ é uma sequência de zero ou mais carateres entre aspas, com um valor imutável. O operador `+` permite a concatenação de _strings_ e cria implicitamente uma nova instância da classe String.
 
-Métodos que façam __acesso de leitura__ ao valor de uma variável X designam-se por _getters_ e devolvem um resultado do tipo da variável X (`getX`). Métodos que __alterem__ o valor de uma variável X designam-se por _setters_, têm parâmetros de entrada e não devolvem qualquer resultado (`setX`).
+Métodos que façam **acesso de leitura** ao valor de uma variável X designam-se por _getters_ e devolvem um resultado do tipo da variável X (`getX`). Métodos que **alterem** o valor de uma variável X designam-se por _setters_, têm parâmetros de entrada e não devolvem qualquer resultado (`setX`).
 
 A abordagem da comunicação por mensagens pode ser usada uniformemente para interação com outros objetos e invocação de métodos locais. Para que um objeto possa enviar uma mensagem a si próprio, tem de se autorreferenciar: `this` é um identificador especial que contém o endereço do próprio objeto em cujo contexto é utilizado.
 
 Mecanismos de controlo de acesso especificam 'quem' tem acesso a cada entidade (classe, dados e métodos): `public`, `protected`, `private`.
 
 Regras de acesso a classes:
-* Uma classe é sempre acessível a todas as outras classes do mesmo _package_ independentemente do modificador de acesso.
-* Se nenhum modificador de acesso é usado, a classe apenas pode ser acedida dentro do seu _package_.
-* Quando uma classe é declarada como `public`, pode ser acedida por qualquer classe que tenha acesso ao seu _package_.
+* Uma classe é sempre acessível a todas as outras classes do mesmo _package_ independentemente do modificador de acesso;
+* Se nenhum modificador de acesso é usado, a classe apenas pode ser acedida dentro do seu _package_;
+* Quando uma classe é declarada como `public`, pode ser acedida por qualquer classe que tenha acesso ao seu _package_;
 * Quando uma classe não é pública, é apenas acessível dentro do seu _package_.
 
 Regras de acesso a variáveis e métodos:
-* Variáveis e métodos auxiliares são privados; métodos de interface são públicos.
-* Um método declarado como `public` é acessível de qualquer ponto de qualquer programa.
-* Um método sem modificador de acesso é acessível a qualquer classe do mesmo _package_.
-* Métodos ou variáveis declarados como `private` são apenas acessíveis dentro da própria classe.
+* Variáveis e métodos auxiliares são privados; métodos de interface são públicos;
+* Um método declarado como `public` é acessível de qualquer ponto de qualquer programa;
+* Um método sem modificador de acesso é acessível a qualquer classe do mesmo _package_;
+* Métodos ou variáveis declarados como `private` são apenas acessíveis dentro da própria classe;
 * Métodos ou variáveis declarados como `protected` são acessíveis na própria classe, de outra classe dentro do mesmo _package_ e nas subclasses da classe.
 
 ---
@@ -150,32 +154,30 @@ Em Java os parâmetros são passados por valor: é criada uma variável local co
 
 ## Aula 05 - Comparação de _Strings_
 
-* Valores constantes do tipo _String_ têm a mesma referência.
-* _Strings_ construídas em tempo de compilação são tratadas como valores constantes do tipo _String_.
+* Valores constantes do tipo _String_ têm a mesma referência;
+* _Strings_ construídas em tempo de compilação são tratadas como valores constantes do tipo _String_;
 * _Strings_ construídas em tempo de execução - só são criadas quando se executa o programa - têm referências distintas.
 
 Logo, o método recomendado para comparar _strings_ é `s1.equals(s2)`, que compara o conteúdo e não apenas o endereço (como no `==`).
 
 **Listas Dinâmicas**
 
-A classe `ArrayList` no pacote `java.util` distingue-se dos _arrays_ porque pode (de)crescer de tamanho e pode armazenar objetos de diferentes tipos. Implemente uma abstração de dados que representam uma estrutura linear indexada a partir do índice 0 sem limite de dimensão. Alguns métodos da classe:
+A classe `ArrayList` no pacote `java.util` distingue-se dos _arrays_ porque pode (de)crescer de tamanho e pode armazenar objetos de diferentes tipos. Implementa uma abstração de dados que representam uma estrutura linear indexada a partir do índice 0 sem limite de dimensão. Alguns métodos da classe:
 
-(_Object_ é uma classe genérica, até sabermos melhor o que é)
-
-* `ArrayList()` -> construtor vazio, dimensão inicial zero.
-* `boolean add(Object element)` -> adiciona o elemento especificado ao final da lista.
-* `void add(int index, Object element)` -> insere o elemento especificado na posição do índice.
-* `Object remove (int index)` -> remove o elemento da posição index
-* `boolean remove (Object element)` -> remove a primeira ocorrência do objeto dado como parâmetro.
-* `Object set (int index, Object element)` -> substitui o elemento da posição index pelo elemento especificado.
-* `Object get (int position)` -> devolve o elemento da posição index.
-* `void clear()` -> remove todos os elementos da lista.
-* `Object clone()` -> devolve uma cópia da lista.
-* `boolean contains(Object element)` -> devolve _true_ se a lista contiver o elemento especificado.
-* `boolean equals (Object element)` -> permite comparar duas listas.
-* `int indexOf (Object element)` -> procura o índice da primeira ocorrência do elemento.
-* `boolean isEmpty()` -> verifica se a lista está vazia.
-* `int size()` -> devolve a dimensão atual da lista.
+* `ArrayList()` -> construtor vazio, dimensão inicial zero;
+* `boolean add(Object element)` -> adiciona o elemento especificado ao final da lista;
+* `void add(int index, Object element)` -> insere o elemento especificado na posição do índice;
+* `Object remove (int index)` -> remove o elemento da posição index;
+* `boolean remove (Object element)` -> remove a primeira ocorrência do objeto dado como parâmetro;
+* `Object set (int index, Object element)` -> substitui o elemento da posição index pelo elemento especificado;
+* `Object get (int position)` -> devolve o elemento da posição index;
+* `void clear()` -> remove todos os elementos da lista;
+* `Object clone()` -> devolve uma cópia da lista;
+* `boolean contains(Object element)` -> devolve _true_ se a lista contiver o elemento especificado;
+* `boolean equals (Object element)` -> permite comparar duas listas;
+* `int indexOf (Object element)` -> procura o índice da primeira ocorrência do elemento;
+* `boolean isEmpty()` -> verifica se a lista está vazia;
+* `int size()` -> devolve a dimensão atual da lista;
 * `String toString()`.
 
 A verificação de tipos pode ser feita durante a compilação, usando _tipos genéricos_ (tipo referenciado que usa na sua definição um ou mais tipos de dados como parâmetros). Seja o tipo `ArrayList<E>` em que E pode ser qualquer classe ou interface, a instanciação de um tipo genérico para um valor concreto de E dá origem a um _tipo parametrizado_.
@@ -188,23 +190,23 @@ A verificação de tipos pode ser feita durante a compilação, usando _tipos ge
 
 Conceito em que uma classe pode herdar operações de uma superclasse (classe base) e as suas operações podem ser herdadas por subclasses (classes derivadas). O _mecanismo de herança_ permite definir uma nova classe em termos de uma classe existente, com modificações e/ou extensões de comportamento.
 
-Todos os métodos e atributos da superclasse são herdados pela subclasse, à qual podem ser adicionados novos métodos e atributos no processo de especialização sucessiva. Dada uma hierarquia de classes, a instância de uma subclasse contém: as variáveis de instância da superclasse e as variáveis de instância declaradas na classe derivada. O comportamento dessa instância está definido na sua classe e no conjunto das suas superclasses.
+Todos os métodos e atributos da superclasse são herdados pela subclasse, à qual podem ser adicionados novos métodos e atributos no processo de especialização sucessiva. Dada uma hierarquia de classes, a instância de uma subclasse contém as variáveis de instância da superclasse e as variáveis de instância declaradas na classe derivada. O comportamento dessa instância está definido na sua classe e no conjunto das suas superclasses.
 
 Quando um método é invocado, ou seja, quando é enviada uma mensagem a um objeto, torna-se necessário ligar a mensagem à implementação correspondente. Por exemplo:
-* Uma _fila_ pode ser implementada a partir de uma _lista ligada_ desde que se imponham as restrições adequadas à manipulação dos seus elementos.
-* Redefinem-se os métodos da _lista ligada_ para refletir a semântica da _fila_.
+* Uma _fila_ pode ser implementada a partir de uma _lista ligada_ desde que se imponham as restrições adequadas à manipulação dos seus elementos;
+* Redefinem-se os métodos da _lista ligada_ para refletir a semântica da _fila_;
 * Para execução, primeiro pesquisa-se a subclasse e só após a superclasse onde o método é encontrado.
 
 A hierarquia é pesquisada na direção subclasse > superclasse, com início na classe do objeto que recebe a mensagem. É executado o método mais próximo.
 
 **Tipos de ligação** - ligação do nome de um método a uma implementação:
-* Em tempo de compilação - _ligação estática_
-  * Abordagem mais simples, em que o compilador constrói uma tabela de classes e métodos associados, produzindo um código com as ligações entre os métodos e correspondentes implementações.
-  * _Vantagem:_ ligações erradas (chamadas a métodos não existentes) são detetadas em tempo de compilação.
-  * _Desvantagem:_ para introduzir alterações na ligação é necessário recompilar todo o código.
-* Em tempo de execução - _ligação dinâmica_
-  * A correspondência entre o método e a implementação é feita a cada invocação: a hierarquia é pesquisada e, se o método não existir, devolve `Método Desconhecido`.
-  * _Vantagem:_ alterações na hierarquia não implicam necessidade de recompilação de todas as classes.
+* Em tempo de compilação - _ligação estática_:
+  * Abordagem mais simples, em que o compilador constrói uma tabela de classes e métodos associados, produzindo um código com as ligações entre os métodos e correspondentes implementações;
+  * _Vantagem:_ ligações erradas (chamadas a métodos não existentes) são detetadas em tempo de compilação;
+  * _Desvantagem:_ para introduzir alterações na ligação é necessário recompilar todo o código;
+* Em tempo de execução - _ligação dinâmica_:
+  * A correspondência entre o método e a implementação é feita a cada invocação: a hierarquia é pesquisada e, se o método não existir, devolve `Método Desconhecido`;
+  * _Vantagem:_ alterações na hierarquia não implicam necessidade de recompilação de todas as classes;
   * _Desvantagens:_ a pesquisa na hierarquia provoca alguma degradação no desempenho do sistema; necessidade de manipular mensagens `Método Desconhecido` em tempo de execução.
 
 Declaração de B como subclasse de A: `public class B extends A`. Um objeto do tipo B também é do tipo A.
@@ -212,15 +214,15 @@ Declaração de B como subclasse de A: `public class B extends A`. Um objeto do 
 Cada classe possui uma só superclasse direta, e apenas esta é identificada na cláusula `extends`. A classe de topo da hierarquia é a classe **Object**; que é superclasse quando não é usada a cláusula `extends`.
 
 A classe **Object** define o comportamento comum a todas as classes através de métodos genéricos que normalmente necessitam de ser redefinidos. Qualquer instância de qualquer classe pode responder às mensagens correspondentes aos métodos da classe.
-* `public final Class getClass ()` - devolve a classe do objeto.
-* `public String toString ()` - representação textual do objeto.
-* `public boolean equals (Object obj)` - igualdade de referências.
+* `public final Class getClass ()` - devolve a classe do objeto;
+* `public String toString ()` - representação textual do objeto;
+* `public boolean equals (Object obj)` - igualdade de referências;
 * `protected Object clone ()` - clona um objeto.
 
 Dadas uma classe A e uma subclasse B,
-* B tem acesso direto a todas as variáveis e métodos de A que não sejam declaradas como `private`.
-* B pode definir novas variáveis e métodos e redefinir variáveis e métodos herdados.
-* Uma instância de B pode responder a mensagens que correspondam a todos os métodos públicos de B e A.
+* B tem acesso direto a todas as variáveis e métodos de A que não sejam declaradas como `private`;
+* B pode definir novas variáveis e métodos e redefinir variáveis e métodos herdados;
+* Uma instância de B pode responder a mensagens que correspondam a todos os métodos públicos de B e A;
 * Os atributos de uma instância de B são atributos definidos nas classes A e B.
 
 **Princípio da substitutividade:** declarada uma variável como sendo de uma dada classe, é permitido atribuir-lhe um valor de sua classe ou de qualquer sua subclasse.
@@ -228,8 +230,8 @@ Dadas uma classe A e uma subclasse B,
 **Método `equals`** - compara a referência de um objeto que recebe como argumento com a referência do objeto recetor. Devolve `true` se as referências forem iguais, `false` caso contrário.
 
 **Método `clone`** - cria e devolve a cópia do objeto recetor, tal que o objeto criado e o que recebe a mensagem:
-* São diferentes: `y = x.clone (); // y != x;`.
-* São instâncias da mesma classe: `x.clone().getClass() == x.getClass();`.
+* São diferentes: `y = x.clone (); // y != x;`;
+* São instâncias da mesma classe: `x.clone().getClass() == x.getClass();`;
 * Têm o mesmo valor nas variáveis de instância: `x.clone().equals(x) == true`.
 
 ---
@@ -256,8 +258,8 @@ A declaração de uma variável é um processo _estático_ - determina o tipo es
 
 **Polimorfismo de sobrecarga** - o mesmo nome (de um método ou função) pode ser usado mais do que uma vez com diferentes tipos de parâmetros.
 
-**Polimorfismo universal** - capacidade de uma única função (código único) poder ser usado com mais do que um tipo.
-  * **Polimorfismo de inclusão** - uma função definida num determinado tipo pode também operar todos os seus subtipos; resultante do mecanismo de herança.
+**Polimorfismo universal** - capacidade de uma única função (código único) poder ser usado com mais do que um tipo:
+  * **Polimorfismo de inclusão** - uma função definida num determinado tipo pode também operar todos os seus subtipos (resultante do mecanismo de herança);
   * **Polimorfismo paramétrico** - uma única função pode ser aplicada a um conjunto de tipos sem qualquer relação entre si, existindo, explicitamente ou não, um parâmetro de tipo que determina o tipo de argumento para cada aplicação da função.
 
 ---
@@ -283,7 +285,7 @@ Uma exceção pode ser lançada porque é detetada uma violação da semântica 
 
 Há dois tipos de exceções:
 * _Exceções verificáveis pelo compilador:_
-  * O compilador verifica se o programa trata as exceções que poderão ocorrer no código - `try (...) catch` ou `throws`.
+  * O compilador verifica se o programa trata as exceções que poderão ocorrer no código - `try (...) catch` ou `throws`;
 * _Exceções não verificáveis pelo compilador:_
   * Objetos de classes e subclasses específicas:
     * `RunTimeException` - exceções cuja ocorrência é difícil de ser verificável pelo programador;
@@ -303,7 +305,7 @@ Uma **interface** é uma especificação sintática de um conjunto de métodos e
 
 Uma classe que implemente uma dada interface tem obrigatoriamente que implementar todos os métodos nela declarados.
 
-Uma _classe abstrata_ pode ter métodos implementados; numa _interface_ todos os métodos são abstratos. A subclasse de uma _classe abstrata_ pode ser ou não uma classe abstrata; numa _subinterface_ todos os métodos são abstratos. Uma _classe abstrata_ pode ser usada para escrever software genérico, em que cada subclasse vai sendo implementada num processo de especialização sucessiva; uma _interface_ especifica um comportamento comum a todas as classes que a implementam.
+Uma _classe abstrata_ pode ter métodos implementados; numa _interface_ todos os métodos são abstratos. A subclasse de uma _classe abstrata_ pode ser ou não uma classe abstrata; numa _subinterface_ todos os métodos são abstratos. Uma _classe abstrata_ pode ser usada para escrever _software_ genérico, em que cada subclasse vai sendo implementada num processo de especialização sucessiva; uma _interface_ especifica um comportamento comum a todas as classes que a implementam.
 
 ---
 
@@ -316,9 +318,3 @@ Uma _stream_ é uma abstração que representa uma _fonte_ genérica de entrada 
 As classes `FileInputStream` e `FileOutputStream` definem objetos do tipo _stream_ que permitem ler e escrever sequências de bytes em ficheiros. A classe `DataOutputStream` permite fazer o output de tipos primitivos de dados, convertendo-os em sequências de bytes; fornece um acesso de alto nível, estando ligada a um objeto do tipo `FileOutputStream`, e não do tipo `File`.
 
 Também se pode ler/escrever objetos de/num ficheiro, usando as classes `ObjectInputStream` e `ObjectOutputStream`. Uma `ObjectOutputStream` permite armazenar objetos através do método `writeObject ()`, que implementa um algoritmo de serialização que garante que todas as referências cruzadas existentes entre instâncias de diferentes classes serão repostas aquando do processo de leitura dessas mesmas instâncias. Para que se possam gravar instâncias de uma determinada classe numa `ObjectOutputStream`, é necessário que a classe implemente a interface `Serializable` e que todas as variáveis dessa classe sejam também serializáveis.
-
----
-
-<br/><br/>
-
-## Aula 11 - Características da Programação Orientada a Objetos

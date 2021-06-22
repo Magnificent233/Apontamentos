@@ -1,5 +1,8 @@
 # Laboratórios de Programação
 
+##### Atualizado em 16-06-2021
+###### A partir de: exercícios das aulas práticas
+
 ## Aula Prática 01
 
 **Questão 01: O que é que está errado nas seguintes expressões/palavras?**
@@ -16,7 +19,7 @@ _Resposta:_ Preâmbulo. Conteúdo.
 
 ---
 
-**Questão 03: As palavras % `Preâmbulo` e % `Conteúdo` aparecem no documento após compilação?**
+**Questão 03: As palavras `%Preâmbulo` e `%Conteúdo` aparecem no documento após compilação?**
 
 _Resposta:_ Claro que não aparecem, porque são comentários.
 
@@ -66,16 +69,15 @@ _Resposta:_ Já está impecável.
 
 ## Aula Prática 02
 
-**Questão 01: Tendo   em   conta   os   comandos   enunciados   no   início   desta   secção,    acha   que é    possível    escrever    a    palavra `teste` em itálico e, simultaneamente, a negrito?**
+**Questão 01: Tendo em conta os comandos enunciados no início desta secção, acha que é possível escrever a palavra `teste` em itálico e, simultaneamente, a negrito?**
 
-_Resposta:_ Sim, encadeando os   comandos da seguinte forma: `\textit{\textbf{teste}}`.
-Sim, encadeando os comandos  da  seguinte forma: `\textbf{\textit{teste}}`.
+_Resposta:_ Sim, encadeando os comandos da seguinte forma: `\textit{\textbf{teste}}`. Sim, encadeando os comandos da seguinte forma: `\textbf{\textit{teste}}`.
 
 ---
 
 **Questão 02: O que faz o comando `\emph{palavra}`?**
 
-_Resposta:_ Tem efeito semelhante  a `\textit{itálico}` em alguns  casos. Contudo, a seguinte combinação `\textit{\textit{itálico}}` comporta-se de maneira diferente de `\emph{\emph{itálico}}`.
+_Resposta:_ Tem efeito semelhante a `\textit{itálico}` em alguns  casos. Contudo, a seguinte combinação `\textit{\textit{itálico}}` comporta-se de maneira diferente de `\emph{\emph{itálico}}`.
 
 ---
 
@@ -123,7 +125,7 @@ _Resposta:_ Sim, pois a frase começou com um espaço em relação à margem esq
 
 **Questão 10: Notou alguma diferença, relativamente ao resultado final, entre o uso de `\\` e `\par`?**
 
-_Resposta:_ Sim, notei. Usando \\ parece que ficou mais junto à margem esquerda.
+_Resposta:_ Sim, notei. Usando `\\` parece que ficou mais junto à margem esquerda.
 
 ---
 
@@ -233,12 +235,7 @@ _Resposta:_ Antes da Implementação e depois do Estado da Arte.
 
 **Questão 02: Relativamente à secção de `Estado da Arte`, devemos citar os seguintes recursos para realizar a pesquisa bibliográfica (selecione todas as que se apliquem):**
 
-_Resposta:_
-- Artigos científicos em revista.
-- Artigos científicos em conferência.
-- Livros.
-- Teses e dissertações.
-- Relatórios técnicos conhecidos.
+_Resposta:_ Artigos científicos em revista. Artigos científicos em conferência. Livros. Teses e dissertações. Relatórios técnicos conhecidos.
 
 ---
 
@@ -326,11 +323,9 @@ _Resposta:_ Não, falta referir a tabela no texto.
 
 ---
 
-**Questão 17: Quantos erros se enconram na frase anterior?**
+**Questão 17: Quantos erros se encontram na frase anterior?**
 
-_Resposta:_ Dois.
-
-Correção: Um `upgrade` à aplicação ocorrerá em três dias.
+_Resposta:_ Dois. Correção: Um `upgrade` à aplicação ocorrerá em três dias.
 
 </br></br>
 
@@ -344,7 +339,7 @@ _Resposta:_ Consola.
 
 **Questão 02: Analise a sua _prompt_ e identifique o seu _user_ e _hostname_:**
 
-_Resposta:_ sara@daedalus.
+_Resposta:_ pipas@prometheus.
 
 ---
 
@@ -1072,7 +1067,7 @@ _Resposta:_ `git branch`.
 
 **Questão 26: Quais foram os comandos que utilizou para adicionar os ficheiros `program.c` e `funcao.c`?**
 
-_Resposta:_ `git git add .`. (?)
+_Resposta:_ `git add .`.
 
 ---
 
@@ -1239,13 +1234,15 @@ _Resposta:_ Agora sim, consegui.
 
 ---
 
-**Tarefa 19:** 
-`a.out : src/program1.c Doxyfile`
-    `@cc src/program1.c`
-    `@doxygen &> /dev/null`
+**Tarefa 19:**
+```
+a.out : src/program1.c Doxyfile
+    @cc src/program1.c
+    @doxygen &> /dev/null
 
-`documentation : Doxyfile`
-    `@doxygen`
+documentation : Doxyfile
+    @doxygen
+```
     
 ---
 
@@ -1253,9 +1250,10 @@ _Resposta:_ Agora sim, consegui.
 
 ## Notas
 
-O `gcc` é um programa que é um compilador. (C é linguagem compilada.)
-O `python` é um programa que é um interpretador. (Python é linguagem interpretada.)
+O `gcc` é um programa que é um compilador. (C é linguagem compilada.) O `python` é um programa que é um interpretador. (Python é linguagem interpretada.)
 
-_Makefiles_
+_Makefiles_:
+```
 objetivo : dependências
 (tab) comando(s) para conseguir o objetivo a partir das dependências
+```

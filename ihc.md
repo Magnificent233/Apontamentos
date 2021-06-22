@@ -1,5 +1,8 @@
 # Interação Humana com o Computador
 
+##### Atualizado em 21-06-2021
+###### A partir de: apontamentos das aulas teóricas
+
 ## Aula Teórica 1
 
 Disciplina centrada no _design_ (conceção de um sistema e desenho de como o utilizador interage com ele / criação da dimensão interativa dos sistemas), avaliação e implementação de sistemas computacionais interativos para uso humano e no estudo de fenómenos maiores em seu redor. Obriga ao estudo do pensamento humano para criar uma melhor abordagem de _design_: é necessário criar algo simples, intuitivo e que vá ao encontro das necessidades e desejo do utilizador - passagem do abstrato humano ao linear computacional.
@@ -7,12 +10,12 @@ Disciplina centrada no _design_ (conceção de um sistema e desenho de como o ut
 **LEMA:** "Quando coisas simples precisam de imagens, etiquetas ou instruções, o _design_ falhou." - Donald Norman
 
 Preocupações principais:
-* Estética / Forma: apelatividade (minimalismo, simplismo, uso de cor);
-* Função / Operacionalidade: utilidade, simplicidade, praticidade.
+* Estética/Forma: apelatividade (minimalismo, simplismo, uso de cor);
+* Função/Operacionalidade: utilidade, simplicidade, praticidade.
 
 Princípios fundamentais (três U's de IHC): **Útil** (eficaz), **Utilizável** (eficiente), **Utilizado** (atrativo).
 
-Em IHC pretendem-se ferramentas / sistemas que:
+Em IHC pretendem-se ferramentas/sistemas que:
 * Sejam adequados para as tarefas a desempenhar;
 * Sejam fáceis de usar e, quando apropriado, adaptáveis ao conhecimento e experiência do utilizador;
 * Providenciem _feedback_ sobre o desempenho;
@@ -25,7 +28,7 @@ Em IHC pretendem-se ferramentas / sistemas que:
 
 Um utilizador humano pode ser considerado um IPU (_Information Processing Unit_) com psicologia cognitiva (sistemas percetivo, motor e cognitivo - perceção de capacidades e limitações, facilidade e dificuldade, agradabilidade, _modus operandi_ [tato, áudio, voz]). Possui informação de _input_/_output_ (visão, audição, tato, movimento), informação guardada em memória (sentidos), informação processada e aplicada (pensamento, resolução de problemas, capacidades, erros), dimensão emocional e unicidade individual.
 
-A visão é um _input_, através dos sentido, que envolve dois passos: receção física de um estímulo (no olho), interpretação e processamento. A perceção do que se vê assenta em quatro pontos:
+A visão é um _input_, através dos sentidos, que envolve dois passos: receção física de um estímulo (no olho), interpretação e processamento. A perceção do que se vê assenta em quatro pontos:
 * **Tamanho** - medindo o ângulo visual em graus, minutos e segundos;
 * **Profundidade**;
 * **Brilho**;
@@ -36,31 +39,31 @@ A acuidade (perceção) visual é a habilidade de uma pessoa em distinguir os m�
 
 ## Aula Teórica 3
 
-A audição humana é um _input_ que permite estimar distâncias devido a atrasos de receções entre as duas orelhas. o aparato físico da audição é constituído por ouvido externo (protege o interior e amplifica o som), ouvido médio (transmite ondas sonoras como vibrações) e ouvido interno (transmissores químicos causam impulsos no nervo auditivo). O som é caracterizado por tom (frequência [Hz]), volume (amplitude [dB]), timbre (tipo / qualidade).
+A audição humana é um _input_ que permite estimar distâncias devido a atrasos de receções entre as duas orelhas. O aparato físico da audição é constituído por ouvido externo (protege o interior e amplifica o som), ouvido médio (transmite ondas sonoras como vibrações) e ouvido interno (transmissores químicos causam impulsos no nervo auditivo). O som é caracterizado por tom (frequência [Hz]), volume (amplitude [dB]), timbre (tipo/qualidade).
 
-O tato é normalmente usado como um _feedback_ inconsciente (teclas, cinestesia, vibrações) de recetores mecânicos (pressão), termais (temperatura) e _nocis_ (dor, pressão intensa), cuja presença ao longo do corpo é heterogénea. O movimento é caracterizado por velocidade (tempo de reação, influenciado por tempo de processamento e ação, que determina a rapidez de resposta a um estímulo) e a precisão, respeitando a Lei de Fit, que calcula o esforço (mental) para realizar determinada tarefa, e a Lei de Hick, que calcula o tempo demorado a efetuar uma escolha entre várias possibilidades. Aumentar o tempo de reação diminui a precisão num operador inexperiente, mas não num experiente.
+O tato é normalmente usado como um _feedback_ inconsciente (teclas, cinestesia, vibrações) de recetores mecânicos (pressão), termais (temperatura) e _nocis_ (dor, pressão intensa), cuja presença ao longo do corpo é heterogénea. O movimento é caracterizado por velocidade (tempo de reação, influenciado por tempo de processamento e ação, que determina a rapidez de resposta a um estímulo) e precisão, respeitando a Lei de Fit, que calcula o esforço (mental) para realizar determinada tarefa, e a Lei de Hick, que calcula o tempo demorado a efetuar uma escolha entre várias possibilidades. Aumentar o tempo de reação diminui a precisão num operador inexperiente, mas não num experiente.
 
-A memória humana armazena factos, processamentos e ações e está dividida concetualmente em três partes: memória sensorial, de curta duração (_short-term_, STM, ou memória de trabalho) e de longa duração (_long term_, LTM). A memória sensorial passa a memória de curta duração pela atenção a adeterminado estímulo, que passa a memória de longa duração com a repetição do estímulo.
-* A **memória sensorial** responde a estímulos dos sentidos (visão, audição, tato), que está a ser constantemente a ser alterada. A memória sensorial é transferida para a memória de curta duração através da **atenção** (ação de foco num determinado item ao filtrar os restantes _inputs_ recebidos ao mesmo tempo) - se não houver atenção, haveria uma sobrecarga de informação;
-* A **memória de curta duração** tem efeitos de recência (recordar as últimas palavras / letras / números / contas) e interferência. A informação é dividida em partes mais pequenas com significado (_chunking_ ), que aumenta a eficácia do uso da memória, que leva a _closure_ (perda de localização mental que induz a erros);
+A memória humana armazena factos, processamentos e ações e está dividida concetualmente em três partes: memória sensorial, de curta duração (_short-term_, STM, ou memória de trabalho) e de longa duração (_long term_, LTM). A memória sensorial passa a memória de curta duração pela atenção a determinado estímulo, que passa a memória de longa duração com a repetição do estímulo.
+* A **memória sensorial** responde a estímulos dos sentidos (visão, audição, tato), que está a ser constantemente a ser alterada. A memória sensorial é transferida para a memória de curta duração através da **atenção** (ação de foco num determinado item ao filtrar os restantes _inputs_ recebidos ao mesmo tempo) - se não houver atenção, há uma sobrecarga de informação;
+* A **memória de curta duração** tem efeitos de recência (recordar as últimas palavras/letras/números/contas) e interferência. A informação é dividida em partes mais pequenas com significado (_chunking_ ), que aumenta a eficácia do uso da memória, que leva a _closure_ (perda de localização mental que induz a erros);
 * A **memória de longa duração** é o repositório para todo o conhecimento, **episódico** (sequências de eventos) ou **semântico** (estruturas de factos, conceitos, capacidades, bem como classes com atributos e conexões tipo herança). Facilita a recuperação de informação, representa a relação entre duas unidades de informação e suporta inferência e generalização. A informação está organizada em estruturas de dados, instanciadas com valores com relações tipo-subtipo e uma extensão da rede semântica, com mais detalhes. A representação de conhecimento de procedimento segue as regras de condição/ação: se a condição se verifica, então a ação é realizada. A informação concetual é mais difícil de recordar do que a informação de objetos.
   * A **lembrança** é informação reproduzida pela memória assistida por pistas (categorização, imagem), mais fácil de recordar;
-  * O **reconhecimento** é a informação que providencia pistas, menos complexa para se recordar porque a informação contextual dá assistência.
+  * O **reconhecimento** é a informação que providencia pistas, menos complexa para se recordar porque a informação contextual dá assistência;
   * A **decadência** é a perda de informação gradual e lentamente; a **interferência** é a reposição de informação antiga por nova informação (interferência retroativa) ou a interferência de informação antiga por nova informação (interferência proativa).
 
 ---
 
 ## Aula Teórica 4
 
-O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalizar de casos vistos para casos não vistos, não fiável), **abdução** (raciocínio evento-causa, não fiável).
+O pensamento humano integra **dedução** (a conclusão é derivada logicamente por premissas dadas, embora possa não ser verdadeira), **indução** (generalização de casos vistos para casos não vistos, não fiável), **abdução** (raciocínio evento-causa, não fiável).
 
-O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas. Também é possível fazer por **analogia**, o mapeamento é difícil se os domínios são semanticamente diferentes. A atividade de capacidades é caracterizada por _chunking_ para otimiar memória de curta duração. O concetual é escolhido em detrimento de grupos de problemas superficiais e a informação é estruturada com maior eficiência.
+O processo de encontrar soluções para tarefas desconhecidas pelo uso de conhecimento pode ser feito por **comportamentalismo** (reprodução e ciclos tentativa e erro), teoria de **Gestalt** (resolução produtiva pelo _insight_ e reestruturação do problema, através da teoria de processamento de informação). A teoria do problema do espaço compreende estados do problema, gerados através de operações (incluindo heurística), e opera dentro do sistema de processamento de informação humana, aplicado à resolução de problemas em áreas bem definidas. Também é possível fazer por **analogia**, o mapeamento é difícil se os domínios são semanticamente diferentes. A atividade de capacidades é caracterizada por _chunking_ para otimizar memória de curta duração. O concetual é escolhido em detrimento de grupos de problemas superficiais e a informação é estruturada com maior eficiência.
 
 Os humanos criam modelos mentais para explicar o mundo para cada evento, comportamento, sistema, que podem colidir com a realidade. Se esses modelos estiverem errados (diferentes do sistema atual), podem ocorrer erros:
-* Deslizes / Falhas / Faltas - intenção certa, mas falha para fazer bem, causada por capacidade física pobre, desatenção. Têm aspeto similar mas funcionam de forma diferente;
+* Deslizes/Falhas/Faltas - intenção certa, mas falha para fazer bem, causada por capacidade física pobre, desatenção. Têm aspeto similar mas funcionam de forma diferente;
 * Enganos - intenção errada, causada por compreensão incorreta.
 
-As emoções são o resultado da avaliação para as respostas fisiológicas, de acordo com toda a situação em que se encontra, envolvendo respostas físicas e cognitivas a estímulos. A resposta biológica para estímulo físico é chamado **afeto**, que leva para uma interpretação como emoção, positiva (cria resolução de problemas) ou negativa (_narrow thinking?_). As implicações para o _design_ de interfaces são no _stress_ (aumenta a dificuldade da resolução de problemas), utilizadores **relaxados** tornam-se mais tolerantes a falhas no _design_ e interfaces esteticamente atraentes e recompensadoras aumentam afeto positivo.
+As emoções são o resultado da avaliação para as respostas fisiológicas, de acordo com toda a situação em que se encontra, envolvendo respostas físicas e cognitivas a estímulos. A resposta biológica para estímulo físico é chamado **afeto**, que leva para uma interpretação como emoção, positiva (resolução de problemas) ou negativa (_narrow thinking_). As implicações para o _design_ de interfaces são no _stress_ (aumenta a dificuldade da resolução de problemas), utilizadores **relaxados** tornam-se mais tolerantes a falhas no _design_ e interfaces esteticamente atraentes e recompensadoras aumentam afeto positivo.
 
 As diferenças estendem-se a cada indivíduo. A longo prazo, género e habilidades físicas e intelectuais; a curto prazo, efeito de _stress_ ou fadiga; mutáveis, idade.
 
@@ -74,7 +77,7 @@ Um sistema computacional é composto por vários elementos que afetam a interaç
  * Caneta e tablet - captura a informação escrita manualmente, interpretando símbolos individuais em diferentes tipos de manuscrição;
  * Reconhecimento de discurso - eficaz com um utilizador único, mas com sistemas de vocabulário limitados, interferências de ruído externo, problema de identificação de sotaques e pronunciação;
  * Rato - comum e fácil de usar, com movimento planar (detetado mecanicamente (bola) ou oticamente (laser)) e botões; é um dispositivo de manipulação indireta, rápido e preciso;
- * Touchpad - por movimento leve de traço, com diferentes graus de sensibilidade;
+ * _Touchpad_ - por movimento leve de traço, com diferentes graus de sensibilidade;
 * Realidade virtual:
  * Posicionamento espacial em três dimensões;
  * Realidade aumentada (Pokemon GO) - mistura elementos de realidade virtual e efetiva, criando um ambiente misto em tempo real;
@@ -90,13 +93,9 @@ A computação ubíqua é percetível principalmente pela _Internet of Things_ (
 
 ---
 
-=== FIM DE MATÉRIA PRIMEIRA FREQUÊNCIA ===
-
----
-
 ## Aula Teórica 6
 
-A comunicação entre utilizador (linguagem de tarefas) e sistema (linguagem _core_) compreende **domínio** (área de trabalho em estudo), **objetivo** a atingir e **tarefa** (como chegar ao objetivo). O modelo de Donald Norman engloba sete etapas e concentra-se na visão do utilizador sobre a interface (ciclo de execução (E) / avaliação (A):
+A comunicação entre utilizador (linguagem de tarefas) e sistema (linguagem _core_) compreende **domínio** (área de trabalho em estudo), **objetivo** a atingir e **tarefa** (como chegar ao objetivo). O modelo de Donald Norman engloba sete etapas e concentra-se na visão do utilizador sobre a interface (ciclo de execução (E)/avaliação (A)):
 1. Estabelecimento do objetivo;
 2. Formulação de intenção (E);
 3. Especificação de ações na interface (E);
@@ -200,7 +199,7 @@ Há diretrizes que são mais abstratas (princípios), aplicáveis durante as ati
 * **As dez heurísticas de Nielsen**:
   * Visibilidade do estado do sistema;
   * Compatibilidade entre sistema e mundo real;
-  * Controlo e liberdade do utiliador;
+  * Controlo e liberdade do utilizador;
   * Consistência e padrões;
   * Prevenção de erros;
   * Reconhecimento ao invés de recordação;
@@ -210,7 +209,7 @@ Há diretrizes que são mais abstratas (princípios), aplicáveis durante as ati
   * Ajuda e documentação;
 * **Os sete princípios de Norman**:
   * Uso de conhecimento do mundo e do utilizador;
-  * Simplicação da estrutura de tarefas;
+  * Simplificação da estrutura de tarefas;
   * Visibilidade das coisas (golfos de execução e avaliação);
   * Mapeamento correto;
   * Exploração do poder de restrições naturais e artificiais;
@@ -220,7 +219,7 @@ Há diretrizes que são mais abstratas (princípios), aplicáveis durante as ati
   * Consistência;
   * Permissão a utilizadores frequentes do uso de atalhos;
   * Desenho de diálogos para permitir o _closure_;
-  * Oferta de prevenção de erros e gestão simples de erros;
+  * Oferta de prevenção e gestão simples de erros;
   * Fácil retrocesso de ações;
   * Suporte local de controlo interno;
   * Redução de carga de memória de curto prazo.
@@ -243,7 +242,7 @@ Os **modelos hierárquicos** representam uma tarefa de utilizador e estrutura de
 No entanto, há problemas de granularidade (onde começar/terminar); o comportamento é aprendido por rotina, não por resolução de problemas; pode haver conflito entre as diversas formas de atingir um objetivo; e pode haver deteção de erros.
 
 Os **modelos linguísticos** representam a gramática utilizador-sistema, pela compreensão do comportamento do utilizador e da dificuldade cognitiva baseada na análise de linguagem entre ambos:
-* Forma de Backus-Naur (BNF) - visão sintática do diálogo na perspetiva do utilizador (terminais - mais baixo nível de comportamento do utilizador (clique do rato, movimento do rato); não-terminais - alto nível de abstração (seleção de menu, posicionamento do rato)). Sintaxe: `não-terminal ::= expressão` (contém terminais e não-terminais, combinados em sequência (+) ou em alternativa (|)). Utiliza muitas regras e operadores, cuja sintaxe pode ser igual para semânticas diferentes, sem reflexão da perceção do utilizador da resposta do sistema e verificação mínima de consistência;
+* Forma de Backus-Naur (BNF) - visão sintática do diálogo na perspetiva do utilizador (terminais - mais baixo nível de comportamento do utilizador (clique do rato, movimento do rato); não-terminais - alto nível de abstração (seleção de menu, posicionamento do rato)). Sintaxe: `não-terminal ::= expressão` (contém terminais e não-terminais, combinados em sequência (`+`) ou em alternativa (`|`)). Utiliza muitas regras e operadores, cuja sintaxe pode ser igual para semânticas diferentes, sem reflexão da perceção do utilizador da resposta do sistema e verificação mínima de consistência;
 * Gramática de Tarefa-Ação (TAG) - explicitação da consistência através da codificação do conhecimento do mundo do utilizador em regras de gramática parametrizadas, em que os não-terminais são modificados para incluir caraterísticas semânticas adicionais. Também tem em conta o conhecimento pré-existente do utilizador e congruência entre caraterísticas e comandos, modelados como regras derivadas.
 
 Os **modelos físicos** representam as capacidades motoras humanas, baseados em conhecimentos empíricos, em que a tarefa do utilizador é aquisição e execução por:
@@ -260,7 +259,7 @@ Os **modelos físicos** representam as capacidades motoras humanas, baseados em 
 
 ## Aula Teórica 12
 
-As notações de diálogo podem ser **diagramáticas** (redes de transição de estado, diagramas JSD, gráficos de fluxo) ou **textuais** (gramáticas formais, regras de produção, CSP). O diálogo está linkado com as **semânticas** (o que faz) e a **apresentação** (como é) do sistema, permitindo a análise de descrições formais por ações inconsistentes, dificuldade em reverter ações, ações em falta ou potenciais erros de tipagem. O diálogo em interfaces refere-se à estrutura da interação a um nível sintático da comunicação humano-computador, com níveis **lexical** (formas, teclas), **sintático** (ordem e estrutura de inputs e outputs) e **semântico** (efeito na aplicação e dados internos).
+As notações de diálogo podem ser **diagramáticas** (redes de transição de estado, diagramas JSD, gráficos de fluxo) ou **textuais** (gramáticas formais, regras de produção, CSP). O diálogo está linkado com as **semânticas** (o que faz) e a **apresentação** (como é) do sistema, permitindo a análise de descrições formais por ações inconsistentes, dificuldade em reverter ações, ações em falta ou potenciais erros de tipagem. O diálogo em interfaces refere-se à estrutura da interação a um nível sintático da comunicação humano-computador, com níveis **lexical** (formas, teclas), **sintático** (ordem e estrutura de _inputs_ e _outputs_) e **semântico** (efeito na aplicação e dados internos).
 
 Os diálogos são integrados num programa. Num sistema grande pode-se analisar o diálogo, alterar plataformas, analisar sistemas e separar léxico/sintaxe da semântica, e antes de construir o sistema as notações auxiliam na perceção dos _designs_ propostos.
 
@@ -285,7 +284,7 @@ A **avaliação** testa a usabilidade e funcionalidade de um sistema, em laborat
 * **Avaliação Baseada em _Reviews_** - inclui métodos empíricos, experimentais ou observacionais, inquéritos e monitorização fisiológica:
   * **Estudos em laboratório** têm equipamento especializado disponível e um ambiente ininterrupto, mas há falta de contexto e dificuldade de observação de vários utilizadores diferentes em cooperação; é apropriado se a localização do sistema é perigosa ou impraticável para sistemas de utilizador único permitir a manipulação controlada de uso;
   * **Estudos no terreno** têm ambiente natural, retenção de contexto e a possibilidade de estudos longitudinais, mas há distrações, barulho e interrupções; é apropriado quando o contexto é fundamental (**princípio de incerteza de Heisenberg**);
-  * **Estudos experimentais** avaliam determinados aspetos do comportamento interativo, testando uma determinada hipótese com diversas condições experimentais que podem alterar a medida comportamental; tem objetos de estudo, variáveis (independentes (alteráveis para produzir diferentes condições) ou dependentes (calculáveis na experiência)), hipótese (predição de resultado, hipótese nula, hipótese indutiva) e experiência. A análise de dados é feita a partir de informações previamente conhecidas, escolha de técnica estatística para tipo de dados e atributos discretos ou contínuos, e pode ser testada por testes **paramétricos** (distribuição normal, robusto, potente), **não paramétricos** (distribuição não normal, pouco potente) ou por **tabela de contingência** (classificação dados por atributos discretos e contagem total de cada item). O **_design_ experimental** pode ser **inter sujeitos** (cada sujeito trabalha segundo uma única condição, sem transferência de aprendizagem e requerendo mais utilizadores) ou **intra sujeitos** (cada sujeito trabalha segundo cada condição, com tranferência de aprendizagem e menos custoso e sem problema de variância de utilizadores);
+  * **Estudos experimentais** avaliam determinados aspetos do comportamento interativo, testando uma determinada hipótese com diversas condições experimentais que podem alterar a medida comportamental; tem objetos de estudo, variáveis (independentes (alteráveis para produzir diferentes condições) ou dependentes (calculáveis na experiência)), hipótese (predição de resultado, hipótese nula, hipótese indutiva) e experiência. A análise de dados é feita a partir de informações previamente conhecidas, escolha de técnica estatística para tipo de dados e atributos discretos ou contínuos, e pode ser testada por testes **paramétricos** (distribuição normal, robusto, potente), **não paramétricos** (distribuição não normal, pouco potente) ou por **tabela de contingência** (classificação de dados por atributos discretos e contagem total de cada item). O **_design_ experimental** pode ser **inter sujeitos** (cada sujeito trabalha segundo uma única condição, sem transferência de aprendizagem e requerendo mais utilizadores) ou **intra sujeitos** (cada sujeito trabalha segundo cada condição, com tranferência de aprendizagem e menos custoso e sem problema de variância de utilizadores);
   * **Estudos observacionais** recorrem a papel e caneta, áudio, vídeo, _logs_ de computador, cadernos ou ferramentas de análise automatizada, e incluem:
     * **_think aloud_** - o utilizador é filmado a realizar tarefas e é-lhe pedido que descreva o que está a fazer e porquê e o que pensa que vai acontecer. É simples, requer pouca experiência, pode providenciar _insight_ útil e mostrar como o sistema é usado de facto; no entanto, é subjetivo, seletivo e o ato de descrição pode alterar _performance_ de tarefas;
     * **Avaliação cooperativa** - tanto o utilizador como o avaliador podem ir perguntando questões ao longo da avaliação, numa variação do _think aloud_ que permite menos restrições e maior facilidade de uso, encoraja a crítica do sistema por parte do utilizador e permite a clarificação de dúvidas;
@@ -304,15 +303,14 @@ Um método de avaliação é escolhido por:
 * Recursos disponíveis - tempo, objetos de estudo, equipamento, experiência.
 
 ---
+---
 
 ## Aulas Práticas
 
-Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação / comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
+Uma **interface** agrega um conjunto de métodos abstratos que definem um protocolo geral de ação/comportamento a ser detalhado e implementado por classes no futuro, definidos com prefixo opcional _abstract_ ou _default_ (que precisam de ser implementados).
 
 No tratamento de eventos de interfaces gráficas, uma `component` (exemplo, _Button_) informa um `listener` de que algo aconteceu. Um `listener` é a implementação (`implements`) de uma interface (exemplo, `ActionListener`), especificando a resposta ao evento correspondente, tendo de ficar "registado" na `component` correspondente.
 
-A partir do Java 8, é possível implementar aspetos de programação funcional, o que simplifica o código, nomeadamente em situações de classes anónimas interiores, permitindo uma definição dinâmica de funções e a sua passagem como argumento de outra função / método. Assim, um método pode receber tipos primitivos, objetos e funções (_lambdas_). Em Java, uma expressão _lambda_ é composta por três partes: lista de argumentos, símbolo `->` e corpo do _lambda_.
+A partir do Java 8, é possível implementar aspetos de programação funcional, o que simplifica o código, nomeadamente em situações de classes anónimas interiores, permitindo uma definição dinâmica de funções e a sua passagem como argumento de outra função/método. Assim, um método pode receber tipos primitivos, objetos e funções (_lambdas_). Em Java, uma expressão _lambda_ é composta por três partes: lista de argumentos, símbolo `->` e corpo do _lambda_.
 
 O Java oferece infraestrutura de suporte ao desenvolvimento MVC (_Model-View-Controller_), ideal para projetos com GUI (_Graphic User Interface_). Os pares **observado-observador** são uma das técnicas de suporte em JavaFX: um dos objetos tem características de observado (classe) e está emparelhado com outro objeto com características de observador (interface). Quando o estado do observado é alterado, o observador é notificado diretamente. A JavaFX disponibiliza os conceitos de **propriedade observável** e **ligação entre propriedades**, que permitem criar dependências automáticas entre as propriedades de diferentes objetos, através de uma nova convenção de nomes.
-
-// Falta a aula prática da semana de 17-21/05 //

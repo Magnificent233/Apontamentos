@@ -1,9 +1,13 @@
 # Algoritmos e Estruturas de Dados
 
+##### Atualizado em 10-06-2021
+###### A partir de: exemplos das aulas teóricas
+
 ## Estruturas Abstratas de Dados - Listas
 
 **Listas com arrays:**
 
+```
   ...  |   ...   | ...
 100100 |    3    |  N
   ...  |   ...   | ...
@@ -16,6 +20,7 @@
 100408 |    7    | L[2]
 100412 |    4    | L[3]
   ...  |   ...   | ...
+```
 
 Código de implementação:
 N = 0;
@@ -34,6 +39,7 @@ L[3] = 4;
 
 **Listas Ligadas Simples:**
 
+```
   ...  |   ...   | ...
 100500 |  100800 |  L
   ...  |   ...   | ...
@@ -51,9 +57,11 @@ L[3] = 4;
 100940 |    7    |
 100944 |  100820 | 
   ...  |   ...   | ...
+```
 
 **Listas Ligadas Duplas**
 
+```
   ...  |   ...   | ...                         ...  |   ...   | ...
 100100 |  100504 | tail                      200100 |         | 
   ...  |   ...   | ...                         ...  |   ...   | ...
@@ -71,7 +79,8 @@ L[3] = 4;
 100512 |  200504 |                           200512 |  200200 |
 100516 |         |                           200516 |         | 
   ...  |   ...   |  ...                        ...  |   ...   | ...
-  
+```
+
 **Exercício:** usando pilhas e filas, verificar se um número inteiro não nulo é capicua.
 _Teoria_
 N = 21365
@@ -80,6 +89,7 @@ Fila : (frente) 5 - 6 - 3 - 1 - 2 (cauda)
 Capicua ? se topo = frente, então Pop(Pilha) e Remover(Fila); se topo != frente, então não é capicua. Quando Pilha e Fila ficarem vazias, então conclui-se que N é capicua.
 
 _Código_
+```C=
 #include <stdio.h>
 #include <stdlib.h>
 #include "EADPilha.h"
@@ -111,3 +121,4 @@ int main () {
   }
   return 0;
 }
+```
