@@ -101,22 +101,22 @@ O **endereço MAC** (_Media Access Control_) faz endereçamento ao nível da lig
 
 As **tabelas ARP** (_Address Resolution Protocol_) são locais para cada máquina e permitem que uma comunicação crie uma trama _ethernet_ com o endereço MAC associado ao endereço IP de destino. São dinâmicas, construídas a cada nova comunicação, e constituídas por endereços IP, endereços MAC e TTL (_Time To Live_).
 
-O endereço _default gateway_ (só configurado nos clientes) é o endereço da interface mais próxima do router mais próximo. Serve para conseguir enviar tramas de computadores para o router.
+O endereço _default gateway_ (só configurado nos clientes) é o endereço da interface mais próxima do _Router_ mais próximo. Serve para conseguir enviar tramas de computadores para o _Router_.
 
-`sh ip route` -> código que, aplicado num router, mostra a tabela de rotas IP conhecidas pelo router (tabela de routing).
+`sh ip route` -> código que, aplicado num _Router_, mostra a tabela de rotas IP conhecidas pelo _Router_ (tabela de _routing_).
 
 O **hub** atua no nível 1 (físico) e interliga segmentos de uma rede, permitindo aumentar a máxima distância entre nós, embora não isole os segmentos a nível de colisões. (obsoleto)
 
-O **switch** atua no nível 2 (ligação) e armazena e encaminha frames Ethernet com base no endereço MAC de destino, diminuindo o nível de colisão a cada segmento, utilizando o protocolo CSMA/CD para garantir o acesso. É um dispositivo **transparente**, ou seja, é _plug-and-play self-learning_ e não precisa de ser configurado. Executa filtragem (_filtering_, determinar se uma trama deve ou não ser encaminhada para uma área da rede [VLANs, _Virtual Local Area Network_]) e encaminhamento (_forwarding_, determinar para que área da rede uma trama deve ser encaminhada). Vários switches não podem criar uma rede em anel, derivado ao _spanning tree protocol_ (STP). Cada switch mantém uma _switch table_, que mostra os endereços MAC conhecidos pelo switch, interface e _time stamp_, a que se acede pelo comando `sh mac address-table`. O switch memoriza os endereços dos dispositivos que estão ligados a cada uma das suas interfaces, cujos elementos (endereço MAC, interface, instante de chegada) são guardados na tabela de switching e eliminados ao final de um período de tempo quando não são recebidas novas _frames_. Quando um switch recebe uma trama:
-* Extrai o endereço MAC de origem da trama e procura o endereço na tabela de switching:
+O **_switch_** atua no nível 2 (ligação) e armazena e encaminha frames Ethernet com base no endereço MAC de destino, diminuindo o nível de colisão a cada segmento, utilizando o protocolo CSMA/CD para garantir o acesso. É um dispositivo **transparente**, ou seja, é _plug-and-play self-learning_ e não precisa de ser configurado. Executa filtragem (_filtering_, determinar se uma trama deve ou não ser encaminhada para uma área da rede [VLANs, _Virtual Local Area Network_]) e encaminhamento (_forwarding_, determinar para que área da rede uma trama deve ser encaminhada). Vários _switches_ não podem criar uma rede em anel, derivado ao _spanning tree protocol_ (STP). Cada _switch_ mantém uma _switch table_, que mostra os endereços MAC conhecidos pelo _switch_, interface e _time stamp_, a que se acede pelo comando `sh mac address-table`. O _switch_ memoriza os endereços dos dispositivos que estão ligados a cada uma das suas interfaces, cujos elementos (endereço MAC, interface, instante de chegada) são guardados na tabela de _switching_ e eliminados ao final de um período de tempo quando não são recebidas novas _frames_. Quando um _switch_ recebe uma trama:
+* Extrai o endereço MAC de origem da trama e procura o endereço na tabela de _switching_:
   * Se encontrar, não executa quaisquer operações;
   * Se não encontrar, cria um novo elemento com esse endereço, nome da interface recetora e instante de chegada;
-* Extrai o endereço MAC de destino da trama e procura o endereço na tabela de switching:
+* Extrai o endereço MAC de destino da trama e procura o endereço na tabela de _switching_:
   * Se encontrar e se a interface é a mesma por onde a trama chegou, então descarta a trama;
   * Se encontrar e se a interface é diferente, encaminha a trama para a interface associada;
   * Se não encontrar, propaga a trama para todas as interfaces, exceto a de chegada.
 
-**Switches** e **Routers** são ambos dispositivos _store-and-forward_. Routers examinam e mudam o cabeçalho do pacote/datagrama (nível 3), implementando algoritmos e tabelas de routing através de ligações em anel. Switches examinam o cabeçalho da trama (e podem alterá-lo em VLANs; nível 2), mantêm tabelas de switching e implementam algoritmos de filtragem e manutenção da prevenção de ciclos, não devendo ser ligados em anel.
+**Switches** e **Routers** são ambos dispositivos _store-and-forward_. Routers examinam e mudam o cabeçalho do pacote/datagrama (nível 3), implementando algoritmos e tabelas de _routing_ através de ligações em anel. Switches examinam o cabeçalho da trama (e podem alterá-lo em VLANs; nível 2), mantêm tabelas de _switching_ e implementam algoritmos de filtragem e manutenção da prevenção de ciclos, não devendo ser ligados em anel.
 
 **Bridges** são equipamentos que atuam no nível 2 e ligam várias redes diferentes no nível físico ou de ligação, mas com o mesmo protocolo no nível de rede ou transporte, permitindo a criação de uma rede homogénea, possuindo uma tabela dinâmica que contém todos os endereços de rede, e podem impedir a passagem de certos tipos de pacotes.
 
@@ -131,10 +131,10 @@ Toda a transmissão de dados feita em redes tem três bases fundamentais: esquem
 * Encaminhar pacotes do emissor ao recetor (no meio da rede);
 * Entregar os segmentos ao nível de transporte no recetor (no recetor);
 * Implementar os protocolos ao nível de rede em todos os _hosts_ (computadores e routers);
-* Examinar o _header_ de todos os pacotes (no router).
+* Examinar o _header_ de todos os pacotes (no _Router_).
 
 Há dois tipos de _routing_:
-* **_Cut-through_** - o router começa a transmitir o pacote recebido assim que interpreta o cabeçalho;
+* **_Cut-through_** - o _Router_ começa a transmitir o pacote recebido assim que interpreta o cabeçalho;
 * **_Store-and-forward_** - o pacote é recebido, armazenado, processado e retransmitido.
 
 O _Internet Protocol_ (IP) foi criado em 1974 por Vint Cerf e Bob Khan. O IPv4 é referenciado pela primeira vez na RFC 791 (setembro de 1981) e o IPv6 na RFC 2460 (1998). Nas redes IP só há dois tipos de endereços (aprofundado à frente):
@@ -162,17 +162,17 @@ Os endereços IP podem ser de várias classes:
 
 A máscara de rede é utilizada localmente com o endereço de origem ou com o endereço local para determinar se a máquina está dentro ou fora da subrede. Os datagramas IP são divididos em 'fragmentos' pela rede e assemblados no destino, com os bits do _header IP_ usados para identificação e ordenação.
 
-Na entrega de pacotes, é importante ter em conta o atraso (_delay_), a irregularidade de tempo de separação entre pacotes (_jitter_) e a perda (_loss_), quando aplicadas a um pacote isolado ou a um fluxo de pacotes (_flow_). Nas redes de pacotes não existe estabelecimento de conexão no nível de rede, os routers não guardam o estado relativamente às conexões _end-to-end_ e os pacotes são encaminhados usando o endereço _host_ de destino (podendo seguir rotas diferentes). A determinação do caminho a seguir em cada router é feita pela análise do endereço de destino (pela tabela de encaminhamento, que associa um intervalo de redes a um interface de saída, enviando depois o pacote pela interface associada ao intervalo a que pertence o endereço de destino - usando o conceito de _hot potato routing_, de Paul Baran). As tabelas de encaminhamento podem ser:
-* **Estáticas:** permitem a definição de políticas de encaminhamento, mas em caso de avaria exigem reconfiguração do router;
+Na entrega de pacotes, é importante ter em conta o atraso (_delay_), a irregularidade de tempo de separação entre pacotes (_jitter_) e a perda (_loss_), quando aplicadas a um pacote isolado ou a um fluxo de pacotes (_flow_). Nas redes de pacotes não existe estabelecimento de conexão no nível de rede, os routers não guardam o estado relativamente às conexões _end-to-end_ e os pacotes são encaminhados usando o endereço _host_ de destino (podendo seguir rotas diferentes). A determinação do caminho a seguir em cada _Router_ é feita pela análise do endereço de destino (pela tabela de encaminhamento, que associa um intervalo de redes a um interface de saída, enviando depois o pacote pela interface associada ao intervalo a que pertence o endereço de destino - usando o conceito de _hot potato routing_, de Paul Baran). As tabelas de encaminhamento podem ser:
+* **Estáticas:** permitem a definição de políticas de encaminhamento, mas em caso de avaria exigem reconfiguração do _Router_;
 * **Dinâmicas:** permitem que pacotes com o mesmo destino sigam pelo caminho ativo, exigindo uma atualização permanente.
 
 Os endereços das tabelas de encaminhamento são obtidos por _Classless InterDomain Routing_ (CIDR), em que cada zona de rede tem um comprimento arbitrário de formato `xxx.yyy.zzz.kkk/nn`, em que `nn` é o número de bits do endereço de rede - _routing_ por intervalos ou por classes -, ou por _prefix matching_ - comparação da parte mais significativa de cada endereço.
 
 Os algoritmos de _intra-domain routing_ devem ser corretos, ótimos, eficientes, robustos, estáveis, justos (_fairness_) e simples. Podem ser:
-* **_Link State_:** cada router troca informações com todos os routers da rede sobre os seus vizinhos (routers diretamente ligados) quando há uma mudança na rede (se um router vizinho não responde a uma mensagem), havendo inundação (_flood_) de informação na rede. Tem rápida convergência, alta quantidade de tráfego e resposta rápida a mudanças (_Open Shortest Path First_ (OSPF), _Intermediate System to Intermediate System_ (IS-IS)), no entanto, o algoritmo _Dijkstra_ é muito pesado para os processadores, muitas mudanças implicam muitas atualizações e usa-se _reliable flooding_ para os pacotes;
-* **_Distance Vector_:** cada router troca informações de toda a rede com os seus vizinhos em intervalos regulares (_Routing Information Protocol_ (RIP), de onde deriva o _Border Gateway Protocol_ (BGP), que determina as rotas entre _Autonomous Systems_ (AS), partes da Internet geridas por uma dada entidade). Pode ocorrer _count-to-infinity_, baixa convergência e baixa fidelidade em caso de falhas de _links_.
+* **_Link State_:** cada _Router_ troca informações com todos os routers da rede sobre os seus vizinhos (routers diretamente ligados) quando há uma mudança na rede (se um _Router_ vizinho não responde a uma mensagem), havendo inundação (_flood_) de informação na rede. Tem rápida convergência, alta quantidade de tráfego e resposta rápida a mudanças (_Open Shortest Path First_ (OSPF), _Intermediate System to Intermediate System_ (IS-IS)), no entanto, o algoritmo _Dijkstra_ é muito pesado para os processadores, muitas mudanças implicam muitas atualizações e usa-se _reliable flooding_ para os pacotes;
+* **_Distance Vector_:** cada _Router_ troca informações de toda a rede com os seus vizinhos em intervalos regulares (_Routing Information Protocol_ (RIP), de onde deriva o _Border Gateway Protocol_ (BGP), que determina as rotas entre _Autonomous Systems_ (AS), partes da Internet geridas por uma dada entidade). Pode ocorrer _count-to-infinity_, baixa convergência e baixa fidelidade em caso de falhas de _links_.
 
-No _routing_ hierárquico, os routers são agregados em regiões (_autonomous systems_ (AS)), onde todos correm o mesmo protocolo (_"intra-AS" routing protocol_) e um deles é o router de _gateway_, que também é responsável por dar _routing_ aos endereços fora da AS (_"inter-AS" routing protocol_). Em _inter-AS_, o administrador controla como o tráfego é navegado e quem navega na sua rede; em _intra-AS_ não há decisões de política porque só há um administrador, o que aumenta o foco na _performance_. É poupado tamanho da tabela de _routing_ e o tráfego de atualização é reduzido. A internet global consiste de AS interconetadas entre si: _stub AS_ (pequena corporação), _multihomed AS_ (grande corporação, sem tráfego), _transit AS_ (fornecedor). 
+No _routing_ hierárquico, os routers são agregados em regiões (_autonomous systems_ (AS)), onde todos correm o mesmo protocolo (_"intra-AS" _routing_ protocol_) e um deles é o _Router_ de _gateway_, que também é responsável por dar _routing_ aos endereços fora da AS (_"inter-AS" _routing_ protocol_). Em _inter-AS_, o administrador controla como o tráfego é navegado e quem navega na sua rede; em _intra-AS_ não há decisões de política porque só há um administrador, o que aumenta o foco na _performance_. É poupado tamanho da tabela de _routing_ e o tráfego de atualização é reduzido. A internet global consiste de AS interconetadas entre si: _stub AS_ (pequena corporação), _multihomed AS_ (grande corporação, sem tráfego), _transit AS_ (fornecedor). 
 
 A notação binária refere-se ao facto de os computadores trabalharem apenas com 0s e 1s. Para definir uma rede e porções de um endereço, os dispositivos usam padrões separados de 32 bits - máscara de subrede - que indica onde procurar cada porção num dado IPv4.
 
@@ -210,7 +210,7 @@ A atribuição dinâmica de endereços IPv4 é feita através de _Automatic Priv
 
 Os _routers_ são computadores especializados com CPU, sistema operativo, memória e armazenamento responsáveis pelo roteamento de tráfego entre redes, podendo ter múltiplas interfaces com endereços IP diferentes. _Routers_ usam rotas estáticas e protocolos de _routing_ dinâmico, utilizando as tabelas de _routing_ para determinar o melhor trajeto para enviar pacotes. Um _switch_ pode alterar um cabeçalho, sem nunca alterar o pacote; um _router_ pode não encapsular pacotes, mas analisa-os e fragmenta-os para envio. Para permitir o acesso à rede, os dispositivos devem ser configurados com a seguinte informação: endereço IP (anfitrião único numa rede local), máscara de subrede (subrede do anfitrião) e _default gateway_ (identificação do _router_ para onde é enviado o pacote quando o destino não pertence à mesma subrede).
 
-O melhor trajeto é selecionado por um protocolo de _routing_ baseado no valor ou métrica usados para determinar a distância para atingir uma rede, escolhendo-se o menor. Os protocolos dinâmicos usam as suas próprias regras e métricas para construir e atualizar tabelas de _routing_: RIP (_Routing Information Protocol_, pelo número de saltos), OSPF (_Open Shortest Path First_, baseado na largura de banda cumulativa da origem ao destino), EIGRP (_Enhanced Interior Gateway Routing Protocol_, largura de banda, demora, carregamento, confiabilidade).
+O melhor trajeto é selecionado por um protocolo de _routing_ baseado no valor ou métrica usados para determinar a distância para atingir uma rede, escolhendo-se o menor. Os protocolos dinâmicos usam as suas próprias regras e métricas para construir e atualizar tabelas de _routing_: RIP (_Routing Information Protocol_, pelo número de saltos), OSPF (_Open Shortest Path First_, baseado na largura de banda cumulativa da origem ao destino), EIGRP (_Enhanced Interior Gateway _Routing_ Protocol_, largura de banda, demora, carregamento, confiabilidade).
 
 Uma tabela de _routing_ é um ficheiro guardado na RAM que contém informação sobre rotas diretamente conectadas, rotas remotas e associações de rede ou de próximo salto. As **rotas estáticas** devem ser implementadas manualmente após as interfaces diretamente conectadas serem adicionadas à tabela de _routing_, devendo ser atualizadas se houver alteração de topologia. As **rotas dinâmicas** são usadas para partilhar informação sobre a acessibilidade e estado de redes remotas, encontrando novas redes e mantendo tabelas de _routing_.
 
@@ -218,9 +218,9 @@ O **_routing_ estático** permite aumentar a segurança da rede, usar menor larg
 
 A **sumarização de rotas** (ou agregação de rotas) é o processo de propagar um conjunto contíguo de endereços como um único endereço menos específico, com uma menor máscara de rede, reduzindo o número de entradas em atualizações de _routing_ e em tabelas locais de _routing_.
 
-Uma VLAN é uma partição lógica da camada dois de uma rede feita num switch, sendo um domínio de _broadcast_ usualmente com a sua própria rede IP. VLANs podem ser múltiplas e mutuamente isoladas, e pacotes só podem passar entre elas através de um router. VLANS aumentam segurança, reduzem custos, aumentam performance, diminuem domínios de _broadcast_, aumentam a eficácia dos técnicos e simplificam a gestão de processos e aplicações.
+Uma VLAN é uma partição lógica da camada dois de uma rede feita num _switch_, sendo um domínio de _broadcast_ usualmente com a sua própria rede IP. VLANs podem ser múltiplas e mutuamente isoladas, e pacotes só podem passar entre elas através de um _Router_. VLANS aumentam segurança, reduzem custos, aumentam performance, diminuem domínios de _broadcast_, aumentam a eficácia dos técnicos e simplificam a gestão de processos e aplicações.
 
-Uma VLAN pode ser de dados, geral, nativa ou de gestão. As VLANs de voz são sensíveis ao tempo e requerem largura de dados garantida para assegurar qualidade, transmissão prioritária relativamente a outros tipos de tráfego de rede, capacidade de ser transmitidas em zonas de rede congestionadas, atraso menor do que 150 milissegundos através da rede. Um _trunk_ VLAN carrega mais do que uma VLAN e é usualmente estabelecido entre switches para que dispositivos dentro da mesma VLAN possam comunicar entre si.
+Uma VLAN pode ser de dados, geral, nativa ou de gestão. As VLANs de voz são sensíveis ao tempo e requerem largura de dados garantida para assegurar qualidade, transmissão prioritária relativamente a outros tipos de tráfego de rede, capacidade de ser transmitidas em zonas de rede congestionadas, atraso menor do que 150 milissegundos através da rede. Um _trunk_ VLAN carrega mais do que uma VLAN e é usualmente estabelecido entre _switches_ para que dispositivos dentro da mesma VLAN possam comunicar entre si.
 
 A camada de transporte controla as comunicações individuais entre as aplicações de origem e destino; segmenta os dados para garantir que cabem nos PDUs das camadas inferiores e reassembla os dados recebidos numa _data stream_; identifica as aplicações que correspondem a cada um dos _data streams_. A comunicação pode ser _connectionless_ (_User Datagram Protocol_ (UDP)), _connection oriented_ (_Transmission Control Protocol_ (TCP)), entre outros. O TCP é orientado à ligação (exige um _handshake_ e envia os dados em qualquer direção após se estabelecer o circuito virtual), é fiável, ordenado, pesado e cria _flow_ de pacotes; o UDP não considera o estado do recetor, não é fiável, ordenado, é leve, as mensagens não são fragmentadas, não há controlo de congestão.
 
@@ -308,7 +308,7 @@ _Top Level Domain_ são máquinas servidores de DNS que permitem associar nomes 
 3.5. Não, porque pertencem a redes diferentes.
 1. `ipconfig`
 2. Zero.
-6.1. Cabo direto - liga equipamentos (PCs, servidores, routers a switches, hubs ou bridges).
+6.1. Cabo direto - liga equipamentos (PCs, servidores, routers a _switches_, hubs ou bridges).
      Cabo cruzado - liga equipamentos da mesma camada segundo o modelo OSI.
 6.2. Ambas as entradas fazem uso dos pares 2 e 3 do cabo (num total de 4).
 6.3. As entradas do recebter e do transmissor são diferentes, com cabos trocados entre si.
@@ -351,13 +351,13 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
 5. `sh run`
 11.3. O `ip helper-address` transmite um _broadcast_ para um único IP especificado.
 
-* Passo 1 > criação das VLANs (switch)
+* Passo 1 > criação das VLANs (_switch_)
   * `enable` > `configure terminal` > `vlan <num-vlan>` > `name <nome-vlan>`
-* Passo 2 > configuração das interfaces (ligações do switch aos computadores)
+* Passo 2 > configuração das interfaces (ligações do _switch_ aos computadores)
   * `enable` > `configure terminal` > `int fa<interface>` > `switchport mode access` > `switchport access vlan <num-vlan>`
-* Passo 3 > configuração da porta trunk (ligação do switch ao router)
+* Passo 3 > configuração da porta trunk (ligação do _switch_ ao _Router_)
   * `enable` > `configure terminal` > `interface fa<interface>` > `switchport mode trunk` > `switchport trunk allowed vlan <num-vlan>` > `switchport trunk allowed vlan add <num-vlan2>`
-* Passo 4 > ativação da interface ligada ao switch (router)
+* Passo 4 > ativação da interface ligada ao _switch_ (_Router_)
   * `enable` > `configure terminal` > `int f<interface>.<num-vlan>` > `encapsulation dot1Q <num-vlan>` > `ip address <default-gateway-vlan> <máscara-de-rede>`
 ```
 
@@ -381,8 +381,8 @@ Para definir uma rede, é necessário IP, máscara, _gateway_ e domínio (DNS [_
 7.1.3. 192.168.2.0/28 255.255.255.240
 7.1.4. `ip route <endereço-rede-destino> <submáscara-rede-destino> <endereço-próximo-salto> [permanent]`
        `ip route <endereço-rede-destino> <submáscara-rede-destino> <endereço-interface-saída> [permanent]`
-       _permanent_ é uma cláusula facultativa que evita a perda dos endereços de routing em caso de falha do router. Routing estático é o protocolo que permite a troca de informações entre routers.
-NOTA: não consegui implementar as rotas de sumarização (mas dá se puser a rede pretendida e a porta do router dessa rede que está ligada ao router atual), mas aqui ficam os cálculos.
+       _permanent_ é uma cláusula facultativa que evita a perda dos endereços de _routing_ em caso de falha do _Router_. _Routing_ estático é o protocolo que permite a troca de informações entre routers.
+NOTA: não consegui implementar as rotas de sumarização (mas dá se puser a rede pretendida e a porta do _Router_ dessa rede que está ligada ao _Router_ atual), mas aqui ficam os cálculos.
 8.1.1. R3 - 192.168.31.0  (dec) = 11000000.10100100.00011111.00000000 (bin)
             192.168.31.64 (dec) = 11000000.10100100.00011111.01000000 (bin)
             192.168.33.0  (dec) = 11000000.10100100.00100001.00000000 (bin)
@@ -394,7 +394,7 @@ NOTA: não consegui implementar as rotas de sumarização (mas dá se puser a re
          192.168.31.65 (dec) = 11000000.10100100.00011111.01000001 (bin)
                                11000000.10100100.00011111.0 => 192.168.31.0/25 255.255.255.128
 
-Rota estática R > R: `enable` > `configure terminal` > `ip route <IP-rede-destino> <mascara-rede-destino> <IP-router-rede-destino>`
+Rota estática R > R: `enable` > `configure terminal` > `ip route <IP-rede-destino> <mascara-rede-destino> <IP-_Router_-rede-destino>`
 ```
 
 ### Aula Prática 6
