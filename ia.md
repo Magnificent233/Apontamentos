@@ -1,6 +1,6 @@
 # Inteligência Artificial
 
-##### Atualizado em 27-09-2021
+##### Atualizado em 25-10-2021
 ###### A partir de: sebenta
 
 ## Aulas Teóricas
@@ -42,10 +42,10 @@ Os ambientes de tarefa devem ter: a medida de desempenho, o ambiente da tarefa, 
 | Problema | Totalmente Observável | Determinístico | Episódico | Estático | Discreto | Agente Único |
 | --- | --- | --- | --- | --- | --- | --- |
 | Palavras Cruzadas | Sim | Sim | Não | Sim | Sim | Sim |
-| Robô de Peças | Não | Não | Sim | Não | Não | Sim |
-| Táxi Automático | Não | Não | Não | Não | Não | Não |
-| Xadrez | Sim | Sim | Não | Sim | Sim | Não |
-| Monopólio | Sim | Não | Não | Sim | Sim | Não |
+| Robô de Peças     | Não | Não | Sim | Não | Não | Sim |
+| Táxi Automático   | Não | Não | Não | Não | Não | Não |
+| Xadrez            | Sim | Sim | Não | Sim | Sim | Não |
+| Monopólio         | Sim | Não | Não | Sim | Sim | Não |
 
 Um **agente reflexivo** escolhe a ação a executar com base na observação atual, sem contar com as observações feitas anteriormente (segue uma regra _condição-ação_). Um **agente reflexivo baseado em modelo** deve manter um estado interno onde armazene informação dependente das observações passadas, que é atualizada com base no funcionamento do mundo independentemente das observações e na influência das ações do agente no mundo - **modelo**.
 
@@ -101,3 +101,95 @@ Os agentes devem tentar maximizar a sua medida de desempenho, examinando diferen
         * _Complexidade espacial_: espaço necessário em memória RAM para a execução do algoritmo;
         * _Complexidade temporal_: tempo necessário para a execução do algoritmo;
 4. _Executar a solução_.
+
+---
+
+### Aula 03
+
+Na teoria dos jogos, **ambientes multi-agente** (cooperativo ou competitivo) são considerados um jogo desde que o impacto de cada agente sobre os outros seja significativo. Os jogos passam-se num ambiente determinístico e totalmente observável, com dois agentes de ações executadas de forma alternada e com os valores da função de utilidade no final de valores iguais e de sinal oposto (soma final nula). Um jogo pode ser definido como um **problema de pesquisa** com:
+* _Estado inicial_ (posições no tabuleiro e jogador que irá começar);
+* `jogador (s)` (jogador que joga no estado _s_);
+* `acoes (s)` (conjunto de jogadas possíveis no estado _s_);
+* `resultado (s, a)` (estado resultado de fazer a ação _a_ no estado _s_);
+* `estado_terminal (s)` (verdadeiro quando _s_ é um estado terminal e falso quando contrário);
+* `utilidade (s, j)` (função objetivo; atribui um valor numérico ao estado terminal _s_ para o jogador _j_).
+
+Uma estratégia é **ótima** se levar a um resultado de MAX pelo menos tão bom quanto o alcançável se MIN fosse infalível. Pode ser obtida ao examinar o **valor minimax** de cada nodo (`MINIMAX (s)`), que corresponde à utilidade para MAX desse nodo assumindo que ambos os jogadores jogam de forma ótima. MAX prefere um movimento para um nodo de valor minimax máximo, ao passo que MIN prefere um nodo com valor minimax mínimo. O algoritmo `minimax` gera todo o espaço de pesquisa para encontrar a decisão minimax a partir do nodo atual de modo recursivo. Usa PPP e se a maior profundidade da árvore for _p_ e existirem _b_ jogadas legais, a complexidade temporal é _O(b^p)_.
+
+O algoritmo `poda alfa-beta` permite eliminar parte do espaço de pesquisa, removendo ramos da árvore que não podem influenciar a decisão. Vai atualizando os valores α e β enquanto percorre a árvore e remove os restantes ramos num nodo assim que o seu valor for pior que o valor atual de α ou β, consoante o jogador (MAX ou MIN).
+
+Em 1950, Shannon sugeriu que os programas deviam terminar a pesquisa antes de chegarem aos nodos folha e usarem uma função de avaliação heurística para estimar a utilidade do nodo. Os algoritmos `minimax` e `poda alfa-beta` são então alterados:
+* Substituição da função de utilidade por uma função de avaliação heurística, `EVAL`, que estima a utilidade do nodo. Devolve uma estimativa para a utilidade do jogo a partir de uma dada posição e deve ordenar os estados terminais como a função de utilidade verdadeira, ser rápida e fortemente correlacionada com a probabilidade de vitória para estados não terminais;
+* Susbtituição da função de terminação por um **teste de corte** que decide quando se deve usar `EVAL`.
+
+A pesquisa é interrompida, ou definindo uma profundidade máxima _p_, escolhida de forma a que nunca se exceda a quantidade de tempo disponível no jogo, ou aplicando a profundidade iterativa.
+
+Em jogos com nodos aleatórios, devem incluir-se nodos aleatórios na árvore de pesquisa. Calcular o **valor esperado** pela função `expectiminimax`, que generaliza o valor minimax para jogos com nodos aleatórios.
+
+---
+
+### Aula 04
+
+Uma dada representação de conhecimento tem associado um equilíbrio que é preciso gerir: _mais expressividade implica normalmente maior complexidade_.
+
+Na lógica proposicional, as conclusões são obtidas usando uma **regra de inferência**. A lógica de primeira ordem amplia as capacidades da lógica proposicional (factos) com a inclusão de objetos e relações para comparar gramáticas. O conceito de **categoria** permite agrupar vários objetos dentro de uma só entidade e é fundamental para a representação de conhecimento. Categorias podem ser **predicados** e **objetos**.
+
+Uma outra forma de representar conhecimento é a partir de **regras** do tipo _se-então_, usadas tipicamente nos **sistemas periciais** (domínios muito específicos onde existem peritos humanos, divididos em dois subsistemas: base de conhecimento (BC, guarda factos e regras) e motor de inferência). `Se X então Y`, sendo X a _condição_ e Y o _consequente_. Nos sistemas periciais, uma regra dispara se a condição for verdadeira e pode ser feita **dedução** (cada consequente é um novo facto) ou **reação** (cada consequente é uma ação). Permite: regras de formato intuitivo cujas conclusões podem ser explicadas; facilidade de manutenção (não é necessário escrever código para alterar as regras); facilidade e rapidez na criação de protótipos. No entanto, é necessária a obtenção de conhecimento (o tempo de peritos é valioso). Os sistemas periciais devem ser usados quando faça sentido economicamente, peritos humanos não estejam sempre disponíveis, o problema requeira raciocínio simbólico.
+
+Uma **rede semântica** é um grafo que representa relações semânticas binárias entre conceitos, objetos e categorias, num processo de inferência simples e transparente. São pesadas computacionalmente (exigem travessia das redes), têm falta de capacidade de expressão (quantificadores, negação, ...). Uma **ontologia** é uma representação de entidades e das suas relações em linguagens próprias que pode ser representada num grafo, composta por:
+* **Indivíduos** - instâncias ou objetos;
+* **Classes** - conjuntos, coleções de conceitos, propriedades ou parâmetros de objetos ou classes;
+* **Atributos** - aspetos, características, propriedades ou parâmetros de objetos ou classes;
+* **Relações** - formas segundo as quais indivíduos e classes se relacionam;
+* **Restrições** - descrições formais que devem ser verdadeiras para que uma dada afirmação seja aceite;
+* **Regras** - afirmações _se-então_ que descrevem uma inferência lógica;
+* **Axiomas** - afirmações (incluindo regras) que contêm toda a teoria descrita pela ontologia;
+* **Eventos** - alterações de atributos ou relações.
+
+Uma rede semântica é uma _notação gráfica_ usada para representar conhecimento com os nodos e as aretas de um grafo; uma ontologia é a representação de conceitos dentro de um domínio e das suas relações de forma explícita e formal, que pode ser visualizada como um grafo.
+
+Uma **_semantic web_** é uma extensão da _web_ que possibilita a partilha de dados entre aplicações, empresas e comunidades, adicionando meta-dados às páginas _web_ em formatos legíveis por máquinas. A **_Resource Description Framework_** (RDF) é uma família de especificações que permite representar conhecimento sob a forma de expressões sujeito-predicato-objeto (_triplo_), em que o sujeito representa um recurso e o predicado representa a relação entre o sujeito e o objeto. A **_Web Ontology Language_** (OWL) é uma linguagem que permite escrever ontologias, adicionando semântica e sistemas de raciocínio automático (classificadores).
+
+Uma base de dados é ótima para guardar informação quando as características (atributos) a guardar relativas aos dados são conhecidas e estáveis; em IA, o conhecimento vai sendo guardado à medida que é adquirido.
+
+**Inferência** é o processo de derivação de novo conhecimento a partir de conhecimento já existente (na IA, _motor de inferência_). No **raciocínio dedutivo**, nova informação é deduzida a partir de informação com relação lógica. No **raciocínio indutivo**, generaliza-se a partir de um conjunto de observações. O **raciocínio abdutivo** permite inferência plausível. A **analogia** permite comparações entre duas situações. **Senso-comum** é um raciocínio informal que usa regras aprendidas pela experiência (heurísticas). **Raciocínio não-monótono** é usado quando os factos podem mudar.
+
+---
+
+### Aula 05
+
+**Lógica** pode não ser _prático_ (impossível listar todas as possíveis causas e consequências de uma regra), tem _ignorância_ (desconhecimento de algumas causas e consequências), _incerteza_ (regras não aplicáveis a todos os casos). O agente só consegue tem um dado grau de certeza, e não a certeza absoluta do que se está a passar - pelo que se recorre às **probabilidades**. As afirmações probabilísticas dizem respeito ao estado de conhecimento, e não ao que se passa na realidade.
+
+Tem de se ter em conta a utilidade do estado que resulta de uma ação. A **teoria da utilidade** diz que cada estado tem um dado grau de utilidade e que o agente deve preferir estados com maior grau de utilidade, sendo que a utilidade depende do agente. Para que o agente possa tomar a sua decisão, deve ter em conta a probabilidade de uma dada ação o levar a um estado desejado e a utilidade do estado que resulta dessa ação. Um agente é **racional** se e só se escolhe a ação que tem maior utilidade esperada.
+
+O conjunto de todos os resultados possíveis chama-se **espaço amostral** S, de onde qualquer subconjunto é chamado **acontecimento**. Para cada acontecimento A define-se um número chamado a probabilidade do acontecimento A, `P(A)`, que obedece às condições `0 <= P(A) <= 1`, `P(S) = 1`, para qualquer sequência de eventos mutuamente exclusivos, a probabilidade da união dos acontecimentos é igual à soma das probabilidades de cada elemento.
+
+A **base de conhecimento** é a distribuição conjunta dos acontecimentos que estão envolvidos no mundo em consideração. A probabilidade relativa a uma única variável, **probabilidade marginal**, é obtida somando os valores de todos os eventos em que ela está envolvida.
+
+A **regra de Bayes** permite descobrir a probabilidade de uma dada causa estar por trás de um efeito: `P(causa|efeito) = (P(efeito|causa) * P(causa)) / P(efeito)`. A probabilidade `P(efeito|causa)` é na **direção da causa** (a partir de uma causa, procurar o efeito); a probabilidade `P(causa|efeito)` é na **direção do diagnóstico** (a partir de um efeito, saber a causa).
+
+A **independência condicional** de duas variáveis X e Y dada a variável Z é `P(X, Y|Z) = P(X|Z) * P(Y|Z)`, permitindo que sistemas de inferência que lidam com `n` variáveis booleanas escalem com `O(n)` em vez de `O(2^n)`, já que é mais fácil ter a informação relativa a independência condicional que a independência absoluta.
+
+---
+
+### Aula 06
+
+Uma **rede bayesiana** é um grafo dirigido que contém informação probabilística em cada nodo:
+* Cada nodo corresponde a uma variável aleatória (discreta ou contínua);
+* Uma aresta do nodo `X` para o `Y` significa que `X` é o pai de `Y` (`X` influencia `Y`);
+* O grafo não tem ciclos;
+* Cada nodo `X_i` guarda a distribuição probabilística condicional `P(X_i | Pais (X_i))` que quantifica os efeitos dos pais no nodo em causa.
+
+Após se ter as causas e respetivos efeitos, que controem a topologia da rede bayesiana, basta determinar as probabilidades condicionais a colocar em cada nodo, descobrindo a distribuição conjunta para todas as variáveis. Se um nodo tem `m` nodos pai que são variáveis booleanas, então a sua probabilidade condicional pode ser representada numa tabela com `2^m` entradas. Nodos que não estão ligados na rede bayesiana são **nodos condicionalmente independentes**.
+
+A probabilidade conjunta é obtida por `P (x_1, ..., x_n) = i=1_Π^n P (x_i | Pais (X_i))`.
+
+Na construção de uma rede bayesiana, os **nodos** são o conjunto de variáveis necessárias para modelar o domínio, `{X_1, ..., X_n}`, ordenados de modo a que as causas apareçam antes dos efeitos. As **arestas**, para cada `i`, escolhe-se em `{X_1, ..., X_(i - 1)}` os pais que tornem a equação `P (X_i | X_1, ... X_(i - 1) = P(X_i | Pais(X_i))` válida, e cria-se uma ligação entre eles.
+
+Uma rede bayesiana **não tem valores redundantes**, logo, não tem inconsistências.
+
+**Algoritmos de Monte Carlo** são métodos de amostragem aleatória que fornecem aproximações baseadas na geração de muitas amostras aleatórias. Os métodos MCMC (_Markov Chain Monte Carlo_) geram cada nova amostra fazendo uma alteração aleatória na amostra anterior.
+
+O **lençol de Markov** (LM) de uma variável aleatória inclui os seus pais, filhos, e os outros pais dos seus filhos.
+
+Para obter uma amostra para `X_i`, apenas se tem em conta os valores das variáveis que pertencem ao seu lençol de Markov. A **amostragem de Gibbs** parte de um estado em que as variáveis observadas têm os seus valores fixos e gera um novo estado, mudando de forma aleatória o valor das restantes variáveis. Em cada iteração, escolhe-se uma variável `X`, calcula-se `P (X = verdade | LM(X))` e atribui-se a `X` verdadeiro a probabilidade calculada.
