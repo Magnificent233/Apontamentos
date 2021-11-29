@@ -1,6 +1,6 @@
 # Inteligência Artificial
 
-##### Atualizado em 22-11-2021
+##### Atualizado em 29-11-2021
 ###### A partir de: sebenta
 
 ## Aulas Teóricas
@@ -244,3 +244,21 @@ As **máquinas de vetores de suporte** (MVS, 1995) têm algumas propriedades int
 * São resistentes ao sobre-ajuste.
 
 Em vez de minimizar o erro empírico, as MVS tentam minimizar o erro de generalização ao escolher o plano separador que esteja mais afastado dos pontos vistos até ao momento: **separador de margem máxima**. A **margem** é o dobro da distância entre o separado e o ponto mais próximo.
+
+---
+
+### Aula 09
+
+A **aprendizagem bayesiana** calcula a probabilidade de cada uma das hipóteses, face aos dados disponíveis, e efetua a previsão de acordo com essas probabilidades. Seja `d` uma sequência de dados `{d_1, d_2, ..., d_n}` e `m` o número de hipóteses, a probabilidade de cada hipótese `h_i` face aos dados recebidos é dada pela regra de Bayes (probabilidade *a posteriori*): `P(h_i|d) = P(d, h_i) / P(d) = P(d|h_i)P(h_i) / m^Σ_j=1 P(d|h_j)P(h_j)` (1). As previsões são feitas usando as previsões de cada uma das hipóteses pesadas pelas suas probabilidades: `P(d_n+1|d) = m^Σ_i=1 P(d_n+1|h_i)P(h_i|d)` (2). A **verosimilhança** dos dados em face de cada hipótese é `P(d|h_i)= n^Π_j=1 P(d_j|h_i)` (3). A previsão bayesiana é ótima no sentido em que, dado o mesmo vetor de dados *a priori*, qualquer outro método de previsão vai acertar menos vezes.
+
+A aproximação mais frequente é fazer a previsão com base apenas na hipótese mais provável em vez de fazer a soma pesada de (2). Acham-se as probabilidades `P(h_i|d)` por (1), podendo ignorar-se o denominador, escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`: **máximo *a posteriori***.
+
+A **máxima verosimilhança** permite simplificar ainda mais a previsão ao assumir que todas as hipóteses são igualmente prováveis *a priori*. Acham-se as probabilidades `P(d|h_i)` por (3), escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`.
+
+O método **Bayes ingénuo** usa muito do que se viu atrás para construir um classificador partindo do princípio que os atributos são condicionalmente independentes uns dos outros. A probabilidade *a priori* de cada classe, `P(C)`, é facilmente achada contando o número de pontos que pertencem a cada classe e dividindo pelo total de pontos no conjunto de treino. Permite lidar com problemas com muitos atributos (número de parâmetros cresce linearmente com o número de atributos do problema), é computacionalmente eficiente e lida bem com o ruído.
+
+O classificador **k-NN** (*k-nearest neighbour*) acha a distância de A a todos os pontos do conjunto de treino (aos quais se conhece a verdadeira classe) e classifica a classe mais comum entre os `k` pontos do conjunto de treino mais próximos de A.
+
+---
+
+### Aula 10
