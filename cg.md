@@ -1,6 +1,6 @@
 # Computação Gráfica
 
-##### Atualizado em 26-10-2021
+##### Atualizado em 30-11-2021
 ###### A partir de: sebenta
 
 ## Aulas Teóricas
@@ -134,6 +134,91 @@ Tanto `glm::frustum` como `glm::perspective` têm direção de projeção fixa, 
 ### Aula 05
 
 `GLSL`
+
+---
+
+`Fim de matéria para frequência 1.`
+
+---
+
+### Aula 06
+
+A **visão** é a perceção da energia eletromagnética. O olho humano é uma câmara biológica dinâmica que possui lente e distância focal (equivalente a uma película), que deve focar diretamente na retina para uma visão perfeita. Possui células sensíveis à luz que a convertem em impulsos eletroquímicos: **cones** (capacidade de reconhecer cores (RGB)) e **bastonetes** (capacidade de reconhecer a luminosidade).
+
+As sensações visuais causadas pela luz **cromática** são mais ricas que as causadas pela luz **acromática**. A perceção de cor envolve **tom** (definição da cor), **saturação** (puricidade da cor) e **luminosidade** (quantidade de luz). FALTAM CENAS
+
+Duas cores especificadas em sistemas diferentes só serão as mesmas se são reproduzidas com uma calibração cuidadosa dos ecrãs e se são vistas em condições idênticas. O **diagrama CIE** define as três cores primárias que permitem obter qualquer cor através da adição de quantidades positivas desses primários.
+
+Modelos de cor:
+* **RGB** - cor natural como combinação aditiva de três canais (_Red_, _Green_, _Blue_); zonas claras denotam elevadas concentrações de tinta ou pigmentação, ao passo que zonas escuras denotam baixas concentrações de tinta;
+    * Cor indexada - submodelo RGB em que as cores de cada imagem são armazenadas numa paleta;
+* **CMYK** - cor como combinação  subtrativa (cores obtidas pela redução do efeito de outras) de quatro canais (_Cyan_, _Magenta_, _Yellow_, _Black_ (ausência de cor)), baseada na reflexão e absorção de partes do espetro luminoso; zonas em branco indicam inexistência de tinta ou pigmentação, zonas escuras indicam concentrações de tinta;
+* **HSB** - cor definida por três valores distintos (_Hue_ (tom), _Saturation_ (vivacidade da cor), _Brightness_ (brilho da cor)), baseada na perceção humana da cor;
+* **HLS** - cor definida por três valores distintos (_Hue_ (tom), _Lightness_ (luminosidade), _Saturation_ (saturaçãoll));
+* **YIQ**;
+* **YCbCr**.
+
+Zonas claras denotam elevadas concentrações de tintas (pigmentação), ao passo que zonas escuras denotam baixas concentrações de tintas.
+
+**Meios tons**:
+* ***Dithering***: píxeis adjacentes de cores diferentes são usados para simular cores e sombras que não existem na paleta dae cores da imagem. Utilizado quando uma imagem _true color_ é reduzida a uma imagem indexada para compensar a perda de cor;
+* **Padrões**;
+* **Modulação**.
+
+---
+
+### Aula 07
+
+**Modelo de iluminação** é uma aproximação da iluminação do mundo real. O modelo de Phong dá uma boa aproximação ao mundo real e é eficiente em termos de consumo de tempo. Modelos podem ser:
+* Independentes da luz:
+    * _Shading_ em profundidade: a cor (ou a sua intensidade) é apenas determinada pela profundidade do triângulo, evitando computações complexas de modelos dependentes de luz;
+    * _Cueing_ em profundidade: reduzir a intensidade do píxel com a distância do observador, ou seja, a imagem desvanece com a distância;
+* Dependentes da luz - a visualização do objeto depende das propriedades da fonte de luz, dos materiais do objeto e da localização do observador:
+    * Iluminação direta (local): interação simples entre luz e objetos;
+    * Iluminação indireta (global): interações múltiplas entre luz e objetos.
+
+A **luz ambiente** (sensação da cor principal do ambiente) vem e espalha-se em todas as direções quando o raio de luz atinge a superfície, sem depender da localização do observador. A **luz difusa** (aproximação da cor do objeto) vem de uma única direção e espalha-se igualmente em todas as direções quando o raio de luz atinge a superfície, sem depender da localização do observador. A **luz especular** (aproximação da luz unidirecional) vem de uma direção e tende a refletir numa direção quando o raio de luz atinge a superfície, dependendo da localização do observador.
+
+Uma **fonte de luz** pode emitir diferentes quantidades de luz para cada localização, direção e comprimeno de onda. **Fontes de luz de ponto** têm uma localização e são omnidirecionais; usualmente resultam em imagens de alto constraste, não consegue criar sombras parciais. **Fontes de luz direcionais** são semelhantes a luz de ponto, mas sem atenuação baseada na distância e diferença de direção; a direção é importante para computar a luz refletida. **Fontes _spotlight_** são direcionais, com a luz emitida numa gama de ângulos.
+
+O modelo de reflexão de luz, `R(θ, φ, γ, ψ, λ)`, é a quantidade de energia incidente na superfície do objeto vinda da direção `(θ, φ)` refletida na direção `(γ, ψ)` com o comprimento de luz `(λ)`.
+
+Na **reflexão ambiente**, um objeto tem um coeficiente de refletividade `K_A` e uma fonte de luz liberta uma quantidade de luz ambiente `I_A`. A luz ambiente refletida representa a luz ambiente refletida pelos objetos do cenário.
+
+Na **reflexão difusa**, um efletor difuso ideal a nível microscópico é uma superfície muito áspera, em que o raio de luz incidente é refletido igualmente em todas as direções sobre o hemisfério definido à superfície. A luz refletida depende do ângulo `θ` do raio incidente: quanto maior, menor a quantidade de luz refletida - que depende da posição da fonte de luz e da localização do objeto.
+
+Na **reflexão especular** acrescentam-se destaques na direção da reflexão; quanto mais liso e brilhante o objeto, mais rigoroso e brilhante será o destaque. A **reflexão emissiva** é produzida por uma fonte de luz de superfície e representa a luz emitida diretamente por um polígono ou disco, que é uniforme (e.g., lâmpada).
+
+---
+
+### Aula 08
+
+**Iluminação direta** (ou local) é uma interação simples entre luz e objetos, num processo em tempo real suportado pelo `OpenGL`. **Iluminação indireta** (ou global) é múltiplas interações entre luz e objetos, em tempo real para cenas pequenas.
+
+O _shading_ é de três tipos em renderização poligonal:
+* **_Shading_ plano** (por polígono) - computa a cor num único ponto de cada polígono e usa-a em todos os seus píxeis. É um processo rápido (uma sombra por polígono), usa uma normal por polígono; mas é impreciso, tem descontinuidades nas fronteiras dos polígonos e falta de realismo;
+* **_Shading_ de Gouraud** (por vertex) - ilumina ou sombreia diretamente cada vertex usando a sua posição e vetor normal, interpolando linearmente a cor em cada face: primeiro ao longo das arestas, depois por linhas internas. Permite cálculos incrementais durante a rasterização e que um vetor normal seja usado para cada vertex partilhado para obter continuidade entre faces; os polígonos parecem irregulares e monótonos e tende a eliminuar a componente especular da luz (problema: **distorção de perspetiva**, **bandas _mash_**);
+* **_Shading_ de Phong** (por píxel) - interpola linearmente a normal em qualquer faceta, aplicando a iluminação de Phong a cada píxel. Computa as equações de iluminação em píxel, permite o uso do componente especular, torna difícil distinguir polígonos; mantém bandas _mash_, silhuetas poligonais, vértices partilhados versus não partilhados, distorção de perspetiva, interpolação depende da orientação dos polígonos.
+
+**Distorção de perspetiva** complica interpolação linear, que a do espaço de ecrã não está alinhada com a do espaço do domínio da cena. A relação entre a distância no espaço de ecrã e distância de espaço de visão não é linear, logo, a relação entre a interpolação de ambos os espaços é não linear e a interpolação linear de espaço de ecrã de cores resulta em valores incorretos.
+
+**Bandas _mash_** descrevem o aumento de contraste de cores adjacentes causadas pela interação de neurónios retinais vizinhos. Atuam como um filtro, acentuando descontinuidades da primeira derivada (causada pela interpolação linear). O _shading_ de Gourard sugere interpolação de alta ordem para aliviar as bandas _mash_ - o que se traduz num maior custo de _performance_.
+
+---
+
+### Aula 09
+
+**Textura** é uma imagem com componentes RGBA (*Red Green Blue Alpha*). Objetos renderizados pelo modelo de reflexão de Phong e pelo sombreamento interpolado de Gouraud ou Phong podem aparecer plastificados e a levitar, pelo que os efeitos de textura adicionam maior realismo à superfície visível.
+
+**Mapeamento de texturas** é um método para criar complexidade numa imagem sem necessitar de criar modelos geométricos grandes, utilizando um padrão que é colocado na superfície de um objeto. **Mapeamento de luz** combinam textura e luminosidade por um processo de modelação. **Mapeamento de *bump*** distorce uma superfície lisa para obter uma superfície variável. **Mapeamento de ambiente** permite o *output* de *ray-tracing*.
+
+Para adicionar detalhes, a solução óbvia é partir a cena em polígonos cada vez menores para aumentar o detalhe, o que é muito difícil de modelar e gasta muito tempo do renderizador. A solução preferível é então pintar uma imagem em duas dimensões em objetos.
+
+DIAPOSITIVO_12__ver_melhor
+
+Para mapear texturas para polígonos, define-se explicitamente as coordenadas `(u, v)` dos vértices do polígono. A interpolação da textura é feita durante a rasterização, mas em vez de se obter valores RGB, obtêm-se coordenadas que apontam para elementos do mapa de textura (no espaço de ecrã canónico). Cada píxel é associado a uma pequena região da superfície e a uma pequena área de textura: um texel para um píxel, **magnificação** (um texel para vários píxeis), **minificação** (vários téxeis para um píxel; *foreshortening* é uma técnica utilizada em perspetiva para criar a ilusão de um objeto a recuar para a distância).
+
+**Funções de mistura** modificam atributos do polígono ou da superfície depois do valor de uma textura ser obtido: `GL_REPLACE` (substitui cor da superfície por cor da textura); `GL_DECAL` (substitui cor da superfície por cor da textura, misturando-a com um valor alfa de textura subjacente); `GL_MODULATE` (multiplica a cor da superfície pela cor da textura); `GL_BLEND` (similar à modulação, adiciona *alpha* de mistura).
 
 ---
 ---
