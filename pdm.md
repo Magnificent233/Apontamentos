@@ -1,6 +1,6 @@
 # Programação de Dispositivos Móveis
 
-##### Atualizado em 30-10-2021
+##### Atualizado em 02-12-2021
 ###### A partir de: sebenta; exercícios das aulas práticas
 
 ## Aulas Teóricas
@@ -112,6 +112,92 @@ A permissão mais específica sobrepõe sempre a menos específica. O **nome** d
 * `<provider>` - **permissões aplicadas a fornecedores de conteúdos**, restringem o acesso a determinados conteúdos.
 
 ---
+
+### Aula 06
+
+A gestão e armazenamento de dados de forma persistente é possível no AndroidTM através de:
+* **Recurso `SharedPreferences`** - guarda dados primitivos em pares chave-valor:
+    * Um objeto é instanciado pelos métodos `getSharedPreferences (string, int)` (caso se pretenda dar um nome ao ficheiro de preferências ou obter o ficheiro previamente guardado) ou `getPreferences (int)` (caso se utilize um ficheiro por defeito);
+    * A leitura é feita por `getBoolean (string, boolean)` ou `getInt (string, int)`. Pela `string` (chave) devolvem o respetivo valor ou o tipo definido no segundo parâmetro caso a chave não exista;
+    * A escrita é feita por um segundo objeto `Edit` através do método `edit()`, que disponibiliza vários métodos com prefixo `put` (`putBoolean (string, boolean)`, `putInt (string, int)`) para guardar pares no objeto. Os pares só são guardados no ficheiro após os métodos `apply()` ou `commit()`;
+* **Armazenamento interno** - guarda dados na memória persistente do dispositivo:
+    * Ficheiros são abertos e guardados pelo método `openFileOutput (String, int)`, cujos parâmetros são nome do ficheiro e modo de acesso, e são apagados aquando da desinstalação da aplicação. Há quatro modos de operação:
+        * `MODE_PRIVATE` (valor 0) - método sugerido por defeito, define que apenas a aplicação que criou o ficheiro ou todas aquelas que partilhem o mesmo ID lhe podem aceder;
+        * `MODE_WORLD_READABLE` (valor 1) - define que o ficheiro pode ser acedido para leitura por qualquer aplicação;
+        * `MODE_WORLD_WRITEABLE` (valor 2) - define que qualquer aplicação pode aceder ao ficheiro;
+        * `MODE_APPEND` (valor 32768) - determina que a escrita de dados novos no ficheiro deve ser feita no final, caso este já exista;
+    * A escrita é possível por `write (int iByte)`, `write (byte[])`, `write (byte[] buffer, int offset, int count)`. Os ficheiros devem ser fechados após serem alterados, pelo método `close()`, e podem ser manipulados também pelos métodos:
+        * `getFilesDir()` - devolve o caminho absoluto da diretoria;
+        * `getDir (string, int)` - cria a diretoria com o nome definido no primeiro parâmetro;
+        * `deleteFile (string)` - elimina o ficheiro cujo nome é passado em parâmetro;
+        * `fileList()` - devolve um vetor de _strings_ com o nome de todos os ficheiros já guardados na aplicação;
+    * A leitura é possível pela instanciação de um `FileInputStream` invocado pelo método `openFileInput (string)`, sendo depois lido por `read()`;
+    * A cache guarda ficheiros temporariamente, que são eliminados em caso de escassez de recursos de armazenamento do sistema;
+* **Armazenamento externo** - guarda dados públicos na memória persistente partilhada e externa:
+    * Os ficheiros são `world-readable`, permitindo a sua alteração por outro dispositivo computacional compatível, requerendo uma verificação para a sua existência ou disponibilidade pelo método `getExternalStorageState()`. Para que uma aplicação tenha acesso ao armazenamento externo, é necessário normalmente pedir essa permissão no `AndroidManifest.xml` (versões anteriores à 4.4). Se os ficheiros forem guardados numa diretoria da aplicação (por exemplo, `getExternalFilesDir (null)`), serão eliminados aquando da desinstalação da aplicação, no entanto, tal não determina necessariamente que outras aplicações (com as devidas permissões) ou o utilizador não os possam manusear;
+* **Base de dados SQLite** - armazenamento e acesso eficiente de dados estruturados em bases de dados privadas:
+    * SQLite é uma biblioteca de _software_ que implementa um motor de bases de dados SQL que não necessita de configurações para o uso. Cada base de dados é guardada num único ficheiro e pode ser manipulada, consultada e gerida pela linha de comandos, havendo a possibilidade de esr compilada e embutida no executável de uma aplicação. É uma linguagem declarativa: as instruções definem o que deve ser feito, não como deve ser feito (exemplos nas páginas 6 e 7 do pdf do professor). Tem total suporte para transações **ACID**:
+        * _Atomicidade_ - uma transação é realizada completamente ou não é realizada;
+        * _Consistência_ - a execução de uma transação preserva a consistência da base de dados;
+        * _Isolamento_ - as atualizações feitas por várias transações concorrentes produzem o mesmo efeito que se fossem executadas em série;
+        * _Durabilidade_ - as alterações nunca se perdem mesmo na ocorrência de falhas;
+    * As bases de dados são criadas recorrendo ao método `onCreate`, através de _software_ dos pacotes `android.database` ou `android.database.sqlite`, que é executado apenas da primeira vez que uma base de dados é criada;
+* **Acesso à rede** - armazenamento e gestão de dados remotos.
+
+---
+
+### Aula 07
+
+Atividades em segundo plano são conseguidas através de quatro formas distintas: classe `Thread`, para processamento assíncrono; classe `Handler` que permite definir um manípulo na *thread* principal para o qual se podem enviar mensagens ou código para ser executado; classe `AsyncTask`; classe `Service`.
+
+Um **serviço** é uma forma de anunciar o desejo de uma aplicação AndroidTM executar uma operação demorada sem interação com o utilizador ou de fornecer funcionalidades a outras aplicações. Um serviço corre no mesmo processo da aplicação e não tem uma interface de utilizador. Enquanto que as *threads* criam módulos de execução separados dentro do mesmo processo, os serviços declaram ao sistema que determinada tarefa deve continuar, ainda que outros processos ou aplicações sejam trazidos para primeiro plano.
+* **Serviços sem vínculo** (`started`) - colocados em execução por outro componente através do método `startService()`, que podem correr indefinidamente em segundo plano, mesmo que o componente que os colocou em execução seja destruído; fazem apenas uma operação sem devolução de resultados, devendo autoterminar-se;
+* **Serviços com vínculo** (`bound`) - colocados em execução através do método `bindService()`, definem uma interface que permite que outros componentes da mesma aplicação, ou de aplicações diferentes, interajam com o serviço enviando pedidos e recebendo resultados; executam enquanto tiverem componentes vinculadas.
+
+O ciclo de vida de um serviço começa pela invocação de `onCreate()`, onde deve ser feita a configuração inicial da instância do componente. O período da atividade do ciclo de vida de um serviço começa com a invocação de um dos métodos `onStartCommand(.,.,.)` ou `onBind()`, a quem é automaticamente entregue o intento que invocou o serviço e onde devem ser tomadas as providências necessárias para que as tarefas que definem o serviço sejam desempenhadas. O serviço deve ser declado no `AndroidManifest.xml`, com a *tag* `<service>` contendo o nome e alguns filtros de intentos (usados pelo sistema para encontrar componentes capazes de lidar com determinada ação). O método `onStartCommand (.,.,.)` termina com um retorno:
+* `START_NOT_STICKY` define que caso o serviço seja morto pelo sistema enquanto está no estado ativo, este não deve voltar a tentar criá-lo se puder;
+* `START_STICKY` define que o sistema deve tentar recomeçar um serviço que matou logo que tenha recursos para o fazer, chamando o método `onStartCommand(.,.,.)` de novo, mas sem o intento;
+* `START_REDELIVER_INTENT` indica ao sistema que este deve guardar o intento antes de o matar para que o possa utilizar para recriar o serviço.
+
+A classe `IntentService` permite criar uma *thread* separada da principal para executar todos os intentos entregues na `onStartCommand()`, criando uma pilha de trabalho que permite lidar com os vários intentos passados de forma sequencial. O método `stopSelf()` é invocado por defeito assim que todas as tarefas tenham sido conluídas. É apenas necessário reescrever o método `onHandleIntent()` e implementar o construtor que invoca o seu análogo da super classe, fornecendo-lhe um nome para a *thread* que é criada.
+
+Ao definir um vínculo, o serviço toma o papel de servidor e a componente que o invoca toma o papel de cliente. Um vínculo define-se ao:
+* Estender a classe `Binder`, aplicável em situações em que o serviço é apenas usado pela própria aplicação e corre no mesmo processo do cliente:
+    * No serviço, deve ser instanciado um objeto da classe `Binder` que contém métodos públicos que o cliente poderá usar, ou devolve uma instância de outra classe cuja definição está contida na do serviço e que contém métodos públicos que o cliente pode invocar, ou devolve a própria instância do serviço atual, permitindo que o cliente invoque os seus métodos públicos;
+    * No serviço, deve devolver-se a instância da classe `Binder` no método *callback* `onBind()`;
+    * No cliente, deve receber-se o `Binder` da função *callback* `onServiceConnected()`, bem como instanciar um objeto local da mesma classe do objeto instanciado no `Binder` e tirar partido dos métodos públicos por ele fornecidos;
+* Combinar objetos das classes `Messenger` e `Handler`, em que um manípulo é criado num serviço e um conjunto de mensagens a tratar é definido programaticamente no seu código, sendo também possível criar um destes objetos e enviá-lo via mensagem ao serviço, para que este lhe possa enviar retorno (*InterProcess Communication*, IPC);
+* Usar *Android Interface Definition Language* (AIDL) para definir interfaces que determinado serviço que expor a clientes; deve ter-se em consideração que não é garantido que as chamadas aos vários métodos da interface sejam feitas na *thread* principal, pelo que o serviço deve ser implementado de forma a ser *thread-safe* (a execução concorrente de várias operações que acedem aos mesmos recursos não incorrem em estados de inconsistência no estado da aplicação).
+
+Apenas atividades, serviços e provedores de conteúdos se podem vincular a um serviço (recetores de conteúdos não o podem fazer).
+
+Enquanto que os serviços sem vínculo devem ser explicitamente terminados, quer dentro do próprio serviço ou por outra atividade, os serviços com vínculo não precisam de ser explicitamente terminados, desde que se garanta que é feita a sua desvinculação, uma vez que o sistema mata automaticamente e com maior facilidade serviços que não têm qualquer vínculo. Um serviço `started` pode ser terminado pelos métodos `stopSelf` (por si próprio) ou `stopService(Intent)` (pela componente que o despoletou); um serviço `bound` pode ser terminado pelo método `unbindService(.)`. Quando um componente cliente é destruído pelo sistema, também é automaticamente desvinculado de qualquer serviço ao qual tenha sido vinculado. Se a interação com o serviço só precisa de acontecer enquanto uma atividade está visível, a vinculação e desvinculação devem ser feitas nos métodos `onStart()` e `onStop()`, respetivamente; caso se queira que a atividade receba respostas do serviço mesmo enquanto está parada em segundo plano, então o serviço pode ser vinculado no método `onCreate()` e desvinculado no método `onDestroy()`.
+
+Um ***toast*** é um objeto interativo (*widget*) direcionado à exibição de mensagens curtas ao utilizador. Se despoletada por um serviço, a *view* é mostrada sobre a interface de utilizador da aplicação atualmente em execução. Uma **notificação** na barra de estados é um objeto algo elaborado que permite interação e tem necessariamente de transmitir uma ideia ao utilizador da forma mais eficiente possível. Uma notificação é criada através do método `build()` e imediatamente passada ao gestor de notificações do sistema pelo método `notify()`. Para inserir ações nas notificações, deve ser usado um objeto da classe `PendingIntent` que, quando é despoletado por outro componente, é executado como se viesse da aplicação original com as suas permissões.
+
+---
+
+### Aula 08
+
+Um **recetor de difusão** permite que as aplicações se registem para receber eventos provenientes do sistema ou de outra aplicação. Os eventos também podem ser representados por intentos: chegam a todas as aplicações com recetores registados para receber determinados eventos e nunca atingem filtros de componentes. A emissão pode ser feita por qualquer aplicação do sistema, embora possa requerer o pedido de algumas permissões no manifesto. Recetores podem ser registados de forma **estática**, incluindo uma *tag* `<receiver>` no manifesto, ou **dinâmica**, no código da implementação de um dos outros componentes de uma determinada aplicação pelo método `registerReceiver()`.
+
+Um **recetor estático** é registado aquando do arranque do sistema AndroidTM ou logo que um pacote é instalado. Quando um evento/intento representando uma das ações definidas nos filtros é despoletado, o sistema AndroidTM entrega esse intento a todos os recetores registados e autorizados através da invocação do método `onReceive`. Um **recetor dinâmico** é programado pelos métodos `registerReceiver(.,.)`, que aceita o recetor de difusão a registar e o filtro de intentos a escutar, e `unregisterReceiver(.)`, que aceita apenas o objeto recetor de difusão cujo registo deve ser eliminado. A classe `IntentFilter` permite a definição dinâmica de filtros de intentos.
+
+Intentos em difusão **não ordenados** são enviados através do método `sendBroadcast(.)`, que aceita o intento a enviar como parâmetro de entrada, e entregues pelo sistema AndroidTM a todos os recetores que estejam registados para os receber, sem qualquer ordem; ou seja, o método é **assíncrono**, regressando imediatamente à componente que o chamou depois de ser entregue ao sistema, não permitindo que sejam recebidos resultados da execução dos recetores ou abortar determinado intento. Intentos em difusão **ordenados** são envados através do método `sendOrderedBroadcast(.,.)`, que aceita o intento a enviar e uma *string* como parâmetros de entrada, e entregues pelo sistema AndroidTM a todos os recetores que estejam registados para os receber, por uma ordem particular definida no manifesto pelo atributo `android:priority="integer"` na *tag* `intent-filter`; também é **assíncrono**, mas permite que um recetor ajuste dados que são enviados com o intento para outros recetores antes que eles recebam o intento e também abortar o intento antes de este chegar a outros recetores com prioridade inferior.
+
+---
+
+### Aula 09
+
+**Provedores de conteúdo** permitem gerir o acesso a um repositório de dados de uma determinada aplicação, direcionados sobretudo a aplicações diferentes daquelas que os criam, ou seja, permitem controlar de forma consistente e central o acesso a recursos que deveriam ser privados, oferecendo uma interface padrão para aceder aos dados que lida automaticamente com comunicação entre-processos e segurança no acesso aos dados. A criação de um provedor de conteúdos é um proceso algo elaborado, porque se deve comportar como uma fase de análise da real necessidade de o implementar, a modelação e estruturação de dados e a implementação em si. É necessário: modelar a forma como os dados são armazenados e implementar a lógica necessária para os criar; definir uma *string* que determina, de forma unívoca no universo AndroidTM, o provedor de conteúdos a implementar; implementar a classe `ContentProvider`, reescrevendo alguns dos seus métodos; declarar o novo componente no manifesto e definir as permissões necessárias.
+
+**URI**'s (*Uniform Resource Identifier*) são recursos muito poderosos, podendo ser usados para determinar desde o provedor de conteúdos até à linha da tabela que se quer obter. O tratamento do URI num provedor de conteúdos significa decompô-lo em várias partes e lidar com elas caso a caso. Um URI é decomposto em `<standard_prefix>://<authority>/<data_path>/<id>`:
+* `<standard_prefix>` determina o protocolo ou tipo de recurso;
+* `<authority>` determina unicamente o recurso a que se quer aceder;
+* `<data_path>` especifica a parte do recurso a que se quer aceder;
+* `<id>` transporta parâmetros para a parte do recurso especificado.
+
+---
 ---
 
 ## Aulas Práticas
@@ -183,7 +269,6 @@ _Resposta:_ Linux.
 **Questão 16 - Por curiosidade, qual é o núcleo base do iOS?**
 
 _Resposta:_ Unix.
-
 
 **Questão 17 - A versão do emulador coincide com a que definiu anteriormente, aquando da sua criação?**
 
@@ -564,3 +649,373 @@ _Resposta:_ Como não podia deixar de ser. Ao clicar no botão `Start Second Act
 
 ---
 
+### Aula 06
+
+**Questão 01: Onde (em que ficheiro) é que se criam os filtros de intentos?**
+
+_Resposta:_ No `AndroidManifest.xml`.
+
+**Questão 02: Dentro de que elemento é que deve ser colocado o filtro de intentos no ficheiro `xml`?**
+
+_Resposta:_ Dentro do elemento `activity`.
+
+**Questão 03: Qual dos seguintes excertos de código `xml` define corretamente o filtro de intentos?**
+
+_Resposta:_
+~~~
+<intent-filter>
+    <action android:name="android.intent.action.SEND"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <data android:mimeType="text/plain"/>
+</intent-filter>
+~~~
+
+**Questão 04: Acha que vais precisar de alguns dos _imports_ seguintes?**
+
+_Resposta:_ Vou, sim senhor. `import android.util.Log`.
+
+**Questão 05: Das opções seguintes, quais concretizam formas de ver o `logcat`?**
+
+_Resposta:_ `$ adb logcat`.
+
+**Questão 06: A sua aplicação aparece na caixa de diálogo de seleção seguinte?**
+
+_Resposta:_ Pois aparece, que engraçado.
+
+**Questão 07: Qual o método que permite que a atividade principal chame a segunda de forma a que esta lhe devolva um resultado?**
+
+_Resposta:_ `startActivityForResult (Intent, int)`.
+
+**Questão 08: Qual a função do segundo parâmetro (um inteiro (`int`)) referido na questão anterior?**
+
+_Resposta:_ Este segundo parâmetro serve para identificar um pedido de retorno em particular. Isto é, se forem lançados vários intentos com pedido de retorno, é este inteiro que permite identificar uma resposta específica.
+
+**Questão 09: Qual é a função que ajusta o resultado de novo para a primeira atividade?**
+
+_Resposta:_ `setResult (RESULT_OK, Result)`.
+
+**Questão 10: O resultado é enviado no mesmo intento que despoletou a segunda atividade?**
+
+_Resposta:_ Não, é enviada num novo intento.
+
+**Questão 11: Qual é o método que é automaticamente despoletado quando uma atividade retorna um valor àquela que a invocou?**
+
+_Resposta:_ `onActivityResult(int, int, Intent);`.
+
+**Questão 12: Qual o objetivo da primeira condição do `if`?**
+
+_Resposta:_ O objetivo é verificar se o intento que foi devolvido diz respeito ao que foi despoletado.
+
+**Questão 13: Qual o objetivo da segunda condição do `if`?**
+
+_Resposta:_ O objetivo é verificar se o resultado foi efetivamente devolvido ou se houve algum erro no processo.
+
+**Questão 14: Ao todo, quantos ficheiros precisou de editar para conseguir a aplicação desejada?**
+
+_Resposta:_ 5.
+
+**Questão 15: Como é que se pode fazer uma chamada de um emulador para outro?**
+
+_Resposta:_ Abrindo a aplicação de chamadas num dos emuladores, digitando o número da instância do segundo emulador (dada por `$adb devices`) e executando as chamadas.
+
+**Questão 16: Qual o nome do separador específico que permite fazer chamadas e enviar mensagens de voz?**
+
+_Resposta:_ _Phone_.
+
+**Questão 17: Existe algum separador para gravação do ecrã do dispositivo virtual?**
+
+_Resposta:_ Ahh, que giro!
+
+**Questão 18: Quantos dedos podem ser simulados para o sensor de impressões digitais?**
+
+_Resposta:_ 1 dedo.
+
+**Questão 19: Das seguintes, qual concretiza a linha que define corretamente o id da etiqueta de texto?**
+
+_Resposta:_ `android:id="@+id/lc"`.
+
+**Tarefa 18:** `Uri allCalls = Uri.parse("content://call_log/calls");`. Ordem: 1 2 3 5 4 6.
+
+**Questão 20: Quais dos seguintes pacotes interessa importar para a atividade principal desta aplicação?**
+
+_Resposta:_ `android.os.Bundle`, `android.widget.TextView`, `android.net.Uri`, `android.database.Cursor`, `android.provider.CallLog`.
+
+**Questão 21: Funcionou?**
+
+_Resposta:_ Não funcionou.
+
+**Questão 22: O registo de chamadas é considerado como um recurso a proteger no sistema AndroidTM?**
+
+_Resposta:_ Pelos vistos sim.
+
+**Questão 23: De que forma é que o sistema responde a pedidos a recursos protegidos?**
+
+_Resposta:_ Negando todo o acesso, a não ser que a permissão para aceder ao recurso tenha sido declarada no `AndroidManifest.xml`. Negando todo o acesso, a não ser que a permissão para aceder ao recurso tenha sido declarada no `AndroidManifest.xml` e o utilizador tenha especificamente dado essa permissão aquando da instalação da aplicação.
+
+**Questão 24: Desta vez já funcionou?**
+
+_Resposta:_ Ainda não. _Reset_!
+
+**Questão 25: O que é que fazem as três linhas de código sugeridas nesta tarefa?**
+
+_Resposta:_ A linha 1 verifica se as permissões já foram dadas; a linha 3 pede as permissões. A linha 2 é um comentário. Dah! (Mas explica o significado do 0 dentro do `if`. Incrível!)
+
+**Questão 26: Porque é que o método `requestPermissions` leva um _array_ de _strings_?**
+
+_Resposta:_ Porque posso ter que pedir mais do que uma permissão simultaneamente.
+
+**Questão 27: O método `requestPermissions(.,.)` é síncrono ou assíncrono?**
+
+_Resposta:_ É síncrono.
+
+**Questão 28: Qual o significado do segundo parâmetro (um `int`) no método `requestPermissions(.,.)`?**
+
+_Resposta:_ Confirmar que as permissões foram todas aceites.
+
+---
+
+### Aula 07
+
+**Questão 01: O ficheiro é mapeado na classe `R`?**
+
+_Resposta:_ Sim, é, ficando com o identificador `R.raw.instructions`.
+
+**Questão 02: O identificador para o qual é mapeado o ficheiro tem a ver com o seu nome?**
+
+_Resposta:_ Sem dúvida.
+
+**Questão 03: A definição da largura e da altura dos objetos interativos é obrigatória nas versões mais recentes do Android?**
+
+_Resposta:_ Sim, é; caso contrário dá erro de compilação!
+
+**Questão 04: O que é que acontece se definir a largura ou a altura de um _widget_ a zero (0) (e.g., com `android:layout_width="0"`)?**
+
+_Resposta:_ Esse _widget_ ocupa sempre o máximo que consegue nessa dimensão tendo em conta outros elementos gráficos e as suas restrições.
+
+**Questão 05: Também é possível escrever nesses ficheiros?**
+
+_Resposta:_ Não, não é possível escrever nesses ficheiros, principalmente porque estarão dentro do arquivo `apk` aquando da sua execução.
+
+**Questão 06: Quais os pacotes que necessitou incluir para concluir esta parte do guia?**
+
+_Resposta:_ `import android.os.Bundle`. `android.util.Log`. `import android.view.View`. `import android.widget.EditText`. `import java.io.IOException`. `import java.io.InputStream`.
+
+**Questão 07: Para que serve o inteiro no método `getPreferences (int)`?**
+
+_Resposta:_ Este inteiro define o modo de acesso ao ficheiro.
+
+**Questão 08: Em que diretoria é que o ficheiro das preferências partilhadas é normalmente guardado?**
+
+_Resposta:_ `data/data/pt.ubi.pdm.aula7_storage/shared_prefs`
+
+**Questão 09: Para que serve o `boolean`?**
+
+_Resposta:_ Este valor deve ser `false` quando queremos obter o valor que está guardado com a chave `recover`; e `true` quando queremos substituir esse valor.
+
+**Questão 10: É possível guardar tipos complexos (e.g., objetos) nas `Shared Preferences`?**
+
+_Resposta:_ Não. Só tipos simples primitivos.
+
+**Questão 11: Quais os pacotes que necessitou incluir para concluir esta parte do guia (para além dos que já tinha assinalado antes)?**
+
+_Resposta:_ `import android.content.SharedPreferences`.
+
+**Questão 12: Qual é a classe do objeto que lhe permite ajustar os valores guardados nas preferências partilhadas?**
+
+_Resposta:_ `SharedPreferences`.
+
+**Questão 13: Qual ou quais os nomes dos métodos que lhe permitem guardar, de facto, as alterações que estiver a introduzir nas preferências partilhadas?**
+
+_Resposta:_ `Commit()`.
+
+**Questão 14: Para que serve o método `Undo()`, enunciado na questão anterior?**
+
+_Resposta:_ Para desfazer uma determinada ação no objeto.
+
+**Tarefa 14**: Quando carregamos no botão `Exit`.
+
+**Questão 15: O que faz o código incluído antes?**
+
+_Resposta:_ Abre um ficheiro, escreve algo nesse ficheiro, e depois fecha o ficheiro.
+
+**Questão 16: Qual o significado do número 0 no método `openFileOutput (string, int)`?**
+
+_Resposta:_ Que o ficheiro é criado no modo privado, o que significa que só a aplicação é que lhe pode aceder.
+
+**Questão 17: Lembra-se de ter implementado, no método `exitNotSave (View view)`, um editor para as preferências partilhadas?**
+
+_Resposta:_ Sim, lembro.
+
+**Questão 18: Pense bem: onde é que faz mais sentido colocar esses métodos?**
+
+_Resposta:_ Antes do bloco `try {...} catch {...}`.
+
+**Questão 19: Em que diretoria do sistema de ficheiros AndroidTM é que o ficheiro `savednote.txt` é guardado?**
+
+_Resposta:_ `data/data/pt.ubi.pdm.aula7_storage/files`
+
+**Questão 20: É possível verificar a existência do ficheiro usando o `Android Monitor`?**
+
+_Resposta:_ Olha! Boa ideia!
+
+**Questão 21: Isto faz sentido?**
+
+_Resposta:_ Em Linux faz todo o sentido, visto que tudo, inclusive as diretorias, são ficheiros. O método `getExternalStoragePublicDirectory(...)` não devolve um `File`, mas sim um `Directory`.
+
+**Questão 22: Lembrou-se de colocar o `commit()` no local certo da função?**
+
+_Resposta:_ Atão não lembrei?
+
+**Questão 23: Precisou de importar pacotes adicionais para esta parte do guia laboratorial?**
+
+_Resposta:_ Sim, nomeadamente: `import java.io.File`, `import java.io.FileInputStream`, `import java.io.FileOutputStream`.
+
+**Questão 24: Tem fechado todos os ficheiros que tem aberto?**
+
+_Resposta:_ Eh... sim sim, tenho fechado tudo.
+
+---
+
+### Aula 08
+
+**Questão 01: O que tem a dizer acerca da informação seguinte?**
+
+*Resposta:* Esta afirmação é estapafúrdia.
+
+**Questão 02: Já agora, o que significa o S do acrónimo SQL?**
+
+*Resposta:* Significa *Structured*.
+
+**Questão 03:  Que nome se dá às instruções SQL usadas assim no contexto de outra linguagem de programação?**
+
+*Resposta:* _Embedded SQL_.
+
+**Questão 04: Ainda no contexto da questão anterior, que qualificação se dá à linguagem Java?**
+
+*Resposta:* Linguagem hospedeira.
+
+**Questão 05: De acordo com o código incluído antes, o que é que acontece à base de dados durante um *upgrade*?**
+
+*Resposta:* A única tabela da base de dados é eliminada e depois recriada. Todos os registos que lá estavam são mantidos.
+
+**Questão 06: Falta algum *import* em alguma das classes implementadas antes?**
+
+*Resposta:* Não falta absolutamente nada.
+
+**Questão 07: Qual a diretoria onde as bases de dados são criadas?**
+
+*Resposta:* `data/data/pt.ubi.pdm.aula8_storage/databases`.
+
+**Questão 08: A que tipo de armazenamento é que a diretoria que indicou antes pertence?**
+
+*Resposta:* Armazenamento interno.
+
+**Questão 09: Foi criado mais algum ficheiro juntamente com a base de dados?**
+
+*Resposta:* Que estranho: sim, foi!
+
+**Questão 10: O que pode dizer acerca do tamanho da primeira caixa de texto, em relação aos outros dois objetos interativos da mesma linha, depois de definir o *layout* seguindo as indicações do guia?**
+
+*Resposta:* Que a largura da segunda linha ficou dividida em 5, sendo 3 desses pedaços são ocupados pela primeira caixa de texto. 
+
+**Questão 11: Que classes (adicionais) vai precisar de importar para que o código compile corretamente?**
+
+*Resposta:* `import android.content.ContentValues`, `import android.view.View`, `import android.widget.EditText`.
+
+**Questão 12: Em que diretoria do SDK está o executável que lhe permite abrir uma *shell* SQLite3 na sua máquina?**
+
+*Resposta:* 
+
+**Questão 13: Qual o comando que lhe permite ver quais os dispositivos que estão disponíveis via `adb`?**
+
+*Resposta:* `$ adb list devices`.
+
+**Tarefa 11:** `adb -s emulator-5554 shell`
+
+**Questão 14: Qual é o comando que permite ver a descrição de todos os outros?**
+
+*Resposta:* `.description`. (?)
+
+**Questão 15: Agora que já tem fora de ver todos os comandos disponíveis, qual é o que permite ver todas as tabelas contidas na base de dados?**
+
+*Resposta:* `.show`. (?)
+
+**Questão 16: Verificou se a tabela `Movies` foi criada, de facto, na base de dados em análise?**
+
+*Resposta:* Não verifiquei e sim, existe!
+
+**Tarefa 14:**
+* *Self-contained:* não tem dependências;
+* *Serverless:* os processos leem e escrevem diretamente nos ficheiros de base de dados no disco;
+* *Zero-configuration:* não é preciso ser "instalado" para ser usado;
+* *Transactional:* segue as propriedades ACID.
+
+**Questão 17: Em que linguagem foi escrito o SQLite?**
+
+*Resposta:* `ANSI-C`.
+
+**Questão 18: Em quantos ficheiros distintos se encontra a implementação do SQLite, e qual a razão principal que levou os seus programadores a fazer a implementação desta forma?**
+
+*Resposta:* Está implementado em um único ficheiro e foi assim implementado para que fosse um motor autocontido, ou seja, para não possuir dependências e correr otimamente mesmo com recursos limitados.
+
+**Questão 19: O SQLite permite acesso concorrente?**
+
+*Resposta:* Permite.
+
+**Questão 20: Qual das seguintes opções concretiza uma situação para a qual o SQLite não garante as propriedades ACID de uma transação?**
+
+*Resposta:* Uma falha do programa.
+
+**Questão 21: Como se sai do SQLite?**
+
+*Resposta:* Com o caratere `EOF` (*End-of-file*).
+
+**Questão 22: É possível obter as instruções que definem a criação das tabelas?**
+
+*Resposta:* Sim é, nomeadamente através do comando `.schema`.
+
+**Questão 23: O que é que faz uma `ScrollView`?**
+
+*Resposta:* Uma `ScrollView` é um contentor especial, que oferece a funcionalidade de *scrolling* sempre que o seu conteúdo ultrapassa os limites do ecrã.
+
+**Questão 24: Nota algum detalhe estranho no excerto de código adicionado?**
+
+*Resposta:* Sim, o `LinearLayout` interno não contém qualquer objeto.
+
+**Questão 25: Pode colocar objetos interativos, i.e., *widgets*, (e.g., um botão) diretamente dentro de um contentor do tipo `ScrollView`?**
+
+*Resposta:* Sim, sem problemas.
+
+**Tarefa 18:** `import android.widget.LinearLayout`, `import android.database.Cursor`. A primeira linha vai encontrar o *widget* de *LinearLayout*; a segunda linha serve para definir uma *query* em SQLite.
+
+**Questão 26: O que faz o excerto de código anterior?**
+
+*Resposta:* Coloca o `Cursor` a apontar para a linha imediatamente antes da primeira, movendo-o de seguida para a primeira linha.
+
+**Questão 27: O que é que devolve o método `moveToNext()`?**
+
+*Resposta:* Verdadeiro caso tenha conseguido mover-se para a próxima linha, e falso caso contrário.
+
+**Questão 28: O que faz o método `inflate()`, presente na primeira linha de código do excerto anterior?**
+
+*Resposta:* Lê o conteúdo do recurso dado por `line.xml`, convertendo-o para um objeto da aplicação.
+
+**Questão 29: O que fazem todas as linhas de código que contêm o método `setId(.)`?**
+
+*Resposta:* Na verdade, colocam todos os identificadores dos objetos a que se referem com o mesmo valor, i.e., o valor da chave primária da linha atual.
+
+**Questão 30: Qual o ID atribuído a cada um dos objetos interativos representados?**
+
+*Resposta:*
+
+**Questão 31: Considera que o esquema que o professor engendrou para os IDs dos *widgets* é efetivo?**
+
+*Resposta:* Não, porque há situações em que os IDs se podem repetir, nomeadamente quando há muitos dados, o que obriga a dar *scroll*.
+
+**Questão 32: O que faz a última linha de código do excerto anterior (i.e., `oLL.addView(oLL1)`?**
+
+*Resposta:* Adiciona todos os *widgets* redefinidos dentro do `while` ao `LinearLayout` que estava (inicialmente) vazio.
+
+**Questão 33: O que fazem as últimas duas linhas de código do excerto anterior?**
+
+*Resposta:* A primeira linha cria uma instância do contentor que contém o elemento a retirar e a segunda linha retira-o do seu elemento pai.
