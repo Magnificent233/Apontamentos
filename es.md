@@ -1,6 +1,6 @@
 # Engenharia de _Software_
 
-##### Atualizado em 03-12-2021
+##### Atualizado em 04-12-2021
 ###### A partir de: sebenta, aulas práticas
 
 ## Aulas Teóricas
@@ -419,11 +419,46 @@ Nos **diagramas de atividade**:
 
 **Modelos de agregação** mostram como as classes são compostas por outras classes, semelhantes à relação *parte de* de modelos semânticos de dados. **Modelos comportamentais** mostram o comportamento dinâmico de um sistema à medida que ele executa, ou seja, o que acontece ou é suposto acontecer quando o sistema responde a um estímulo do ambiente: dados (informação a ser processada pelo sistema) ou eventos.
 
-**Modelos de estado** mostram o comportamento do sistema em resposta a eventos internos ou externos, mostran do estados como nodos e eventos como arestas entre eles: quando um evento ocorre, o sistema muda de estado:
+**Modelos de estado** mostram o comportamento do sistema em resposta a eventos internos ou externos, mostrando estados como nodos e eventos como arestas entre eles: quando um evento ocorre, o sistema muda de estado:
 * *Estado*: modela uma situação durante a qual existe alguma condição invariável;
 * *Transição*: leva a máquina de um estado para o seguinte, representando a resposta completa da máquina à ocorrência de um evento particular.
 
 **Engenharia orientada a modelos** (MDE) é uma abordagem ao desenvolvimento de software em que modelos, ao invés de programas, são o principal *output* do processo. Os programas são gerados automaticamente a partir dos modelos, o que permite um aumento do nível de abstração. **Arquitetura orientada a modelos** (MDA) é o precursor do MDE e utiliza um subconjunto de modelos UML para descrever um sistema. 
+
+---
+
+### Aula 10
+
+**Testagem de *software*** é um processo em que se executa o programa utilizando dados que simulam *inputs* de utilizadores, para observar o seu comportamento de modo a avaliar se o programa está a fazer ou não o que é suposto. *Bugs* ocorrem devido a **erros de programação** e **erros de compreensão** (falha ou desconhecimento dos detalhes do que o programa é suposto fazer). Os testes podem ser:
+* **Funcionais** - testar a funcionalidade do sistema em geral, de modo a descobrir o máximo de *bugs* possível e dar evidência da sua utilidade:
+    * **Testes unitários** - testar unidades do programa isoladas. Deve-se testar casos limite, forçar erros, provocar *overflow*, repetir testes, verificar *underflow* e *overflow* (mais indicado para cálculos numéricos), não esquecer zero e nulo, manter conta dos elementos, testar sequências nulas ou unitárias;
+    * **Testes de características** - testar todos os aspetos de determinada característica do sistema. **Testes de interação** testam a comunicação entre as unidades que compõem a característica; **testes de utilidade** testam se a característica implementa aquilo que os utilizadores poderão querer;
+    * **Testes de sistema** - unidades de código são integradas para criar uma versão funcional do produto para testar a comunicação entre as funcionalidades do sistema;
+    * **De cenário** - testar os diferentes cenários possíveis através de caminhos ponto-a-ponto passíveis de serem escolhidos (sequência de ações desde o início da interação até à completude da tarefa);
+    * **Testes de aceitação** - testar o sistema como um todo para preparar o sistema para lançamento e descobrir: se há interações inesperadas e indesejadas entre as características de um sistema; se as características funcionam bem juntas para fazer o desejado pelos utilizadores; se opera como esperado em diferentes ambientes; se os atributos de responsividade, rendimento, segurança são adequados;
+* **De utilizador** - testar se o produto é útil e utilizável pelos utilizadores finais, confirmando que o sistema faz o que os utilizadores querem e que os utilizadores conseguem interagir bem com o sistema;
+* **De *performance*** - testar se o *software* funciona rápido e pode aguentar a carga colocada sobre si pelos utilizadores;
+* **De segurança** - testar se o *software* mantém a sua integridade e pode proteger dados de dano e roubo.
+
+A **automação de testes** baseia-se na ideia de que testes devem ser executáveis e incluem dados de *input*, resultados esperados e verificação do resultado. Os testes devem ser estruturados em três partes:
+* **Organização** - preparar o sistema para correr o teste (definir os parâmetros e, se necessário, objetos para simular funcionalidades não implementadas);
+* **Ação** - testar a aplicação com os parâmetros de teste;
+* **Afirmação** - definir o que se deve esperar se o teste for concluído com sucesso.
+
+**Desenvolvimento orientado a testes** (TDD) é uma abordagem ao desenvolvimento de programas baseada na ideia geral de que se deve escrever um teste executável antes de escrever o próprio código, o que é mais simples para unidades individuais de programa e mais difícil de aplicar a teste de sistema. Este processo divide-se em sete passos:
+* *Identificar implementação parciais* - quebrar as funcionalidades em unidades mais pequenas, escolhendo uma delas para implementar;
+* *Escrever testes de unidades* - escrever testes automatizados para a unidade implementada, que deve passar o teste;
+* *Escrever um* stub *que falhe o teste* - escrever código incompleto que falhe para implementar a unidade;
+* *Correr todos os testes automatizados*;
+* *Implementar código que faça o teste falhado passar* - escrever código correto para implementar a unidade;
+* *Voltar a correr todos os testes automatizados* (todos os testes devem passar);
+* *Refatorizar código* - melhorar o código (se aplicável) e passar à próxima unidade a implementar.
+
+O desenvolvimento orientado a testes é uma abordagem sistemática à testagem, em que os testes são ligados de forma clara a excertos de código. Permite que os testes ajam como uma especificação escrita para o código do programa - em princípio, deve ser possível compreender o que o programa faz ao ler os testes. *Debugging* torna-se simples porque uma falha observada está ligada ao último incremento de código adicionado; o código torna-se mais simples porque apenas é escrito o estritamente necessário para passar os testes.
+
+**Testes de segurança** têm como objetivos encontrar vulnerabilidades que podem ser exploradas por atacantes e dar evidências convincentes que o sistema é seguro o suficiente. Requerem conhecimento especializado nas vulnerabilidades de *software* e nas abordagens de teste que permitem encontrá-las.
+
+A **revisão de código** envolve uma ou mais pessoas a examinar o código para verificar erros e anomalias e discutir problemas com o programador. É efetiva para encontrar *bugs* que podem surgir por maus entendimentos ou quando sequências unusuais de código são executadas.
 
 ---
 ---
