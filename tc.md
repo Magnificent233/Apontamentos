@@ -1,6 +1,6 @@
 # Teoria da Computação
 
-##### Atualizado em 02-12-2021
+##### Atualizado em 06-12-2021
 ###### A partir de: sebenta
 
 ## Aulas Teóricas
@@ -120,7 +120,7 @@ A teoria dos autómatos finitos é útil para: _software_ de projeto e implement
 
 Dada uma cadeia de carateres, é possível saber se pertence a uma dada linguagem através de um autómato chamado **aceitador**: tem um estado 'aceitar' ao qual é levado por qualquer cadeia de uma dada linguagem que se apresente à sua entrada. Um **aceitador determinístico** DFA (_Deterministic Finite Accepter_) é definido por `M = (Q, Σ, δ, q_0, F)`, em que `Q` é o conjunto finito de estados internos, `Σ` é o alfabeto de entrada, `δ = Q x Σ → Q` é a função total (função de transição), `q_0 ∈ Q` é o estado inicial e `F ⊆ Q` é o conjunto de estados finais. 
 
-A **função de transição estendida** `δ* : Q x Σ* → Q` tem como segundo argumento uma cadeia (e não um caratere). O seu valor de saída dá o estado do autómato depois de ler a cadeia toda, numa forma compacta de descrever um conjunto de transições resultantes da leitura de uma cadeia de entrada.
+A **função de transição estendida** `δ* : Q x Σ* → Q` tem como segundo argumento uma cadeia (e não um caráter). O seu valor de saída dá o estado do autómato depois de ler a cadeia toda, numa forma compacta de descrever um conjunto de transições resultantes da leitura de uma cadeia de entrada.
 
 A linguagem aceite por um DFA `M = (Q, Σ, δ, q_0, F)` é o conjunto de todas as cadeias em `Σ` aceites por `M`, isto é, `L(M) = {w ∈ Σ*: δ*(q_0, w) ∈ F}`. As funções de transição `δ` e `δ*` são funções totais. Como a cada passo se define um único movimento, o autómato é **determinístico**.
 
@@ -180,7 +180,7 @@ Uma linguagem é regular se for aceite por um DFA ou um NFA. Definem-se NFA para
 
 A toda a linguagem regular se pode associar um NFA, logo, um grafo de transições: partindo do estado `q_0`, procuram-se todos os caminhos possíveis até ao estado final e as suas etiquetas, que podem ser geridas por uma expressão regular. Em **grafos de transição generalizados**, as arestas podem ser etiquetadas por expressões regulares; a etiqueta de um caminho desde o estado inicial até um estado final é a concatenação das etiquetas das arestas do caminho; as cadeias expressas por cada expressão regular são um subconjunto da linguagem aceite pelo grafo de transição generalizado e a linguagem total será a união de todos os subconjuntos gerados.
 
-Uma aresta etiquetada com um único caratere `a` interpreta-se como etiquetada pela expressão regular `a`, podendo assim afirmar-se que para toda a linguagem regular existe um grafo de transição generalizado que a aceita, por outro lado, toda a linguagem aceite por um grafo generalizado é uma linguagem regular. Dois grafos são **equivalentes** se aceitam a mesma linguagem.
+Uma aresta etiquetada com um único caráter `a` interpreta-se como etiquetada pela expressão regular `a`, podendo assim afirmar-se que para toda a linguagem regular existe um grafo de transição generalizado que a aceita, por outro lado, toda a linguagem aceite por um grafo generalizado é uma linguagem regular. Dois grafos são **equivalentes** se aceitam a mesma linguagem.
 
 Seja `L` uma linguagem regular, então existe uma expressão regular `r` tal que `L = L(r)`. Uma gramática diz-se **regular** se é linear à esquerda ou à direita: é **linear à esquerda** se todas as suas produções têm a forma `A → Bx`, `A → x` e **linear à direita** se todas as suas produções têm a forma `A → xB`, `A → x`. Seja `G = (V, T, S, P)` uma gramática linear à direita, então `L(G)` é uma linguagem regular.
 
@@ -227,3 +227,41 @@ Qualquer produção de uma CFG da forma `A → λ` é chamada **produção-λ**.
 Uma CFG está na **forma normalizada de Chomsky** se todas as produções são da forma `A → BC` ou `A → a`, em que `A, B, C ∈ V` e `a ∈ T`. Na forma normal de Chomsky, a parte direita de qualquer produção tem um ou dois símbolos.
 
 Uma CFG está na **forma normalizada de Greibach** se todas as produções têm a forma `A → ax`, em que `a` é um símbolo terminal e `x` é uma cadeia de zero ou mais variáveis.
+
+---
+
+### Aula 10
+
+Dois estados `p` e `q` de um AFD sobre um alfabeto `Σ` denominam-se **equivalentes** ou **indistinguíveis** se, para todo o `w ∈ Σ*`, `δ*(p, w) ∈ F` implica `δ*(q, w) ∈ F` e `δ*(p, w) ∉ F` implica `δ*(q, w) ∉ F`. Se existir alguma cadeia `w ∈ Σ*` tal que `δ*(p, w) ∈ F` e `δ*(q, w) ∉ F` ou vice-versa, então os estados `p` e `q` denominam-se de **não equivalentes** ou **não distinguíveis** pela cadeia `w`.
+
+Se num dado AFD `p` e `q` são estados equivalentes e `q` e `r` são também estados equivalentes, então `p` e `r` são também estados equivalentes; logo, `p`, `q` e `r` são estados **equivalentes**.
+
+Um **aceitador não determinístico de pilha** (NPDA, *Non Deterministic Push Down Accepter*) é definido por `M = (Q, Σ, Γ, δ, q_0, z_0, F)`, em que: `Q` é o conjunto finito de estados internos da unidade de controlo, `Σ` é o alfabeto de entrada, `Γ` é o conjunto finito de símbolos chamado *alfabeto da pilha*, `δ: Q x (Σ ∪ {λ}) x Γ` representa os subconjuntos finitos de `Q x Γ*` (**função de transição**), `q_0 ∈ Q` é o estado inicial da unidade de controlo, `z_0 ∈ Γ` é o símbolo de inicialização da pilha e `F ⊆ Q` é o conjunto de estados finais (aceitadores).
+
+Uma transição pode ter como caráter de entrada `λ`, sendo uma **transição-λ**. A definição de transição exige um símbolo no topo da pilha (se a pilha estiver vazia, as movidas serão inibidas): `δ(q_0, a, 0) = {(q_1, 10)}`. Se o autómato cair num estado para o qual `δ` não está definido, nunca mais consegue sair, estando por isso **morto**.
+
+A descrição instantânea de um NPDA pode ser completamente definido pela tripleto `(q, w, u)`, em que: `q` é o estado atual, `w` é a parte ainda não lida da cadeia de entrada e `u` é o conteúdo da pilha (o topo é o símbolo mais à esquerda). Uma **movida** `Ͱ` de uma descrição de base para outra, `(q_1, aw, bx) Ͱ (q_2, w, yx)` só é possível se existir a transição `δ(q_1, a, b) = {(q_2, y)}`. `Ͱ*` representa movidas com um número arbitrário de passos e `ͰM` indica que a movida se refere ao autómato M.
+
+`L(M) = {w ∈ Σ*: (q_0, w, z_0) Ͱ*M (p, λ, u), p ∈ F, u ∈ Γ*}` é o conjunto de todas as cadeias capazes de colocar o autómato num **estado final** (aceitador) no fim da leitura da cadeia. `L(M) = {w ∈ Σ*: (q_0, w, z_0) Ͱ*M (q, λ, λ), para algum q ∈ Q}` é o conjunto de todas as cadeias capazes de colocar o autómato com a **pilha vazia** (depois de lidas completamente) num estado qualquer.
+
+---
+
+### Aula 11
+
+Se existe um NPDA que aceita uma linguagem `L` por um estado final, então existe um NPDA que aceita a mesma `L` pela pilha vazia, e vice-versa.
+
+Uma **máquina de Turing** é definida por `M = (Q, Σ, Γ, δ, q_0, □, F)`, em que `Q` é o conjunto de estados internos, `Σ` é o alfabeto de entrada, `Γ` é o conjunto finito alfabeto da fita, `δ` é a função de transição, `□ ∈ Γ` é o caráter branco (caráter especial) e `F ⊆ Q` é o conjunto de estados finais.
+
+A função de transição recebe o estado atual da unidade de controlo e o caráter da fita a ser lido; devolve `Q` (próximo estado da unidade de controlo), escreve na fita um novo símbolo em substituição do presente, faz uma movida ou para a direita ou para a esquerda.
+
+Uma **máquina de Turing** tem uma unidade de processamento com memória finita (número finito de estados), uma segunda unidade de armazenamento de capacidade infinita e uma função de transição ("programa"). Tem uma fita ilimitada em ambas as direções que permite um número arbitrário de movidas à esquerda e à direita; é determinística (`δ` define no máximo uma movida para cada configuração); no intante inicial a fita em algum conteúdo especificado (alguma parte considerada entrada), sempre que pare (*halt*) algum do conteúdo pode ser considerado como saída.
+
+A descrição instantânea da máquina de Turing contém o estado atual da unidade de controlo, o conteúdo da fita e a posição da cabeça de leitura/escrita: `x_1 q x_2`.
+
+Chama-se **computação** à sequência das configurações que levam a máquina de Turing do estado inicial ao estado de paragem (*halt*). M parou partindo de alguma configuração inicial `x_1 q_i x_2` se `x_1 q_i x_2  Ͱ*  y_1 q_j y_2` para algum `q_j` e algum `a` para os quais `δ (q_j, a)` seja não definida. A situação em que a máquina de Turing entra num ciclo infinito, nunca parando nem de lá podendo sair, denota-se por `x_1 q_i x_2  Ͱ* ∞`.
+
+---
+
+### Aula 12
+
+diapositivo_327_aka_pilhas
