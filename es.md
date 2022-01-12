@@ -1,6 +1,6 @@
 # Engenharia de _Software_
 
-##### Atualizado em 04-12-2021
+##### Atualizado em 27-12-2021
 ###### A partir de: sebenta, aulas práticas
 
 ## Aulas Teóricas
@@ -298,7 +298,7 @@ O **documento de requisitos de _software_** é a declaração oficial do que é 
 
 ### Aula 07
 
-A **arquitetura de um sistema** inclui organização geral, decomposição do _software_ em componentes, organização do servidor e tecnologias usadas para construir o _software_, afetando _performance_, usabilidade, segurança, confiabilidade e manutenção. A definição da IEEE diz que arquitetura é a organização fundamental de um sistema de _software_ incorporado nos seus componentes, relações entre si e o ambiente e os princípios que guiam o seu _design_ e evolução. Tem influência fundamental nas propriedades não funcionais do sistema, envolve a compreensão dos problemas da arquitetura do produto de modo a criar uma descrição de arqitetura que mostre os componentes críticos e as suas relações e tem em vista a minimização da complexidade do sistema.
+A **arquitetura de um sistema** inclui organização geral, decomposição do _software_ em componentes, organização do servidor e tecnologias usadas para construir o _software_, afetando _performance_, usabilidade, segurança, confiabilidade e manutenção. A definição da IEEE diz que arquitetura é a organização fundamental de um sistema de _software_ incorporado nos seus componentes, relações entre si e o ambiente e os princípios que guiam o seu _design_ e evolução. Tem influência fundamental nas propriedades não funcionais do sistema, envolve a compreensão dos problemas da arquitetura do produto de modo a criar uma descrição de arquitetura que mostre os componentes críticos e as suas relações e tem em vista a minimização da complexidade do sistema.
 
 Um **componente** é um elemento que implementa um conjunto coerente de funcionalidades ou características, podendo ser considerado uma coleção de um ou mais serviços que podem ser usados por outros componentes.
 
@@ -317,7 +317,7 @@ Uma **abordagem por camadas** à segurança afeta a usabilidade do _software_, q
 
 A **disponibilidade** do sistema é medida em termos de `uptime`, conseguido pela existência de elementos redundantes num sistema - o que se revela maior gasto de tempo e custo e maior complexidade do sistema, que aumenta a possibilidade de _bugs_ e vulnerabilidades.
 
-A **abstração** no _design_ de software implica o foco nos elementos essenciais de componente sem preocupação nos detalhes. A **decomposição** envolve análise de componentes em larga escala para representação como conjunto de componentes pequenos: por exemplo, **modelos em camadas**.
+A **abstração** no _design_ de *software* implica o foco nos elementos essenciais de componente sem preocupação nos detalhes. A **decomposição** envolve análise de componentes em larga escala para representação como conjunto de componentes pequenos: por exemplo, **modelos em camadas**.
 
 A **complexidade** da arquitetura de um sistema surge pelo número e natureza das relações entre os componentes de um sistema, ou seja, na decomposição, deve-se evitar complexidade desnecessária.
 
@@ -446,7 +446,7 @@ A **automação de testes** baseia-se na ideia de que testes devem ser executáv
 * **Afirmação** - definir o que se deve esperar se o teste for concluído com sucesso.
 
 **Desenvolvimento orientado a testes** (TDD) é uma abordagem ao desenvolvimento de programas baseada na ideia geral de que se deve escrever um teste executável antes de escrever o próprio código, o que é mais simples para unidades individuais de programa e mais difícil de aplicar a teste de sistema. Este processo divide-se em sete passos:
-* *Identificar implementação parciais* - quebrar as funcionalidades em unidades mais pequenas, escolhendo uma delas para implementar;
+* *Identificar implementações parciais* - quebrar as funcionalidades em unidades mais pequenas, escolhendo uma delas para implementar;
 * *Escrever testes de unidades* - escrever testes automatizados para a unidade implementada, que deve passar o teste;
 * *Escrever um* stub *que falhe o teste* - escrever código incompleto que falhe para implementar a unidade;
 * *Correr todos os testes automatizados*;
@@ -459,6 +459,63 @@ O desenvolvimento orientado a testes é uma abordagem sistemática à testagem, 
 **Testes de segurança** têm como objetivos encontrar vulnerabilidades que podem ser exploradas por atacantes e dar evidências convincentes que o sistema é seguro o suficiente. Requerem conhecimento especializado nas vulnerabilidades de *software* e nas abordagens de teste que permitem encontrá-las.
 
 A **revisão de código** envolve uma ou mais pessoas a examinar o código para verificar erros e anomalias e discutir problemas com o programador. É efetiva para encontrar *bugs* que podem surgir por maus entendimentos ou quando sequências unusuais de código são executadas.
+
+---
+
+### Aula 11
+
+Para manter o valor dos investimentos das empresas, os sistemas de *software* devem ser alterados e atualizados. O ciclo de vida de um sistema de *software* compreende:
+* **Desenvolvimento**;
+* **Evolução** - o *software* está operacional e evolui à medida que novos requisitos são propostos e implementados:
+    * Depende do tipo de *software*, dos processos de desenvolvimento e das competências dos programadores;
+    * Move-se pelas propostas de mudança que permitam que o custo e o seu impacto sejam estimados;
+* **Serviço** - o *software* mantém-se útil mas apenas se fazem mudanças para o manter operacional;
+* **Desfasamento** - o *software* ainda é usável mas não são feitas quaisquer alterações.
+
+A **implementação de mudanças** é uma iteração do processo de desenvolvimento em que as revisões ao sistema são desenhadas, implementadas e testadas. Pode envolver compreensão do programa, especialmente se houver mudança de programadores no processo: estruturação do código, prestação de funcionalidades e como as mudanças afetam o sistema. Mudanças urgentes podem ser implementadas sem passar pelo processo de engenharia de *software*.
+
+**Sistemas legados** são sistemas antigos dependentes de linguagens e tecnologias que caíram em desuso, bem como de *hardware*, processos e procedimentos. A substituição de sistemas legados é arriscada e cara: falta de especificação completa de sistema, integração estreita do sistema e processos, falta de documentação, desenvolvimento de novo *software* atrasado ou excedente de orçamento. Organizações dependentes de sistemas legados devem escolher, dependendo da qualidade do sistema e do seu valor empresarial, entre: destruir o sistema e modificar os processos empresariais, manter o sistema, transformar o sistema para melhorar a manutenção, substituir o sistema.
+
+Para avaliar o valor de mercado de um produto, deve ter-se em conta: o uso do sistema, processos suportados, confiabilidade e resultados do sistema. Para avaliar a qualidade de um sistema, deve ter-se em conta: suporte dos objetivos, eficiência e custos de manutenção e qualidade. Para avaliar o ambiente, deve ter-se em conta: estabilidade dos fornecedores, taxa de falha, idade do *hardware* e *software*, *performance*, requisitos de suporte, custos de manutenção e interoperabilidade. Para avaliar a aplicação, deve ter-se em conta: compreensibilidade, documentação, dados, *performance*, linguagem de programação, gestão de configuração, testagem de dados e capacidades dos programadores.
+
+A **manutenção de *software*** implica modificar um programa em uso, sem grandes alterações na arquitetura do sistema - alterando componentes existentes ou inserindo novos. Envolve *reparação de falhas* (correção de *bugs* e vulnerabilidades), *adaptação* (adaptação a diferentes sistemas operativos) e *adição e modificação de funcionalidades*. Os custos de manutenção são superiores aos de desenvolvimento e aumentam ao longo do tempo, sendo usualmente mais caro adicionar novas características durante a manutenção que durante o desenvolvimento.
+
+A **predição de manutenção** diz respeito à avaliação de que partes do sistema poderão causar problemas e ter maiores custos de manutenção. A **predição de mudanças** tenta prever o número de mudanças requiridas e a compreensão das relações entre um sistema e o seu ambiente.
+
+A **reengenharia de *software*** envolve a reestruturação ou reescrita de um sistema legado sem alterar as suas funcionalidades, aplicável quando alguns (mas não todos) subsistemas requerem manutenção frequente. Permite redução de riscos e de custos e envolve: 
+* Tradução de código-fonte - converter o código para uma nova linguagem;
+* Engenharia reversa - entender o programa;
+* Melhorias estruturais - reestruturar para aumentar compreensão;
+* Modularização de programa - reorganizar a estrutura do programa;
+* Reengenharia de dados - limpar e reestruturar dados do sistema.
+
+A **refatorização** é o processo de fazer melhorias a um programa para abrandar a degradação pelas mudanças que envolve modificar um programa para melhorar a sua estrutura, reduzir a sua complexidade e aumentar a sua compreensibilidade, sem adição de funcionalidades.
+
+---
+
+### Aula 12
+
+Os ***devops*** (*development + operations*) surgiram devido: à redução do tempo de desenvolvimento pela engenharia ágil de *software*, que o processo tradicional de lançamento tornava moroso entre o desenvolvimento e a implementação; à implementação de uma equipa única para desenvolvimento e suporte; ao lançamento de *software* como um serviço em *cloud*. *Devops* seguem os princípios de:
+* Todos são responsáveis por tudo (desenvolvimento, entrega e suporte);
+* Tudo que possa ser automatizado deve ser automatizado, de modo a haver envolvimento manual mínimo no lançamento de *software*;
+* Medir primeiro, alterar depois - deve haver uma recolha de dados sobre o sistema e a sua operação, que depois são usados para tomar decisões sobre alteração de processos.
+
+*Devops* permitem: lançamento mais rápido de *software* (demoras de comunicação entre os envolvidos no processo são reduzidas); redução de riscos (incrementação lenta de novas funcionalidades implica menor probabilidade de falhas); reparação mais rápida (a equipa trabalha em conjunto para voltar a ter o *software* em funcionamento assim que possível); maior produtividade.
+
+A **gestão de código** é um conjunto de práticas suportadas pelo *software* usadas para gerir um código fonte em evolução, necessário para assegurar que mudanças realizadas por programadores diferentes não interferem entre si e para criar versões diferentes do mesmo produto. As ferramentas de gestão de código permitem criar um produto executável com facilidade através dos seus ficheiros de código fonte e correr testes automatizados no produto, com um conjunto de características que permite:
+* **Transferência de código**;
+* **Armazenamento e recuperação de versões**;
+* **Fusão e ramificação** de código editado em paralelo;
+* **Informação de versões**.
+
+Todos os sistemas de gestão de código têm um repositório partilhado com todos os ficheiros necessários, que inclui uma base de dados de informação sobre esses ficheiros  e versões, alterações feitas quando e por quem. Os ficheiros podem ser transferidos de e para o repositório e as informações sobre as suas diferentes versões podem ser atualizadas. Devem permitir identificação de versão e lançamento, alteração de registos de histórico, desenvolvimento independente, suporte de projeto e gestão de armazenamento. São sistemas resilientes (cada programador tem a sua própria cópia *offline* do repositório), rápidos (alterações são operações locais rápidas) e flexíveis (permitem experiências sem interferir com trabalho concorrente).
+
+A **automação de *devops*** permite reduzir tempo e custos de integração, lançamento e entrega através de processos mais confiáveis e reproduzíveis. Deve manter:
+* *Integração contínua*: de cada vez que uma alteração é feita, é construída e testada uma versão executável do sistema, o que permite maior rapidez a encontrar e reparar *bugs*;
+* *Entrega e lançamento contínuos*: cada mudança ao ramo *master* do repositório implica o lançamento ao público de uma nova versão, assegurando que o sistema alterado não é afetado por fatores de ambiente - tal permite redução de custos, maior rapidez na resolução de problemas, maior rapidez de *feedback* e testagem `a-b`;
+* *Infraestruturas como código*: diversos servidores têm configurações diferentes e correm pacotes de *software* específicos, que podem ser atualizados através de um modelo da infraestrutura escrito numa linguagem processável por máquina, o que permite menor custo na gestão do sistema e baixo risco de problemas derivados à alteração de infraestruturas. Devem ser acessíveis por todos os *devops*, reproduzíveis, confiáveis e permitir recuperação de dados.
+
+*Devops* podem ser medidos por: **medição de processos** (desenvolvimento, testes, implementação); **medição de serviços** (desempenho, fiabilidade, aceitabilidade); **medição de utilização** (como o produto é utilizado); **medição de sucesso comercial** (como o produto contribui para o sucesso do negócio).
 
 ---
 ---
