@@ -1,6 +1,6 @@
 # Inteligência Artificial
 
-##### Atualizado em 29-11-2021
+##### Atualizado em 13-12-2021
 ###### A partir de: sebenta
 
 ## Aulas Teóricas
@@ -251,9 +251,9 @@ Em vez de minimizar o erro empírico, as MVS tentam minimizar o erro de generali
 
 A **aprendizagem bayesiana** calcula a probabilidade de cada uma das hipóteses, face aos dados disponíveis, e efetua a previsão de acordo com essas probabilidades. Seja `d` uma sequência de dados `{d_1, d_2, ..., d_n}` e `m` o número de hipóteses, a probabilidade de cada hipótese `h_i` face aos dados recebidos é dada pela regra de Bayes (probabilidade *a posteriori*): `P(h_i|d) = P(d, h_i) / P(d) = P(d|h_i)P(h_i) / m^Σ_j=1 P(d|h_j)P(h_j)` (1). As previsões são feitas usando as previsões de cada uma das hipóteses pesadas pelas suas probabilidades: `P(d_n+1|d) = m^Σ_i=1 P(d_n+1|h_i)P(h_i|d)` (2). A **verosimilhança** dos dados em face de cada hipótese é `P(d|h_i)= n^Π_j=1 P(d_j|h_i)` (3). A previsão bayesiana é ótima no sentido em que, dado o mesmo vetor de dados *a priori*, qualquer outro método de previsão vai acertar menos vezes.
 
-A aproximação mais frequente é fazer a previsão com base apenas na hipótese mais provável em vez de fazer a soma pesada de (2). Acham-se as probabilidades `P(h_i|d)` por (1), podendo ignorar-se o denominador, escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`: **máximo *a posteriori***.
+A aproximação mais frequente é fazer a previsão com base apenas na hipótese mais provável em vez de fazer a soma pesada de (2). Acham-se as probabilidades `P(h_i|d)` por (1), podendo ignorar-se o denominador, escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`: **máximo *a posteriori*** (MAP).
 
-A **máxima verosimilhança** permite simplificar ainda mais a previsão ao assumir que todas as hipóteses são igualmente prováveis *a priori*. Acham-se as probabilidades `P(d|h_i)` por (3), escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`.
+A **máxima verosimilhança** (MV) permite simplificar ainda mais a previsão ao assumir que todas as hipóteses são igualmente prováveis *a priori*. Acham-se as probabilidades `P(d|h_i)` por (3), escolhe-se a hipótese `h_i` que tenha maior valor de `P(h_i|d)`, `h_i^*`, e faz-se a previsão com  `P(d_n+1|d) = P(d_n+1|h_i^*`.
 
 O método **Bayes ingénuo** usa muito do que se viu atrás para construir um classificador partindo do princípio que os atributos são condicionalmente independentes uns dos outros. A probabilidade *a priori* de cada classe, `P(C)`, é facilmente achada contando o número de pontos que pertencem a cada classe e dividindo pelo total de pontos no conjunto de treino. Permite lidar com problemas com muitos atributos (número de parâmetros cresce linearmente com o número de atributos do problema), é computacionalmente eficiente e lida bem com o ruído.
 
@@ -262,3 +262,35 @@ O classificador **k-NN** (*k-nearest neighbour*) acha a distância de A a todos 
 ---
 
 ### Aula 10
+
+Em cada passo discreto `t`, o agente recebe uma **observação** do ambiente `b`, que inclui a recompensa `r` relativa à ação realizada no instante anterior, a partir da qual deve escolher uma **ação** a realizar `a(t)` de entre o conjunto de ações possíveis, que é enviada para o ambiente. Passa-se então a um novo **estado** para o qual é definida a ação `a(t)`, havendo a **transição** do estado do ambiente provocada pela ação do agente: `(s(t), a(t), s(t+1))`. O **objetivo** do agente é recolher o máximo de recompensa possível.
+
+Além do **agente** e do **ambiente** (externo), há quatro elementos fundamentais na **aprendizagem por reforço**:
+* **Política** - define o comportamento do agente. Pode ser *estocástica* (num dado estado, a ação a executar depende de uma distribuição probabilística);
+* **Função recompensa** - indica a recompensa associada a um estado. Define o objetivo do problema, sendo o objetivo do agente maximizar a recompensa total obtida a longo prazo, e pode alterar a política;
+* **Função valor** - indica qual o valor total de recompensa esperado se se partir de um determinado estado: toma em conta os estados seguintes prováveis e as recompensas associadas;
+* **Modelo do ambiente** - conhecimento anterior interno ao agente sobre o ambiente para tentar prever o estado resultante de uma ação e a respetiva recompensa.
+
+O *feedback* pode ser **avaliativo** (indica se a ação executada foi boa ou não) ou **instrutivo** (indica qual a ação correta a executar).
+
+No problema do **bandido com n-braços**, o agente deve escolher uma entre `n` ações possíveis, após cada qual recebe uma recompensa numérica que tem valor obtido numa distribuição de probabilidade estacionária. O objetivo é maximizar o total de recompensas num dado período. Chama-se jogada a cada escolha de uma ação, que tem uma recompensa média associada (**valor da ação**). Criam-se estimativas dos valores associados a cada ação, tendo em qualquer momento uma ação que tem o maior valor estimado (**ação gulosa**). Ao escolher a ação gulosa usufrui-se ao máximo do que se tem (***exploitation***). Ao escolher outra ação está-se a explorar (***exploration***) estimativas para as outras ações que poderão levar a uma melhor estimativa que a gulosa atual. Como numa dada jogada temos que escolher entre *exploration* e *exploitation*, existe um conflito entre as duas abordagens.
+
+Chame-se **verdadeiro valor da ação `a`**, `Q*(a)`, e **estimativa do valor da ação `a`** ao fim de `t` jogadas, `Q_t (a)`. Como o valor da ação `a` é a recompensa média que se obtém quando se escolhe uma ação, o valor pode ser estimado pela média das recompensas obtidas ao escolher-se essa ação: `Q_t (a) = 1/k_a * k_a^Σ_i=1 r_i`, onde `k_a` é o número de vezes que se escolheu a ação `a` e `r_i` é a recompensa obtida em cada escolha. Conforme se aumenta `k_a`, a estimativa `Q_t (a)` tende para o verdadeiro valor `Q*(a)`.
+
+A abordagem **ε-gulosa** diz que numa pequena proporção das jogadas, `ε`, em vez de se escolher a opção gulosa, escolhe-se outra ao acaso, o que garante que com o aumento do número de jogadas, fica-se a conhecer excelentes estimativas dos verdadeiros valores de `Q*(a)` para todas as ações `a`.
+
+No caso **não estacionário** deve alterar-se a forma como se faz a estimativa das recompensas, pensando mais as recompensas mais recentes que as antigas: `Q_t = Q_t-1 + α(r_t - Q_t-1)`, onde `a ∈ [0,1]` é uma constante chamada **passo**. No não estacionário **com política**, a probabilidade de, no instante `t`, estar no estado `s` e escolher a ação `a`, é a política `π_t (s, a)`, que vai sendo ajustada de acordo com a experiência do agente.
+
+---
+
+### Aula 11
+
+É importante que um agente consiga lidar com a **linguagem natural** de modo a poder interagir facilmente com humanos e a poder adquirir conhecimento a partir de textos escritos. Para tal, um **modelo da linguagem** permite a previsão da distribuição de probabilidade das expressões da linguagem.
+
+Uma linguagem pode definir-se como um conjunto de *strings*, para o qual a **gramática** define regras de construção de afirmações válidas. As linguagens naturais são ambíguas, com afirmações a poderem ter mais que um significado, ou seja, o **significado** de uma frase é dado por uma distribuição de probabilidade dos possíveis significados. Além disso, as linguagens formais são muito grandes e estão em constante mudança, o que implica que todos os modelos acabam por ser aproximações.
+
+Chama-se a uma sequência de comprimento `n` um **`n`-grama**, sendo um unigrama um símbolo, um bigrama dois e um trigrama três. Um modelo de probabilidade de sequências de `n` símbolos é um **modelo `n`-grama de símbolos**, que é na verdade uma cadeia de Markov de ordem `n - 1`. Este modelo permite identificar uma dada linguagem (dado um texto, dizer em que língua está escrito), corrigir erros em editores de texto, classificar o tipo de texto (romance, poesia, jornalístico, ...), reconhecer nomes-entidades.
+
+**Modelos `n`-grama de palavras** são similares aos modelos `n`-grama de símbolos, com a diferença de que o número de palavras é muito maior que o de símbolos: o vocabulário é maior, logo os modelos têm de resolver o problema das palavras fora do vocabulário. São usados para classificação de texto (deteção de *spam*, análise de sentimento).
+
+A **perceção** interpreta os dados recolhidos pelos sensores do agente para lhe fornecer informação sobre o ambiente. Nalguns casos faz-se *active sensing*: enviar um sinal para o ambiente e recolher os resultados (radar, ultrassons). Uma imagem pode ser representada como uma matriz (ou uma matriz de matrizes) e tem arestas como descontinuidades; a textura é o padrão espacial repetido apresentado numa região da imagem.
