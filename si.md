@@ -233,7 +233,44 @@ A **rede de confiança** determina que: se confia todas as chaves assinadas por 
 
 Caso as chaves públicas sejam comprometidas ou deixem de ser seguras, no PGP: o utilizador emite um certificado a revogar a sua própria chave pública, assinando-a com a sua chave privada; ou o utilizador nomeia outro utilizador para revogar as suas chaves (caso as tenha perdido).
 
-Um cartão de cidadão possui dois pares de chaves, dos quais é impossível remover a chave privada. É dentro do cartão que se guarda a assinatura digital, sendo pedido sempre o PIN pessoal. As operações de assinatura e autenticação são pedidas pelo próprio cartão, não pelo *software* que o lê. Um cartão de cidadão tem pelo menos cinco certificados digitais e dois métodos de autenticação (o próprio cartão e o PIN). Um cartão de cidadão não permite cifrar.
+Um cartão de cidadão possui dois pares de chaves, dos quais é impossível remover a chave privada. É dentro do cartão que se guarda a assinatura digital, sendo pedido sempre o PIN pessoal. As operações de assinatura e autenticação são pedidas pelo próprio cartão, não pelo *software* que o lê. Um cartão de cidadão tem pelo menos cinco certificados digitais e dois métodos de autenticação (o próprio cartão e o PIN). Um cartão de cidadão não permite cifrar. Por definição, um cartão de cidadão traz os seus pares de chave revogados.
+
+---
+
+### Aula 10
+
+**Segurança da Informação** é sinónimo de proteção da informação e dos sistemas de informação das ameaças às três propriedades fundamentais CIA (Confidencialidade, Integridade, Disponibilidade). Inclui identificação das ameaças, dos recursos críticos e das vulnerabilidades, a quantificação do risco ($risco = probabilidade x valor$) e a concretização dos objetivos de segurança para determinada organização ou entidade através de um documento escrito - **política de segurança**.
+
+Vulnerabilidades devem-se, na sua maioria, a problemas de desenho, de realização ou de administração. O sucesso de um ataque, ou da técnica usada para o prevenir, depende de um passo inicial importante: a identificação do sistema operativo e das vulnerabilidades da máquina alvo. Sabendo o sistema operativo, é possível obter imediatamente um catálogo de todas as vulnerabilidades, para explorar ou mitigar.
+
+Muitos servidores enviam uma mensagem de boas-vindas aquando da primeira ligação, onde anunciam o seu nome, a versão do *software* servidor e, frequentemente, o sistema operativo em que estão a executar. Este método - **flâmulas** - não é útil para identificar o sistema operativo da maioria das máquinas cliente e não funciona quando se suprimem ou alteram (de propósito) os *banners* dos servidores.
+
+Outro método é a **impressão digital da pilha TCP/IP** (*Transmission Control Protocol*/*Internet Protocol*). Todos os sistemas com ligação à Internet possuem esta pilha; a especificação dos protocolos da suite TCP/IP deixa espaço para alguma personalização; o comportamento padrão permite expansões, que são fontes de diferenças. Desvios ao comportamento padrão da pilha são indicadores do sistema operativo utilizado e da respetiva versão.
+* A ferramenta **RING** procura explorar o tempo de reação do sistema operativo a pacotes TCP enviados pela rede. O protocolo TCP determina que as partes interatuantes de uma ligação devem retransmitir os dados caso não haja resposta depois de um estímulo, mas não determina exatamente quantas vezes devem retransmitir ou quanto tempo devem esperar entre retransmissões, facto que é explorado em sistemas com portos TCP abertos;
+* A ferramenta **`nmap`** (*Network Mapper*) foca-se nas respostas a esses estímulos (segmentos TCP ou datagramas UDP (*User Datagram Protocol*)) forjados (sondas, mais eficazes mas mais arriscadas). Combina as respostas aos vários estímulos de modo a obter uma assinatura que pode comparar com uma base de dados de assinaturas.
+
+A **inventariação de serviços** consiste em identificar quais os portos da camada de transporte acessíveis - se esses portos estiverem associados a serviços, então esses serviços estarão provavelmente disponíveis, em princípio - para determinar quais os serviços que correm em determinada máquina. O rastreio pode ser feito por:
+* **Portas TCP**: tenta-se estabelecer uma ligação TCP a uma determinada porta. Para o atacante, se a ligação for completamente estabelecida, deixa um rasto, e então deve optar por mandar apenas um segmento SYN e esperar pela resposta, sem estabelecer ligação, enviar um segmento FIN, sobrefragmentar os pacotes ou usar mediadores;
+* **Portas UDP**: envia-se um datagrama UDP para o porto em questão, e espera-se a resposta: se não houver serviços a correr nesse porto, é enviado um datagrama ICMP com um erro; se não, pode ou não haver resposta, identificando-se pela negativa.
+
+A correta configuração dos servidores é essencial para reduzir o número de vulnerabilidades dos sistemas, seja através de **correção dos serviços prestados** (testar se o servidor funciona) ou **segurança do sistema contra explorações ilegítimas** de falhas de configurações. As ferramentas de inventariação de deficiências de administração procuram vulnerabilidades conhecidas em máquinas. O **OpenVAS** (*Open Vulnerability Assessment System*) é uma ferramenta pública de inventariação remota de deficiências e possui uma arquitetura cliente/servidor, devolvendo um relatório com a lista de serviços encontrados e das vulnerabilidades detetadas.
+
+Os cenários anormais podem surgir a partir de uma conjugação de fatores não premeditados (pode resultar na falha do sistema de modo imprevisível) ou a partir de intenções maliciosas (resultado da tentativa de exploração de vulnerabilidades derivadads de mau desenho ou de realização deficiente).
+
+O **ataque LAND** consistia em enviar um segmento TCP SYN com o mesmo endereço fonte e destino e o mesmo porto fonte e destino para a máquina vítima. A pilha TCP/IP (defeituosa) de alguns sistemas operativos respondiam a este pedido e entravam em ciclo logo de seguida, ficando lentos ou incapazes de responder a pedidos legítimos.
+
+O **ataque *Teardrop*** explorava uma vulnerabilidade de implementação do algoritmo de desfragmentação IP. O algoritmo problemático verificava se dois fragmentos do mesmo pacote se sobrepunham e calculava a parte que devia ser copiada em caso de sobreposição; o ataque consistia em forjar dois segmentos de modo a que um fragmento estivesse dentro do outro. O algoritmo calculava uma área a copiar negativa e, dado a função que implementava a cópia só aceitar valores sem sinal, interpretava aquele valor como um valor de grande dimensão levando o procedimento a procurar o fragmento numa posição errada de memória (fora dos limites).
+
+O **ataque Echo-Chargen** consiste em enviar um pacote UDP com o mesmo endereço IP fonte e destino para a máquina vítima e com os portos UDP de um e de outro serviço na forte e no destino. O `echo` reenvia para o `chargen`, e o `chargen` reenvia para o `echo`.
+
+O **ataque *Ping of Death*** explora outra falha da implementação do algoritmo de desfragmentação. O algoritmo assume que o tamanho dos pacotes não vai para além do limite máximo estipulado e a implementação errónea construía os vários fragmentos antes de calcular o tamanho máximo que o pacote tinha. O ataque consistia em enviar um pacote ICMP demasiado grande mas muito fragmentado e esperar que o fragmentador o montasse antes de verificar que já tinha escrito em zonas da memória que não devia.
+
+O **ataque de inundação de início de ligação** (SYN) consiste em gerar e enviar para o servidor um número inusitado e contínuo de pedidos de sincronização. O servidor é obrigado a guardar o estado de um grande número de ligações meio estabelecidades e a aguardar por respostas que não vão chegar, tendo também de lidar com as possíveis retransmissões que o TCP define para o caso em que não há respostas. Tal leva à negação de serviço a clientes legítimos, sendo base para os grandes ataques de DDoS (*Distributed Denial of Service*).
+
+A exploração de **erros de realização** de código ou implementação deficiente pode induzir situações de negação de prestação de serviço ou situações de penetração e compromisso do sistema. Devem-se à incapacidade do programador de antecipar qualquer combinação complexa de cenários anormais e ao facto de poder não dominar a linguagem que está a usar na implementação.
+* **Vulnerabilidades de transbordamento de memória** (*memory overflow*) - responsáveis por grande parte dos problemas de segurança em sistemas informáticos. O ataque consiste em provocar o transbordamento de memória para locais que podem alterar o fluxo do programa de modo lucrativo para o atacante, nomeadamente, para permitir a execução de código malicioso - seja pela atribuição de um valor errodo a determinada variável ou pela modificação dos endereços de contexto local ou de retorno;
+  * Parte da solução consiste em colocar canários a guardar os valores dos ponteiros; se alguém tentar alterar os ponteiros, quase de certeza o canário é modificado. Antes de se usar o ponteiro de retorno ou de contexto local, o(s) canário(s) é(são) verificado(s) e o código só é executado se os canários não tiverem sido modificados;
+* **Vulnerabilidades associadas a cadeias de formato** - usa dados de entrada com códigos de controlo, que podem forçar o programa a revelar informação acerca de endereços de memória ou a injetar código.
 
 ---
 ---
@@ -405,7 +442,7 @@ Um cartão de cidadão possui dois pares de chaves, dos quais é impossível rem
 
 **Questão 03: Como é que normalmente se pode aceder ao manual de um comando Linux ou Unix *like*?**
 
-*Resposta:* Escrevendo `man <comando>` no manual.
+*Resposta:* Escrevendo `man <comando>` no terminal.
 
 **Questão 04: Há alguma diferença entre OpenSSL (devidamente capitalizado) e `openssl` (em `monospace`)?**
 
@@ -857,7 +894,6 @@ Um cartão de cidadão possui dois pares de chaves, dos quais é impossível rem
 * `openssl genrsa -out sk-and-pk.pem 1024`
 * `openssl rsa -in sk-and-pk.pem -pubout -out pk-nome-aluno.pem`
 * `openssl rsa -in pk-nome-aluno.pem -pubin -text -noout`
-* `openssl`
 
 **Tarefa 5:**
 * `openssl rand -hex 16 > secret.key`

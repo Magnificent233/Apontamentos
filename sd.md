@@ -1,6 +1,6 @@
 # Sistemas Distribuídos
 
-##### Atualizado em 03-05-2022
+##### Atualizado em 09-05-2022
 ###### A partir de: sebenta, exercícios das aulas teóricas e práticas
 
 ## Aulas Teóricas
@@ -330,6 +330,52 @@ A anotação `@GeneratedValue` pode dar erros nas transações ACID.
 **WSDL** (*Web Services Description Language*) é um formato XML para descrever *web services* e invocá-los, através de quatro tipos de operações: **pedido** (o servidor recebe um pedido, mas não envia resposta); **pedido/resposta** (o servidor recebe um pedido e envia uma resposta); **solicitação/resposta** (o servidor envia uma mensagem ao cliente e recebe uma resposta); **notificação** (o servidor envia uma mensagem para a qual não espera nenhuma resposta).
 
 **REST** (*Representational State Transfer*) é uma arquitetura para sistemas distribuídos de *hypermedia* (recursos como texto, imagens e vídeo são guardados em rede e ligados via hiperligações). Um recurso é uma entidade com um URI (*Universal Resource Identifier*). **REST *Web Services*** comunicam sobre o protocolo HTTP, numa arquitetura baseada na transferência de representações de recursos através de pedidos (*requests*) e respostas (*responses*), manipulados pelos métodos `PUT`, `GET`, `POST`, `DELETE`.
+
+---
+
+### Aula 09
+
+Os sistemas distribuídos podem ser analisados segundo três modelos transversais a todos os sistemas: **modelo de interação** (ou de sincronismo), **modelo de falhas** (ou avarias), **modelo de segurança**.
+
+Num **modelo de interação**, interação é uma ação (comunicação e sincronização) entre as partes para realizar um qualquer trabalho. É afetada por:
+* **Performance dos canais de comunicação**:
+  * Latência - intervalo de tempo entre o início da transmissão de uma mensagem por um processo e o início da sua receção pelo outro processo;
+  * Largura de banda - total de informação que pode ser transmitida pela rede num dado intervalo de tempo;
+  * *Jitter* - variação no tempo necessário para enviar grupos de mensagens consecutivos constituintes de uma informação transmitida de um ponto para outro na rede;
+* **Inexistência de um tempo global** - cada computador tem um *drift* (desvio) do tempo de referência e os *drifts* de dois relógios são distintos, pelo que o tempo entre eles será sempre divergente.
+
+Um modelo de interação pode ser um sistema distruído:
+* **Síncrono** - sistemas onde podem existir limites máximos de tempo conhecidos para tempo de execução dos processos, atrasos na comunicação e variações no tempo de referência. Se o tempo necessário para executar cada passo de um processo tem um limite inferior e um limite superior conhecidos, cada mensagem transmitida por um canal é recebida dentro de um limite de tempo conhecido, cada processo tem um relógio cujo desvio máximo para o tempo de referência é conhecido, podem definir-se *timeouts* para detetar falhas;
+* **Assíncrono** - não possui limites para tempos de execução dos processos ou de transmissão de mensagens, em que o desvio para o tempo de referência pode ser qualquer.
+
+Para, num modelo de interação, conhecer a ordem pela qual ocorreu um conjunto de eventos, pode criar-se um relógio lógico para marcar a sequência de eventos e determinar a ordem correta em que eles aparecem no tempo.
+
+Num **modelo de falhas**, uma avaria é qualquer alteração do comportamento do sistema em relação ao esperado, que pode atingir processos ou canais de comunicação:
+* **Avarias por omissão** - um processo deixa de funcionar em algum ponto do sistema; o canal de comunicação falha:
+  * *Fail-stop* - o processo bloqueou e esse bloqueio pode ser detetado por outros processos;
+  * *Crash* - o processo aparentemente bloqueou, mas não é possível garantir que apenas deixou de responder por estar muito lento ou porque as mensagens que enviou não chegaram;
+  * *Omission* - uma mensagem colocada no *buffer* de emissão nunca chega ao *buffer* de receção;
+  * *Send-omission* - uma mensagem perde-se entre o emissor e o *buffer* de emissão;
+  * *Receive-omission* - uma mensagem perde-se entre o *buffer* de receção e o recetor;
+* **Avarias arbitrárias** (bizantinas) - qualquer erro pode acontecer no processo (não responde, corrompido, responde de forma errada, responde fora de tempo) ou no canal de comunicação (mensagens corrompidas, não entregues, duplicadas, entrega de mensagens inexistentes);
+* **Avarias em tempo** - ocorrem quando o tempo limite para um evento ocorrer é ultrapassado. Em sistemas síncronos, é indicativo seguro de falha.
+
+Num **modelo de segurança** há proteção das entidades do sistema, especificando direitos de acesso que definem que entidades podem aceder, e de que forma, a que recursos. O servidor é responsável por verificar a identidade de quem fez o pedido e verificar se essa entidade tem direitos de acesso para realizar a operação pretendida. O cliente deverá verificar a identifade de quem lhe enviou a resposta, para ver se a resposta veio da entidade esperada. As ameaças são classificadas em relação a:
+* Processos - os protocolos de rede não oferecem proteção para que o servidor saiba a identidade do servidor, e um cliente também não dispõe de métodos para validar as respostas de um servidor;
+* Canais de comunicação - um processo inimigo pode copiar, alterar ou injetar mensagens na rede; a comunicação pode ser violada por processos que observam a rede à procura de mensagens significativas;
+* Negação de serviço - um processo intruso captura uma mensagem de solicitação de serviço e retransmite-a inúmeras vezes ao destinatário, fazendo-o executar sistematicamente o mesmo serviço e ultrapassando a sua capacidade de resposta.
+
+Um **canal seguro** é um canal utilizado para comunicação entre dois processos, em que cada processo pode identificar com cem por cento de confiança a entidade responsável pela execução do outro processo, as mensagens que são transferidas de um proceso para outro são garantidas do ponto de vista da integridade e da privacidade, as mensagens têm garantia de não repetibilidade ou reenvio por odem distinta. **Criptografia** é a técnica de codificar o conteúdo de uma mensagem de forma a esconder o seu conteúdo, sendo necessário que ambos os processos possuam a chave de (des)codificação. A **autenticação** inclui na mensagem uma porção encriptada que contém informação suficiente para identifiar a entidade e verificar os seus direitos de acesso.
+
+Para criar um **modelo de segurança**, analisam-se as principais ameaças, riscos envolvidos e possíveis consequências, e faz-se o balanço entre o custo de proteger o sistema e o risco que de facto as ameaças representam.
+
+O **tempo** precisa de ser medido com elevada precisão e de forma consistente pelos diversos componentes de um sistema, sendo crucial na ordenação de eventos. O tempo real é uma função monótona contínua e crescente. Sistemas distribuídos usam tempo para: registar e observar a localização de eventos na *timeline* e forçar o futuro posicionamento de eventos na *timeline*, através de um *timestamp* (sequência de carateres que marcam a data e/ou tempo no qual um certo evento ocorreu).
+
+Para comparar a duração de vários acontecimentos pode usar-se intervalos de tempo (cadeia de tempo composta por vários intervalos adicionados), *timers*/relógios locais (implementam a abstração da *timeline*).
+
+**Tempo global** implementa a abstração de um tempo universal, através de um relógio que fornece o mesmo tempo a todos os participantes no sistema. **Tempo absoluto** são padrões universalmente ajustados, disponíveis como fontes de tempo externo para o qual qualquer relógio interno se pode sincronizar.
+
+A sincronização pode ser **interna** (relógios têm de obter precisão relativamente a um tempo interno ao sistema) ou **externa** (relógios têm de estar sincronizados com uma fonte externa de tempo universal).
 
 ---
 ---

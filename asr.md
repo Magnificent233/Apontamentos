@@ -30,7 +30,7 @@ Administrar sistemas é um exercício de equilíbrio com paciência, compreensã
 Um *sysadmin* deve conhecer os desafios apresentados por um sistema e definir as regras e procedimentos a aplicar, de acordo com leis, regulamentos, melhores práticas e senso comum. Para um *sysadmin*, um sistema é uma colaboração organizada entre humanos e computadores para resolver um problema ou fornecer um serviço.
 
 Um *sysadmin* deve manter-se invisível, recorrendo a diversas formas para manter o trabalhado fluido e eficiente:
-* Ter um sistema de *troble-tickets* - receber e organizar os pedidos, para não esquecer nenhum requerimento e entender a perceção dos utilizadores da qualidade do serviço;
+* Ter um sistema de *trouble-tickets* - receber e organizar os pedidos, para não esquecer nenhum requerimento e entender a perceção dos utilizadores da qualidade do serviço;
 * Gerir corretamente os pedidos rápidos - ter alguém que lide com as interrupções diárias (tratando-as ou delegando-as para um *helpdesk*), de modo a que os restantes possam trabalhar sem interrupções;
 * Adotar três políticas de poupança de tempo - por exemplo, com códigos para definir as prioridades das tarefas a cumprir;
 * Iniciar cada novo anfitrião num estado conhecido - ter um mínimo denominador comum entre os sistemas, que possa ser usado para recuperar de uma falha;
@@ -52,7 +52,7 @@ O **ciclo de vida de um sistema** integra *conceção*, *implementação* e *man
 
 ### Aula 04
 
-O **sistema de ficheiros** é a forma como o sistema operativo gera o armazenamento dos ficheiros no volume. Deve ser conhecido, tanto por estrutura, limitações (*cluster*: grupo de máquinas que funciona como um único sistema; *grid*: grupo de *clusters*), problemas de portabilidade, retrocompabitilidade e políticas de privilégio.
+O **sistema de ficheiros** é a forma como o sistema operativo gere o armazenamento dos ficheiros no volume. Deve ser conhecido, tanto por estrutura, limitações (*cluster*: grupo de máquinas que funciona como um único sistema; *grid*: grupo de *clusters*), problemas de portabilidade, retrocompabitilidade e políticas de privilégio.
 
 Servidores são equipamento caro e crítico, cuja falha é muito perigosa. Servidores devem manter a integridade dos dados (devendo ter-se um *backup* de um *backup*) e devem ser mantidos seguros (em *data centers* ou ambientes controlados). Para escolher um servidor, **escalabilidade** é o principal princípio a ter em conta: servidores são menos e mais caros, devendo evitar-se *single points of failure*; também deve ter-se em conta: extensibilidade, performance de CPU, performance de I/O, opções de atualização, montagem em bastidores, necessidade de acesso lateral, opções de disponibilidade, contratos de manutenção, opções de gestão. Também é necessário considerar MTBF (*Mean Time Between Failure*), MTTR (*Mean Time to Repair*) e RAID (*Redundant Array of Independent Disks*).
 
@@ -62,7 +62,7 @@ A saúde do disco e da CPU são importantes para equipamentos específicos da *w
 
 ### Aula 05 - easter egg
 
-Para definir uma as *network portion* e *host portion* de um endereço, dispositivos usam um padrão de 32 bits - ***subnet mask*** - que define onde procurar por essas porções num endereço IPv4.
+Para definir as *network portion* e *host portion* de um endereço, dispositivos usam um padrão de 32 bits - ***subnet mask*** - que define onde procurar por essas porções num endereço IPv4.
 
 **DHCP** (*Dynamic Host Configuration Protocol*) - método preferencial de atribuir endereços IPv4 a anfitriões em redes grandes, uma vez que reduz o trabalho de *staff* de apoio a redes e elimina, virtualmente, erros de entrada.
 
@@ -80,9 +80,9 @@ Dados são o cerne das organizações modernas. A perda de dados pode ter causa 
 
 ***Small Computer System Interface*** (SCSI) é uma arquitetura cliente-servidor, em que o cliente é chamado *iniciador* e envia pedidos ao servidor, e o servidor é chamado *alvo* e recebe, processa e responde os pedidos do iniciador. SCSI suporta transferência de grandes quantidades de *input*/*output* de informação em blocos.
 
-***Network Attached Storage*** (NAS) (oposto a *Direct Attached Storage* (DAS))é um dispositivo dedicado ao armazenamento que opera num modo cliente-servidor, conetado ao servidor de ficheiros via LAN. Utiliza os protocolos NFS (*Network File System*) ou CIFS (*Common Internet File System*). Não tem limites de distância, embora possa ter problemas de velocidade e latência, com falhas de segurança.
+***Network Attached Storage*** (NAS) (oposto a *Direct Attached Storage* (DAS)) é um dispositivo dedicado ao armazenamento que opera num modo cliente-servidor, conetado ao servidor de ficheiros via LAN. Utiliza os protocolos NFS (*Network File System*) ou CIFS (*Common Internet File System*). Não tem limites de distância, embora possa ter problemas de velocidade e latência, com falhas de segurança.
 
-***Storage Area Network*** (SAN) é uma rede especializada e dedicada a alta velocidade que junta servidores com armazenamento, em que o armazenamento está separado dos processadores. Tem alta capacidade, disponibilidade, escalabilidade, facilidade de (re)configuração. O FCP (*Fibre Channel Protocol*) está estabelecido como a arquitetura subjacente da SAN. Permit consolidação, integridade e partilha de dados, escalabilidade, *backup* e recuperação de dados, tolerância a desastres.
+***Storage Area Network*** (SAN) é uma rede especializada e dedicada a alta velocidade que junta servidores com armazenamento, em que o armazenamento está separado dos processadores. Tem alta capacidade, disponibilidade, escalabilidade, facilidade de (re)configuração. O FCP (*Fibre Channel Protocol*) está estabelecido como a arquitetura subjacente da SAN. Permite consolidação, integridade e partilha de dados, escalabilidade, *backup* e recuperação de dados, tolerância a desastres.
 
 `fim de matéria para a primeira frequência`
 
@@ -219,6 +219,12 @@ Tanto para prevenir como para corrigir, um administrador de sistemas tem uma pod
 *Loghost* é a máquina que armazena os *logs*; *syslog* é o protocolo que permite visualizar/transmitir mensagens de *logs*; SNMP (*Simple Network Management Protocol*) gera *logs*. Um *log* deve ter, pelo menos, uma *timestamp*, uma origem e informação. Gerir *logs* é importante (para gestão de recursos, deteção de intrusões, resolução de problemas, análise forense), mas dá muito trabalho, ocupa recursos e exige mineração, sendo necessário controlar um equilíbrio.
 
 *Logs* devem informar sobre o acontecimento: o quê (com detalhe), quando, onde, quem esteve envolvido, a origem.
+
+### Aula 10
+
+VPN.
+
+### Aula 11
 
 ---
 ---
