@@ -1,6 +1,6 @@
 # Empreendedorismo Tecnológico
 
-##### Atualizado em 06-05-2022
+##### Atualizado em 13-05-2022
 ###### A partir de: sebenta
 
 ## Aulas de Empreendedorismo
@@ -233,6 +233,8 @@ No princípio da sua criação, as empresas são muito inovadoras e procuram acr
 
 **Tema 7 - Além de *Lean* e *Agile***
 
+---
+
 ### Aula 02
 
 Gestores são aqueles que, numa organização, trabalham com e através de outras pessoas, no planeamento, organização, direção e controlo e que ajudam os outros a fazer o seu trabalho. Para gerir é necessário saber **quem**, **o quê**, **quando**, **onde**, **porquê**, **como**.
@@ -257,4 +259,128 @@ Um gestor deve ter aptidões **conceptuais** (compreender as implicações das s
 
 A **pirâmide de Maslow** define cinco níveis de necessidades: fisiológicas; segurança; relacionamento; estima; auto-realização.
 
-### Aula 03 (04 de maio)
+---
+
+### Aula 03
+
+Uma **empresa** é uma unidade que, com meios materiais, humanos e monetários, atua na lógica das leis do mercado e é condicionada por variáveis ambientais que interagem com o seu desenvolvimento. Através da produção e comercialização de bens/serviços procura satisfazer as necessidades de clientes, dos *stakeholders* e da própria organização (sobrevivência).
+
+***Stakeholders*** são grupos, indivíduos ou organizações que influenciam e são diretamente influenciados pela atividade da empresa e se apoderam de parte do valor criado sob a forma de ordenados, dividendos, impostos, juros, prémios e comparticipações: clientes, sindicatos, fornecedores, credores e investidores, governo, sócios e acionistas, empregados, gestão e comunidade.
+
+As **responsabilidades** de uma empresa lidam com a criação de benefício económico (quanto se ganha) e criação de benefício social (como se ganha).
+
+**Recursos** são meios disponíveis pela empresa para alcançar os objetivos estabelecidos: recursos humanos, financeiros, materiais, organizacionais.
+
+**Exercício de recursos**
+1. 120 trabalhadores da empresa - humanos.
+2. Reservas de lucros de anos anteriores - financeiros.
+3. Três viaturas - materiais.
+4. Ações da empresa valem 12€ - financeiros.
+5. Capital intelectual da empresa - organizacionais.
+6. A política de motivação passar por uma alta participação na tomada de decisão - organizacionais.
+7. O nível de abstenção encontra-se abaixo dos 5% - humanos.
+8. Numa empresa têxtil, 700 metros de tecido - materiais.
+
+**Capacidades** são aptidões da empresa para explorar os seus recursos - conjunto de processos e rotinas na transformação de *inputs* em *outputs*. **Competências** contempla a integração e coordenação de capacidades: nucleares e distintivas.
+
+**Vantagem competitiva** é uma situação em que uma empresa, ou até mesmo um profissional autónomo, é diferenciada favoravelmente do seu concorrente, atraindo clientes a partir de pontos que não podem ser imitados ou aplicados a outros negócios. Para ser saudável, tem de ser valiosa, rara, difícil de imitar e, se possível, insubstituível. Uma **cadeia de valor** revela todas as atividades que a organização faz para gerar valor aos clientes e indica os elos entre elas, que favorecem o crescimento da empresa e, consequentemente, os seus lucros; ou seja, é uma série de processos interligados necessários para viabilizar uma perceção positiva dos clientes a respeito dos produtos/serviços de uma organização.
+
+***Outsourcing*** é um processo usado por uma empresa no qual outra organização é contratada para desenvolver uma certa área da empresa. Atividade para manter as capacidades vitais ou que estimulem novas capacidades, identificando onde a empresa está mesmo a gerar valor para concentrar os esforços e recursos nessas atividades. Permite redução de custos, foco no negócio principal, resolver problemas de capacidade, aumentar a qualidade do serviço, maior acesso a capital intelectual, gerir ambiente de negócio.
+
+Uma empresa está inserida em dois ambientes: **ambiente de tarefa** (clientes, fornecedores, concorrentes, instituições financeiras, meios de comunicação, grupos especiais, grupos internos (slide 20)) e **ambiente contextual** (variáveis políticas, económicas, socioculturais, tecnológias, ambientais, legais (slide 21)). Estes ambientes são avaliados por:
+* **Sete S de McKinsey** - *Shared Values*, *Style*, *Staff*, *Skills*, *Strategy*, *Structure*, *Systems*;
+* **Cinco Forças de Porter** - Concorrência, Clientes, Substitutos, Fornecedores, Entrantes;
+* **Análise PESTAL** - Político, Económico, Sociocultural, Tecnológico, Ambiental, Legal.
+
+**Exercício de meio envolvente (análise SWOT)**
+1. Apoio do governo às PMEs que pretendam exportar, facilitando o acesso ao crédito - Oportunidade.
+2. Devido ao aumento da concorrência dos CTT com serviços semelhantes e mais rápidos, os CTT viram-se obrigados a melhorar a sua imagem e serviço e a diversificar os seus serviços - Ameaça.
+3. A obrigatoriedade de inclusão do NIF nas faturas das empresas de serviços levou as empresas a mudarem os sistemas informáticos - Fraqueza.
+4. Para as mulheres dos dias de hoje, com pouco tempo para serem donas de casa, a máquina de cozinha Bimby tornou-se a maior aliada - Oportunidade.
+5. O preço dos combustíveis originou aumentos significativos nos preços finais praticados pelas empresas de distribuição - Ameaça.
+6. O aumento do rendimento dos consumidores e a maior incidência de mão de obra feminina - Oportunidade.
+7. A fibra ótica permitiu serviços de internet mais rápidos e de melhor qualidade e potenciaram melhores serviços de internet - Oportunidade.
+8. Uma empresa viu-se perante uma situação de greve convocada pelo sindicato dos trabalhadores devido a não pagar horas extraordinárias - Ameaça.
+
+As empresas são classificadas por:
+* **Setor de Atividade** - primário (exploração de recursos), secundário (atividades de transformação e construção), terciário (prestação de serviços, comércio, distribuição e transportes), quaternário (geração e partilha de informação);
+* **Dimensão** - PME, micro, pequena, grande;
+* **Propriedade do Capital** - públicas, privadas, cooperativas;
+* **Forma Jurídica** - individuais, coletivas; limitada, ilimitada, solidária, subsidiária;
+* **Atividade Económica** - comercial, industrial;
+* **Objetivo Final** - com/sem fins lucrativos.
+
+---
+
+### Aula 04
+
+**Planeamento** é o processo desenvolvido para alcançar uma situação desejada de um modo mais eficiente, eficaz e efetivo com a melhor concentração de esforços e recursos pela organização.
+
+Para fixar **objetivos** e metas, deve usar-se o SMART: *Specific*, *Measurable*, *Achievable*, *Relevant*, *Time Based*. Os objetivos devem ser **consistentes** e **coerentes** (harmoniosos entre si e consistentes com a estratégia global); **hierárquicos** (definir os mais importantes e os subordinados); **económicos**; **sociais**; **pessoais**. A gestão por objetivos é feita em cinco passos:
+1. Revisão dos objetivos organizacionais;
+2. Estabelecimento dos objetivos do trabalhador;
+3. Monitorização do progresso;
+4. Avaliação do desempenho;
+5. Recompensa.
+
+Os **planos** podem ser **políticas**, **procedimentos**, **regras/regulamentos**, **orçamentos**, **programas**, **planos contingentes**. São caracterizados por **amplitude** (estratégico, tático, operacional), **período de tempo** (curto, médio, longo prazo), **especificidade** (direcional, específico), **frequência de uso** (uso único, constante).
+
+**Exercício de tipos de plano**
+1. Plano realizado para um período de um ano ou menos - curto prazo.
+2. Plano claramente definido e que não dá margem para discricionariedade - estratégico.
+3. Plano desenvolvido para uma situação particular e eventual - específico, de uso único.
+4. Plano aplicado a toda a organização que estabelece os objetivos globais e os cursos de ação para os atingir - estratégico.
+5. Plano que fixa as linhas gerais de atuação mas que dá folga para se ajusta perante mudanças nas situações - tático.
+6. Plano realizado para um período entre um e três anos - médio prazo.
+7. Plano que especifica em detalhe os objetivos imediatos e ações a serem desenvolvidas por uma dada tarefa ou equipa - operacional.
+8. Plano que fornece guias para situações que ocorrem repetidamente - constante.
+9. Plano que desdobra as ações globais para cada uma das áreas funcionais - tático.
+10. Plano realizado para um período superior a três anos - longo prazo.
+
+As **decisões** podem ser **não programadas** (problema não estruturado, gestão de nível topo) ou **programadas** (problema estruturado, gestão de nível base). São condicionadas por **certeza** (informação necessária sobre custos e benefícios de cada alternativa), **risco** (probabilidade dos resultados das alternativas), **incerteza** (não tem informação sobre alternativas), **ambiguidade** (objetivos não claros). Podem ser **racionais** (pensar primeiro), **intuitivas** (ver primeiro) ou **improvisadas** (fazer primeiro). **Decisões tomadas em grupo** permitem maior precisão na deliberação, transmissão e partilha de informação, aumento da motivação, melhor coordenação e controlo das atividades seguintes à decisão, possibilidade de maior criatividade; no entanto, o tempo gasto é longo, pode cercear a participção e a criatividade dos membros, pode levar a não ouvir a opinião do grupo, tem tendência a pulverizar responsabilidades.
+
+**Sistemas de informação** são conjuntos organizados de pessoas, procedimentos e tecnologias que, quando executados, recolhem dados, transformam em informação e disseminam-na para para apoio à tomada de decisões e controlo das organizações. Podem ser **transacionais**, **gerenciais** ou **estratégicos**.
+
+**Organizar** consiste em dispor as pessoas e os recursos da empresa de modo a que, com máxima eficiência e eficácia, consiga atingir os objetivos. **Estruturar** é o sistema formal de relações que especifica os papéis, as relações entre as pessoas e os procedimentos organizacionais que permitem a ação coordenada dos seus membros. **Departamentalizar** é agrupar, de acordo com um critério específico de homogeneidade, as aividades e correspondentes recursos em unidades organizacionais.
+
+Um **organograma** mostra a divisão de trabalho, relações superior-subordinados, natureza do trabalho, nível do cargo desempenhado. Não mostra o grau de responsabilidade e autoridade nem todos os canais de comunicação. Uma **organização informal** pode assumir comportamentos que distorcem o funcionamento da estrutura formal - informações podem fugir dos circuitos normais de comunicação, resistência a mudanças, estratégias individuais de luta por poder ou preservação de condições adquiridas. Um gestor deve estar sensibilizado e treinado para trabalhar com a organização informal, podendo colher benefícios superiores aos custos que terá de suportar.
+
+**Amplitude de controlo** concentra a tomada de decisões numa ou num número reduzido de pessoas, capazes de determinar as ações de terceiros. Uma **unidade de comando** permite que haja um único superior a quem os subordinados reportam, facilitando a compreensão da cadeia de comando. A diferenciação pode ser **horizontal** (com departamentalização, agrupando os profissionais para levarem a cabo as diferentes tarefas) ou **vertical** (com hierarquização, determinada pela amplitude de controlo e distribuição de autoridade).
+
+**Formalização** traduz o grau em que, numa organização, existem regras e regulamentos claros e estabelecidos que dirigem os comportamentos de trabalho dos seus membros e a medida em que existe confiança nas comunicações formais e escritas que seguem a cadeia de comando. Caso se conceda pouca liberdade, os membros podem sentir-se alienados, oprimidos e burocratizados, seguindo regras só porque elas existem. Caso se conceda muita liberdade, o comportamento pode tornar-se errático e irrelevante.
+
+**Complexidade** refere-se ao número de níveis na hierarquia, ao número de departamentos ou funções, ou ao número de locais onde se encontra presente. **Centralização** traduz o grau em que a tomada de decisão se concentra num só local da organização, incluindo apenas a autoridade formal. **Delegação** é atribuir a outra pessoa uma missão que lhe foi confiada, com as responsabilidades e respetiva autoridade necessárias. Permite maior rapidez na tomada de decisões, treino e desenvolvimento pessoal, desempenhar tarefas e funções mais complexas, aumenta o nível de motivação, conduz a melhores decisões e a trabalho melhor executado. No entanto, pode haver perda de controlo e fracasso se o grau de responsabilidade e autoridade não por perfeitamente definido e entendido.
+
+**Autoridade** é o direito de comandar, decidir, dar ordens para a execução de tarefas e comportamentos e controlá-los no sentido da prossecução dos objetivos da organização. Autoridade formal está definida e inerente a uma única função. **Responsabilidade** é a obrigação de se empenhar da melhor forma possível na realização das funções que foram atribuídas. A autoridade pode ser:
+* **hierárquica** (cadeia de comando) - simplicidade, divisão clara de autoridade, rapidez na ação; reduzido aproveitamento dos especialistas, excesso de esforço do pessoal-chave, dependência de poucas pessoas-chave;
+* De ***staff*** (especialistas consultivos) - apoio de especialistas, liberta executivos de análises pormenorizadas; confusão de funções, redução do poder dos especialistas;
+* **Funcional** (especialização do trabalho) - especialização das chefias, comunicações diretas e rápidas, descentralização nas decisões; submissão a diferentes autoridades, pode gerar conflitos, perda de visão da empresa como um todo pelos chefes das áreas.
+
+A **estrutura organizacional** pode ser:
+* **Simples** - as responsabilidades da gestão encontram-se concentradas no gestor e não existe uma clara definição das tarefas de cada elemento;
+* **Funcional** - todas as atividades homogéneas são agrupadas, constituindo uma função;
+* **Divisional** - divisão de tarefas com base na diversidade de produtos, serviços, mercados ou processos da empresa, por **produto**, **cliente**/**mercado**, **área georgráfica**, **processo**;
+* **Matricial** - coordenação dupla, ou seja, dupla incidência de autoridade, que permite aproveitamento de recursos;
+* **Em Rede** - redução das atividades secundárias das empresas, com especialização nas suas competências centrais.
+
+**Exercício de tipo de estruturas**
+* Empresa com grande variedade de produtos -  divisional por produto.
+* Poucas linhas de produto e ambiente estável - simples.
+* Necessidade de grande flexibilidade e aproveitamento de recursos - rede.
+* Várias filiais espalhadas pelo país - divisional por área geográfica.
+* Organização virtual - rede.
+* Processo de fabrico complexo - matricial.
+* Carteira de clientes diversificada - divisional por mercado/cliente.
+* Empresa no início de atividade - simples.
+
+**Mudança organizacional** é o processo de modificação da organização existente, de pessoas, estrutura ou tecnologia para aumentar a eficácia organizacional. A mudança pode ser **planeada** ou **não planeada**, **constante** ou **imprevisível**; e pode falhar por motivos psicológicos (resistência por parte das pessoas) ou organizacionais (condução incorreta dos processos de mudança). Para evitar a resistência a mudanças, podem utilizar-se métodos como: educação e comunicação; participação e envolvimento; facilitação e apoio; negociação e acordo; manipulação e cooperação; coerção (implícita ou explícita).
+
+**Inovação** depende do grau de aceitação do mercado, é criar novidade e gerar valor. Pode ser aplicada:
+* No **processo** - mudanças significativas nos métodos de produção e distribuição;
+* No **produto** - mudanças significativas nas potencialidades de produtos e serviços;
+* Na **publicidade** - novos métodos de *marketing*, incluindo *design* de produto e embalagem, promoção do produto e colocação;
+* Na **organização** - mudanças em práticas de negócios, na organização do local de trabalha ou nas relações externas da empresa.
+
+---
+
+### Aula 05

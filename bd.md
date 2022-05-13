@@ -356,7 +356,7 @@ As dependências funcionais representam restrições de integridade e, portanto,
 
 ### Folha 1
 
-```
+```SQL
 1. SELECT * FROM Empregado
 2. SELECT * FROM Empregado WHERE Categoria = 'Artista'
 3. SELECT Nome, Categoria FROM Empregado
