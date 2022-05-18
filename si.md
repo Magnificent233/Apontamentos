@@ -1,6 +1,6 @@
 # Segurança Informática
 
-##### Atualizado em 06-05-2022 (faltam teóricas)
+##### Atualizado em 18-05-2022 (faltam teóricas)
 ###### A partir de: sebenta, exercícios das aulas práticas
 
 ## Aulas Teóricas
@@ -271,6 +271,32 @@ A exploração de **erros de realização** de código ou implementação defici
 * **Vulnerabilidades de transbordamento de memória** (*memory overflow*) - responsáveis por grande parte dos problemas de segurança em sistemas informáticos. O ataque consiste em provocar o transbordamento de memória para locais que podem alterar o fluxo do programa de modo lucrativo para o atacante, nomeadamente, para permitir a execução de código malicioso - seja pela atribuição de um valor errodo a determinada variável ou pela modificação dos endereços de contexto local ou de retorno;
   * Parte da solução consiste em colocar canários a guardar os valores dos ponteiros; se alguém tentar alterar os ponteiros, quase de certeza o canário é modificado. Antes de se usar o ponteiro de retorno ou de contexto local, o(s) canário(s) é(são) verificado(s) e o código só é executado se os canários não tiverem sido modificados;
 * **Vulnerabilidades associadas a cadeias de formato** - usa dados de entrada com códigos de controlo, que podem forçar o programa a revelar informação acerca de endereços de memória ou a injetar código.
+
+---
+
+### Aula 11
+
+A **informação arquitetural** consiste na descrição das máquinas que fazem parte de uma rede e qual a função que nela desempenham, da qual depende o normal funcionamento de uma rede, bem como o sucesso de potenciais ataques. Os registos dos domínios DNS não fornecem apenas serviços de resolução de nomes, mas também serviços informativos para gestão de rede, como os nomes dos endereços iP para induzir a sua função na rede. O procedimento de um atacante é semelhante a:
+* Varrimento aos endereços IP (IP *sweep*) para saber todos os endereços que respondem a pedidos;
+* Perguntar ao DNS quais os nomes dos endereços obtidos, de modo a deduzir o papel desempenhado pelas máquinas respetivas.
+
+No sentido direto, o serviço de requerir uma ligação na Internet com o URL (*Uniform Resource Locator*) chama-se **resolução de nome DNS**. No sentido contrário, **resolução de nomes inversa** (*reverse name lookup*). O DNS é também um polo de atração para ataques ou atividades maliciosas:
+* Explorando o funcionamento normal, um sujeito mal intencionado pode obter informação arquitetural de uma rede;
+* Se o serviço for comprometido, pode permitir personificação de entidades na Internet;
+* Se o serviço for atacado de modo a negar o serviço que fornece, outras aplicação Internet falham;
+* Os servidores DNS existem em todo o lado e podem ser usados na amplificação de ataques distribuídos e refletidos.
+
+Uma das formas mais simples de usar o DNS contra utilizadores consiste em registar e divulgar nomes DNS enganadores, de modo a redirecionar os clientes para *sites* maliciosos. Este ataque pode ser elaborado por **DNS *spoofing*** por envenenamento da *cache* DNS (*DNS cache poisoning*): todos os servidores DNS têm uma memória (*cache*) onde guardam os registos dos últimos pares que traduziram. Quando recebem um pedido de resolução de nome ou enereço, um servidor DNS procura primeiro nos seus registos e, caso não possua o que lhe diz respeito, faz uma *query* com um identificador a outro servidor - só que os pedidos e respostas são feitos sobre UDP (*User Datagram Protocol*) e autenticadas de forma fraca. Algumas soluções passam por utilizar identificadores aleatórios entre pedidos ou utilizar chaves públicas e certificados para autenticar clientes, servidores e conteúdos nas comunicações DNS, com custos computacionais elevados.
+
+As comunicações entre cada dois nós numa rede *Ethernet* fazem-se por um endereço *Medium Access Control* (MAC): no cabeçalho do pacote IP vai o endereço IP destino da máquina terminal; no cabeçalho da trama *Ethernet* vai o endereço MAC destino. Se não tiver o MAC destino, envia um pedido ARP (*Address Resolution Protocol*) para o endereço *broadcast* e a máquina com o endereço IP em questão envia-lhe o seu MAC. Para envenenar a cache ARP de cada sistema operativo, o atacante faz chegar uma resposta a um pedido ARP com informação falsa ao recetor.
+
+A **confidencialidade de interações em rede** pode ser analisada tendo em conta o **tráfego** (esconder os interlocutores finais de uma comunicação) ou os **conteúdos** (esconder dados úteis trocados entre interlocutores, pela proliferação de protocolos e aplicações de segurança). A proteção dos interlocutores é normalmente conseguida através de mecanismos de encapsulamento e desencapsulamento de pacotes em túneis cifrados - por exemplo, **projeto Tor**, esforço na proteção no acesso a servidores ou redes *peer-to-peer* para *file sharing*. O risco associado à possibilidade de inspeção de tráfego varia de acordo com o que é transmitido, causando maior preocupação a possibilidade de alguém obter palavras ou frases-chave.
+
+---
+
+### Aula 12
+
+aula 09 - cap 3.2 +
 
 ---
 ---

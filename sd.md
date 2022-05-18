@@ -1,6 +1,6 @@
 # Sistemas Distribuídos
 
-##### Atualizado em 09-05-2022
+##### Atualizado em 16-05-2022
 ###### A partir de: sebenta, exercícios das aulas teóricas e práticas
 
 ## Aulas Teóricas
@@ -376,6 +376,51 @@ Para comparar a duração de vários acontecimentos pode usar-se intervalos de t
 **Tempo global** implementa a abstração de um tempo universal, através de um relógio que fornece o mesmo tempo a todos os participantes no sistema. **Tempo absoluto** são padrões universalmente ajustados, disponíveis como fontes de tempo externo para o qual qualquer relógio interno se pode sincronizar.
 
 A sincronização pode ser **interna** (relógios têm de obter precisão relativamente a um tempo interno ao sistema) ou **externa** (relógios têm de estar sincronizados com uma fonte externa de tempo universal).
+
+---
+
+### Aula 10
+
+Na **sincronização interna** entre dois processos num sistema distribuído síncrono são conhecidos os limites máximo e mínimo para o envio de mensagens, assim como para o desvio do relógio e para o tempo de execução dos processos. Se um processo acertar o seu relógio para $t + (max + min) / 2$, o desvio (*skew*) entre dois relógios será, no máximo, $(max - min) / 2$. Para acertar um relógio, obtém-se UTC e corrige-se o *software* do relógio, tendo em conta que: o tempo nunca anda para trás; o valor lido do relógio físico deverá ser escalado pelo *software* de forma a ir atrasando lentamente, como uma função crescente.
+
+O **algoritmo de Cristian** (sistemas assíncronos) é probabilístico, em que a sincronização é conseguida se o RTT (*Round Trip Time*) é pequeno quando comparado com a exatidão desejada e a exatidão é tanto maior quanto o tempo de transmissão está perto do mínimo. Obtém-se o UTC e corrige-se o *software* do relógio, estimando-se o tempo de propagação da mensagem: $p = (T_1 - T_0 - h) / 2$. Fazem-se várias medições para obter o valor de $T_1 - T_0$, descartando valores acima ou abaixo de determinados limites. Problemas possíveis: ponto único de falha e congestionamento (*bottleneck*); servidores em falha ou maliciosos.
+
+No **algoritmo de Berkeley** (sincronização interna), escolhe-se um computador para ser o *master*, que contacta periodicamente os outros computadores (*slaves*) e faz uma estimativa do tempo local de cada *slave*, baseado no RTT. O *master* calcula o tempo médio de todos os computadores, ignorando valores de transmsisão demasiado elevados e máquinas com tempos muito diferentes dos outros, e envia a cada computador o valor, positivo ou negativo, pelo qual o seu relógio deve ser ajustado. É um algoritmo preciso (depende do RTT), com tolerância a falhas (se um *master* falhar, elege outro).
+
+O ***Network Time Protocol*** (NTP) permite sincronizar um elevado número de máquinas, lidando com avarias de servidores e usando autenticação para verificar se a informação vem de fontes fiáveis. A sincronização é feita em modo:
+* ***Multicast*** - LANs de alta velocidade, em que um ou mais servidores faz(em) periodicamente *multicast* do seu tempo para outros servidores e os recetores acertam os seus relógios assumindo um pequeno atraso de transmissão;
+* ***Procedure call*** - similar ao algoritmo de Cristian, os clientes solicitam o tempo de um ou vários servidores e estes enviam o valor do seu relógio;
+* ***Symmetric*** - mais exato, em que pares de processos solicitam o tempo uns aos outros. Para cada par de processos calcula-se um *offset*, $o$, que corresponde à diferença entre os dois relógios, e um *delay*, $d$, que é o tempo total de transmissão das duas mensagens.
+
+Para a **ordenação de relógios lógicos**, a noção mais intuitiva é a **ordem física**, em que os eventos ocorrem numa linha de tempo real, que pode ser capturada se for atribuído a todos os eventos um *timestamp* com o valor de um relógio global. A **noção de precedência** (*Happened Before*, Lamport) define que se $a$ e $b$ são eventos no mesmo processo e $a$ ocorre antes de $b$, então $a → b$ ($a$ precede $b$). A **ordem FIFO** (*First In First Out*) é assegurada pela atribuição de um número de sequência local, em que quaisquer duas mensagens enviadas pelo mesmo processo são entregues pela ordem de envio a qualquer outro processo. A **ordenação causal** garante que as mensagens enviadas por processos diferentes são entregues pela "ordem correta" no recetor; a informação sobre a sequência lógica dos eventos é incluída nas mensagens, mas não garante que as mensagens dos processos concorrentes sejam ordenadas. A **ordenação total** garante que quaisquer duas mensagens entregues a qualquer par de recetores são entregues na mesma ordem para ambos - a ordem de entrega pode ser arbitrária, desde que seja a mesma em todos os processos.
+
+Os **algoritmos de ordenação causal** pretendem assegurar que as mensagens são entregues à aplicação de forma a respeitar a ordem causal. Quando uma mensagem é enviada, leva a lista "passado" do seu processo emissor no campo de controlo e, depois de enviar a mensagem, o emissor adiciona essa mensagem à sua lista; quando uma mensagem é recebida, é verificado o seu campo de controlo: as mensagens que se encontram nessa lista que ainda não foram entregues podem ser imediatamente entregues, mesmo que ainda não tenham sido recebidas. Depois de as mensagens terem sido entregues à aplicação, a mensagem recebida é adicionada à lista "passado" do recetor, garantindo que as mensagens enviadas serão todas entregues mesmo que as anteriores se percam (a última carrega todas as outras como garantia). Este protocolo é impraticável, porque o campo de controlo pode crescer indefinidamente, contendo muitas mensagens. Para o resolver, guarda-se nas listas "passado" apenas os identificadores das mensagens, assumindo-se um terceiro componente responsável por garantir a entrega; ou seja, se uma mensagem for perdida, é de alguma forma retransmitida até ser recebida por todos os recetores pretendidos.
+
+Os **algoritmos de ordenação total** pretendem assegurar que todas as mensagens são entregues a todos os recetores pela mesma ordem, através de um **sequenciador** - processo especial com a tarefa de ordenar todas as mensagens. Todos os emissores enviam as suas mensagens para o sequenciador, que atribui um número de sequência único a todas as mensagens e as retransmite para todos os recetores pretendidos.
+
+Não é importante qual o valor do tempo real, mas apenas que os processos concordem sobre a ordem pela qual os eventos ocorrem (tempo lógico). Um **relógio lógico** é um contador em *software* que implementa uma função monótona crescente - cada processo $p$ terá um relógio $c$, que será usado para atribuir o tempo (*timestamp*) em que ocorre um evento. É necessária uma forma de medir o tempo tal que a cada evento $a$ possa ser atribuído um tempo $c(a)$ com que todos os processos concordem.
+
+O algoritmo de Lamport permite corrigir os relógios, de forma a verificar-se a ordem causal. Sejam $L_i$ o relógio lógico do processo $p_i$ e $L_i(e)$ o *timestamp* do evento $e$ no processo $p_i$. $L_i$ é incrementado antes da atribuição de um *timestamp* a qualquer evento em $p_i$: $L_i := L_i + 1$. Quando o processo $p_i$ envia a mensagem $m$, anexa (*piggybacks*) a $m$ o valor $t = L_i$ (após o ter incrementado); ao receber uma mensagem $(m, t)$, um processo $p_j$ calcula $L_j := max (L_j, t)$, incrementa $L_j$ e atribui um *timestamp* ao evento de receção da mensagem.
+
+Pode criar-se uma **ordem total** para os eventos, em que todos os pares de eventos distintos sejam ordenados tendo em conta o identificador do processo onde ocorre o evento. Sejam $e$ um evento que ocorre em $p_i$, com *timestamp* $t_i$ e $e'$ um evento que ocorre em $p_j$ com *timestamp* $t_j$; definem-se os seus tempos lógicos globais como sendo $(t_i, i)$ e $(t_j, j)$.
+
+Um **relógio vetorial** para um sistema com $N$ processos é um *array* com $N$ inteiros. Cada processo tem o seu próprio relógio vetorial, $V_i$, que é usado para fazer o *timestamp* dos eventos locais. Inicialmente, $V_i[j] = 0$; imediatamente antes de $p_i$ atribuir um *timestamp* a um evento, incrementa o valor da posição $i$ ($V[i] := V[i] + 1$); $p_i$ inclui o valor $t = V_i$ em cada mensagem que envia; quando $p_i$ recebe um *timestamp* $t$ numa mensagem, faz $V_i[j] := max (v_i[j], t[j]) e aplica incrementação.
+
+**Exercício**
+
+    P3  z1 (0, 0, 1)                         z2 (1, 3, 2)        z3 (1, 3, 3)
+         \                                  /
+    P2    x1 (0, 1, 1)    x2 (1, 2, 1)     x3 (1, 3, 1)          x4 (1, 4, 1)
+                         /                                      /
+    P1                  y1 (1, 0, 0)      y2 (2, 0, 0)         y3 (3, 4, 1)
+
+**Exercício**
+
+    P1           z   u   
+                /     \
+    P2    x    /       y
+         /    /
+    P3  w    k
 
 ---
 ---

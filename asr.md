@@ -1,6 +1,6 @@
 # Administração de Sistemas em Rede
 
-##### Atualizado em 06-05-2022
+##### Atualizado em 17-05-2022
 ###### A partir de: sebenta, exercícios das aulas práticas
 
 ## Aulas Teóricas
@@ -210,8 +210,8 @@ Conclusões:
 * Deve haver redundância total, incluindo uma localização redundante.
 
 Tanto para prevenir como para corrigir, um administrador de sistemas tem uma poderosa ferramenta: ***logs***. *Logs* são registos dos acontecimentos que ocorrem num sistema, com demasiada informação "inútil" que necessita de ser filtrada. Por omissão, os *logs* são escritos localmente, embora possam ser feitos num servidor ou para um servidor. Podem ser classificados como:
-* De informação - permitem a utilizadores e administradores saber que algo benigno ocorreu;
-* Debug - geradas de sistemas de *software*, ajudam *developers* a identificar e resolver problemas na execução de código;
+* Informação - permitem a utilizadores e administradores saber que algo benigno ocorreu;
+* *Debug* - geradas de sistemas de *software*, ajudam *developers* a identificar e resolver problemas na execução de código;
 * Aviso - ocorrem em situações em que haja coisas necessárias ou em falta para um sistema, mas sem impactar a sua operação;
 * Erro - transmitem erros que ocorrem a diversos níveis de um sistema, sendo necessária investigação para chegar à causa raiz do erro;
 * Alerta - indicam que algo interessante aconteceu.
@@ -220,11 +220,17 @@ Tanto para prevenir como para corrigir, um administrador de sistemas tem uma pod
 
 *Logs* devem informar sobre o acontecimento: o quê (com detalhe), quando, onde, quem esteve envolvido, a origem.
 
+---
+
 ### Aula 10
 
 VPN.
 
+---
+
 ### Aula 11
+
+Análise do trabalho prático.
 
 ---
 ---
