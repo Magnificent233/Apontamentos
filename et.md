@@ -1,6 +1,6 @@
 # Empreendedorismo Tecnológico
 
-##### Atualizado em 13-05-2022
+##### Atualizado em 21-05-2022
 ###### A partir de: sebenta
 
 ## Aulas de Empreendedorismo
@@ -384,3 +384,60 @@ A **estrutura organizacional** pode ser:
 ---
 
 ### Aula 05
+
+**Valor** é um conceito subjetivo, relativo, intangível e inerente.
+
+Definir o objetivo de uma ação é o garante que: se escolhe a melhor estratégia para chegar lá, se direciona o foco, metrificam os indicadores corretos, nivelam as expectativas e se sabe quando se teve sucesso. Um **bom planeamento** permite desenrolar as ideias e organizar o caos, para que o caminho para o objetivo fique livre e, mesmo que algo inesperado aconteça, se tenha o necessário para reajustar a ação. Com planeamento, os gadtos são direcionados para onde as possibilidades de sucesso são maiores, o passo seguinte está sempre definido, sabe-se sempre quão bom está o resultado, a execução do plano está alinhada com todos os participantes, ao haver mudanças sabe-se ao certo o que é afetado, as decisões são tomadas racionalmente, focam-se determinadas causas e depende-se apenas da qualidade estratégica.
+
+Sinais de que algo não vai correr como esperado:
+* Cliente desesperado - falta de paciência, elevadas expectativas, incumprimento;
+* Desrespeito do cliente pelo processo;
+* Substima do resultado final;
+* Cliente arrogante, mal-educado, desorganizado, incapaz de tomar decisões.
+
+**Condicionamento operativo:** se uma ação é recompensada, esta torna-se o padrão.
+
+**Direção**: processo de afetar ou influenciar o comportamento dos outros. **Motivar**: processo pelo qual os esforços de uma pessoa são canalizados, dirigidos e sustentados para concretizar um determinado objetivo. As teorias das necessidades humanas (pirâmide de Maslow, teoria de Herzberg, teoria de Alderfer, teoria de McClelland) explicam o processo de motivação, com acento nas necessidades internas e comportamentos que resultam do esforço para reduzir ou satisfazer essas necessidades.
+
+Na prática, motivar é o processo de fornecer aos membros de uma organização a oportunidade de satisfazer as suas necessidades e cumprir os seus objetivos, através de um comportamento que se traduza no máximo de produtividade para a organização. Aumentar ao máximo a área de coincidência entre os objetivos individuais e coletivos: sistema de remuneração e prémios; definição, enriquecimento e alargamento de cargos e funções; participação nas decisões; horários flexíveis; trabalho repartido/rotativo; círculos de qualidade.
+
+**Chefiar** é fazer com que as pessoas façam o que é preciso; **liderar** é fazer com que as pessoas queiram fazer o que é preciso. Gestão tem foco no negócio, produção e ativos (metas, objetivos, políticas, procedimentos); liderança tem foco nas pessoas, direção e futuro (propósito, mudanças, inovação, sucessão).
+
+De acordo com a universidade de Iowa, a liderança pode ser de estilo **democrático** (envolver os subordinados nas decisões, orientando, apoiando e motivando com base em recompensas positivas); **autocrático** (ordena os métodos de trabalho, em que todas as decisões se direcionam na prossecução dos lucros); ***laissez-faire*** (dá liberdade ao grupo para tomar decisões e completar o trabalho da forma que acharem mais conveniente). De acordo com a universidade de Michigan, o líder pode ser **orientado para as pessoas** (valoriza relações interpessoais, preocupação com necessidades dos empregados, tolerante) ou **orientado para as tarefas** (ênfase na produção e aspetos técnicos).
+
+A liderança pode ser **transacional** (guiar e motivar os colaboradores na direção dos seus próprios objetivos) ou **transformacional** (estimular e inspirar os seguidos para transcenderem os seus objetivos pessoais em favor da organização).
+
+Um líder empreendedor deve ser justo, honesto, capaz de lidar com emoções, assertivo, proporcionar *feedback*, conhecer as suas competências e limitações, capaz de motivar, empático e de confiança, atuar para a realização dos objetivos e disponível para partilhar sucessos.
+
+**Cultura organizacional** pode traduzir-se como um conjunto de valores, crenças e hábitos partilhados pelos membros da organização que interagem com a sua estrutura formal, produzindo normas de comportamento. Refere-se ao perfil de uma organização e valores partilhados pelos seus membros que influenciam comportamentos dos indivíduos e orientam a forma como eles interagem e se interrelacionam. Uma empresa com cultura ttóxica tem funcionários desmotivados, alto *turnover*, falta de empatia e confiança, resistência à inovação.
+
+**Clima organizacional** prende-se com: estado de espírito, grau de satisfação, lealdade e compromisso, perspetiva temporal de curto/médio prazo, avaliado como positivo/negativo, bom/mau. **Cultura organizacional** prende-se com: personalidade da organização, grau de motivação e compromisso, perspetiva temporal de médio/longo prazo, sem avaliação possível.
+
+Comunicação interpessoal e linguagem não verbal englobam o uso da linguagem corporal, quando o indivíduo é capaz de se expressar através do seu corpo, por expressões, posturas e gestos de carácter inconsciente. As barreiras à comunicação podem ser:
+* Técnicas - relacionadas com o canal de comunicação, fator tempo e excesso de informação;
+* Linguagem - vocabulário utilizado e semântica;
+* Psicológicas - distorção das informações, nomeadamente, na codificação e descodificação de mensagens, questões de ordem emocional.
+
+**Controlo**: conjunto de técnicas e metodologias destinadas a assegurar, conjuntamente com a (re)organização e (re)planeamento, uma constante adaptação do conjunto das atividades à evolução do meio ambiente:
+1. Estabelecer objetivos e padrões;
+2. Medir - por observação pessoal, relatórios (estatísticos, orais, escritos) para determinar o que os empregados têm de fazer;
+3. Comparar desempenho com padrões estabelecidos;
+4. Corrigir.
+
+**Lócus de controlo** é um conceito de Julian Rotter (1966) que define que a forma como se entendem as circunstâncias molda as reações sobre elas: **lócus interno** (responsabilidade pessoal), **lócus externo** (responsabilidade de terceiros).
+
+**Padrões** (*standards*) são níveis de qualidade ou quantidade pré-estabelecidos para orientações de desempenho que, para serem medidos e diminuírem a subjetividade na avaliação devem, tanto quanto possível, ser numéricos:
+* **Tempo** - tempo gasto para fazer uma determinada tarefa ou produto;
+* **Produtividade** - quantidade de produção ou de serviços num determinado período de tempo;
+* **Custo** - montante de dinheiro associado à produção de bens ou serviços;
+* **Qualidade** - nível de perfeição desejado;
+* **Comportamento** - tipo de comportamento desejado nos trabalhadores da organização.
+
+**Qualidade** está na perceção criada pelos clientes, com base na promessa (aquilo que a empresa pretende com o produto/serviço) e na expectativa (aquilo que o cliente cria no seu imaginário sobre as possibilidades do produto). A forma como uma empresa cria e expõe a promessa é o que cria a expectativa na cabeça dos consumidores.
+
+O controlo pode ser feito com estratégias de **punição** (inibir a repetição do comportamento punido) e **reforço** (induzir a repetição do comportamento recompensado).
+
+A gestão da qualidade envolve toda a organização, com garantia de qualidade no controlo do processo e controlo de qualidade na inspeção e ensaio. O controlo da qualidade pode ser feito por círculos de qualidade, envolvimento dos trabalhadores, *benchmarking* e melhoria contínua, para:
+* Focar a atenção no cliente, adequando os produtos e serviços às suas necessidades e desejos;
+* Reduzir todos os desperdícios e erros para evitar custos desnessários;
+* Aumentar a produtividade e competitividade.
