@@ -1,6 +1,6 @@
 # Administração de Sistemas em Rede
 
-##### Atualizado em 17-05-2022
+##### Atualizado em 21-05-2022
 ###### A partir de: sebenta, exercícios das aulas práticas
 
 ## Aulas Teóricas
@@ -88,15 +88,21 @@ Dados são o cerne das organizações modernas. A perda de dados pode ter causa 
 
 ### Aula 07
 
-NTP (*Network Time Protocol*) - protocolo que permite sincronizar os tempos do sistema com os da aplicação (por exemplo, `crontab`, que permite a um anfitrião executar tarefas num horário predeterminado).
+NTP (*Network Time Protocol*) - protocolo que permite sincronizar os tempos do sistema com os da aplicação (por exemplo, `crontab`, que permite a um anfitrião executar tarefas em horários predeterminados, o que facilita a automação de tarefas de um administrador de sistemas).
 
-Cada sistema operativo tem uma forma específica de criação de um utilizador local, tendo em conta nome do utilizador, palavra-passe, grupos e nível de acesso.
+A **gestão de utilizadores** consiste em fazer a interface entre humanos e computadores, exigindo gestão de contas de utilizadores (novos registos, eliminação de antigos), conforto e conveniência, serviços de suporte, problemas éticos, confiança e segurança. A gestão de utilizadores é importante porque os sistemas são utilizados por humanos, que são tanto amigos como inimigos. Cada sistema operativo tem uma forma específica de criação de um utilizador local, tendo em conta nome do utilizador, palavra-passe, grupos e nível de acesso. Cada conta de utilizador tem um identificador de utilizador único (UID), atribuído aquando da criação da conta, através do qual o sistema operativo controla o acesso a ficheiros e diretorias do sistema de ficheiros.
 
-**Desastre** - qualquer evento catastrófico que cause uma falha massiva que afete um edifício ou local inteiros. Para se criar um plano de recuperação de desastre, é necessário fazer uma avaliação de risco.
+NIS (*Network Information Service*) fornece gestão centralizada de contas de utilizadores quando se tem múltiplos sistemas que precisam das mesmas contas de utilizadores - através de ficheiros `passwd` e `shadow` comuns.
+
+**Operações Linux sobre utilizadores:** `useradd options username` permite inserir um novo utilizador; `passwd username` permite alterar a palavra-passe de um utilizador; `usermod options username` permite fazer modificações a uma conta de utilizador existente; `userdel username` permite eliminar um utilizador. **Operações Linux sobre grupos:** `groupadd options groupname` cria um grupo; `groupmod options groupname` modifica um grupo (inclui a adição de membros ao grupo); `groupdel groupname` elimina um grupo.
+
+O Linux permite três tipos de permissões: *read* (abrir e ver um ficheiro), *write* (abrir, modificar e guardar um ficheiro) e *execute* (correr um ficheiro). Cada ficheiro guarda as permissões específicas que lhe são atribuídas - o modo do ficheiro.
+
+Parte do trabalho de um administrador de sistemas é prevenir, a outra é corrigir. Um **desastre** é qualquer evento catastrófico que cause uma falha massiva que afete um edifício ou local inteiros. Para se criar um plano de recuperação de desastre, é necessário fazer uma **avaliação de risco**, que envolve: determinar que desastres a companhia pode sofrer e quais as probabilidades de estes ocorrerem, bem como os custos causados. As ameaças podem ser físicas (ambiente, desastres naturais, bombas, falhas energéticas), humanas (quebra, roubo, suborno, espionagem, sabotagem, acidentes) ou de *software* (vírus, cavalos de Tróia, bombas lógicas, negação de serviço). Proteger-se contra estes problemas requer medidas proativas (preventivas) e controlo de dano após incidentes: identificar o que se quer proteger, avaliar as principais fontes de risco e segurança, elaborar contra-medidas possíveis ou rentáveis para ataques.
 
 ### Aula 08
 
-Há sempre um risco de acontecer um desastre, qualquer que seja o sistema. Um desastre está relacionado com as funcionalidades de um determinado sistema. A partir da possibilidade da ocorrência de um desastre, cria-se uma lista de riscos, que devem ser minimizados e mitigados.
+É necessário saber quem sabe os riscos que podem ocorrer, quais são, quão prováveis são e quanto custará arriscar. Há sempre risco de acontecer um desastre, qualquer que seja o sistema. Um desastre está relacionado com as funcionalidades de um determinado sistema. A partir da possibilidade da ocorrência de um desastre, cria-se uma lista de riscos, que devem ser minimizados e mitigados.
 
 **Exercício**
 
@@ -190,26 +196,25 @@ Mitigação (ser reativo)
 
 Para criar um **plano de recuperação de desastres**, também é necessário ter em conta:
 * **Política de segurança** - definir objetivos claros, assegurando que os compromissos legais e contratuais são cumpridos e que as implicações económicas de uma falha de segurança são compreendidas;
-* **Segurança organizacional** - definir políticas e fornecer conselhos multidisciplinares;
+* **Segurança organizacional** - definir políticas e fornecer conselhos multidisciplinares, com determinação de níveis de acesso;
 * **Classificação e controlo de ativos** - manter um inventário de ativos, que classifique cada ativo de acordo com o nível apropriado de segurança, e determinar procedimentos para lidar com diferentes níveis de informação;
 * **Segurança de pessoal** - o *staff* deve ser identificado, ter responsabilidades de segurança e ter formações sobre possíveis ameaças e procedimentos de combate, de modo a que falhas de segurança e fraquezas sejam reportadas no imediato;
 * **Segurança física e de ambiente** - envolve um perímetro de segurança com restrições físicas, bem como ambientes seguros e controlados;
 * **Gestão de comunicações e operações** - o processamento e tratamento da informação devem ser especificados com procedimentos apropriados para o nível de informação, incluindo autorizações e documentação significativa de alterações para permitir análises;
 * **Controlo de acesso** - manutenção de utilizadores, palavras-passe e chave, direitos de acesso, segregação de ativos independentes, autenticação, sincronização, BYOD;
-* **Desenvolvimento e manutenção de sistemas** - a segurança deve ser imbutida nos sistemas desde o princípio;
+* **Desenvolvimento e manutenção de sistemas** - a segurança deve ser imbutida nos sistemas desde o princípio, com validação de *input*/*output* e controlos criptográficos (assinaturas e certificados);
 * **Manutenção de continuidade de negócio** - estimar o impacto de catástrofes e falhas de segurança na empresa;
-* **Conformidade** - leis e regulamentos devem ser respeitados, de acordo com a localização da empresa.
+* **Conformidade** - leis e regulamentos devem ser respeitados, de acordo com a localização da empresa, com regulação de informação pessoal e métodos criptográficos.
 
-Para criar um **plano de recuperação de desastres** deve medir-se e quantificar-se os riscos e manter os dados atualizados. Também se deve conceber e implementar ações de minimização do risco (e testar e verificar a sua eficácia) e ações de atenuação de desastres (e testar, se possível). Repetir. Deve ter-se em vista "quem, quando, como, onde, com quê, com quem, em quanto tempo, para quê".
+Para criar um **plano de recuperação de desastres** deve medir-se e quantificar-se os riscos e manter os dados atualizados. Também se deve conceber e implementar ações de minimização do risco (e testar para verificar a sua eficácia) e ações de atenuação de desastres (e testar, se possível). Repetir. Deve ter-se em vista "quem, quando, como, onde, com quê, com quem, em quanto tempo, para quê".
 
 Conclusões:
-* É importante compreender quais serviços são os mais críticos e quais as restrições de tempo para restauros.
-* É necessário saber quais os desastres possíveis de acontecer;
-* Um plano de recuperação de desastres requer planeamento prévio;
-* O plano deve ter formas simples de limitar o dano, bem como formas mais complexas e caras;
+* É importante compreender quais serviços são os mais críticos e quais as restrições de tempo para restauros, sabendo quais desastres são mais prováveis e quanto irão custar;
+* Um plano de recuperação de desastres requer planeamento prévio, tendo em conta o tempo para adquirir novo equipamento, recuperar *backups* e reconstruir os sistemas críticos;
+* O plano deve ter formas simples de limitar o dano, bem como formas mais complexas e caras. Deve haver uma equipa preparada para executar o plano em caso de emergência, cujos membros devem estar familiarizados com as suas funções e ter prática nelas;
 * Deve haver redundância total, incluindo uma localização redundante.
 
-Tanto para prevenir como para corrigir, um administrador de sistemas tem uma poderosa ferramenta: ***logs***. *Logs* são registos dos acontecimentos que ocorrem num sistema, com demasiada informação "inútil" que necessita de ser filtrada. Por omissão, os *logs* são escritos localmente, embora possam ser feitos num servidor ou para um servidor. Podem ser classificados como:
+Tanto para prevenir como para corrigir, um administrador de sistemas tem uma poderosa ferramenta: ***logs***. *Logs* são registos dos acontecimentos que ocorrem num sistema, com demasiada informação "inútil" que necessita de ser filtrada de acordo com os diferentes formatos de *logging*. Por omissão, os *logs* são escritos localmente, embora possam ser feitos num servidor ou para um servidor. Têm prioridade por níveis de severidade e podem ser classificados como:
 * Informação - permitem a utilizadores e administradores saber que algo benigno ocorreu;
 * *Debug* - geradas de sistemas de *software*, ajudam *developers* a identificar e resolver problemas na execução de código;
 * Aviso - ocorrem em situações em que haja coisas necessárias ou em falta para um sistema, mas sem impactar a sua operação;
@@ -218,7 +223,7 @@ Tanto para prevenir como para corrigir, um administrador de sistemas tem uma pod
 
 *Loghost* é a máquina que armazena os *logs*; *syslog* é o protocolo que permite visualizar/transmitir mensagens de *logs*; SNMP (*Simple Network Management Protocol*) gera *logs*. Um *log* deve ter, pelo menos, uma *timestamp*, uma origem e informação. Gerir *logs* é importante (para gestão de recursos, deteção de intrusões, resolução de problemas, análise forense), mas dá muito trabalho, ocupa recursos e exige mineração, sendo necessário controlar um equilíbrio.
 
-*Logs* devem informar sobre o acontecimento: o quê (com detalhe), quando, onde, quem esteve envolvido, a origem.
+Cada *log* deve corresponder a um evento e fornecer informações sobre este: o quê (com detalhe), quando, onde, quem esteve envolvido, a origem.
 
 ---
 
